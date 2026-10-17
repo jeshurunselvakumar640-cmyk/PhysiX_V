@@ -28,6 +28,12 @@ import { createPofAttenuationExperiment } from "./pof-attenuation.js";
 import "./pof-attenuation.css";
 import { createPlanckExperiment } from "./planck.js";
 import "./planck.css";
+import { createLaserDivergenceExperiment } from "./laser-divergence.js";
+import "./laser-divergence.css";
+import { createUltrasonicSensorExperiment } from "./ultrasonic-sensor.js";
+import "./ultrasonic-sensor.css";
+import { createWedgeFilmExperiment } from "./wedge-film.js";
+import "./wedge-film.css";
 import {
   tutorialManager,
   normalizeExpId,
@@ -4224,7 +4230,10 @@ function showTheoryForExperiment(expId) {
     "sandbox": document.getElementById("theory-pane-exp6"),
     "diode": document.getElementById("theory-pane-exp-diode"),
     "pof-attenuation": document.getElementById("theory-pane-exp-pof"),
-    "planck": document.getElementById("theory-pane-exp-planck")
+    "planck": document.getElementById("theory-pane-exp-planck"),
+    "laser-divergence": document.getElementById("theory-pane-exp-laser"),
+    "ultrasonic-sensor": document.getElementById("theory-pane-exp-ultrasonic"),
+    "wedge-film": document.getElementById("theory-pane-exp-wedge")
   };
 
   const titles = {
@@ -4263,6 +4272,18 @@ function showTheoryForExperiment(expId) {
     "planck": {
       title: "Exp 8: Planck's Constant — Theory & Formulas",
       desc: "Einstein's photoelectric equation, stopping potential, work function, and LED knee voltage"
+    },
+    "laser-divergence": {
+      title: "Exp 9: Laser Beam Divergence — Theory & Formulas",
+      desc: "TEM00 Gaussian beam propagation, Rayleigh range, and far-field expansion equations"
+    },
+    "ultrasonic-sensor": {
+      title: "Exp 10: Ultrasonic Sensor (UDM) — Theory & Formulas",
+      desc: "Acoustic transducer wave propagation, time-of-flight, and distance calibration"
+    },
+    "wedge-film": {
+      title: "Exp 11: Wedge-Shaped Film — Theory & Formulas",
+      desc: "Thin-film interference by division of amplitude, Stokes phase reversal, and microscopic wire diameter metrology"
     }
   };
 
@@ -4372,7 +4393,19 @@ function openHelpForCurrentExperiment() {
   let titleText = "PhysiX Virtual Laboratory User Guide & Operations Manual";
   let subtitleText = "Complete step-by-step instructions, interactive Control Deck breakdown, machine hardware switches, and telemetry export walkthrough";
 
-  if (currentExp === "diode" || currentExp === "diode-vi" || currentExp === "pn-junction") {
+  if (currentExp === "wedge-film" || currentExp === "wedge" || currentExp === "wedge-shaped-film" || currentExp === "thin-film-wedge") {
+    targetPane = document.getElementById("help-pane-exp-wedge");
+    titleText = "Wedge-Shaped Film — Interactive User Guide & Lab Manual";
+    subtitleText = "Step-by-step optical bench alignment, travelling microscope reticle crosshair positioning, regression slope calculation, and challenges walkthrough";
+  } else if (currentExp === "ultrasonic-sensor" || currentExp === "ultrasonic" || currentExp === "udm" || currentExp === "ultrasonic-distance") {
+    targetPane = document.getElementById("help-pane-exp-ultrasonic");
+    titleText = "Ultrasonic Sensor (UDM) — Interactive User Guide & Lab Manual";
+    subtitleText = "Step-by-step acoustic time-of-flight calibration, oscilloscope traces, sound velocity calculations, and challenge walkthrough";
+  } else if (currentExp === "laser-divergence" || currentExp === "laser" || currentExp === "laser-beam-divergence") {
+    targetPane = document.getElementById("help-pane-exp-laser");
+    titleText = "Laser Beam Divergence — Interactive User Guide & Lab Manual";
+    subtitleText = "Step-by-step procedure, beam waist controls, reticle micrometry, Gaussian propagation, and challenge walkthrough";
+  } else if (currentExp === "diode" || currentExp === "diode-vi" || currentExp === "pn-junction") {
     targetPane = helpPaneExpDiode || document.getElementById("help-pane-exp-diode");
     titleText = "Diode V-I Characteristics — Interactive User Guide & Lab Manual";
     subtitleText = "Step-by-step procedure, circuit controls breakdown, Shockley diode equations, forward/reverse bias recording, and challenge walkthrough";
@@ -4931,8 +4964,14 @@ const expDiffractionSection = document.getElementById("exp-diffraction-section")
 const expDiodeSection = document.getElementById("exp-diode-section");
 const expPofSection = document.getElementById("exp-pof-attenuation-section");
 const expPlanckSection = document.getElementById("exp-planck-section");
+const expLaserSection = document.getElementById("exp-laser-divergence-section");
+const expUltrasonicSection = document.getElementById("exp-ultrasonic-sensor-section");
+const expWedgeSection = document.getElementById("exp-wedge-film-section");
 let pofExperimentInstance = null;
 let planckExperimentInstance = null;
+let laserExperimentInstance = null;
+let ultrasonicExperimentInstance = null;
+let wedgeExperimentInstance = null;
 
 async function trackExperimentEngagement(expId) {
   if (!canPerformCloudOperation()) return;
@@ -4978,9 +5017,12 @@ async function trackExperimentEngagement(expId) {
 function switchExperiment(expId, updateUrl = true) {
   window.switchExperiment = switchExperiment;
   let normalizedId = expId;
-  if (expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof") normalizedId = "pof-attenuation";
+  if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") normalizedId = "wedge-film";
+  else if (expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof") normalizedId = "pof-attenuation";
   else if (expId === "diode" || expId === "diode-vi" || expId === "pn-junction") normalizedId = "diode";
   else if (expId === "planck" || expId === "plancks-constant" || expId === "planck-constant") normalizedId = "planck";
+  else if (expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence") normalizedId = "laser-divergence";
+  else if (expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance") normalizedId = "ultrasonic-sensor";
   else if (expId === "diffraction-grating") normalizedId = "diffraction";
   else if (expId === "optical-fibre") normalizedId = "optical";
   else if (expId === "physics-sandbox") normalizedId = "sandbox";
@@ -5004,16 +5046,25 @@ function switchExperiment(expId, updateUrl = true) {
   expDiodeSection?.classList.add("hidden");
   expPofSection?.classList.add("hidden");
   expPlanckSection?.classList.add("hidden");
+  expLaserSection?.classList.add("hidden");
+  expUltrasonicSection?.classList.add("hidden");
+  expWedgeSection?.classList.add("hidden");
 
-  const routeSlug = normalizedId === "planck"
-    ? "plancks-constant"
-    : (normalizedId === "pof-attenuation"
-      ? "pof-attenuation"
-      : (normalizedId === "diode"
-        ? "diode-vi"
-        : (normalizedId === "diffraction"
-          ? "diffraction-grating"
-          : (normalizedId === "optical" ? "optical-fibre" : normalizedId))));
+  const routeSlug = normalizedId === "wedge-film"
+    ? "wedge-film"
+    : (normalizedId === "planck"
+      ? "plancks-constant"
+      : (normalizedId === "laser-divergence"
+        ? "laser-divergence"
+        : (normalizedId === "ultrasonic-sensor"
+          ? "ultrasonic-sensor"
+          : (normalizedId === "pof-attenuation"
+            ? "pof-attenuation"
+            : (normalizedId === "diode"
+              ? "diode-vi"
+              : (normalizedId === "diffraction"
+                ? "diffraction-grating"
+                : (normalizedId === "optical" ? "optical-fibre" : normalizedId)))))));
 
   if (updateUrl && !document.body.classList.contains("on-homepage")) {
     const targetUrl = `/simulations/${routeSlug}`;
@@ -5334,6 +5385,121 @@ function switchExperiment(expId, updateUrl = true) {
     }
 
     showToast("Switched to Exp 8: Planck's Constant Experiment");
+  } else if (normalizedId === "laser-divergence") {
+    expLaserSection?.classList.remove("hidden");
+
+    if (!laserExperimentInstance) {
+      laserExperimentInstance = createLaserDivergenceExperiment({
+        onXpAwarded: (amount, reason) => addStudentXp(amount, reason),
+        onExperimentRecorded: (id, data) => {
+          if (auth.currentUser && canPerformCloudOperation()) {
+            recordExperimentInFirestore(auth.currentUser.uid, id, data).then(res => {
+              if (res && typeof res.totalXP === "number") {
+                setAuthoritativeUserXp(auth.currentUser.uid, res.totalXP);
+                loadUserProfile();
+              }
+              if (res && res.experimentsPerformed >= 5) {
+                unlockBadge("badge-lab-veteran", "Laboratory Veteran (Explored Labs 5+ Times)");
+              }
+            }).catch(() => {});
+          }
+        },
+        showToast,
+        getActiveUserId,
+        loadUserProfile,
+        getStoredUserProfile,
+        unlockBadge: (badgeId, badgeName) => unlockBadge(badgeId, badgeName),
+        isUserAuthenticated,
+        openLoginModal,
+        onChallengeCompleted: (data) => completeChallengeAuthoritatively(data)
+      });
+      laserExperimentInstance.init();
+      window.laserExperimentInstance = laserExperimentInstance;
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof laserExperimentInstance.hydrateChallenges === "function") {
+        laserExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+    } else {
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof laserExperimentInstance.hydrateChallenges === "function") {
+        laserExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+      laserExperimentInstance.renderAll();
+    }
+
+    showToast("Switched to Exp 9: Laser Beam Divergence");
+  } else if (normalizedId === "ultrasonic-sensor") {
+    expUltrasonicSection?.classList.remove("hidden");
+
+    if (!ultrasonicExperimentInstance) {
+      ultrasonicExperimentInstance = createUltrasonicSensorExperiment({
+        onXpAwarded: (amount, reason) => addStudentXp(amount, reason),
+        onExperimentRecorded: (id, data) => {
+          if (auth.currentUser && canPerformCloudOperation()) {
+            recordExperimentInFirestore(auth.currentUser.uid, id, data).then(res => {
+              if (res && typeof res.totalXP === "number") {
+                setAuthoritativeUserXp(auth.currentUser.uid, res.totalXP);
+                loadUserProfile();
+              }
+              if (res && res.experimentsPerformed >= 5) {
+                unlockBadge("badge-lab-veteran", "Laboratory Veteran (Explored Labs 5+ Times)");
+              }
+            }).catch(() => {});
+          }
+        },
+        showToast,
+        getActiveUserId,
+        loadUserProfile,
+        getStoredUserProfile,
+        unlockBadge: (badgeId, badgeName) => unlockBadge(badgeId, badgeName),
+        isUserAuthenticated,
+        openLoginModal,
+        onChallengeCompleted: (data) => completeChallengeAuthoritatively(data)
+      });
+      ultrasonicExperimentInstance.init();
+      window.ultrasonicExperimentInstance = ultrasonicExperimentInstance;
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof ultrasonicExperimentInstance.hydrateChallenges === "function") {
+        ultrasonicExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+    } else {
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof ultrasonicExperimentInstance.hydrateChallenges === "function") {
+        ultrasonicExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+      ultrasonicExperimentInstance.renderAll();
+    }
+
+    showToast("Switched to Exp 10: Ultrasonic Sensor (UDM)");
+  } else if (normalizedId === "wedge-film") {
+    expWedgeSection?.classList.remove("hidden");
+
+    if (!wedgeExperimentInstance) {
+      wedgeExperimentInstance = createWedgeFilmExperiment({
+        onXpAwarded: (amount, reason) => {
+          addXp(amount, reason);
+        },
+        onExperimentRecorded: (id, data) => {
+          recordExperimentSession(id, data);
+        },
+        showToast,
+        getActiveUserId,
+        loadUserProfile,
+        getStoredUserProfile,
+        unlockBadge: (badgeId, badgeName) => unlockBadge(badgeId, badgeName),
+        isUserAuthenticated,
+        openLoginModal,
+        onChallengeCompleted: (data) => completeChallengeAuthoritatively(data)
+      });
+      wedgeExperimentInstance.init();
+      window.wedgeExperimentInstance = wedgeExperimentInstance;
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof wedgeExperimentInstance.hydrateChallenges === "function") {
+        wedgeExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+    } else {
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof wedgeExperimentInstance.hydrateChallenges === "function") {
+        wedgeExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+      wedgeExperimentInstance.renderAll();
+    }
+
+    showToast("Switched to Exp 11: Wedge-Shaped Film");
   } else {
     expProjSection?.classList.remove("hidden");
     updateLauncher(Number(angleSlider?.value || DEFAULT_ANGLE), Number(heightSlider?.value || DEFAULT_HEIGHT));
@@ -5363,7 +5529,10 @@ allExperimentCards.forEach(card => {
     const name = card.getAttribute("data-name") || "";
 
     let expId = null;
-    if (target === "planck" || target === "plancks-constant" || name.toLowerCase().includes("planck")) expId = "planck";
+    if (target === "wedge-film" || target === "wedge" || target === "wedge-shaped-film" || target === "thin-film-wedge" || name.toLowerCase().includes("wedge")) expId = "wedge-film";
+    else if (target === "ultrasonic-sensor" || target === "ultrasonic" || target === "udm" || name.toLowerCase().includes("ultrasonic")) expId = "ultrasonic-sensor";
+    else if (target === "laser-divergence" || target === "laser" || name.toLowerCase().includes("laser divergence") || name.toLowerCase().includes("divergence of a laser")) expId = "laser-divergence";
+    else if (target === "planck" || target === "plancks-constant" || name.toLowerCase().includes("planck")) expId = "planck";
     else if (target === "pof-attenuation" || target === "pof" || name.toLowerCase().includes("attenuation") || name.toLowerCase().includes("plastic optical fiber")) expId = "pof-attenuation";
     else if (target === "diode" || target === "diode-vi" || name.toLowerCase().includes("diode") || name.toLowerCase().includes("p-n junction")) expId = "diode";
     else if (target === "diffraction" || target === "diffraction-grating" || name.toLowerCase().includes("diffraction")) expId = "diffraction-grating";
@@ -5975,13 +6144,19 @@ export function renderReferencesHtml(books) {
 
 export function openExperimentDetailsPage(expId) {
   tutorialManager.destroyTour();
-  const normalizedId = (expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof")
+  const normalizedId = (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge")
+    ? "wedge-film"
+    : ((expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance")
+    ? "ultrasonic-sensor"
+    : ((expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence")
+    ? "laser-divergence"
+    : ((expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof")
     ? "pof-attenuation"
     : ((expId === "planck" || expId === "plancks-constant" || expId === "planck-constant")
     ? "planck"
     : ((expId === "sandbox" || expId === "hall-effect" || expId === "colour-sensor" || expId === "optical" || expId === "projectile" || expId === "diffraction" || expId === "diffraction-grating" || expId === "diode" || expId === "diode-vi")
     ? (expId === "diffraction-grating" ? "diffraction" : (expId === "diode-vi" ? "diode" : expId))
-    : "projectile"));
+    : "projectile")))));
 
   const data = EXPERIMENT_DETAILS[normalizedId] || EXPERIMENT_DETAILS["projectile"];
   currentActiveDetailExpId = normalizedId;
@@ -6137,7 +6312,10 @@ function initExperimentsPage() {
     const name = card.getAttribute("data-name") || "";
 
     let expId = null;
-    if (target === "planck" || target === "plancks-constant" || name.toLowerCase().includes("planck")) expId = "planck";
+    if (target === "wedge-film" || target === "wedge" || target === "wedge-shaped-film" || target === "thin-film-wedge" || name.toLowerCase().includes("wedge")) expId = "wedge-film";
+    else if (target === "ultrasonic-sensor" || target === "ultrasonic" || target === "udm" || name.toLowerCase().includes("ultrasonic")) expId = "ultrasonic-sensor";
+    else if (target === "laser-divergence" || target === "laser" || name.toLowerCase().includes("laser divergence") || name.toLowerCase().includes("divergence of a laser")) expId = "laser-divergence";
+    else if (target === "planck" || target === "plancks-constant" || name.toLowerCase().includes("planck")) expId = "planck";
     else if (target === "pof-attenuation" || target === "pof" || name.toLowerCase().includes("attenuation") || name.toLowerCase().includes("plastic optical fiber")) expId = "pof-attenuation";
     else if (target === "diode" || target === "diode-vi" || name.toLowerCase().includes("diode") || name.toLowerCase().includes("p-n junction")) expId = "diode";
     else if (target === "diffraction" || target === "diffraction-grating" || name.toLowerCase().includes("diffraction")) expId = "diffraction-grating";
@@ -6232,7 +6410,10 @@ export function handleRoute(path = window.location.pathname, hash = window.locat
     document.body.classList.remove("on-standalone-page");
     physixHome?.classList.add("hidden");
     let mappedId = expId;
-    if (expId === "planck" || expId === "plancks-constant" || expId === "planck-constant") mappedId = "planck";
+    if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") mappedId = "wedge-film";
+    else if (expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance") mappedId = "ultrasonic-sensor";
+    else if (expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence") mappedId = "laser-divergence";
+    else if (expId === "planck" || expId === "plancks-constant" || expId === "planck-constant") mappedId = "planck";
     else if (expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof") mappedId = "pof-attenuation";
     else if (expId === "diode" || expId === "diode-vi" || expId === "pn-junction") mappedId = "diode";
     else if (expId === "diffraction-grating" || expId === "diffraction") mappedId = "diffraction";
@@ -6260,15 +6441,18 @@ export function handleRoute(path = window.location.pathname, hash = window.locat
     expPage?.classList.remove("hidden");
     initExperimentsPage();
     window.scrollTo({ top: 0, behavior: "instant" });
-  } else if (cleanHash === "#planck" || cleanHash === "#plancks-constant" || cleanHash === "#diffraction" || cleanHash === "#diffraction-grating" || cleanHash === "#hall-effect" || cleanHash === "#sandbox" || cleanHash === "#pof-attenuation" || cleanHash === "#optical" || cleanHash === "#colour-sensor" || cleanHash === "#projectile") {
+  } else if (cleanHash === "#wedge" || cleanHash === "#wedge-film" || cleanHash === "#wedge-shaped-film" || cleanHash === "#ultrasonic" || cleanHash === "#ultrasonic-sensor" || cleanHash === "#udm" || cleanHash === "#laser" || cleanHash === "#laser-divergence" || cleanHash === "#planck" || cleanHash === "#plancks-constant" || cleanHash === "#diffraction" || cleanHash === "#diffraction-grating" || cleanHash === "#hall-effect" || cleanHash === "#sandbox" || cleanHash === "#pof-attenuation" || cleanHash === "#optical" || cleanHash === "#colour-sensor" || cleanHash === "#projectile") {
     // Direct link to simulation
     document.body.classList.remove("on-homepage");
     document.body.classList.remove("on-standalone-page");
     physixHome?.classList.add("hidden");
     let mapped = cleanHash.replace("#", "");
-    if (mapped === "diode-vi" || mapped === "pn-junction") mapped = "diode";
+    if (mapped === "wedge" || mapped === "wedge-shaped-film" || mapped === "thin-film-wedge") mapped = "wedge-film";
+    else if (mapped === "diode-vi" || mapped === "pn-junction") mapped = "diode";
     else if (mapped === "diffraction-grating") mapped = "diffraction";
     else if (mapped === "plancks-constant" || mapped === "planck-constant") mapped = "planck";
+    else if (mapped === "laser" || mapped === "laser-beam-divergence") mapped = "laser-divergence";
+    else if (mapped === "ultrasonic" || mapped === "udm" || mapped === "ultrasonic-distance") mapped = "ultrasonic-sensor";
     switchExperiment(mapped, false);
   } else if (cleanPath.endsWith("/profile") || cleanHash === "#profile") {
     document.body.classList.remove("on-standalone-page");

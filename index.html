@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="/src/style.css?v=orbitron-v7" />
   <link rel="stylesheet" href="/src/diode-vi.css" />
   <link rel="stylesheet" href="/src/planck.css" />
+  <link rel="stylesheet" href="/src/wedge-film.css" />
   <link rel="stylesheet" href="/src/update-notification.css" />
   <link id="light-mode-stylesheet" rel="stylesheet" href="/src/light-mode.css" disabled />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -6176,6 +6177,1121 @@
     </div>
   </div><!-- /#exp-planck-section -->
 
+  <!-- ==========================================
+       LASER BEAM DIVERGENCE COMPONENT MARKUP
+       ========================================== -->
+  <div id="exp-laser-divergence-section" class="exp-section-wrapper hidden">
+
+    <!-- MAIN DUAL-WORKSTATION APPARATUS CARD -->
+    <main class="ld-dashboard">
+      <section class="ld-apparatus-card">
+        <!-- HEADER BAR -->
+        <div class="ld-card-header">
+          <div class="ld-header-left">
+            <div class="ld-status-indicator active" id="ld-laser-status-dot" title="Laser Emission Status"></div>
+            <div>
+              <h2 class="ld-card-title">PRECISION OPTICAL BENCH &amp; GAUSSIAN BEAM DETECTOR</h2>
+              <p class="ld-card-subtitle">Real-time Gaussian beam propagation and digital reticle micrometry.</p>
+            </div>
+          </div>
+          <div class="ld-header-actions">
+            <button type="button" class="btn-action btn-secondary-action ld-btn-metallic" id="ld-btn-reset" title="Calibrate and establish baseline reference">
+              <svg class="svg-icon svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+              Calibrate Baseline
+            </button>
+            <button type="button" class="btn-action btn-primary-action ld-btn-metallic btn-record-gradient-compact" id="ld-btn-record" title="Capture and log current trial data">
+              <svg class="svg-icon svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+              RECORD OBSERVATION
+            </button>
+          </div>
+        </div>
+
+        <!-- APPARATUS DUAL-VIEW CONTAINER -->
+        <div class="ld-views-grid">
+          <!-- 1. OPTICAL BENCH PROFILE VIEW (LEFT PANEL) -->
+          <div class="ld-view-panel">
+            <div class="ld-panel-header">
+              <span class="ld-panel-badge">PROFILE AXIS (Z-X)</span>
+              <span class="ld-panel-title">Optical Bench Rail &amp; Diverging Envelope</span>
+            </div>
+            <div class="ld-canvas-wrapper">
+              <canvas id="ld-bench-canvas" width="820" height="360" class="ld-canvas"></canvas>
+            </div>
+          </div>
+
+          <!-- 2. DETECTOR SCREEN RETICLE HUD (RIGHT PANEL) -->
+          <div class="ld-view-panel">
+            <div class="ld-panel-header">
+              <span class="ld-panel-badge">DETECTOR PLANE (X-Y)</span>
+              <span class="ld-panel-title">Screen Laser Spot &amp; Reticle Caliper</span>
+            </div>
+            <div class="ld-canvas-wrapper ld-screen-wrapper">
+              <canvas id="ld-screen-canvas" width="440" height="360" class="ld-canvas"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- HARDWARE CONTROL DECK (3 METALLIC CARDS) -->
+        <div class="ld-hardware-deck">
+          <!-- CARD 1: LASER POWER & BEAM WAIST RADIUS -->
+          <div class="ld-control-group ld-group-power-waist">
+            <!-- Laser Power Row -->
+            <div class="ld-ctrl-subgroup ld-subgroup-power">
+              <div class="ld-ctrl-label-row">
+                <span class="ld-ctrl-label">Laser Power: Power</span>
+                <div class="ld-power-toggle-wrap">
+                  <div class="ld-power-switch active" id="ld-power-switch" title="Toggle Laser Power" role="switch" aria-checked="true">
+                    <div class="ld-power-switch-knob"></div>
+                  </div>
+                  <button type="button" class="ld-laser-toggle-btn active" id="ld-btn-toggle-laser">Laser ON</button>
+                </div>
+              </div>
+              <div class="ld-ctrl-subtext">Class 3R He-Ne / Tunable Solid-State Diode</div>
+            </div>
+
+            <!-- Beam Waist Radius Row -->
+            <div class="ld-ctrl-subgroup ld-subgroup-waist">
+              <div class="ld-ctrl-label-row">
+                <span class="ld-ctrl-label">Beam Waist Radius (w₀)</span>
+              </div>
+              <div class="ld-preset-grid ld-waist-grid">
+                <button type="button" class="ld-preset-btn ld-waist-preset-btn" data-waist="0.25">0.25 mm (Narrow)</button>
+                <button type="button" class="ld-preset-btn ld-waist-preset-btn active" data-waist="0.50">0.50 mm (Standard)</button>
+                <button type="button" class="ld-preset-btn ld-waist-preset-btn" data-waist="0.75">0.75 mm (Expanded)</button>
+              </div>
+              <div class="ld-ctrl-subtext" style="margin-top:6px;">Affects Rayleigh range z_R = πw₀²/λ</div>
+            </div>
+          </div>
+
+          <!-- CARD 2: SCREEN DISTANCE (L) -->
+          <div class="ld-control-group ld-group-distance">
+            <div class="ld-ctrl-label-row">
+              <span class="ld-ctrl-label">Screen Distance (L)</span>
+              <div class="ld-ctrl-val-box" id="ld-dist-val">0.50 m (50 cm)</div>
+            </div>
+            <div class="ld-slider-with-steppers">
+              <button type="button" class="btn-step" id="ld-btn-dist-minus" title="Step -0.10 m">-</button>
+              <input type="range" id="ld-dist-slider" min="0.20" max="2.50" step="0.05" value="0.50" class="ld-slider" aria-label="Screen Distance Slider">
+              <button type="button" class="btn-step" id="ld-btn-dist-plus" title="Step +0.10 m">+</button>
+            </div>
+            <div class="ld-presets-wrap">
+              <span class="ld-preset-label">Presets:</span>
+              <div class="ld-dist-presets-container">
+                <div class="ld-preset-grid ld-dist-row-1">
+                  <button type="button" class="ld-preset-btn ld-dist-preset-btn active" data-dist="0.50">0.50 m</button>
+                  <button type="button" class="ld-preset-btn ld-dist-preset-btn" data-dist="1.00">1.00 m</button>
+                  <button type="button" class="ld-preset-btn ld-dist-preset-btn" data-dist="1.50">1.50 m</button>
+                </div>
+                <div class="ld-preset-grid ld-dist-row-2">
+                  <button type="button" class="ld-preset-btn ld-dist-preset-btn" data-dist="2.00">2.00 m</button>
+                  <button type="button" class="ld-preset-btn ld-dist-preset-btn" data-dist="2.50">2.50 m</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: EMISSION WAVELENGTH (λ) -->
+          <div class="ld-control-group ld-group-wavelength">
+            <div class="ld-ctrl-label-row">
+              <span class="ld-ctrl-label">Emission Wavelength (λ)</span>
+              <div class="ld-ctrl-val-box">
+                <span class="ld-color-chip" id="ld-color-chip"></span>
+                <span id="ld-wl-val">632.8 nm</span>
+              </div>
+            </div>
+            <div class="ld-slider-with-steppers">
+              <button type="button" class="btn-step" id="ld-btn-wl-minus" title="Step -5 nm">-</button>
+              <input type="range" id="ld-wl-slider" min="390" max="700" step="1" value="632.8" class="ld-slider" aria-label="Wavelength Slider">
+              <button type="button" class="btn-step" id="ld-btn-wl-plus" title="Step +5 nm">+</button>
+            </div>
+            <div class="ld-presets-wrap">
+              <span class="ld-preset-label">Lines:</span>
+              <div class="ld-preset-grid ld-wl-grid">
+                <button type="button" class="ld-preset-btn ld-wl-preset-btn active" data-wl="632.8">632.8 nm (He-Ne)</button>
+                <button type="button" class="ld-preset-btn ld-wl-preset-btn" data-wl="532.0">532 nm (Green)</button>
+                <button type="button" class="ld-preset-btn ld-wl-preset-btn" data-wl="402.0">402 nm (Violet)</button>
+                <button type="button" class="ld-preset-btn ld-wl-preset-btn" data-wl="660.0">660 nm (Red Diode)</button>
+              </div>
+            </div>
+            <!-- Sparkle Star Icon in Corner -->
+            <div class="ld-card-sparkle" title="Precision Optical Bench">✦</div>
+          </div>
+        </div>
+
+        <!-- LIVE RESULTS & TELEMETRY SECTION (8 PARAMETERS) -->
+        <div class="ld-live-results-section">
+          <div class="ld-results-header">
+            <div class="ld-res-title-row">
+              <span class="ld-res-indicator"></span>
+              <h4 class="ld-results-title">REAL-TIME GAUSSIAN BEAM TELEMETRY &amp; GOVERNING PARAMETERS</h4>
+            </div>
+            <span class="ld-res-tag">SI Model: w(z) = w₀ √[1 + (z/z_R)²] • θ = λ/(πw₀)</span>
+          </div>
+          <div class="ld-results-grid">
+            <div class="ld-result-card">
+              <span class="ld-rc-label">Beam Waist Radius (w₀)</span>
+              <strong class="ld-rc-val text-cyan" id="ld-res-waist">0.50 mm</strong>
+              <span class="ld-rc-sub">Origin Waist at z = 0</span>
+            </div>
+            <div class="ld-result-card">
+              <span class="ld-rc-label">Screen Distance (z)</span>
+              <strong class="ld-rc-val text-green" id="ld-res-dist">0.50 m</strong>
+              <span class="ld-rc-sub">Detector Position L</span>
+            </div>
+            <div class="ld-result-card">
+              <span class="ld-rc-label">Rayleigh Range (z_R)</span>
+              <strong class="ld-rc-val text-purple" id="ld-res-rayleigh">1.241 m</strong>
+              <span class="ld-rc-sub">z_R = πw₀²/λ</span>
+            </div>
+            <div class="ld-result-card highlight-rc">
+              <span class="ld-rc-label">Beam Radius at Detector w(z)</span>
+              <strong class="ld-rc-val text-cyan" id="ld-res-radius">0.539 mm</strong>
+              <span class="ld-rc-sub">1/e² Intensity Radius</span>
+            </div>
+            <div class="ld-result-card highlight-rc">
+              <span class="ld-rc-label">Beam Diameter at Detector W(z)</span>
+              <strong class="ld-rc-val text-yellow" id="ld-res-diam">1.078 mm</strong>
+              <span class="ld-rc-sub">Spot Diameter 2w(z)</span>
+            </div>
+            <div class="ld-result-card">
+              <span class="ld-rc-label">Divergence Half-Angle (θ)</span>
+              <strong class="ld-rc-val text-cyan" id="ld-res-half-angle">0.403 mrad</strong>
+              <span class="ld-rc-sub">θ = λ/(πw₀)</span>
+            </div>
+            <div class="ld-result-card">
+              <span class="ld-rc-label">Full-Angle Divergence (Θ)</span>
+              <strong class="ld-rc-val text-purple" id="ld-res-full-angle">0.806 mrad</strong>
+              <span class="ld-rc-sub">Total Cone Angle 2θ</span>
+            </div>
+            <div class="ld-result-card">
+              <span class="ld-rc-label">Emission Wavelength (λ)</span>
+              <strong class="ld-rc-val text-green" id="ld-res-wl">632.8 nm</strong>
+              <span class="ld-rc-sub">Optical Frequency ν</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- LOWER SECTION: GRAPH, OBSERVATION LOGBOOK & CHALLENGES -->
+    <section class="ld-data-section">
+      <!-- DYNAMIC GRAPH & REAL-TIME REGRESSION CARD -->
+      <div class="ld-graph-card">
+        <div class="ld-card-header">
+          <div>
+            <h3 class="ld-card-title">PROPAGATION DIVERGENCE GRAPH</h3>
+            <p class="ld-card-subtitle">Asymptotic linear beam expansion fit dw/dL</p>
+          </div>
+          <div class="ld-graph-mode-toggle">
+            <button type="button" class="btn-toggle active" id="ld-btn-graph-radius">w vs L (Radius)</button>
+            <button type="button" class="btn-toggle" id="ld-btn-graph-diam">W vs L (Diameter)</button>
+          </div>
+        </div>
+        <div class="ld-graph-canvas-wrapper">
+          <canvas id="ld-graph-canvas" width="440" height="260" class="ld-canvas"></canvas>
+        </div>
+        <div class="ld-graph-stats-footer">
+          <div class="ld-stat-chip">
+            <span class="ld-stat-chip-label">Linear Slope (dw/dL)</span>
+            <span class="ld-stat-chip-val" id="ld-mean-slope">--</span>
+          </div>
+          <div class="ld-stat-chip">
+            <span class="ld-stat-chip-label">Mean Half-Angle (θ)</span>
+            <span class="ld-stat-chip-val" id="ld-mean-half-angle">--</span>
+          </div>
+          <div class="ld-stat-chip">
+            <span class="ld-stat-chip-label">Mean Full-Angle (Θ)</span>
+            <span class="ld-stat-chip-val" id="ld-mean-full-angle">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBSERVATIONS LOGBOOK TABLE -->
+      <div class="workstation-card observations-card ld-obs-card">
+        <div class="workstation-header">
+          <div class="workstation-title-group">
+            <div class="workstation-icon-glow obs-icon-glow">
+              <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3>Laser Divergence Observation Logbook</h3>
+              <p>Empirical screen distance, spot size measurements, and divergence half-angle computations</p>
+            </div>
+          </div>
+          <div class="obs-actions-group">
+            <button type="button" class="btn-obs-action btn-obs-record" id="ld-btn-record" title="Record Current Optical Bench Reading">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Record Reading
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-export" id="ld-btn-export-csv" title="Download CSV Dataset">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Export CSV
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-export-pdf" id="ld-btn-export-pdf" title="Download Official Academic PDF Report">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Export PDF
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-clear" id="ld-btn-clear-obs" title="Clear all recorded readings">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              Clear Observations
+            </button>
+            <span class="obs-count-pill" id="ld-obs-count-badge">0 Trials</span>
+          </div>
+        </div>
+
+        <!-- 4-panel Summary Statistics Row -->
+        <div class="of-stats-summary-bar">
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Total Trials Recorded</span>
+            <strong id="ld-total-trials" class="of-stat-val text-cyan">0</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Active Laser Source</span>
+            <strong id="ld-stat-wl" class="of-stat-val text-yellow">632.8 nm</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Mean Divergence Half-Angle (θ)</span>
+            <strong id="ld-stat-half-angle" class="of-stat-val text-purple">--</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Mean Full Divergence Angle (Θ)</span>
+            <strong id="ld-stat-full-angle" class="of-stat-val text-green">--</strong>
+          </div>
+        </div>
+
+        <!-- Observations Table Wrapper -->
+        <div class="obs-table-wrapper">
+          <!-- Empty State -->
+          <div class="obs-empty-state" id="ld-obs-empty">
+            <div class="obs-empty-icon">
+              <svg class="svg-icon svg-icon-lg" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <h4>No Laser Divergence Observations Recorded</h4>
+            <p>Translate the detector screen distance $L$ on the optical bench and click <strong>"Record Reading"</strong> to compute $\theta = \frac{W_2 - W_1}{2(L_2 - L_1)}$.</p>
+          </div>
+
+          <!-- Table -->
+          <table class="obs-table hidden" id="ld-obs-table">
+            <thead>
+              <tr>
+                <th>Trial</th>
+                <th>Distance L</th>
+                <th>Spot Diam W</th>
+                <th>Spot Radius w</th>
+                <th>ΔL</th>
+                <th>ΔW</th>
+                <th>Half-Angle θ</th>
+                <th>Half-Angle (°)</th>
+                <th>Full-Angle Θ</th>
+                <th>Logged At</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="ld-obs-tbody">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section><!-- /.ld-data-section -->
+
+    <!-- GAMIFIED EXPERIMENT CHALLENGES -->
+    <section class="workstation-card challenges-card ld-challenges-card">
+      <div class="workstation-header">
+        <div class="workstation-title-group">
+          <div class="workstation-icon-glow challenge-icon-glow">
+            <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+              <circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <div>
+            <h3>Laser Divergence Laboratory Challenges</h3>
+            <p>Master empirical Gaussian optics methods and earn student achievement XP</p>
+          </div>
+        </div>
+        <div class="challenge-xp-badge">
+          <span class="xp-progress" id="ld-challenges-completed-count">0 / 3 Complete</span>
+          <span class="xp-separator">•</span>
+          <span class="xp-highlight" id="ld-user-total-challenge-xp">+0 XP</span>
+        </div>
+      </div>
+
+      <div class="challenges-grid">
+        <!-- Challenge 1 -->
+        <div class="challenge-item" id="ld-ch-1">
+          <div class="challenge-badge-icon">
+            <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          </div>
+          <div class="challenge-info">
+            <div class="challenge-title-row">
+              <h4>Two-Point Divergence</h4>
+              <span class="challenge-reward-pill">+100 XP</span>
+            </div>
+            <p>Log spot diameters at two distinct screen positions ($L_1$ and $L_2$) to compute your baseline divergence angle $\theta$.</p>
+            <div class="challenge-footer">
+              <span class="challenge-status-tag pending" id="ld-ch-tag-1">0 / 2 Distances</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Challenge 2 -->
+        <div class="challenge-item" id="ld-ch-2">
+          <div class="challenge-badge-icon">
+            <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <div class="challenge-info">
+            <div class="challenge-title-row">
+              <h4>Optical Bench Sweep</h4>
+              <span class="challenge-reward-pill">+125 XP</span>
+            </div>
+            <p>Record observations at 4 different bench distances across the rail (e.g. 0.5m, 1.0m, 1.5m, 2.0m) to map linear propagation.</p>
+            <div class="challenge-footer">
+              <span class="challenge-status-tag pending" id="ld-ch-tag-2">0 / 4 Distances</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Challenge 3 -->
+        <div class="challenge-item" id="ld-ch-3">
+          <div class="challenge-badge-icon">
+            <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </div>
+          <div class="challenge-info">
+            <div class="challenge-title-row">
+              <h4>Spectral Divergence Law</h4>
+              <span class="challenge-reward-pill">+150 XP</span>
+            </div>
+            <p>Record data using at least two different laser lines (e.g. 632.8 nm Red vs 532 nm Green) to observe the diffraction angle dependence $\theta \propto \lambda$.</p>
+            <div class="challenge-footer">
+              <span class="challenge-status-tag pending" id="ld-ch-tag-3">0 / 2 Wavelengths</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div><!-- /#exp-laser-divergence-section -->
+
+  <!-- ==========================================
+       ULTRASONIC SENSOR (UDM) COMPONENT MARKUP
+       ========================================== -->
+  <div id="exp-ultrasonic-sensor-section" class="exp-section-wrapper hidden">
+    <div class="simulation-container">
+      <!-- 1. Workstation Header -->
+      <div class="workstation-header-card">
+        <div class="header-content-left">
+          <h2 class="workstation-title">
+            <span class="title-grad">Ultrasonic Sensor (UDM)</span> — Distance Calibration Laboratory
+          </h2>
+          <p class="workstation-subtitle">Analyze acoustic transducer time-of-flight, wave propagation, and pulse distance calibration</p>
+        </div>
+        <div class="workstation-actions-right">
+          <div class="udm-status-pill" title="Hardware Transceiver Ready">
+            <span class="status-beacon"></span>
+            <span>40 kHz TRANSDUCER ACTIVE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Simulation Viewports Card (Dual Canvas & Live Telemetry Strip) -->
+      <div class="workstation-sub-card udm-viewports-card">
+        <div class="udm-canvases-container">
+          <!-- Canvas 1: Acoustic Rail Bench -->
+          <div class="udm-canvas-box udm-bench-box">
+            <div class="canvas-header-tag">
+              <span class="tag-dot cyan"></span> Acoustic Propagation Rail &amp; Movable Reflector Target
+            </div>
+            <canvas id="udm-bench-canvas" width="760" height="260"></canvas>
+          </div>
+
+          <!-- Canvas 2: Oscilloscope & Timing Trace -->
+          <div class="udm-canvas-box udm-osc-box">
+            <div class="canvas-header-tag">
+              <span class="tag-dot green"></span> Digital Storage Oscilloscope (CH1: Trig • CH2: Echo)
+            </div>
+            <canvas id="udm-osc-canvas" width="340" height="340"></canvas>
+          </div>
+        </div>
+
+        <!-- Digital Telemetry Strip -->
+        <div class="udm-telemetry-strip">
+          <div class="udm-telemetry-item">
+            <span class="udm-t-label">Echo Time-of-Flight ($t$)</span>
+            <span class="udm-t-val" id="udm-hud-tof">--</span>
+          </div>
+          <div class="udm-telemetry-item">
+            <span class="udm-t-label">Sound Velocity ($v$)</span>
+            <span class="udm-t-val" id="udm-hud-speed">--</span>
+          </div>
+          <div class="udm-telemetry-item">
+            <span class="udm-t-label">Target Distance ($d_{\text{ref}}$)</span>
+            <span class="udm-t-val" id="udm-hud-ref-dist">--</span>
+          </div>
+          <div class="udm-telemetry-item">
+            <span class="udm-t-label">Calculated Dist ($d_{\text{meas}}$)</span>
+            <span class="udm-t-val" id="udm-hud-meas-dist">--</span>
+          </div>
+          <div class="udm-telemetry-item">
+            <span class="udm-t-label">Error %</span>
+            <span class="udm-t-val" id="udm-hud-error">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Interactive Transducer & Environmental Control Console (Swapped to upper position) -->
+      <div class="workstation-sub-card udm-deck-card">
+        <div class="sub-card-header">
+          <h3>
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            Interactive Transducer &amp; Environmental Control Console
+          </h3>
+        </div>
+
+        <div class="udm-deck-grid">
+          <!-- Col 1: Target Distance Slider & Presets -->
+          <div class="deck-group">
+            <div class="group-label-row">
+              <label for="udm-slider-dist">Target Distance ($d_{\text{ref}}$)</label>
+              <span class="val-pill" id="udm-val-dist">50.0 cm</span>
+            </div>
+            <input type="range" id="udm-slider-dist" min="5.0" max="300.0" step="0.5" value="50.0">
+            <div class="pill-presets-row">
+              <button type="button" class="pill-btn" id="udm-preset-10">10cm</button>
+              <button type="button" class="pill-btn" id="udm-preset-30">30cm</button>
+              <button type="button" class="pill-btn active-pill" id="udm-preset-50">50cm</button>
+              <button type="button" class="pill-btn" id="udm-preset-100">100cm</button>
+              <button type="button" class="pill-btn" id="udm-preset-150">150cm</button>
+              <button type="button" class="pill-btn" id="udm-preset-200">200cm</button>
+              <button type="button" class="pill-btn" id="udm-preset-250">250cm</button>
+            </div>
+          </div>
+
+          <!-- Col 2: Ambient Temperature Slider -->
+          <div class="deck-group">
+            <div class="group-label-row">
+              <label for="udm-slider-temp">Ambient Air Temperature ($T$)</label>
+              <span class="val-pill" id="udm-val-temp">20.0 °C</span>
+            </div>
+            <input type="range" id="udm-slider-temp" min="-10.0" max="50.0" step="0.5" value="20.0">
+            <p class="deck-hint">Speed of sound in air: $v \approx 331.3 \sqrt{1 + T/273.15}\text{ m/s}$.</p>
+          </div>
+
+          <!-- Col 3: Pulse Modes & Actions -->
+          <div class="deck-group deck-group-actions">
+            <div class="group-label-row">
+              <label>Transducer Mode &amp; Ping Controls</label>
+            </div>
+            <div class="deck-actions-stack">
+              <button type="button" class="btn-toggle-source active" id="udm-btn-continuous-ping">Continuous: ON</button>
+              <button type="button" class="btn-align-fringe" id="udm-btn-trigger-ping">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon>
+                </svg>
+                Trigger Single Acoustic Ping
+              </button>
+              <button type="button" class="btn-ctrl-secondary" id="udm-btn-calibrate-reset">
+                Restore Baseline (50cm @ 20°C)
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn-record-gradient" id="udm-btn-record-deck">
+          <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <line x1="10" y1="9" x2="8" y2="9"></line>
+          </svg>
+          RECORD OBSERVATION
+        </button>
+      </div>
+
+      <!-- 4. Sensor Distance Calibration Curve + Calibration Model Fit Parameters (Swapped to lower position) -->
+      <div class="udm-lower-grid">
+        <!-- Dynamic Calibration Graph -->
+        <div class="workstation-sub-card udm-graph-card">
+          <div class="sub-card-header">
+            <h4>
+              <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+              Sensor Distance Calibration Curve ($d_{\text{meas}}$ vs $d_{\text{ref}}$)
+            </h4>
+          </div>
+          <canvas id="udm-graph-canvas" width="480" height="260"></canvas>
+        </div>
+
+        <!-- Calibration Model & Result Card -->
+        <div class="workstation-sub-card udm-result-card">
+          <div class="sub-card-header">
+            <h4>
+              <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              Calibration Model Fit Parameters
+            </h4>
+          </div>
+          <div class="udm-result-stats">
+            <div class="udm-stat-row">
+              <span>Sensitivity Slope ($a$):</span>
+              <strong class="val-accent" id="udm-hud-calib-slope">--</strong>
+            </div>
+            <div class="udm-stat-row">
+              <span>Zero-Distance Offset ($b$):</span>
+              <strong id="udm-hud-calib-offset">--</strong>
+            </div>
+          </div>
+          <p class="udm-result-note">Model: $d_{\text{meas}} = a \cdot d_{\text{ref}} + b$. Ideal sensor has $a = 1.0000$ and $b = 0.0\text{ cm}$.</p>
+        </div>
+      </div>
+
+      <!-- 5. Distance Calibration Logbook Table -->
+      <div class="workstation-card observations-card udm-logbook-card">
+        <div class="workstation-header">
+          <div class="workstation-title-group">
+            <div class="workstation-icon-glow obs-icon-glow">
+              <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3>Ultrasonic Distance Calibration Observations</h3>
+              <p>Reference distances, acoustic echo time-of-flight, and sensor linearity calibration</p>
+            </div>
+          </div>
+          <div class="obs-actions-group">
+            <button type="button" class="btn-obs-action btn-obs-record" id="udm-btn-record" title="Record Current Distance Echo Reading">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Record Reading
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-export" id="udm-btn-export-csv" title="Export Readings as CSV">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Export CSV
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-export-pdf" id="udm-btn-export-pdf" title="Export Official PhysiX Lab Report (PDF)">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Export PDF
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-clear" id="udm-btn-clear" title="Clear all recorded observations">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              Clear Observations
+            </button>
+            <span class="obs-count-pill" id="udm-obs-count-badge">0 Readings</span>
+          </div>
+        </div>
+
+        <!-- 4-panel Summary Statistics Row -->
+        <div class="of-stats-summary-bar">
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Total Readings Logged</span>
+            <strong id="udm-total-obs" class="of-stat-val text-cyan">0</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Mean Sound Speed (v)</span>
+            <strong id="udm-stat-v" class="of-stat-val text-purple">--</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Calibration Slope (a)</span>
+            <strong id="udm-stat-slope" class="of-stat-val text-green">--</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Zero Offset Error (b)</span>
+            <strong id="udm-stat-offset" class="of-stat-val text-yellow">--</strong>
+          </div>
+        </div>
+
+        <div class="obs-table-wrapper">
+          <!-- Empty State -->
+          <div class="obs-empty-state" id="udm-obs-empty">
+            <div class="obs-empty-icon">
+              <svg class="svg-icon svg-icon-lg" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <h4>No Distance Calibration Readings Recorded</h4>
+            <p>Adjust the target reflector plate on the acoustic rail and click <strong>"Record Reading"</strong> to log echo telemetry.</p>
+          </div>
+
+          <table class="obs-table hidden" id="udm-obs-table">
+            <thead>
+              <tr>
+                <th>Reading #</th>
+                <th>Ref Distance $d_{\text{ref}}$ (cm)</th>
+                <th>Echo Time $t$ (µs)</th>
+                <th>Sound Speed $v$ (m/s)</th>
+                <th>Measured Dist $d_{\text{meas}}$ (cm)</th>
+                <th>Error $\Delta d$ (cm)</th>
+                <th>Error (%)</th>
+              </tr>
+            </thead>
+            <tbody id="udm-obs-table-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 6. Full-Width Challenges Section (Below Logbook) -->
+      <section class="workstation-card challenges-card udm-challenges-card">
+        <div class="workstation-header">
+          <div class="workstation-title-group">
+            <div class="workstation-icon-glow challenge-icon-glow">
+              <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3>Ultrasonic Distance Calibration Challenges</h3>
+              <p>Achieve acoustic measurement precision benchmarks and earn student achievement XP</p>
+            </div>
+          </div>
+          <div class="challenge-xp-badge">
+            <span class="xp-progress" id="udm-challenges-completed-count">0 / 3 Complete</span>
+            <span class="xp-separator">•</span>
+            <span class="xp-highlight" id="udm-user-total-challenge-xp">+0 XP</span>
+          </div>
+        </div>
+
+        <div class="challenges-grid">
+          <!-- Challenge 1 -->
+          <div class="challenge-item" id="udm-ch-1">
+            <div class="challenge-badge-icon">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <div class="challenge-info">
+              <div class="challenge-title-row">
+                <h4>Acoustic Echo Locator</h4>
+                <span class="challenge-reward-pill">+50 XP</span>
+              </div>
+              <p>Record at least 3 distinct target distance echo readings across the acoustic rail.</p>
+              <div class="challenge-footer">
+                <span class="challenge-status-tag pending" id="udm-ch-tag-1">0 / 3 Readings</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenge 2 -->
+          <div class="challenge-item" id="udm-ch-2">
+            <div class="challenge-badge-icon">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <div class="challenge-info">
+              <div class="challenge-title-row">
+                <h4>Calibration Master</h4>
+                <span class="challenge-reward-pill">+100 XP</span>
+              </div>
+              <p>Log 6+ distances to generate the linear calibration model fit ($d_{\text{meas}} = a \cdot d_{\text{ref}} + b$).</p>
+              <div class="challenge-footer">
+                <span class="challenge-status-tag pending" id="udm-ch-tag-2">0 / 6 Readings</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenge 3 -->
+          <div class="challenge-item" id="udm-ch-3">
+            <div class="challenge-badge-icon">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+            </div>
+            <div class="challenge-info">
+              <div class="challenge-title-row">
+                <h4>Thermal Velocity Study</h4>
+                <span class="challenge-reward-pill">+75 XP</span>
+              </div>
+              <p>Adjust temperature away from 20°C and log an observation to examine acoustic velocity temperature dependence.</p>
+              <div class="challenge-footer">
+                <span class="challenge-status-tag pending" id="udm-ch-tag-3">Pending</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div><!-- /#exp-ultrasonic-sensor-section -->
+
+  <!-- ==========================================
+       EXPERIMENT 11: WEDGE SHAPED FILM
+       ========================================== -->
+  <div id="exp-wedge-film-section" class="exp-section-wrapper hidden">
+    <div class="simulation-container">
+      <!-- 1. Workstation Header (Simplified: Title & Subtitle Only) -->
+      <div class="workstation-header-card">
+        <div class="header-content-left">
+          <h2 class="workstation-title">
+            <span class="title-grad">Wedge Shaped Film</span> • Thin-Film Interference Laboratory
+          </h2>
+          <p class="workstation-subtitle">Determine microscopic wire diameter and thin sheet gauge via straight, equispaced interference fringes</p>
+        </div>
+      </div>
+
+      <!-- 2. Simulation Viewports Card (Enlarged Full-Width Visualization) -->
+      <div class="workstation-sub-card wf-viewports-card">
+        <div class="wf-canvases-container">
+          <!-- Canvas 1: Optical Bench Elevation -->
+          <div class="wf-canvas-box wf-setup-box">
+            <div class="canvas-header-tag">
+              <span class="tag-dot cyan"></span> Optical Bench Elevation View (Wedge Geometry &amp; Beam Splitter)
+            </div>
+            <canvas id="wf-setup-canvas" width="760" height="260"></canvas>
+          </div>
+
+          <!-- Canvas 2: Travelling Microscope Reticle -->
+          <div class="wf-canvas-box wf-reticle-box">
+            <div class="canvas-header-tag">
+              <span class="tag-dot purple"></span> Travelling Microscope Reticle Field of View
+            </div>
+            <canvas id="wf-reticle-canvas" width="340" height="340"></canvas>
+            <div class="wf-reticle-controls">
+              <span class="wf-rc-label">Zoom FOV:</span>
+              <button type="button" class="wf-btn-mini active" id="wf-btn-zoom-1">1x</button>
+              <button type="button" class="wf-btn-mini" id="wf-btn-zoom-2">2x</button>
+              <button type="button" class="wf-btn-mini" id="wf-btn-zoom-4">4x</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digital Telemetry Strip -->
+        <div class="wf-telemetry-strip">
+          <div class="wf-telemetry-item">
+            <span class="wf-t-label">Fringe Width (β)</span>
+            <span class="wf-t-val" id="wf-hud-beta">--</span>
+          </div>
+          <div class="wf-telemetry-item">
+            <span class="wf-t-label">Wedge Angle (α)</span>
+            <span class="wf-t-val" id="wf-hud-angle">--</span>
+          </div>
+          <div class="wf-telemetry-item">
+            <span class="wf-t-label">Film Thickness t(x)</span>
+            <span class="wf-t-val" id="wf-hud-thickness">--</span>
+          </div>
+          <div class="wf-telemetry-item">
+            <span class="wf-t-label">Fringe Order (m)</span>
+            <span class="wf-t-val" id="wf-hud-order">--</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Control Deck (Positioned Directly Below Visualization) -->
+      <div class="workstation-sub-card wf-deck-card">
+        <div class="sub-card-header">
+          <h3>
+            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+            Interactive Optical Bench &amp; Travelling Microscope Control Console
+          </h3>
+        </div>
+
+        <div class="wf-deck-grid">
+          <!-- Col 1: Light Source & Wavelength -->
+          <div class="deck-group">
+            <div class="group-label-row">
+              <label for="wf-slider-wavelength">Light Source &amp; Wavelength ($lambda$)</label>
+              <span class="val-pill" id="wf-val-wavelength">589.3 nm</span>
+            </div>
+            <input type="range" id="wf-slider-wavelength" min="400.0" max="750.0" step="0.5" value="589.3">
+            <div class="pill-presets-row">
+              <button type="button" class="pill-btn active-pill" id="wf-preset-sodium">Sodium (589.3nm)</button>
+              <button type="button" class="pill-btn" id="wf-preset-hene">He-Ne (632.8nm)</button>
+              <button type="button" class="pill-btn" id="wf-preset-green">Green (532nm)</button>
+              <button type="button" class="pill-btn" id="wf-preset-violet">Violet (405nm)</button>
+            </div>
+            <div style="margin-top:12px;">
+              <button type="button" class="btn-toggle-source active" id="wf-btn-light-toggle">Source: ON</button>
+            </div>
+          </div>
+
+          <!-- Col 2: Wedge Geometry -->
+          <div class="deck-group">
+            <div class="group-label-row">
+              <label for="wf-slider-length">Wedge Length ($L$)</label>
+              <span class="val-pill" id="wf-val-length">100.0 mm</span>
+            </div>
+            <input type="range" id="wf-slider-length" min="50.0" max="150.0" step="1.0" value="100.0">
+
+            <div class="group-label-row" style="margin-top:12px;">
+              <label for="wf-slider-diameter">Spacer Wire Diameter ($d$)</label>
+              <span class="val-pill" id="wf-val-diameter">40.0 µm</span>
+            </div>
+            <input type="range" id="wf-slider-diameter" min="10.0" max="100.0" step="0.5" value="40.0">
+            <p class="deck-hint">Fringe width: $\beta = \frac{\lambda L}{2d}$. Wedge angle: $\alpha \approx \frac{d}{L}$.</p>
+          </div>
+
+          <!-- Col 3: Travelling Microscope Carriage -->
+          <div class="deck-group">
+            <div class="group-label-row">
+              <label for="wf-slider-pos">Microscope Position ($x$)</label>
+              <span class="val-pill" id="wf-val-pos">12.000 mm</span>
+            </div>
+            <input type="range" id="wf-slider-pos" min="0.0" max="100.0" step="0.01" value="12.0">
+            
+            <div class="stepper-buttons-row">
+              <button type="button" class="btn-step" id="wf-btn-step-back-coarse" title="Coarse -0.2mm">&lt;&lt;</button>
+              <button type="button" class="btn-step" id="wf-btn-step-back-fine" title="Fine -0.02mm">&lt;</button>
+              <button type="button" class="btn-step" id="wf-btn-step-fwd-fine" title="Fine +0.02mm">&gt;</button>
+              <button type="button" class="btn-step" id="wf-btn-step-fwd-coarse" title="Coarse +0.2mm">&gt;&gt;</button>
+            </div>
+
+            <button type="button" class="btn-align-fringe" id="wf-btn-align-fringe" style="margin-top:8px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line>
+              </svg>
+              Auto-Align Dark Fringe Center
+            </button>
+          </div>
+        </div>
+
+        <button type="button" class="btn-record-gradient" id="wf-btn-record-deck">
+          <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <line x1="10" y1="9" x2="8" y2="9"></line>
+          </svg>
+          RECORD OBSERVATION
+        </button>
+      </div>
+
+      <!-- 4. Lower Section: Regression Plot & Wire Diameter Estimation -->
+      <div class="wf-lower-grid">
+        <!-- Dynamic Regression Graph Card -->
+        <div class="workstation-card wf-graph-card">
+          <div class="workstation-header">
+            <div class="workstation-title-group">
+              <div class="workstation-icon-glow obs-icon-glow">
+                <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+                  <line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <div>
+                <h3>Position vs. Fringe Order Regression Plot</h3>
+                <p>Empirical $x_m$ vs $m$ linear regression slope $\beta = \frac{dx}{dm}$</p>
+              </div>
+            </div>
+          </div>
+          <div class="wf-graph-canvas-container">
+            <canvas id="wf-graph-canvas" width="480" height="260"></canvas>
+          </div>
+        </div>
+
+        <!-- Result & Error Analysis Card -->
+        <div class="workstation-card wf-result-card">
+          <div class="workstation-header">
+            <div class="workstation-title-group">
+              <div class="workstation-icon-glow" style="background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35);">
+                <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div>
+                <h3>Result &amp; Wire Diameter Estimation</h3>
+                <p>Microscopic metrology derived from fringe spacing</p>
+              </div>
+            </div>
+          </div>
+          <div class="wf-result-stats">
+            <div class="wf-stat-row">
+              <span class="wf-stat-lbl">Reference Wire Diameter ($d_{\text{ref}}$):</span>
+              <strong class="wf-stat-val text-cyan" id="wf-hud-ref-diam">40.0 µm</strong>
+            </div>
+            <div class="wf-stat-row">
+              <span class="wf-stat-lbl">Experimental Fringe Width ($\beta$):</span>
+              <strong class="wf-stat-val text-purple" id="wf-hud-beta">--</strong>
+            </div>
+            <div class="wf-stat-row">
+              <span class="wf-stat-lbl">Calculated Diameter ($d_{\text{calc}}$):</span>
+              <strong class="wf-stat-val text-yellow" id="wf-hud-calc-diam">--</strong>
+            </div>
+            <div class="wf-stat-row">
+              <span class="wf-stat-lbl">Percentage Measurement Error:</span>
+              <strong class="wf-stat-val text-green" id="wf-hud-error">--</strong>
+            </div>
+          </div>
+          <div class="wf-formula-callout">
+            <div class="wf-formula-eq">$$\beta = \frac{\lambda}{2\alpha} = \frac{\lambda L}{2d} \implies d = \frac{\lambda L}{2\beta}$$</div>
+            <div class="wf-formula-desc">Where $L$ is wedge length, $\lambda$ is wavelength, and $\beta$ is regression slope.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Observation Logbook Table -->
+      <div class="workstation-card observations-card wf-logbook-card">
+        <div class="workstation-header">
+          <div class="workstation-title-group">
+            <div class="workstation-icon-glow obs-icon-glow">
+              <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3>Thin-Film Interference Observation Logbook</h3>
+              <p>Travelling microscope vernier readings, dark fringe order $m$, and fringe width calculations</p>
+            </div>
+          </div>
+          <div class="obs-actions-group">
+            <button type="button" class="btn-obs-action btn-obs-record" id="wf-btn-record" title="Record Current Crosswire Fringe Reading">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              Record Reading
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-export" id="wf-btn-export-csv" title="Export Readings as CSV">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Export CSV
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-export-pdf" id="wf-btn-export-pdf" title="Export Official PhysiX Lab Report (PDF)">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Export PDF
+            </button>
+            <button type="button" class="btn-obs-action btn-obs-clear" id="wf-btn-clear" title="Clear all recorded observations">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              Clear Observations
+            </button>
+            <span class="obs-count-pill" id="wf-obs-count-badge">0 Readings</span>
+          </div>
+        </div>
+
+        <!-- 4-panel Summary Statistics Row -->
+        <div class="of-stats-summary-bar">
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Total Fringes Logged</span>
+            <strong id="wf-total-obs" class="of-stat-val text-cyan">0</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Mean Fringe Width (β)</span>
+            <strong id="wf-stat-beta" class="of-stat-val text-purple">--</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Estimated Wire Diameter (d)</span>
+            <strong id="wf-stat-calc-d" class="of-stat-val text-yellow">--</strong>
+          </div>
+          <div class="of-stat-item">
+            <span class="of-stat-lbl">Percentage Accuracy Error</span>
+            <strong id="wf-stat-error" class="of-stat-val text-green">--</strong>
+          </div>
+        </div>
+
+        <div class="obs-table-wrapper">
+          <!-- Empty State -->
+          <div class="obs-empty-state" id="wf-obs-empty">
+            <div class="obs-empty-icon">
+              <svg class="svg-icon svg-icon-lg" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <h4>No Fringe Readings Recorded Yet</h4>
+            <p>Align the microscope reticle crosswire with a dark interference fringe and click <strong>"Record Reading"</strong> to log data.</p>
+          </div>
+
+          <table class="obs-table hidden" id="wf-obs-table">
+            <thead>
+              <tr>
+                <th>Trial</th>
+                <th>Fringe Order (m)</th>
+                <th>Position $x_m$ (mm)</th>
+                <th>Interval ($Delta m$)</th>
+                <th>Span $Delta x$ (mm)</th>
+                <th>Fringe Width $eta$ (mm)</th>
+                <th>Est. Wire $d$ (µm)</th>
+              </tr>
+            </thead>
+            <tbody id="wf-obs-table-body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 6. Thin-Film Interference Challenges (Full Width Final Section) -->
+      <section class="workstation-card challenges-card wf-challenges-card">
+        <div class="workstation-header">
+          <div class="workstation-title-group">
+            <div class="workstation-icon-glow challenge-icon-glow">
+              <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+                <circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <div>
+              <h3>Thin-Film Interference Challenges</h3>
+              <p>Master microscopic fringe micrometry and earn student achievement XP</p>
+            </div>
+          </div>
+          <div class="challenge-xp-badge">
+            <span class="xp-progress" id="wf-challenges-completed-count">0 / 3 Complete</span>
+            <span class="xp-separator">•</span>
+            <span class="xp-highlight" id="wf-user-total-challenge-xp">+0 XP</span>
+          </div>
+        </div>
+
+        <div class="challenges-grid">
+          <!-- Challenge 1 -->
+          <div class="challenge-item" id="wf-ch-1">
+            <div class="challenge-badge-icon">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <div class="challenge-info">
+              <div class="challenge-title-row">
+                <h4>Fringe Position Logger</h4>
+                <span class="challenge-reward-pill">+50 XP</span>
+              </div>
+              <p>Align crosshairs and record at least 3 distinct fringe position readings in the logbook.</p>
+              <div class="challenge-footer">
+                <span class="challenge-status-tag pending" id="wf-ch-tag-1">0 / 3 Readings</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenge 2 -->
+          <div class="challenge-item" id="wf-ch-2">
+            <div class="challenge-badge-icon">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <div class="challenge-info">
+              <div class="challenge-title-row">
+                <h4>Linear Regression Fit</h4>
+                <span class="challenge-reward-pill">+100 XP</span>
+              </div>
+              <p>Log 6+ fringe orders to generate the linear slope regression and estimate wire diameter.</p>
+              <div class="challenge-footer">
+                <span class="challenge-status-tag pending" id="wf-ch-tag-2">0 / 6 Readings</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Challenge 3 -->
+          <div class="challenge-item" id="wf-ch-3">
+            <div class="challenge-badge-icon">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v2m0 16v2m-7.07-3.93l1.41-1.41m11.32-11.32l1.41-1.41M2 12h2m16 0h2m-3.93 7.07l-1.41-1.41M6.34 6.34L4.93 4.93"></path></svg>
+            </div>
+            <div class="challenge-info">
+              <div class="challenge-title-row">
+                <h4>Multi-Spectral Analysis</h4>
+                <span class="challenge-reward-pill">+75 XP</span>
+              </div>
+              <p>Switch between different monochromatic sources (Sodium vs He-Ne or Green) to observe $\beta \propto \lambda$.</p>
+              <div class="challenge-footer">
+                <span class="challenge-status-tag pending" id="wf-ch-tag-3">Pending</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div><!-- /#exp-wedge-film-section -->
+
 
 
 
@@ -6412,64 +7528,6 @@
           <div class="card-specular-rim"></div>
         </div>
 
-        <!-- 5. DIVERGENCE OF LASER BEAM (EXP 2) -->
-        <div class="lab-card coming-lab" data-category="optics" data-name="Determine the Divergence of Laser Beam">
-          <div class="card-header-bar">
-            <div class="card-icon-badge">
-              <svg class="badge-ring" viewBox="0 0 44 44">
-                <circle cx="22" cy="22" r="19" class="ring-bg"></circle>
-                <circle cx="22" cy="22" r="19" class="ring-fill" style="stroke: #f43f5e; stroke-dashoffset: 70;">
-                </circle>
-              </svg>
-              <div class="badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <line x1="12" y1="2" x2="22" y2="12"></line>
-                  <line x1="12" y1="22" x2="22" y2="12"></line>
-                </svg>
-              </div>
-            </div>
-            <button type="button" class="card-bookmark-btn" aria-label="Bookmark experiment"
-              title="Bookmark experiment">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div class="card-preview-art">
-            <svg viewBox="0 0 280 110" class="preview-svg">
-              <line x1="20" y1="55" x2="260" y2="55" stroke="rgba(255,255,255,0.1)" stroke-dasharray="2,3"></line>
-              <path d="M 30 52 Q 140 50 250 20" fill="none" stroke="#f43f5e" stroke-width="2"
-                filter="drop-shadow(0 0 6px #f43f5e)"></path>
-              <path d="M 30 58 Q 140 60 250 90" fill="none" stroke="#f43f5e" stroke-width="2"
-                filter="drop-shadow(0 0 6px #f43f5e)"></path>
-              <ellipse cx="250" cy="55" rx="5" ry="35" fill="none" stroke="#f43f5e" stroke-width="1.5"
-                stroke-dasharray="2,2"></ellipse>
-              <text x="140" y="80" fill="rgba(148,163,184,0.6)" font-family="monospace" font-size="8"
-                text-anchor="middle">θ = λ / (π·w₀)</text>
-            </svg>
-          </div>
-
-          <div class="card-content-block">
-            <h3 class="card-title">
-              <span class="title-grad">Laser</span>
-              <span class="title-main">Divergence</span>
-            </h3>
-            <p class="card-desc">Determine divergence half-angle θ and Gaussian beam propagation characteristics across
-              propagation distance</p>
-          </div>
-
-          <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Laser Divergence experiment">
-              Perform
-            </button>
-          </div>
-
-          <div class="card-ambient-nebula"></div>
-          <div class="card-white-light-effect"></div>
-          <div class="card-specular-rim"></div>
-        </div>
 
         <!-- 6. NEWTON'S RINGS (EXP 3) -->
         <div class="lab-card coming-lab" data-category="wave"
@@ -6530,14 +7588,14 @@
           <div class="card-specular-rim"></div>
         </div>
 
-        <!-- 7. WEDGE SHAPED FILM (EXP 4) -->
-        <div class="lab-card coming-lab" data-category="wave"
-          data-name="Determination of Diameter of Wire/Hair or Thickness of Paper using Wedge Shape Film Method">
+        <!-- WEDGE-SHAPED FILM (EXP 11) -->
+        <div class="lab-card active-lab" data-category="all optics wave" data-exp-target="wedge-film"
+          data-name="Wedge-Shaped Film">
           <div class="card-header-bar">
             <div class="card-icon-badge">
               <svg class="badge-ring" viewBox="0 0 44 44">
                 <circle cx="22" cy="22" r="19" class="ring-bg"></circle>
-                <circle cx="22" cy="22" r="19" class="ring-fill" style="stroke: #3b82f6; stroke-dashoffset: 75;">
+                <circle cx="22" cy="22" r="19" class="ring-fill" style="stroke: #38bdf8; stroke-dashoffset: 45;">
                 </circle>
               </svg>
               <div class="badge-icon">
@@ -6556,15 +7614,25 @@
 
           <div class="card-preview-art">
             <svg viewBox="0 0 280 110" class="preview-svg">
-              <line x1="30" y1="80" x2="250" y2="80" stroke="#3b82f6" stroke-width="2"></line>
-              <line x1="30" y1="80" x2="250" y2="35" stroke="#38bdf8" stroke-width="2"></line>
-              <circle cx="245" cy="57" r="12" fill="none" stroke="#f43f5e" stroke-width="2"></circle>
-              <line x1="70" y1="72" x2="70" y2="80" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></line>
-              <line x1="110" y1="63" x2="110" y2="80" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></line>
-              <line x1="150" y1="54" x2="150" y2="80" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></line>
-              <line x1="190" y1="46" x2="190" y2="80" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"></line>
-              <text x="140" y="98" fill="rgba(148,163,184,0.6)" font-family="monospace" font-size="8"
-                text-anchor="middle">t = λ·L / (2β)</text>
+              <!-- Wedge Glass Plates -->
+              <polygon points="30,80 250,80 250,38 30,80" fill="rgba(56,189,248,0.08)" stroke="#38bdf8" stroke-width="1.5"></polygon>
+              <line x1="30" y1="80" x2="250" y2="80" stroke="#38bdf8" stroke-width="2"></line>
+              <line x1="30" y1="80" x2="250" y2="38" stroke="#38bdf8" stroke-width="2"></line>
+              <!-- Spacer Wire (red/amber circle) -->
+              <circle cx="244" cy="59" r="14" fill="none" stroke="#f59e0b" stroke-width="2"></circle>
+              <circle cx="244" cy="59" r="4" fill="#f59e0b" opacity="0.6"></circle>
+              <!-- Interference Fringes (alternating bands) -->
+              <line x1="60" y1="73" x2="60" y2="80" stroke="#38bdf8" stroke-width="2.5"></line>
+              <line x1="85" y1="68" x2="85" y2="80" stroke="#38bdf8" stroke-width="2.5"></line>
+              <line x1="110" y1="63" x2="110" y2="80" stroke="#38bdf8" stroke-width="2.5"></line>
+              <line x1="135" y1="58" x2="135" y2="80" stroke="#38bdf8" stroke-width="2.5"></line>
+              <line x1="160" y1="53" x2="160" y2="80" stroke="#38bdf8" stroke-width="2.5"></line>
+              <line x1="185" y1="48" x2="185" y2="80" stroke="#38bdf8" stroke-width="2.5"></line>
+              <line x1="210" y1="43" x2="210" y2="80" stroke="#38bdf8" stroke-width="2.5"></line>
+              <!-- Formula & Reticle crosshair icon -->
+              <circle cx="135" cy="69" r="8" fill="none" stroke="#f43f5e" stroke-width="1.2" stroke-dasharray="2,2"></circle>
+              <text x="140" y="98" fill="rgba(148,163,184,0.85)" font-family="monospace" font-size="8.5"
+                text-anchor="middle">β = λ / (2α) = λL / (2d)</text>
             </svg>
           </div>
 
@@ -6573,8 +7641,7 @@
               <span class="title-grad">Wedge</span>
               <span class="title-main">Shaped Film</span>
             </h3>
-            <p class="card-desc">Determine microscopic wire diameter and thin sheet gauge via straight, equispaced
-              interference fringes</p>
+            <p class="card-desc">Investigate interference in a thin wedge-shaped film and explore how fringe patterns form due to variations in optical path difference.</p>
           </div>
 
           <div class="card-action-bar">
@@ -6834,66 +7901,6 @@
           <div class="card-specular-rim"></div>
         </div>
 
-        <!-- 11. UDM PARAMETERS (EXP 8) -->
-        <div class="lab-card coming-lab" data-category="sensors" data-name="Determine UDM Parameters">
-          <div class="card-header-bar">
-            <div class="card-icon-badge">
-              <svg class="badge-ring" viewBox="0 0 44 44">
-                <circle cx="22" cy="22" r="19" class="ring-bg"></circle>
-                <circle cx="22" cy="22" r="19" class="ring-fill" style="stroke: #ec4899; stroke-dashoffset: 75;">
-                </circle>
-              </svg>
-              <div class="badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M2 12h2a8 8 0 0 1 8 8v2"></path>
-                  <path d="M2 6h2a14 14 0 0 1 14 14v2"></path>
-                  <circle cx="4" cy="20" r="2"></circle>
-                </svg>
-              </div>
-            </div>
-            <button type="button" class="card-bookmark-btn" aria-label="Bookmark experiment"
-              title="Bookmark experiment">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-              </svg>
-            </button>
-          </div>
-
-          <div class="card-preview-art">
-            <svg viewBox="0 0 280 110" class="preview-svg">
-              <rect x="40" y="35" width="30" height="40" rx="4" fill="rgba(236, 72, 153, 0.2)" stroke="#ec4899"
-                stroke-width="1.5"></rect>
-              <path d="M 80 40 A 20 20 0 0 1 80 70" fill="none" stroke="#ec4899" stroke-width="2"
-                stroke-dasharray="2,2"></path>
-              <path d="M 95 32 A 30 30 0 0 1 95 78" fill="none" stroke="#ec4899" stroke-width="2"
-                stroke-dasharray="2,2"></path>
-              <path d="M 110 24 A 40 40 0 0 1 110 86" fill="none" stroke="#ec4899" stroke-width="2"
-                stroke-dasharray="2,2"></path>
-              <line x1="210" y1="20" x2="210" y2="90" stroke="#38bdf8" stroke-width="3"></line>
-              <text x="145" y="100" fill="rgba(148,163,184,0.6)" font-family="monospace" font-size="8"
-                text-anchor="middle">d = v × t / 2</text>
-            </svg>
-          </div>
-
-          <div class="card-content-block">
-            <h3 class="card-title">
-              <span class="title-grad">Ultrasonic</span>
-              <span class="title-main">Sensor (UDM)</span>
-            </h3>
-            <p class="card-desc">Analyze acoustic transducer time-of-flight wave propagation and pulse distance
-              calibration</p>
-          </div>
-
-          <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Ultrasonic Sensor experiment">
-              Perform
-            </button>
-          </div>
-
-          <div class="card-ambient-nebula"></div>
-          <div class="card-white-light-effect"></div>
-          <div class="card-specular-rim"></div>
-        </div>
 
         <!-- 13. OPTICAL ATTENUATION (EXP 11) -->
         <div class="lab-card active-lab" data-category="all optics" data-exp-target="pof-attenuation"
@@ -6998,6 +8005,146 @@
 
           <div class="card-action-bar">
             <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Diode I-V experiment">
+              Perform
+            </button>
+          </div>
+
+          <div class="card-ambient-nebula"></div>
+          <div class="card-white-light-effect"></div>
+          <div class="card-specular-rim"></div>
+        </div>
+
+        <!-- LASER DIVERGENCE (EXP 9) -->
+        <div class="lab-card active-lab" data-category="all optics" data-exp-target="laser-divergence"
+          data-name="Determination of Divergence of a Laser Beam">
+          <div class="card-header-bar">
+            <div class="card-icon-badge">
+              <svg class="badge-ring" viewBox="0 0 44 44">
+                <circle cx="22" cy="22" r="19" class="ring-bg"></circle>
+                <circle cx="22" cy="22" r="19" class="ring-fill" style="stroke: #38bdf8; stroke-dashoffset: 65;">
+                </circle>
+              </svg>
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <line x1="12" y1="2" x2="12" y2="5"></line>
+                  <line x1="12" y1="19" x2="12" y2="22"></line>
+                  <line x1="2" y1="12" x2="5" y2="12"></line>
+                  <line x1="19" y1="12" x2="22" y2="12"></line>
+                </svg>
+              </div>
+            </div>
+            <button type="button" class="card-bookmark-btn" aria-label="Bookmark experiment"
+              title="Bookmark experiment">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="card-preview-art">
+            <svg viewBox="0 0 280 110" class="preview-svg">
+              <!-- Optical Bench Rail -->
+              <line x1="20" y1="88" x2="260" y2="88" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"></line>
+              <!-- Center Optical Axis -->
+              <line x1="30" y1="50" x2="255" y2="50" stroke="rgba(56,189,248,0.25)" stroke-dasharray="3,3" stroke-width="1"></line>
+              <!-- Diverging Gaussian Envelope -->
+              <path d="M 40 46 Q 130 42 240 28" fill="none" stroke="#38bdf8" stroke-width="2" filter="drop-shadow(0 0 6px #38bdf8)"></path>
+              <path d="M 40 54 Q 130 58 240 72" fill="none" stroke="#38bdf8" stroke-width="2" filter="drop-shadow(0 0 6px #38bdf8)"></path>
+              <polygon points="40,46 240,28 240,72 40,54" fill="rgba(56,189,248,0.12)"></polygon>
+              <!-- Laser Emitter Box -->
+              <rect x="22" y="38" width="18" height="24" rx="2" fill="#1e293b" stroke="#38bdf8" stroke-width="1"></rect>
+              <!-- Detector Reticle Screen -->
+              <line x1="240" y1="20" x2="240" y2="80" stroke="#f8fafc" stroke-width="3"></line>
+              <circle cx="240" cy="50" r="18" fill="none" stroke="rgba(56,189,248,0.4)" stroke-dasharray="2,2"></circle>
+              <circle cx="240" cy="50" r="4" fill="#ffffff" filter="drop-shadow(0 0 4px #38bdf8)"></circle>
+              <!-- Annotation -->
+              <text x="140" y="102" fill="rgba(148,163,184,0.75)" font-family="monospace" font-size="8" text-anchor="middle">θ ≈ (D₂ - D₁) / 2(z₂ - z₁)</text>
+            </svg>
+          </div>
+
+          <div class="card-content-block">
+            <h3 class="card-title">
+              <span class="title-grad">Laser</span>
+              <span class="title-main">Divergence</span>
+            </h3>
+            <p class="card-desc">Measure Gaussian beam expansion along an optical rail and determine divergence half-angle θ</p>
+          </div>
+
+          <div class="card-action-bar">
+            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Laser Divergence experiment">
+              Perform
+            </button>
+          </div>
+
+          <div class="card-ambient-nebula"></div>
+          <div class="card-white-light-effect"></div>
+          <div class="card-specular-rim"></div>
+        </div>
+
+        <!-- ULTRASONIC SENSOR (UDM) (EXP 10) -->
+        <div class="lab-card active-lab" data-category="all sensors" data-exp-target="ultrasonic-sensor"
+          data-name="Ultrasonic Sensor (UDM)">
+          <div class="card-header-bar">
+            <div class="card-icon-badge">
+              <svg class="badge-ring" viewBox="0 0 44 44">
+                <circle cx="22" cy="22" r="19" class="ring-bg"></circle>
+                <circle cx="22" cy="22" r="19" class="ring-fill" style="stroke: #06b6d4; stroke-dashoffset: 55;">
+                </circle>
+              </svg>
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M2 12a10 10 0 0 1 10-10"></path>
+                  <path d="M6 12a6 6 0 0 1 6-6"></path>
+                  <path d="M10 12a2 2 0 0 1 2-2"></path>
+                  <circle cx="12" cy="12" r="1"></circle>
+                  <line x1="22" y1="4" x2="22" y2="20"></line>
+                </svg>
+              </div>
+            </div>
+            <button type="button" class="card-bookmark-btn" aria-label="Bookmark experiment"
+              title="Bookmark experiment">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="card-preview-art">
+            <svg viewBox="0 0 280 110" class="preview-svg">
+              <!-- Acoustic Bench Rail -->
+              <line x1="20" y1="88" x2="260" y2="88" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"></line>
+              <!-- Center Acoustic Axis -->
+              <line x1="45" y1="48" x2="240" y2="48" stroke="rgba(6,182,212,0.25)" stroke-dasharray="3,3" stroke-width="1"></line>
+              <!-- Ultrasonic Sensor Transceiver Module -->
+              <rect x="22" y="32" width="22" height="32" rx="3" fill="#1e293b" stroke="#06b6d4" stroke-width="1.2"></rect>
+              <circle cx="33" cy="40" r="5" fill="#0f172a" stroke="#06b6d4" stroke-width="1"></circle>
+              <circle cx="33" cy="56" r="5" fill="#0f172a" stroke="#06b6d4" stroke-width="1"></circle>
+              <!-- Outgoing 40 kHz Wavefronts (Pink) -->
+              <path d="M 60 36 A 25 25 0 0 1 60 60" fill="none" stroke="#f472b6" stroke-width="1.8" opacity="0.9"></path>
+              <path d="M 85 28 A 45 45 0 0 1 85 68" fill="none" stroke="#f472b6" stroke-width="1.8" opacity="0.7"></path>
+              <path d="M 110 20 A 65 65 0 0 1 110 76" fill="none" stroke="#f472b6" stroke-width="1.8" opacity="0.5"></path>
+              <!-- Reflected Echo Wavefronts (Cyan) -->
+              <path d="M 180 24 A 55 55 0 0 0 180 72" fill="none" stroke="#38bdf8" stroke-width="1.8" opacity="0.8" stroke-dasharray="3,2"></path>
+              <path d="M 150 32 A 35 35 0 0 0 150 64" fill="none" stroke="#38bdf8" stroke-width="1.8" opacity="0.6" stroke-dasharray="3,2"></path>
+              <!-- Reflector Target Plate -->
+              <rect x="235" y="18" width="8" height="60" rx="1.5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"></rect>
+              <!-- Distance Annotation -->
+              <text x="140" y="102" fill="rgba(148,163,184,0.75)" font-family="monospace" font-size="8" text-anchor="middle">d = (v · t) / 2</text>
+            </svg>
+          </div>
+
+          <div class="card-content-block">
+            <h3 class="card-title">
+              <span class="title-grad">Ultrasonic</span>
+              <span class="title-main">Sensor (UDM)</span>
+            </h3>
+            <p class="card-desc">Explore how an ultrasonic sensor measures distance using reflected sound waves and investigate the relationship between distance, echo time, and the speed of sound.</p>
+          </div>
+
+          <div class="card-action-bar">
+            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Ultrasonic Sensor experiment">
               Perform
             </button>
           </div>
@@ -8491,6 +9638,528 @@
             </div>
           </div>
         </div>
+
+        <!-- TAB: LASER DIVERGENCE HELP & VIVA VOCE PANE -->
+        <div id="help-pane-exp-laser" class="help-pane hidden">
+          <!-- Hero Card / Aim -->
+          <div class="help-hero-card" style="border-left: 4px solid #38bdf8;">
+            <div class="help-hero-icon-box" style="background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.35);">
+              <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+                <line x1="12" y1="2" x2="12" y2="22"></line>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+              </svg>
+            </div>
+            <div class="help-hero-body">
+              <h3>Laser Beam Divergence Laboratory Guide</h3>
+              <p><strong>Aim:</strong> Measure transverse beam spot size at different propagation distances along an optical rail bench and estimate the divergence half-angle ($\theta$) and full divergence angle ($\Theta$).</p>
+            </div>
+          </div>
+
+          <!-- Section 1: Step-by-Step Procedure -->
+          <div class="help-section-card">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">1</span>
+              Step-by-Step Procedure (Simulator Controls)
+            </h4>
+            <div class="help-procedure-list">
+              <div class="help-procedure-step">
+                <span class="step-badge">1</span>
+                <div class="step-content">
+                  <h5>Power ON the Laser Emitter</h5>
+                  <p>Click the <strong>"Laser ON"</strong> toggle switch on the Control Deck. The status indicator illuminates and the coherent laser beam emits across the calibrated optical rail.</p>
+                </div>
+              </div>
+              <div class="help-procedure-step">
+                <span class="step-badge">2</span>
+                <div class="step-content">
+                  <h5>Configure Waist &amp; Wavelength</h5>
+                  <p>Select an initial beam waist radius preset: <strong>"0.50 mm (Standard)"</strong> ($w_0 = 0.50\text{ mm}$), and select laser wavelength: <strong>"632.8 nm (He-Ne)"</strong> red (or $532\text{ nm}, 402\text{ nm}, 660\text{ nm}$).</p>
+                </div>
+              </div>
+              <div class="help-procedure-step">
+                <span class="step-badge">3</span>
+                <div class="step-content">
+                  <h5>Position Detector at Baseline Distance ($z_1$)</h5>
+                  <p>Adjust the distance slider or click preset <strong>"0.50 m"</strong> to position the detector screen near the laser source ($z_1 = 0.50\text{ m}$).</p>
+                </div>
+              </div>
+              <div class="help-procedure-step">
+                <span class="step-badge">4</span>
+                <div class="step-content">
+                  <h5>Calibrate Baseline</h5>
+                  <p>Click <strong>"Calibrate Baseline"</strong> to zero the reference reticle and confirm initial baseline spot diameter ($W_1 = 1.08\text{ mm}$, radius $w_1 = 0.54\text{ mm}$).</p>
+                </div>
+              </div>
+              <div class="help-procedure-step">
+                <span class="step-badge">5</span>
+                <div class="step-content">
+                  <h5>Measure Spot Size &amp; Record Reading</h5>
+                  <p>Observe the transverse beam spot diameter $W$ and radius $w$ on the digital reticle HUD, then click <strong>"Record Observation"</strong> to log trial #1 into the observation table.</p>
+                </div>
+              </div>
+              <div class="help-procedure-step">
+                <span class="step-badge">6</span>
+                <div class="step-content">
+                  <h5>Translate Screen &amp; Record Subsequent Stations</h5>
+                  <p>Move the screen distance to $1.00\text{ m}, 1.50\text{ m}, 2.00\text{ m},$ and $2.50\text{ m}$. Observe the circular spot expanding across the graduated millimeter reticle rings and click <strong>"Record Observation"</strong> at each station.</p>
+                </div>
+              </div>
+              <div class="help-procedure-step">
+                <span class="step-badge">7</span>
+                <div class="step-content">
+                  <h5>Graph &amp; Calculate Divergence</h5>
+                  <p>Toggle graph display between <strong>"w vs L (Radius)"</strong> and <strong>"W vs L (Diameter)"</strong> to observe the linear propagation slope. Click <strong>"Export PDF"</strong> to export your completed data sheet.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 2: Important Theory & Key Formulas -->
+          <div class="help-section-card">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">2</span>
+              Important Theory &amp; Key Formulas
+            </h4>
+            <div class="help-card-inner">
+              <p>&bull; <strong>Gaussian Beam ($\text{TEM}_{00}$ Mode):</strong> Optical irradiance follows a bell-shaped radial Gaussian distribution: $I(r, z) = I_0(z) \exp\left(-\frac{2r^2}{w(z)^2}\right)$, decaying smoothly away from the optical propagation axis.</p>
+              <p>&bull; <strong>Beam Waist ($w_0$):</strong> The minimum cross-sectional radius along the optical axis, located at the emission aperture ($z = 0$), where wavefront curvature is planar.</p>
+              <p>&bull; <strong>Rayleigh Range ($z_R$):</strong> Collimation distance over which beam cross-sectional area doubles and beam radius expands by $\sqrt{2}$ ($w(z_R) = \sqrt{2}w_0$):
+                $$z_R = \frac{\pi w_0^2}{\lambda}$$
+              </p>
+              <p>&bull; <strong>Beam Radius Evolution along Optical Axis:</strong>
+                $$w(z) = w_0 \sqrt{1 + \left(\frac{z}{z_R}\right)^2}$$
+              </p>
+              <p>&bull; <strong>Empirical Divergence Angle Formula:</strong>
+                $$\theta \approx \frac{w_2 - w_1}{z_2 - z_1} = \frac{W_2 - W_1}{2(z_2 - z_1)}$$
+              </p>
+              <div style="margin: 8px 0; padding: 10px 14px; background: rgba(15, 23, 42, 0.8); border-radius: 8px; border: 1px solid rgba(56, 189, 248, 0.25);">
+                <div style="font-weight: 700; color: #38bdf8; margin-bottom: 4px; font-size: 13px;">Definition of Symbols &amp; Radius vs Diameter Convention:</div>
+                <ul style="margin: 4px 0 0 18px; line-height: 1.6; font-size: 12px; color: #cbd5e1;">
+                  <li>$w(z)$: Beam radius at distance $z$, defined at the $1/e^2 \approx 13.53\%$ irradiance threshold.</li>
+                  <li>$W(z) = 2 w(z)$: Full transverse beam spot diameter across the $1/e^2$ boundary. The simulator's reticle caliper directly measures diameter $W$.</li>
+                  <li>$w_0$: Minimum beam waist radius at origin $z = 0$.</li>
+                  <li>$z_1, z_2$: Two distinct screen distances along the optical bench rail.</li>
+                  <li>$z_R$: Rayleigh range (for $\lambda = 632.8\text{ nm}, w_0 = 0.50\text{ mm}$, $z_R = 1.241\text{ m}$).</li>
+                  <li>$\theta$: Far-field divergence half-angle between beam axis and envelope (in radians or mrad; $\theta = \frac{\lambda}{\pi w_0}$).</li>
+                  <li>$\Theta = 2\theta$: Total full-angle conical beam divergence ($\Theta = \frac{2\lambda}{\pi w_0}$).</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Observations Table -->
+          <div class="help-section-card">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">3</span>
+              Observation Table ($\lambda = 632.8\text{ nm}$, $w_0 = 0.50\text{ mm}$, $z_R = 1.241\text{ m}$)
+            </h4>
+            <div style="overflow-x: auto;">
+              <table class="help-compact-table">
+                <thead>
+                  <tr>
+                    <th>Trial #</th>
+                    <th>Distance $z$ (m)</th>
+                    <th>Spot Radius $w(z)$ (mm)</th>
+                    <th>Measured Diameter $W(z)$ (mm)</th>
+                    <th>Half-Angle $\theta$ (mrad)</th>
+                    <th>Operating Regime</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>1 (Base)</td><td>0.50</td><td>0.54</td><td>1.08</td><td>0.403</td><td>Near-field collimated core ($z &lt; z_R$)</td></tr>
+                  <tr><td>2</td><td>1.00</td><td>0.64</td><td>1.28</td><td>0.403</td><td>Near-field transition zone</td></tr>
+                  <tr><td>3</td><td>1.50</td><td>0.78</td><td>1.57</td><td>0.403</td><td>Beyond Rayleigh range ($z > z_R$)</td></tr>
+                  <tr><td>4</td><td>2.00</td><td>0.95</td><td>1.90</td><td>0.403</td><td>Asymptotic conical expansion</td></tr>
+                  <tr><td>5</td><td>2.50</td><td>1.13</td><td>2.25</td><td>0.403</td><td>Far-field linear divergence regime</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Section 4: Result -->
+          <div class="help-section-card">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">4</span>
+              Result &amp; Divergence Calculation
+            </h4>
+            <div class="help-card-inner">
+              <p>&bull; <strong>Two-Point Divergence Estimate:</strong> Taking station readings at $z_1 = 0.50\text{ m}$ ($W_1 = 1.08\text{ mm}$) and $z_2 = 2.50\text{ m}$ ($W_2 = 2.25\text{ mm}$):
+                $$\theta \approx \frac{W_2 - W_1}{2(z_2 - z_1)} = \frac{2.25\text{ mm} - 1.08\text{ mm}}{2 \times (2.50\text{ m} - 0.50\text{ m})} = \frac{1.17 \times 10^{-3}\text{ m}}{4.00\text{ m}} = \mathbf{0.293\text{ mrad}}$$
+              </p>
+              <p>&bull; <strong>Far-Field Asymptotic Divergence:</strong> In the far-field limit ($z \gg z_R$), the linear regression slope of $w(z)$ vs $z$ yields:
+                $$\theta_{\text{far-field}} = \frac{\lambda}{\pi w_0} = \frac{6.328 \times 10^{-7}\text{ m}}{\pi \times 5.00 \times 10^{-4}\text{ m}} = \mathbf{0.403\text{ mrad}} \quad (\Theta = 2\theta = \mathbf{0.806\text{ mrad}} = 0.0462^\circ)$$
+              </p>
+              <p>&bull; <strong>Conclusion:</strong> The experimental readings confirm that beam divergence is directly proportional to emission wavelength ($\theta \propto \lambda$) and inversely proportional to initial beam waist radius ($\theta \propto 1/w_0$).</p>
+            </div>
+          </div>
+
+          <!-- Section 5: Precautions -->
+          <div class="help-section-card">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">5</span>
+              Precautions &amp; Laser Safety
+            </h4>
+            <div class="help-card-inner">
+              <p><strong>1. Laser Eye Safety:</strong> Never look directly into the primary laser beam or align your eye with the optical axis. Remove stray reflective specular metallic items from the bench.</p>
+              <p><strong>2. Collinear Rail Alignment:</strong> Ensure the laser emitter and movable detector carrier remain coaxially aligned with the calibrated rail scale to avoid geometric spot distortion.</p>
+              <p><strong>3. Consistent Reticle Measurements:</strong> Measure beam diameter consistently across all distances at the $1/e^2$ irradiance contour boundary using the digital reticle HUD.</p>
+            </div>
+          </div>
+
+          <!-- Section 6: Viva Voce -->
+          <div class="help-section-card">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">6</span>
+              Viva Voce Questions &amp; Answers
+            </h4>
+            <div class="help-viva-list">
+              <div class="help-viva-item">
+                <div class="help-viva-q">Q1. What is laser beam divergence?</div>
+                <div class="help-viva-a"><strong>Ans:</strong> The angular rate at which the transverse diameter of a laser beam expands as it propagates through space, caused by fundamental optical wave diffraction.</div>
+              </div>
+              <div class="help-viva-item">
+                <div class="help-viva-q">Q2. What is the physical significance of the Rayleigh range ($z_R$)?</div>
+                <div class="help-viva-a"><strong>Ans:</strong> It is the distance along the optical axis over which the beam cross-sectional area doubles ($w(z_R) = \sqrt{2}w_0$), representing the near-field collimated depth of focus ($z_R = \frac{\pi w_0^2}{\lambda}$).</div>
+              </div>
+              <div class="help-viva-item">
+                <div class="help-viva-q">Q3. How is divergence half-angle ($\theta$) related to total full-angle divergence ($\Theta$)?</div>
+                <div class="help-viva-a"><strong>Ans:</strong> Full-angle divergence is exactly twice the half-angle ($\Theta = 2\theta$). In the far field, $\theta = \frac{\lambda}{\pi w_0}$ and $\Theta = \frac{2\lambda}{\pi w_0}$.</div>
+              </div>
+              <div class="help-viva-item">
+                <div class="help-viva-q">Q4. Why does expanding the initial beam waist radius ($w_0$) reduce divergence?</div>
+                <div class="help-viva-a"><strong>Ans:</strong> Because divergence is inversely proportional to beam waist ($\theta \propto 1/w_0$). Enlarging $w_0$ with an optical collimator produces tighter beam confinement over long distances.</div>
+              </div>
+              <div class="help-viva-item">
+                <div class="help-viva-q">Q5. Why is the $1/e^2$ criterion used to specify Gaussian beam spot diameter?</div>
+                <div class="help-viva-a"><strong>Ans:</strong> Since a Gaussian beam has no hard edge, the radial point where intensity falls to $1/e^2 \approx 13.53\%$ of peak intensity serves as the ISO standard, enclosing 86.5% of total optical power.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HELP & VIVA VOCE PANE: ULTRASONIC SENSOR (UDM) -->
+        <div class="help-pane hidden" id="help-pane-exp-ultrasonic">
+          <!-- CARD 1: AIM & APPARATUS -->
+          <div class="help-section-card">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">1</span>
+              Aim of the Experiment &amp; Apparatus Breakdown
+            </h4>
+            <div style="font-size:13px; color:#cbd5e1; line-height:1.65; margin-top:8px;">
+              <p><strong>Aim:</strong> To measure ultrasonic pulse round-trip time-of-flight ($t$) as a function of target standoff distance ($d_{\text{ref}}$), analyze acoustic wave propagation in air, evaluate temperature-dependent velocity variations ($v(T)$), and extract the sensitivity slope ($a$) and zero-distance offset ($b$) of the transceiver.</p>
+              <p style="margin-top:8px;"><strong>Apparatus:</strong> 40 kHz piezoelectric ultrasonic transceiver module (integrated transmitter &amp; receiver pair), precision millimeter acoustic bench rail (5.0–300.0 cm), perpendicular flat acoustic target barrier, digital environmental temperature controller (-10°C to +50°C), dual-trace digital storage oscilloscope (CH1: Trigger pulse, CH2: Echo return packet), real-time microsecond telemetry HUD, and least-squares regression calibration engine.</p>
+            </div>
+          </div>
+
+          <!-- CARD 2: OPERATING PROCEDURE -->
+          <div class="help-section-card" style="margin-top:16px;">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">2</span>
+              Step-by-Step Operating Procedure
+            </h4>
+            <div class="help-steps-grid" style="margin-top:10px;">
+              <div class="help-step-item">
+                <span class="step-num">Step 1</span>
+                <h5>Set Target Distance ($d_{\text{ref}}$)</h5>
+                <p>Drag the <strong>Target Distance</strong> slider between <code>5.0 cm</code> and <code>300.0 cm</code>, click preset buttons (10, 30, 50, 100, 150, 200, 250 cm), or drag the target stage directly along the optical rail.</p>
+              </div>
+              <div class="help-step-item">
+                <span class="step-num">Step 2</span>
+                <h5>Set Ambient Temperature ($T$)</h5>
+                <p>Adjust the <strong>Ambient Air Temperature</strong> slider from <code>-10.0°C</code> to <code>+50.0°C</code>. Notice how the sound velocity $v(T)$ and transit time change dynamically.</p>
+              </div>
+              <div class="help-step-item">
+                <span class="step-num">Step 3</span>
+                <h5>Select Transducer Mode</h5>
+                <p>Leave <strong>Continuous: ON</strong> active for real-time periodic pings, or toggle to Single Ping mode and click <strong>Trigger Single Acoustic Ping</strong>.</p>
+              </div>
+              <div class="help-step-item">
+                <span class="step-num">Step 4</span>
+                <h5>Observe Dual-Trace Oscilloscope</h5>
+                <p>Examine CH1 (pink 10 µs trigger pulse initiating the burst) and CH2 (cyan echo return packet). Note the elapsed round-trip time $\Delta t$.</p>
+              </div>
+              <div class="help-step-item">
+                <span class="step-num">Step 5</span>
+                <h5>Record Observations</h5>
+                <p>Click <strong>Record Reading</strong> across 5+ different distances to populate the distance calibration logbook with telemetry data.</p>
+              </div>
+              <div class="help-step-item">
+                <span class="step-num">Step 6</span>
+                <h5>Evaluate Calibration Model</h5>
+                <p>Inspect the calibration plot ($d_{\text{meas}}$ vs $d_{\text{ref}}$) to verify linearity, sensitivity slope $a \approx 1.0000$, and zero-distance offset $b$.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: UNDERSTANDING THE VISUALIZATION -->
+          <div class="help-section-card" style="margin-top:16px;">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">3</span>
+              Understanding the Acoustic Rail &amp; Oscilloscope Traces
+            </h4>
+            <div style="font-size:13px; color:#cbd5e1; line-height:1.65; margin-top:8px;">
+              <p><strong>Acoustic Propagation Rail:</strong> The top viewport displays the 40 kHz transceiver firing expanding pink circular wave fronts along the millimeter-calibrated optical rail. When the acoustic wave strikes the perpendicular target plate, cyan reflected wavefronts return to the receiver transducer.</p>
+              <p style="margin-top:8px;"><strong>Dual-Trace Oscilloscope:</strong></p>
+              <ul style="padding-left:20px; margin-top:4px;">
+                <li><strong>Channel 1 (CH1 - Pink Trace):</strong> Displays the 10 µs TTL trigger pulse initiating the 8-cycle 40 kHz burst at $t = 0$.</li>
+                <li><strong>Channel 2 (CH2 - Cyan Trace):</strong> Displays the received echo pulse. The horizontal spacing between the trigger pulse and echo edge corresponds directly to round-trip transit time $t$.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- CARD 4: RECORDING OBSERVATIONS & CSV EXPORT -->
+          <div class="help-section-card" style="margin-top:16px;">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">4</span>
+              Recording Observations &amp; Exporting Data
+            </h4>
+            <div style="font-size:13px; color:#cbd5e1; line-height:1.65; margin-top:8px;">
+              <p>1. Click <strong>"Record Reading"</strong> to append current measurement telemetry to the Observation Logbook.</p>
+              <p>2. The table tracks: Reading Index, Reference Distance $d_{\text{ref}}$, Echo Time $t$, Sound Speed $v$, Measured Distance $d_{\text{meas}}$, Absolute Error $\Delta d$, and Percentage Error.</p>
+              <p>3. Click <strong>"Export CSV"</strong> to download your laboratory readings as a spreadsheet file for external report verification. Click <strong>"Clear"</strong> to reset readings.</p>
+            </div>
+          </div>
+
+          <!-- CARD 5: CALCULATIONS & TRANSIT TIME PRINCIPLE -->
+          <div class="help-section-card" style="margin-top:16px;">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">5</span>
+              Calculations &amp; Round-Trip Principle
+            </h4>
+            <div style="font-size:13px; color:#cbd5e1; line-height:1.65; margin-top:8px;">
+              <p>The distance is determined using the time-of-flight relation:</p>
+              <div style="background:rgba(15,23,42,0.6); padding:10px 14px; border-radius:8px; border:1px solid rgba(236,72,153,0.25); margin:8px 0; font-family:monospace; font-size:14px; color:#f472b6;">
+                $$d_{\text{meas}} = \frac{v(T) \cdot t}{2}$$
+              </div>
+              <p><strong>Why Divide by 2:</strong> The sound wave travels from the transducer to the target ($d$) and reflects back from the target to the transducer ($d$), traversing twice the target distance ($2d$). Thus, total transit time $t$ corresponds to $2d$.</p>
+              <p style="margin-top:6px;"><strong>Temperature Correction:</strong> Sound speed is calculated via $v(T) = 331.3 \sqrt{1 + T/273.15}\text{ m/s}$. At standard 20°C, $v = 343.4\text{ m/s}$.</p>
+            </div>
+          </div>
+
+          <!-- CARD 6: CALIBRATION & ERROR ANALYSIS -->
+          <div class="help-section-card" style="margin-top:16px;">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">6</span>
+              Calibration Regression &amp; Error Analysis
+            </h4>
+            <div style="font-size:13px; color:#cbd5e1; line-height:1.65; margin-top:8px;">
+              <p>The linear calibration model is defined by:</p>
+              <div style="background:rgba(15,23,42,0.6); padding:10px 14px; border-radius:8px; border:1px solid rgba(56,189,248,0.25); margin:8px 0; font-family:monospace; font-size:14px; color:#38bdf8;">
+                $$d_{\text{meas}} = a \cdot d_{\text{ref}} + b$$
+              </div>
+              <p>Once 2 or more readings are logged, the calibration graph automatically calculates least-squares regression slope $a$ and zero-offset $b$. An ideal sensor has $a = 1.0000$ and $b = 0.0\text{ cm}$.</p>
+            </div>
+          </div>
+
+          <!-- CARD 7: PRACTICAL PRECAUTIONS -->
+          <div class="help-section-card" style="margin-top:16px;">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">7</span>
+              Practical Laboratory Precautions
+            </h4>
+            <ul style="font-size:13px; color:#cbd5e1; line-height:1.65; padding-left:20px; margin-top:8px;">
+              <li><strong>Target Perpendicularity:</strong> Ensure the reflector plate is aligned exactly perpendicular to the acoustic axis. Misalignment causes specular reflection deflection away from the receiver.</li>
+              <li><strong>Blind Zone Avoidance:</strong> Avoid target distances below the 2–4 cm transducer blind zone where transducer ringing obscures echo signals.</li>
+              <li><strong>Temperature Compensation:</strong> Record ambient temperature for every experiment session to prevent systematic sound velocity estimation errors.</li>
+              <li><strong>Acoustic Reflection Surface:</strong> Use flat, hard, non-porous targets (acrylic or aluminum). Porous materials absorb ultrasonic energy.</li>
+            </ul>
+          </div>
+
+          <!-- CARD 8: VIVA VOCE EXAMINATION (10 Q&A) -->
+          <div class="help-section-card" style="margin-top:16px;">
+            <h4 class="help-section-title">
+              <span class="help-step-badge">8</span>
+              Viva Voce Examination (10 Q&amp;A)
+            </h4>
+            <div class="udm-viva-list" style="margin-top:12px;">
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q1. What is the fundamental formula used in ultrasonic distance measurement?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> $d = \frac{v \cdot t}{2}$, where $v$ is sound velocity and $t$ is round-trip echo time.</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q2. Why is the echo transit time divided by 2?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> Because the sound wave travels to the target and reflects back, traversing twice the target distance ($2d$).</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q3. How does ambient air temperature affect ultrasonic distance measurement?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> Sound speed increases with temperature ($v \approx 331.3 + 0.606 T$). An uncalibrated sensor will underestimate distances at higher temperatures because echo time is shorter.</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q4. What is the blind zone of an ultrasonic sensor?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> The minimum distance (~2–4 cm) within which echoes return while the transmitter crystal is still mechanically ringing, preventing the receiver comparator from latching the echo.</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q5. In the calibration equation $d_{\text{meas}} = a \cdot d_{\text{ref}} + b$, what do $a$ and $b$ represent?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> Parameter $a$ is the sensitivity scale factor (ideally 1.0000) and $b$ is the zero-distance offset caused by comparator latencies and acoustic center setback.</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q6. Why is a 40 kHz frequency commonly chosen for distance measurement sensors?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> 40 kHz is safely above human audible limits (20 Hz–20 kHz), suffers lower atmospheric attenuation than megahertz frequencies, and matches compact piezoelectric resonant ceramic transducers.</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q7. What causes acoustic specular reflection errors?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> If the target surface is tilted away from normal incidence (perpendicularity), the acoustic wave packet deflects away from the receiver transducer, causing echo loss or false multi-path readings.</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q8. How does humidity affect the speed of sound in air?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> Humid air is slightly less dense than dry air (water vapor molecular weight 18 g/mol vs air ~29 g/mol), slightly increasing sound velocity, though the effect is much smaller than temperature.</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q9. What is the purpose of the 10 µs trigger pulse in ultrasonic transceiver modules (such as HC-SR04)?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> The 10 µs TTL trigger initiates the internal microcontroller to burst 8 cycles of 40 kHz ultrasonic wavepackets and prime the echo receiver comparator.</div>
+              </div>
+              <div class="udm-viva-item">
+                <div class="wf-viva-q">Q10. How is linear regression calibration applied in this experiment?</div>
+                <div class="wf-viva-a"><strong>Ans:</strong> Multiple known reference distances are measured, and a least-squares linear fit $d_{\text{meas}} = a \cdot d_{\text{ref}} + b$ is computed to obtain corrected distances $d_{\text{cal}} = (d_{\text{meas}} - b) / a$.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HELP & VIVA VOCE PANE: WEDGE SHAPED FILM -->
+        <div class="help-pane hidden" id="help-pane-exp-wedge">
+          <!-- 1. Aim Hero Card -->
+          <div class="help-hero-card">
+            <div class="help-hero-icon-box">
+              <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="help-hero-body">
+              <h3>1. Aim of the Experiment</h3>
+              <p>Study optical interference in a thin wedge-shaped air film, measure fringe width $\beta$ using a travelling microscope, and determine microscopic wire diameter using $d = \frac{\lambda L}{2\beta}$.</p>
+            </div>
+          </div>
+
+          <!-- 2. Operating Procedure Card -->
+          <div class="help-section-card" style="margin-top: 16px;">
+            <h3 class="help-section-title">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              2. Simulator Controls &amp; Operating Procedure
+            </h3>
+            <div class="help-steps-grid">
+              <div class="help-step-item">
+                <span class="help-step-badge">1</span>
+                <div><strong>Light Source:</strong> Toggle <strong>Source: ON/OFF</strong>. Select Sodium ($589.3\text{ nm}$) or He-Ne ($632.8\text{ nm}$).</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge">2</span>
+                <div><strong>Wedge Geometry:</strong> Set wedge length $L$ (default $100\text{ mm}$) and wire spacer diameter $d$ (default $40\text{ µm}$).</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge">3</span>
+                <div><strong>Inspect Reticle FOV:</strong> Observe straight, parallel fringes in the circular microscope viewport.</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge">4</span>
+                <div><strong>Align Crosswire:</strong> Drag microscope position slider or use fine stepper buttons (&lt; and &gt;) to center crosshairs on a dark fringe.</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge">5</span>
+                <div><strong>Record Observations:</strong> Click <strong>Record Reading</strong>. Repeat across 5–10 consecutive fringes.</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge">6</span>
+                <div><strong>Analyze Regression:</strong> Inspect the $x_m$ vs $m$ graph. Slope $\beta$ automatically calculates wire diameter $d = \frac{\lambda L}{2\beta}$.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="help-section">
+            <h3 class="help-sec-title">3. Important Theory &amp; Equations</h3>
+            <div class="formula-block" style="margin-bottom: 14px;">
+              <h4>A. Destructive Interference (Dark Fringe Condition)</h4>
+              <p class="help-text" style="margin-bottom: 8px;">
+                When monochromatic light reflects between the two glass plates, reflection at the lower optically denser boundary causes a $\pi$ phase change ($\lambda/2$ path shift). The condition for dark interference fringes is:
+              </p>
+              <div class="formula-latex" style="font-size: 15px; margin: 10px 0;">
+                $$2t = m\lambda \quad \implies \quad x_m = \frac{m\lambda L}{2d} = m\beta \quad (m = 0, 1, 2, \dots)$$
+              </div>
+              <div class="formula-grid">
+                <div class="formula-item">
+                  <span class="f-name">Film Thickness ($t$):</span>
+                  <div class="f-desc">Local separation between inclined plates: $t(x) = x \cdot \frac{d}{L}$</div>
+                </div>
+                <div class="formula-item">
+                  <span class="f-name">Contact Apex ($x = 0$):</span>
+                  <div class="f-desc">At line of contact, $t = 0 \implies \Delta = \lambda/2$, always producing a central dark fringe.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="formula-block" style="margin-bottom: 14px;">
+              <h4>B. Fringe Width Equation</h4>
+              <p class="help-text" style="margin-bottom: 8px;">
+                Because plate inclination $\alpha \approx \frac{d}{L}$ is constant, the fringes are straight, parallel, and equidistant. The constant spacing $\beta$ between consecutive dark fringes is given by:
+              </p>
+              <div class="formula-latex" style="font-size: 15px; margin: 10px 0;">
+                $$\beta = \frac{\lambda}{2\alpha} = \frac{\lambda L}{2d}$$
+              </div>
+              <div class="formula-grid">
+                <div class="formula-item">
+                  <span class="f-name">Fringe Width ($\beta$):</span>
+                  <div class="f-desc">Linear spacing between consecutive dark bands: $\beta = x_{m+1} - x_m$ [mm]</div>
+                </div>
+                <div class="formula-item">
+                  <span class="f-name">Wedge Angle ($\alpha$):</span>
+                  <div class="f-desc">Plate angle $\alpha \approx \frac{d}{L}$ [rad]</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="formula-block">
+              <h4>C. Microscopic Wire Spacer Diameter</h4>
+              <p class="help-text" style="margin-bottom: 8px;">
+                Rearranging the fringe width relationship allows precise metrology of the spacer wire diameter from the travelling microscope linear regression slope $\beta = \frac{dx}{dm}$:
+              </p>
+              <div class="formula-latex" style="font-size: 15px; margin: 10px 0;">
+                $$d = \frac{\lambda L}{2\beta}$$
+              </div>
+              <div class="formula-grid">
+                <div class="formula-item">
+                  <span class="f-name">Wire Diameter ($d$):</span>
+                  <div class="f-desc">Target thickness of microscopic spacer wire [µm]</div>
+                </div>
+                <div class="formula-item">
+                  <span class="f-name">Wedge Length ($L$):</span>
+                  <div class="f-desc">Distance from contact apex to the spacer wire position [mm]</div>
+                </div>
+                <div class="formula-item">
+                  <span class="f-name">Wavelength ($\lambda$):</span>
+                  <div class="f-desc">Monochromatic source wavelength (Sodium: $589.3\text{ nm}$, He-Ne: $632.8\text{ nm}$)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="help-section">
+            <h3 class="help-sec-title">4. Precautions</h3>
+            <ul class="help-precautions-list">
+              <li>Move the travelling microscope in one continuous direction to prevent lead screw backlash error.</li>
+              <li>Ensure the 45-degree beam splitter plate reflects incident light normally downward.</li>
+              <li>Clean glass plates thoroughly to avoid spurious interference contours from dust particles.</li>
+            </ul>
+          </div>
+
+          <div class="help-section">
+            <h3 class="help-sec-title">5. Viva Voce Questions</h3>
+            <div class="help-viva-item">
+              <div class="help-viva-q">Q1. Why are wedge fringes straight lines?</div>
+              <div class="help-viva-a"><strong>Ans:</strong> Because contours of constant film thickness are straight lines parallel to the contact apex.</div>
+            </div>
+            <div class="help-viva-item">
+              <div class="help-viva-q">Q2. Why is the apex dark in reflected light?</div>
+              <div class="help-viva-a"><strong>Ans:</strong> Because reflection at the lower glass plate incurs a $\pi$ phase shift ($\lambda/2$ path difference), causing destructive interference at $t = 0$.</div>
+            </div>
+            <div class="help-viva-item">
+              <div class="help-viva-q">Q3. How is wire diameter $d$ calculated?</div>
+              <div class="help-viva-a"><strong>Ans:</strong> Using $d = \frac{\lambda L}{2\beta}$, where $\beta$ is the fringe width determined from slope $dx/dm$.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -9101,6 +10770,256 @@
               <div class="formula-item">
                 <span class="f-name">LED Bandgap Formulation:</span>
                 <code>h = e &middot; V_0 &middot; &lambda; / c</code>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB: LASER DIVERGENCE THEORY PANE -->
+        <div id="theory-pane-exp-laser" class="theory-pane hidden">
+          <div class="formula-block">
+            <h4>Aim &amp; Experimental Principle</h4>
+            <p style="color:#cbd5e1; font-size:13px; margin-bottom:10px;">
+              <strong>Aim:</strong> To measure the beam divergence half-angle ($\theta$) and total cone angle ($\Theta$) of a monochromatic laser source by recording transverse cross-sectional beam diameters ($W$) at progressive axial propagation distances ($L$) along a precision optical bench.
+            </p>
+            <p style="color:#cbd5e1; font-size:13px; margin-bottom:10px;">
+              <strong>Theory:</strong> A laser beam propagating in the fundamental transverse mode ($\text{TEM}_{00}$) exhibits a characteristic Gaussian intensity profile $I(r) = I_0 \exp(-2r^2 / w^2)$. Due to wave diffraction, the beam waist radius $w_0$ expands hyperbolically along the axial propagation coordinate $z$:
+              <br><div class="formula-latex">$w(z) = w_0 \sqrt{1 + \left(\frac{z}{z_R}\right)^2}$</div>
+              where $z_R = \frac{\pi w_0^2}{\lambda}$ is the Rayleigh collimation length. In the far field ($z \gg z_R$), the beam envelope expands along a linear asymptotic cone with theoretical half-angle $\theta = \frac{\lambda}{\pi w_0}$. By measuring cross-sectional beam diameters $W_1$ and $W_2$ at two propagation distances $L_1$ and $L_2$, the divergence half-angle is determined experimentally as:
+              <br><div class="formula-latex">$\theta = \frac{W_2 - W_1}{2(L_2 - L_1)}$</div>
+            </p>
+            <p style="color:#cbd5e1; font-size:13px; margin-bottom:10px;">
+              <strong>Apparatus:</strong> Tunable diode/He-Ne laser emitter source, graduated optical bench rail ($0.20\text{ m} - 2.50\text{ m}$), sliding detector carrier mount, calibrated circular reticle screen with millimeter concentric rings, and digital telemetry caliper.
+            </p>
+          </div>
+
+          <div class="formula-block" style="margin-top:14px;">
+            <h4>Governing Formulas &amp; Gaussian Wave Optics</h4>
+            <div class="formula-grid">
+              <div class="formula-item">
+                <span class="f-name">Two-Point Divergence Half-Angle:</span>
+                <div class="f-eq">$\theta \approx \frac{W_2 - W_1}{2(L_2 - L_1)} = \frac{w_2 - w_1}{L_2 - L_1}$</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Full Divergence Cone Angle (&Theta;):</span>
+                <div class="f-eq">$\Theta = 2\theta \approx \frac{W_2 - W_1}{L_2 - L_1}$</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Gaussian Beam Radius Profile w(z):</span>
+                <div class="f-eq">$w(z) = w_0 \sqrt{1 + \left(\frac{z}{z_R}\right)^2}$</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Rayleigh Range (Collimation Length z_R):</span>
+                <div class="f-eq">$z_R = \frac{\pi w_0^2}{\lambda}$</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Diffraction-Limited Half-Angle (&theta;_div):</span>
+                <div class="f-eq">$\theta_{\text{div}} = \frac{\lambda}{\pi w_0}$</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Exact Tangent Formulation:</span>
+                <div class="f-eq">$\theta = \tan^{-1}\left(\frac{W_2 - W_1}{2(L_2 - L_1)}\right)$</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCIENTIFIC THEORY & DERIVATIONS PANE: ULTRASONIC SENSOR (UDM) -->
+        <div class="theory-pane hidden" id="theory-pane-exp-ultrasonic">
+          <!-- CARD 1: PULSE-ECHO TIME-OF-FLIGHT -->
+          <div class="formula-block">
+            <h4>1. Pulse-Echo Time-of-Flight (ToF) Kinematics</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              The ultrasonic transceiver emits a 40 kHz directional acoustic burst. The longitudinal pressure wave travels through air, strikes the acoustic impedance interface of the target, and reflects back as an echo to the piezoelectric receiver. Because the ultrasonic wave traverses the distance to the target and back, the round-trip trajectory is $2d$.
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:10px 0;">
+              $$d = \frac{v \cdot t}{2}$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Target Distance ($d$):</span>
+                <div class="f-desc">One-way distance between transducer face and reflector target [m or cm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Sound Velocity ($v$):</span>
+                <div class="f-desc">Acoustic wave propagation speed in ambient air medium [m/s]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Round-Trip Time ($t$):</span>
+                <div class="f-desc">Total elapsed echo transit duration between pulse emission and receipt [s or µs]</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: SPEED OF SOUND AND TEMPERATURE -->
+          <div class="formula-block" style="margin-top:16px;">
+            <h4>2. Speed of Sound and Temperature Relationship</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              Ultrasound is a mechanical pressure wave whose speed is governed by the adiabatic bulk modulus and density of the medium. For air (treated as an ideal diatomic gas with adiabatic index $\gamma = 1.40$ and molar mass $M = 0.02897\text{ kg/mol}$), acoustic speed scales with thermodynamic temperature $T$:
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:10px 0;">
+              $$v(T) = 331.3 \sqrt{1 + \frac{T}{273.15}} \approx 331.3 + 0.606 \cdot T \quad [\text{m/s}]$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Room Temperature Baseline:</span>
+                <div class="f-desc">At $T = 20.0^\circ\text{C}$, $v = 343.4\text{ m/s}$ (time factor: $29.12\text{ µs/cm}$ round-trip)</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Thermal Gradient Sensitivity:</span>
+                <div class="f-desc">Sound speed shifts by $\approx +0.606\text{ m/s}$ per $+1^\circ\text{C}$ rise ($\approx +0.18\%/\text{°C}$)</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Systematic Thermal Error:</span>
+                <div class="f-desc">An uncalibrated timer calibrated at 0°C will underestimate distance at higher temperatures</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: SENSOR CALIBRATION MODEL -->
+          <div class="formula-block" style="margin-top:16px;">
+            <h4>3. Sensor Calibration Linear Model</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              Real-world transceivers suffer from electronic comparator trigger delays, analog threshold detection latencies, and physical transducer setback. The measured distance $d_{\text{meas}}$ relates to the true reference distance $d_{\text{ref}}$ through a linear calibration model:
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:10px 0;">
+              $$d_{\text{meas}} = a \cdot d_{\text{ref}} + b$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Sensitivity Slope ($a$):</span>
+                <div class="f-desc">Scale factor representing transducer sensitivity (dimensionless; ideal $a = 1.0000$)</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Zero-Distance Offset ($b$):</span>
+                <div class="f-desc">Y-intercept representing electronic rise time and comparator latching delays [cm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Calibrated Distance ($d_{\text{cal}}$):</span>
+                <div class="f-desc">Corrected distance obtained via linear model inversion: $d_{\text{cal}} = \frac{d_{\text{meas}} - b}{a}$</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 4: OPERATING FREQUENCY & TRANSDUCER BLIND ZONE -->
+          <div class="formula-block" style="margin-top:16px;">
+            <h4>4. Operating Frequency, Wavelength &amp; Transducer Blind Zone</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              The laboratory module operates at an acoustic center frequency $f = 40.0\text{ kHz}$. At $20^\circ\text{C}$, the ultrasound wavelength is $\lambda = \frac{v}{f} \approx \frac{343.4\text{ m/s}}{40\,000\text{ Hz}} = 8.58\text{ mm}$.
+            </p>
+            <div class="formula-grid">
+              <div class="formula-item">
+                <span class="f-name">Transducer Blind Zone:</span>
+                <div class="f-desc">Distances below $d_{\text{blind}} \approx 2\text{ to }4\text{ cm}$ cannot be resolved because echoes return while the ceramic crystal is still ringing from transmission</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">10 µs Trigger Pulse:</span>
+                <div class="f-desc">A 10 µs TTL trigger starts the internal oscillator to burst 8 cycles of 40 kHz sound waves</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 5: REGRESSION & ERROR ANALYSIS -->
+          <div class="formula-block" style="margin-top:16px;">
+            <h4>5. Least-Squares Linear Regression &amp; Error Analysis</h4>
+            <div class="formula-grid">
+              <div class="formula-item">
+                <span class="f-name">Regression Slope ($a$):</span>
+                <div class="f-eq">$$a = \frac{N \sum (d_{\text{ref}} \cdot d_{\text{meas}}) - \sum d_{\text{ref}} \sum d_{\text{meas}}}{N \sum (d_{\text{ref}}^2) - (\sum d_{\text{ref}})^2}$$</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Regression Intercept ($b$):</span>
+                <div class="f-eq">$$b = \frac{\sum d_{\text{meas}} - a \sum d_{\text{ref}}}{N}$$</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Absolute Error ($\Delta d$):</span>
+                <div class="f-eq">$$\Delta d = |d_{\text{meas}} - d_{\text{ref}}| \quad [\text{cm}]$$</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Percentage Error:</span>
+                <div class="f-eq">$$\text{Error} = \frac{|d_{\text{meas}} - d_{\text{ref}}|}{d_{\text{ref}}} \times 100\%$$</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCIENTIFIC THEORY & DERIVATIONS PANE: WEDGE SHAPED FILM -->
+        <div class="theory-pane hidden" id="theory-pane-exp-wedge">
+          <!-- CARD 1: DIVISION OF AMPLITUDE & INTERFERENCE -->
+          <div class="formula-block">
+            <h4>1. Division of Amplitude &amp; Optical Path Difference</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              When monochromatic light of wavelength $\lambda$ illuminates an air wedge enclosed between two inclined optically flat glass surfaces, the wavefront is divided by partial reflection at the lower surface of the top plate and upper surface of the bottom plate. The round-trip geometric path across film thickness $t(x)$ is $2t$, and reflection at the denser lower plate incurs a $\pi$ phase reversal ($\lambda/2$ optical path shift).
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:12px 0;">
+              $$\Delta = 2t + \frac{\lambda}{2}$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Effective Path Difference ($\Delta$):</span>
+                <div class="f-desc">Total optical path difference including reflection phase reversal [nm or µm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Film Thickness ($t$):</span>
+                <div class="f-desc">Local separation between inclined planar glass plates: $t(x) \approx x \cdot \alpha$ [µm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Emission Wavelength ($\lambda$):</span>
+                <div class="f-desc">Wavelength of monochromatic illuminating beam (Sodium: $589.3\text{ nm}$)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: DARK FRINGE CONDITION -->
+          <div class="formula-block" style="margin-top:16px;">
+            <h4>2. Destructive Interference &amp; Dark Contact Apex</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              Destructive interference occurs when the total path difference equals an odd multiple of half-wavelengths: $\Delta = (2m + 1)\frac{\lambda}{2}$. Substituting $\Delta = 2t + \frac{\lambda}{2}$ yields the dark fringe condition. At the apex line of contact ($x = 0$, $t = 0$), complete destructive interference occurs, creating a permanent dark line.
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:12px 0;">
+              $$2t = m\lambda \quad \implies \quad x_m = \frac{m\lambda}{2\alpha} = m\beta \quad (m = 0, 1, 2, \dots)$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Fringe Order ($m$):</span>
+                <div class="f-desc">Integer index of consecutive dark fringes along the wedge ($m = 0, 1, 2, \dots$)</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Fringe Position ($x_m$):</span>
+                <div class="f-desc">Linear distance along the wedge measured from the apex line of contact [mm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Wedge Apex ($x = 0$):</span>
+                <div class="f-desc">Contact line where $t = 0 \implies \Delta = \lambda/2$ (Always a dark fringe)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: FRINGE WIDTH & WIRE DIAMETER -->
+          <div class="formula-block" style="margin-top:16px;">
+            <h4>3. Fringe Width &amp; Microscopic Wire Diameter Estimation</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              Because film thickness increases linearly with distance from apex ($t \approx x\alpha$), fringes are straight, parallel, and equidistant. The linear separation between successive dark fringes defines fringe width $\beta$. Deducing slope $\beta = \Delta x / \Delta m$ from travelling microscope micrometry yields the diameter $d$ of the spacer wire.
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:12px 0;">
+              $$\beta = \frac{\lambda}{2\alpha} = \frac{\lambda L}{2d} \quad \iff \quad d = \frac{\lambda L}{2\beta}$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Fringe Width ($\beta$):</span>
+                <div class="f-desc">Linear spacing between consecutive dark fringes: $\beta = x_{m+1} - x_m$ [mm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Wedge Length ($L$):</span>
+                <div class="f-desc">Distance from the apex contact line to the microscopic wire spacer [mm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Wire Diameter ($d$):</span>
+                <div class="f-desc">Microscopic thickness of the spacer wire: $d = \frac{\lambda L}{2\beta}$ [µm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Wedge Angle ($\alpha$):</span>
+                <div class="f-desc">Inclination angle between the glass plates: $\alpha \approx \frac{d}{L}$ [rad]</div>
               </div>
             </div>
           </div>

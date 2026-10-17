@@ -5145,6 +5145,452 @@ export const POF_ATTENUATION_QUESTION_BANK = {
 ]
 };
 
+export const LASER_DIVERGENCE_QUESTION_BANK = {
+  experimentId: "laser-divergence",
+  quizId: "laser-divergence-mastery-quiz",
+  title: "Laser Beam Divergence & Gaussian Optics Mastery",
+  experimentName: "Exp 9: Laser Beam Divergence",
+  totalQuestions: 10,
+  questions: [
+    {
+      "id": "ld-q1",
+      "question": "What physical phenomenon fundamentally causes an unguided laser beam to diverge as it propagates?",
+      "options": [
+        "Wave diffraction due to finite lateral optical aperture",
+        "Refraction from ambient air temperature gradients",
+        "Coulomb repulsion between emitted laser photons",
+        "Quantum tunneling through the output mirror"
+      ],
+      "correct_option": "Wave diffraction due to finite lateral optical aperture",
+      "difficulty": "easy",
+      "global_id": 321,
+      "explanation": "Wave diffraction fundamentally dictates that any wave confined to a finite spatial aperture of width d must diffract at an angular rate proportional to lambda / d."
+    },
+    {
+      "id": "ld-q2",
+      "question": "In a fundamental TEM00 Gaussian laser beam, what is the definition of the Rayleigh range (zR)?",
+      "options": [
+        "The propagation distance where cross-sectional area doubles and beam radius expands by sqrt(2)",
+        "The distance at which laser intensity drops to exactly zero",
+        "The focal length of the laser cavity collimator mirror",
+        "The maximum propagation distance before atmospheric absorption halts the beam"
+      ],
+      "correct_option": "The propagation distance where cross-sectional area doubles and beam radius expands by sqrt(2)",
+      "difficulty": "medium",
+      "global_id": 322,
+      "explanation": "The Rayleigh range zR = (pi * w0^2) / lambda is the distance where beam radius w(z) grows from w0 to sqrt(2)*w0, doubling the spot area."
+    },
+    {
+      "id": "ld-q3",
+      "question": "How is the far-field theoretical divergence half-angle (theta) related to emission wavelength (lambda) and beam waist (w0)?",
+      "options": [
+        "theta = lambda / (pi * w0)",
+        "theta = (pi * w0) / lambda",
+        "theta = lambda * pi * w0",
+        "theta = sqrt(lambda / w0)"
+      ],
+      "correct_option": "theta = lambda / (pi * w0)",
+      "difficulty": "medium",
+      "global_id": 323,
+      "explanation": "In Gaussian optics, the asymptotic far-field divergence half-angle is given by theta = lambda / (pi * w0) in radians."
+    },
+    {
+      "id": "ld-q4",
+      "question": "What is the relationship between the full divergence cone angle (Theta) and the divergence half-angle (theta)?",
+      "options": [
+        "Theta = 2 * theta",
+        "Theta = theta / 2",
+        "Theta = theta^2",
+        "Theta = pi * theta"
+      ],
+      "correct_option": "Theta = 2 * theta",
+      "difficulty": "easy",
+      "global_id": 324,
+      "explanation": "The full cone angle Theta spans from one envelope boundary across the central optical axis to the opposite boundary, so Theta = 2 * theta."
+    },
+    {
+      "id": "ld-q5",
+      "question": "If laser spot diameters D1 and D2 are measured at distances z1 and z2, what is the two-point empirical half-angle formula?",
+      "options": [
+        "theta ≈ (D2 - D1) / [2 * (z2 - z1)]",
+        "theta ≈ (D2 + D1) / (z2 - z1)",
+        "theta ≈ (D2 - D1) / (z2 - z1)",
+        "theta ≈ [2 * (D2 - D1)] / (z2 - z1)"
+      ],
+      "correct_option": "theta ≈ (D2 - D1) / [2 * (z2 - z1)]",
+      "difficulty": "medium",
+      "global_id": 325,
+      "explanation": "Because D is diameter (D = 2w), the radial expansion is (D2 - D1)/2, yielding theta ≈ (D2 - D1) / [2 * (z2 - z1)]."
+    },
+    {
+      "id": "ld-q6",
+      "question": "Which laser wavelength will exhibit the smallest divergence half-angle for a fixed beam waist radius?",
+      "options": [
+        "Violet InGaN laser (402 nm)",
+        "Green DPSS laser (532 nm)",
+        "Helium-Neon Red laser (632.8 nm)",
+        "Infrared diode laser (808 nm)"
+      ],
+      "correct_option": "Violet InGaN laser (402 nm)",
+      "difficulty": "medium",
+      "global_id": 326,
+      "explanation": "Divergence theta is directly proportional to wavelength (theta = lambda / (pi * w0)). Shorter wavelengths produce less diffraction spread."
+    },
+    {
+      "id": "ld-q7",
+      "question": "Why is the 1/e^2 intensity criterion universally used as the standard boundary for Gaussian laser spots?",
+      "options": [
+        "Because Gaussian profiles have no sharp boundary; 1/e^2 (~13.53% peak) encloses 86.5% of total optical power",
+        "Because human eyes can only perceive light down to 1/e^2 intensity",
+        "Because photographic sensors saturate at 1/e^2 of laser peak intensity",
+        "Because diffraction rings completely cancel out at 1/e^2"
+      ],
+      "correct_option": "Because Gaussian profiles have no sharp boundary; 1/e^2 (~13.53% peak) encloses 86.5% of total optical power",
+      "difficulty": "hard",
+      "global_id": 327,
+      "explanation": "Since Gaussian profiles decay asymptotically without a hard cutoff, the ISO standard 1/e^2 (13.53%) boundary encloses exactly (1 - 1/e^2) = 86.47% of total beam power."
+    },
+    {
+      "id": "ld-q8",
+      "question": "What happens to the divergence of a laser beam if its waist radius (w0) is doubled by an optical beam expander?",
+      "options": [
+        "The divergence angle is halved",
+        "The divergence angle doubles",
+        "The divergence angle quadruples",
+        "The divergence angle remains unchanged"
+      ],
+      "correct_option": "The divergence angle is halved",
+      "difficulty": "medium",
+      "global_id": 328,
+      "explanation": "Since theta = lambda / (pi * w0), divergence is inversely proportional to beam waist. Doubling w0 reduces theta by a factor of 2."
+    },
+    {
+      "id": "ld-q9",
+      "question": "At propagation distance z equal to the Rayleigh range (z = zR), what is the beam radius w(zR)?",
+      "options": [
+        "sqrt(2) * w0 ≈ 1.414 * w0",
+        "2 * w0",
+        "w0 / 2",
+        "w0 / sqrt(2)"
+      ],
+      "correct_option": "sqrt(2) * w0 ≈ 1.414 * w0",
+      "difficulty": "medium",
+      "global_id": 329,
+      "explanation": "Substituting z = zR into w(z) = w0 * sqrt(1 + (z/zR)^2) yields w(zR) = w0 * sqrt(1 + 1) = sqrt(2) * w0."
+    },
+    {
+      "id": "ld-q10",
+      "question": "What is the primary eye safety hazard associated with visible Class 3R lasers used in this experiment?",
+      "options": [
+        "Intra-beam viewing may cause thermal retinal burn if the blink reflex is suppressed",
+        "Ionizing radiation causing skin burns",
+        "Generation of toxic ozone gas along the beam path",
+        "Nuclear activation of metallic optical mounts"
+      ],
+      "correct_option": "Intra-beam viewing may cause thermal retinal burn if the blink reflex is suppressed",
+      "difficulty": "easy",
+      "global_id": 330,
+      "explanation": "Class 3R visible lasers (up to 5 mW) are normally protected by human aversion (blink) response (~0.25 s), but direct deliberate staring can cause retinal injury."
+    }
+  ]
+};
+
+export const ULTRASONIC_SENSOR_QUESTION_BANK = {
+  experimentId: "ultrasonic-sensor",
+  quizId: "ultrasonic-sensor-mastery-quiz",
+  title: "Ultrasonic Distance Measurement & Calibration",
+  questions: [
+    {
+      id: "udm-q1",
+      question: "What is the governing formula used to calculate one-way target distance in pulse-echo ultrasonic measurement?",
+      options: [
+        "d = (v * t) / 2",
+        "d = v * t",
+        "d = 2 * v * t",
+        "d = (v^2 * t) / 2"
+      ],
+      correct_option: "d = (v * t) / 2",
+      difficulty: "easy",
+      global_id: 341,
+      explanation: "Because the acoustic pulse travels to the target reflector and returns back, the wave traverses twice the distance (2d = v * t, hence d = v * t / 2)."
+    },
+    {
+      id: "udm-q2",
+      question: "Why is the elapsed round-trip time-of-flight (t) divided by 2 in distance calculation?",
+      options: [
+        "The sound wave traverses the distance twice: to the target and back as an echo",
+        "Because only half of the piezoelectric crystal is active during receive mode",
+        "To compensate for the 50% duty cycle of the 40 kHz square wave trigger",
+        "Because sound velocity doubles upon acoustic reflection at the barrier"
+      ],
+      correct_option: "The sound wave traverses the distance twice: to the target and back as an echo",
+      difficulty: "easy",
+      global_id: 342,
+      explanation: "Pulse-echo kinematics measures total round-trip trajectory 2d. Dividing by two yields the true one-way standoff distance."
+    },
+    {
+      id: "udm-q3",
+      question: "How does ambient air temperature (T) affect the speed of sound and uncalibrated distance measurements?",
+      options: [
+        "Sound travels faster at higher temperatures; uncalibrated sensors underestimate target distance",
+        "Sound travels slower at higher temperatures; uncalibrated sensors underestimate target distance",
+        "Temperature has no effect on longitudinal acoustic speed in diatomic air",
+        "Sound travels faster at higher temperatures; uncalibrated sensors overestimate target distance"
+      ],
+      correct_option: "Sound travels faster at higher temperatures; uncalibrated sensors underestimate target distance",
+      difficulty: "medium",
+      global_id: 343,
+      explanation: "Acoustic velocity increases with temperature (v ≈ 331.3 + 0.606 * T). If sound travels faster, the echo returns sooner, causing an uncalibrated timer to report a shorter distance."
+    },
+    {
+      id: "udm-q4",
+      question: "What physical mechanism creates the blind zone / dead zone (~2 to 4 cm) in ultrasonic transducers?",
+      options: [
+        "Mechanical crystal ringing immediately after pulse excitation obscures returning close-in echoes",
+        "Complete acoustic phase cancellation by destructive atmospheric interference",
+        "Electronic saturation of the comparator by background electromagnetic radiation",
+        "Total absorption of 40 kHz acoustic energy by air moisture within 4 cm"
+      ],
+      correct_option: "Mechanical crystal ringing immediately after pulse excitation obscures returning close-in echoes",
+      difficulty: "medium",
+      global_id: 344,
+      explanation: "The piezoelectric ceramic element continues to mechanically resonate and ring after firing; echoes returning during this decay window cannot be differentiated by the receiver comparator."
+    },
+    {
+      id: "udm-q5",
+      question: "In the linear calibration model d_meas = a * d_ref + b, what do parameters a and b represent?",
+      options: [
+        "a is the sensitivity slope (gain factor, ideal = 1.0) and b is the zero-distance offset intercept",
+        "a is acoustic attenuation in dB/m and b is receiver threshold voltage in volts",
+        "a is ambient atmospheric pressure and b is temperature in Celsius",
+        "a is piezoelectric resonant frequency and b is acoustic wavelength in air"
+      ],
+      correct_option: "a is the sensitivity slope (gain factor, ideal = 1.0) and b is the zero-distance offset intercept",
+      difficulty: "medium",
+      global_id: 345,
+      explanation: "Linear regression calibration models the sensor response where a represents scaling sensitivity (ideally 1.0000) and b accounts for hardware latch latencies and acoustic center setback."
+    },
+    {
+      id: "udm-q6",
+      question: "Why is 40 kHz commonly selected as the operating acoustic center frequency for ultrasonic distance transceivers?",
+      options: [
+        "It is safely above the human audible limit (20 kHz) with low atmospheric absorption and compact piezoelectric element size",
+        "40 kHz is the electromagnetic resonant frequency of air molecules",
+        "Lower frequencies cannot reflect off metallic or acrylic barriers",
+        "Higher frequencies travel faster than the standard speed of sound"
+      ],
+      correct_option: "It is safely above the human audible limit (20 kHz) with low atmospheric absorption and compact piezoelectric element size",
+      difficulty: "medium",
+      global_id: 346,
+      explanation: "40 kHz is inaudible to human hearing, suffers manageable attenuation in ambient air compared to megahertz ultrasound, and matches the natural mechanical resonance of small ceramic discs."
+    },
+    {
+      id: "udm-q7",
+      question: "What causes acoustic specular reflection failure when the target barrier is tilted away from perpendicular alignment?",
+      options: [
+        "The reflected acoustic wavepacket deflects away from the receiver transducer according to the law of reflection",
+        "The frequency of ultrasound shifts above 100 kHz due to Doppler compression",
+        "The sound wave penetrates through the barrier without reflecting",
+        "Piezoelectric crystal polarization reverses"
+      ],
+      correct_option: "The reflected acoustic wavepacket deflects away from the receiver transducer according to the law of reflection",
+      difficulty: "easy",
+      global_id: 347,
+      explanation: "Smooth surfaces act as specular reflectors. If the incident acoustic beam is tilted away from normal incidence (perpendicularity), reflected energy bounces away from the receiver port."
+    },
+    {
+      id: "udm-q8",
+      question: "What is the speed of sound in dry air at standard room temperature (T = 20.0 °C)?",
+      options: [
+        "343.4 m/s",
+        "299.8 m/s",
+        "331.3 m/s",
+        "1482 m/s"
+      ],
+      correct_option: "343.4 m/s",
+      difficulty: "easy",
+      global_id: 348,
+      explanation: "v = 331.3 * sqrt(1 + 20 / 273.15) ≈ 343.4 m/s (or 331.3 + 0.606 * 20 = 343.4 m/s)."
+    },
+    {
+      id: "udm-q9",
+      question: "What is the role of the 10 µs trigger pulse applied to the ultrasonic module (such as HC-SR04)?",
+      options: [
+        "It commands the internal microcontroller to burst an 8-cycle 40 kHz ultrasonic wavepacket",
+        "It powers the piezoelectric transducer directly for the entire measurement duration",
+        "It discharges static electricity from the acoustic bench guide rails",
+        "It calibrates the analog-to-digital converter clock to absolute zero"
+      ],
+      correct_option: "It commands the internal microcontroller to burst an 8-cycle 40 kHz ultrasonic wavepacket",
+      difficulty: "medium",
+      global_id: 349,
+      explanation: "A 10 µs high-level TTL pulse at the trigger pin initiates the module's burst sequence (8 cycles of 40 kHz) and primes the echo receiver latch."
+    },
+    {
+      id: "udm-q10",
+      question: "Given a measured distance d_meas and calibrated parameters a (slope) and b (offset), how is the corrected distance d_cal computed?",
+      options: [
+        "d_cal = (d_meas - b) / a",
+        "d_cal = a * d_meas + b",
+        "d_cal = (d_meas + b) * a",
+        "d_cal = a / (d_meas - b)"
+      ],
+      correct_option: "d_cal = (d_meas - b) / a",
+      difficulty: "easy",
+      global_id: 350,
+      explanation: "Inverting the linear calibration equation d_meas = a * d_ref + b yields the corrected true standoff distance d_cal = (d_meas - b) / a."
+    }
+  ]
+};
+
+export const WEDGE_FILM_QUESTION_BANK = {
+  experimentId: "wedge-film",
+  quizId: "wedge-film-mastery-quiz",
+  title: "Wedge-Shaped Film & Thin-Film Interference",
+  questions: [
+    {
+      id: "wf-q1",
+      question: "Why is the fringe at the line of contact between the two glass plates dark in reflected monochromatic light?",
+      options: [
+        "Reflection at the lower optically denser glass surface introduces a Stokes phase shift of π radians (λ/2 path difference)",
+        "The glass absorbs 100% of the light at zero film thickness",
+        "Refraction index of air drops to zero at the line of contact",
+        "Constructive interference cancels all odd harmonics"
+      ],
+      correct_option: "Reflection at the lower optically denser glass surface introduces a Stokes phase shift of π radians (λ/2 path difference)",
+      difficulty: "easy",
+      global_id: 351,
+      explanation: "At the contact edge t = 0. Reflection from the denser glass medium adds a phase jump of π rad (λ/2), causing destructive interference and producing a permanent dark fringe."
+    },
+    {
+      id: "wf-q2",
+      question: "Why are the interference fringes formed in a wedge-shaped film straight, parallel, and equidistant?",
+      options: [
+        "Loci of constant film thickness on optically flat planar plates are straight lines parallel to the contact apex",
+        "The travelling microscope lens produces straight virtual images regardless of plate curvature",
+        "Photons repel each other transversely in the air gap",
+        "Reflection angle is 45 degrees along the entire wedge"
+      ],
+      correct_option: "Loci of constant film thickness on optically flat planar plates are straight lines parallel to the contact apex",
+      difficulty: "easy",
+      global_id: 352,
+      explanation: "Fringes of equal thickness (Fizeau fringes) follow contours of identical gap thickness t. For planar plates with constant wedge angle α, these contours form straight parallel lines."
+    },
+    {
+      id: "wf-q3",
+      question: "What is the formula to calculate spacer wire diameter d using fringe width β, wedge length L, and wavelength λ?",
+      options: [
+        "d = (λ * L) / (2 * β)",
+        "d = (2 * λ * β) / L",
+        "d = (β * L) / (2 * λ)",
+        "d = (λ * β) / (2 * L)"
+      ],
+      correct_option: "d = (λ * L) / (2 * β)",
+      difficulty: "easy",
+      global_id: 353,
+      explanation: "Since fringe spacing β = (λ * L) / (2 * d), rearranging directly yields spacer diameter d = (λ * L) / (2 * β)."
+    },
+    {
+      id: "wf-q4",
+      question: "What happens to the fringe width β if a thicker wire is used as the spacer?",
+      options: [
+        "Fringe width decreases and fringes crowd closer together because β is inversely proportional to wire diameter d",
+        "Fringe width increases and fringes become wider apart",
+        "Fringe width remains unchanged because it only depends on wavelength",
+        "Fringes turn into concentric circular Newton rings"
+      ],
+      correct_option: "Fringe width decreases and fringes crowd closer together because β is inversely proportional to wire diameter d",
+      difficulty: "medium",
+      global_id: 354,
+      explanation: "Because β = (λ * L) / (2 * d), increasing d steepens the wedge angle α = d / L, causing fringe spacing β to shrink."
+    },
+    {
+      id: "wf-q5",
+      question: "What is the condition for dark interference fringes (minima) in a thin air wedge observed in reflected light at near-normal incidence?",
+      options: [
+        "2t = m * λ (m = 0, 1, 2, ...)",
+        "2t = (m - 1/2) * λ (m = 1, 2, ...)",
+        "2t = (2m + 1) * λ",
+        "t = m * λ / 4"
+      ],
+      correct_option: "2t = m * λ (m = 0, 1, 2, ...)",
+      difficulty: "medium",
+      global_id: 355,
+      explanation: "Destructive interference occurs when total path difference Δ = 2t + λ/2 = (2m + 1)λ/2, which simplifies to 2t = mλ."
+    },
+    {
+      id: "wf-q6",
+      question: "If the air film (μ = 1) is replaced by a transparent liquid film of refractive index μ = 1.33, what happens to the fringe width β'?",
+      options: [
+        "Fringe width decreases to β' = β / μ",
+        "Fringe width increases to β' = β * μ",
+        "Fringe width is completely unaffected by medium refractive index",
+        "All fringes disappear due to total internal reflection"
+      ],
+      correct_option: "Fringe width decreases to β' = β / μ",
+      difficulty: "medium",
+      global_id: 356,
+      explanation: "The effective optical path within the film is 2μt, making fringe width β' = λ / (2μα) = β / μ."
+    },
+    {
+      id: "wf-q7",
+      question: "What is the small wedge angle α in radians for two plates of length L separated by a spacer wire of diameter d?",
+      options: [
+        "α ≈ d / L",
+        "α ≈ L / d",
+        "α ≈ 2d / L",
+        "α ≈ d / (2L)"
+      ],
+      correct_option: "α ≈ d / L",
+      difficulty: "easy",
+      global_id: 357,
+      explanation: "Using the small angle trigonometric approximation, tan(α) ≈ α ≈ d / L in radians."
+    },
+    {
+      id: "wf-q8",
+      question: "Why must the travelling microscope carriage be moved in one continuous direction during measurement?",
+      options: [
+        "To eliminate mechanical backlash (lost motion) in the lead-screw and vernier nut assembly",
+        "To prevent optical polarization changes in the eyepiece reticle",
+        "Because the microscope can only focus when traveling forward",
+        "To ensure monochromatic light does not undergo Doppler shifts"
+      ],
+      correct_option: "To eliminate mechanical backlash (lost motion) in the lead-screw and vernier nut assembly",
+      difficulty: "medium",
+      global_id: 358,
+      explanation: "Reversing lead-screw motion introduces pitch play and deadband backlash error, spoiling precision micrometer vernier readings."
+    },
+    {
+      id: "wf-q9",
+      question: "What happens if a polychromatic white light source is used instead of monochromatic light?",
+      options: [
+        "A few colored fringes are visible near the zero-order dark contact apex, beyond which uniform white illumination appears",
+        "An infinite number of sharp black and white fringes are produced",
+        "Complete darkness results due to destructive interference of all colors",
+        "A continuous rainbow diffraction spectrum forms on the screen"
+      ],
+      correct_option: "A few colored fringes are visible near the zero-order dark contact apex, beyond which uniform white illumination appears",
+      difficulty: "medium",
+      global_id: 359,
+      explanation: "Because different wavelengths have different fringe spacings, only a few overlapping colored fringes appear near t = 0. At larger t, path difference exceeds the short coherence length of white light."
+    },
+    {
+      id: "wf-q10",
+      question: "In an experiment using Sodium yellow light (λ = 589.3 nm), wedge length L = 100.0 mm, and spacer diameter d = 40.0 μm, what is the theoretical fringe width β?",
+      options: [
+        "0.737 mm",
+        "1.474 mm",
+        "0.368 mm",
+        "2.946 mm"
+      ],
+      correct_option: "0.737 mm",
+      difficulty: "hard",
+      global_id: 360,
+      explanation: "β = (λ * L) / (2 * d) = (589.3e-6 mm * 100 mm) / (2 * 0.040 mm) = 0.05893 / 0.080 = 0.7366 mm ≈ 0.737 mm."
+    }
+  ]
+};
+
 export function generateRandom10QuestionQuiz(expId = "projectile") {
   let bank = PROJECTILE_QUESTION_BANK;
   if (expId === "optical" || expId === "exp-optical" || expId === "exp2") {
@@ -5159,6 +5605,12 @@ export function generateRandom10QuestionQuiz(expId = "projectile") {
     bank = SANDBOX_QUESTION_BANK;
   } else if (expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "attenuation" || expId === "pof") {
     bank = POF_ATTENUATION_QUESTION_BANK;
+  } else if (expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence" || expId === "exp-laser") {
+    bank = LASER_DIVERGENCE_QUESTION_BANK;
+  } else if (expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance" || expId === "exp-ultrasonic") {
+    bank = ULTRASONIC_SENSOR_QUESTION_BANK;
+  } else if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge" || expId === "exp-wedge") {
+    bank = WEDGE_FILM_QUESTION_BANK;
   }
 
   // 1. Shuffle the full 50-question bank

@@ -249,6 +249,9 @@ function getExperimentDetails(expCodeOrId) {
   else if (raw.includes("hall")) normId = "hall-effect";
   else if (raw.includes("colour") || raw.includes("color")) normId = "colour-sensor";
   else if (raw.includes("optical") || raw.includes("aperture") || raw.includes("fibre") || raw.includes("fiber")) normId = "optical";
+  else if (raw.includes("laser") || raw.includes("divergence")) normId = "laser-divergence";
+  else if (raw.includes("ultrasonic") || raw.includes("udm")) normId = "ultrasonic-sensor";
+  else if (raw.includes("wedge")) normId = "wedge-film";
   else if (raw.includes("planck")) normId = "planck";
   else if (raw.includes("sandbox")) normId = "sandbox";
   else if (raw.includes("proj")) normId = "projectile";

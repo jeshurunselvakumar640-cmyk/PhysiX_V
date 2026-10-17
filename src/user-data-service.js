@@ -746,6 +746,26 @@ export function getExperimentNameById(id) {
     case "plancks-constant":
     case "exp-planck":
       return "Determination of Planck’s Constant";
+    case "laser":
+    case "laser-divergence":
+    case "laser-beam-divergence":
+    case "exp-laser":
+    case "exp-laser-divergence":
+      return "Determination of Divergence of a Laser Beam";
+    case "ultrasonic":
+    case "ultrasonic-sensor":
+    case "udm":
+    case "ultrasonic-distance":
+    case "exp-ultrasonic":
+    case "exp-ultrasonic-sensor":
+      return "Ultrasonic Sensor (UDM)";
+    case "wedge":
+    case "wedge-film":
+    case "wedge-shaped-film":
+    case "thin-film-wedge":
+    case "exp-wedge":
+    case "exp-wedge-film":
+      return "Wedge-Shaped Film";
     default:
       return id;
   }

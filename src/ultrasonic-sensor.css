@@ -1,0 +1,1466 @@
+/* ==========================================================================
+   PhysiX • Ultrasonic Sensor (UDM) Virtual Physics Laboratory Stylesheet
+   Undergraduate Acoustic Time-of-Flight, Wave Propagation & Distance Calibration
+   Dual-Trace CRT Oscilloscope, Temperature Modeling & Linear Fit Analysis
+   Dark Mode & Light Mode Compatible • Fully Audited Responsive Design
+   ========================================================================== */
+
+#exp-ultrasonic-sensor-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 10px 24px 60px;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: var(--text-primary, #e2e8f0);
+  overflow-x: hidden;
+}
+
+#exp-ultrasonic-sensor-section.hidden {
+  display: none !important;
+}
+
+#exp-ultrasonic-sensor-section .simulation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 1. TOP BREADCRUMB & BADGE STRIP */
+#exp-ultrasonic-sensor-section .exp-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+#exp-ultrasonic-sensor-section .exp-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  color: #cbd5e1;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+#exp-ultrasonic-sensor-section .exp-back-btn:hover {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: #06b6d4;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+}
+
+#exp-ultrasonic-sensor-section .exp-back-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+#exp-ultrasonic-sensor-section .exp-badge-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+#exp-ultrasonic-sensor-section .exp-pill-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#exp-ultrasonic-sensor-section .exp-pill-badge.category {
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #38bdf8;
+}
+
+#exp-ultrasonic-sensor-section .exp-pill-badge.engine {
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+}
+
+/* 2. WORKSTATION HEADER CARD */
+#exp-ultrasonic-sensor-section .workstation-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(30, 41, 59, 0.82) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+}
+
+#exp-ultrasonic-sensor-section .header-content-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#exp-ultrasonic-sensor-section .workstation-title {
+  font-family: 'Orbitron', 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #f8fafc;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+#exp-ultrasonic-sensor-section .title-grad {
+  background: linear-gradient(135deg, #ffffff 20%, #06b6d4 80%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#exp-ultrasonic-sensor-section .workstation-subtitle {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#exp-ultrasonic-sensor-section .workstation-actions-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#exp-ultrasonic-sensor-section .btn-action-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+#exp-ultrasonic-sensor-section .btn-action-pill svg {
+  width: 15px;
+  height: 15px;
+}
+
+#exp-ultrasonic-sensor-section .btn-action-pill:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: #06b6d4;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.35);
+  transform: translateY(-1px);
+}
+
+#exp-ultrasonic-sensor-section .btn-open-quiz-trigger {
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  color: #38bdf8;
+}
+
+#exp-ultrasonic-sensor-section .btn-open-quiz-trigger:hover {
+  background: rgba(6, 182, 212, 0.28);
+  border-color: #06b6d4;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.45);
+}
+
+#exp-ultrasonic-sensor-section .btn-open-theory-trigger {
+  background: rgba(56, 189, 248, 0.14);
+  border: 1px solid rgba(56, 189, 248, 0.38);
+  color: #38bdf8;
+}
+
+#exp-ultrasonic-sensor-section .btn-open-theory-trigger:hover {
+  background: rgba(56, 189, 248, 0.28);
+  border-color: #38bdf8;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.45);
+}
+
+#exp-ultrasonic-sensor-section .btn-open-help-trigger {
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.38);
+  color: #34d399;
+}
+
+#exp-ultrasonic-sensor-section .btn-open-help-trigger:hover {
+  background: rgba(16, 185, 129, 0.28);
+  border-color: #34d399;
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.45);
+}
+
+/* 3. MAIN WORKSTATION GRID */
+#exp-ultrasonic-sensor-section .udm-workstation-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+#exp-ultrasonic-sensor-section .udm-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+#exp-ultrasonic-sensor-section .udm-sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* 4. WORKSTATION SUB CARDS */
+#exp-ultrasonic-sensor-section .workstation-sub-card {
+  background: var(--card-bg, linear-gradient(135deg, rgba(12, 19, 40, 0.85) 0%, rgba(5, 8, 20, 0.94) 100%));
+  border: 1px solid var(--card-border, rgba(6, 182, 212, 0.22));
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(14px);
+}
+
+#exp-ultrasonic-sensor-section .udm-viewports-card,
+#exp-ultrasonic-sensor-section .udm-graph-card,
+#exp-ultrasonic-sensor-section .udm-result-card,
+#exp-ultrasonic-sensor-section .udm-logbook-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#exp-ultrasonic-sensor-section .udm-bench-box,
+#exp-ultrasonic-sensor-section .udm-osc-box {
+  min-width: 0;
+}
+
+#exp-ultrasonic-sensor-section .sub-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#exp-ultrasonic-sensor-section .sub-card-header h3,
+#exp-ultrasonic-sensor-section .sub-card-header h4 {
+  font-family: 'Space Grotesk', Outfit, sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#exp-ultrasonic-sensor-section .sub-card-header svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* 5. CANVASES & VIEWPORTS */
+#exp-ultrasonic-sensor-section .udm-canvases-container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 14px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  #exp-ultrasonic-sensor-section .udm-canvases-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+#exp-ultrasonic-sensor-section .udm-canvas-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(4, 9, 22, 0.8);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#exp-ultrasonic-sensor-section .canvas-header-tag {
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#exp-ultrasonic-sensor-section .tag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#exp-ultrasonic-sensor-section .tag-dot.pink {
+  background: #06b6d4;
+  box-shadow: 0 0 8px #06b6d4;
+}
+
+#exp-ultrasonic-sensor-section .tag-dot.green {
+  background: #10e7a8;
+  box-shadow: 0 0 8px #10e7a8;
+}
+
+#exp-ultrasonic-sensor-section #udm-bench-canvas {
+  width: 100%;
+  height: 260px;
+  display: block;
+  border-radius: 8px;
+  background: #020712;
+  border: 1px solid rgba(6, 182, 212, 0.15);
+}
+
+#exp-ultrasonic-sensor-section #udm-osc-canvas {
+  width: 100%;
+  height: 260px;
+  display: block;
+  border-radius: 8px;
+  background: #030814;
+  border: 1px solid rgba(16, 231, 168, 0.25);
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.85);
+}
+
+/* 6. TELEMETRY STRIP HUD */
+#exp-ultrasonic-sensor-section .udm-telemetry-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+#exp-ultrasonic-sensor-section .udm-telemetry-item {
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+#exp-ultrasonic-sensor-section .udm-t-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
+}
+
+#exp-ultrasonic-sensor-section .udm-t-val {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+/* 7. LOWER GRID (CALIBRATION GRAPH & MODEL CARD) */
+#exp-ultrasonic-sensor-section .udm-lower-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  #exp-ultrasonic-sensor-section .udm-lower-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#exp-ultrasonic-sensor-section #udm-graph-canvas {
+  width: 100%;
+  height: 240px;
+  display: block;
+  border-radius: 8px;
+  background: #020712;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#exp-ultrasonic-sensor-section .udm-result-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+#exp-ultrasonic-sensor-section .udm-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #94a3b8;
+  font-family: 'Space Grotesk', sans-serif;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+#exp-ultrasonic-sensor-section .val-accent {
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+#exp-ultrasonic-sensor-section .udm-result-note {
+  font-size: 11px;
+  color: #64748b;
+  font-style: italic;
+  margin: 8px 0 12px;
+  line-height: 1.4;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenges-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+#exp-ultrasonic-sensor-section .ch-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(6, 182, 212, 0.15);
+  color: #06b6d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+#exp-ultrasonic-sensor-section .ch-info {
+  font-size: 11.5px;
+  color: #cbd5e1;
+  flex: 1;
+  margin: 0 10px;
+}
+
+#exp-ultrasonic-sensor-section .ch-xp {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f59e0b;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+}
+
+/* 8. OBSERVATION LOGBOOK TABLE */
+#exp-ultrasonic-sensor-section .header-title-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#exp-ultrasonic-sensor-section .obs-count-badge {
+  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+#exp-ultrasonic-sensor-section .logbook-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#exp-ultrasonic-sensor-section .btn-ctrl-primary {
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #06b6d4, #0284c7);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+}
+
+#exp-ultrasonic-sensor-section .btn-ctrl-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(6, 182, 212, 0.5);
+}
+
+#exp-ultrasonic-sensor-section .btn-ctrl-secondary {
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#exp-ultrasonic-sensor-section .btn-ctrl-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+}
+
+#exp-ultrasonic-sensor-section .table-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+#exp-ultrasonic-sensor-section .udm-obs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#exp-ultrasonic-sensor-section .udm-obs-table th {
+  background: rgba(15, 23, 42, 0.85);
+  color: #94a3b8;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px 12px;
+  border-bottom: 2px solid rgba(6, 182, 212, 0.35);
+  text-align: left;
+  white-space: nowrap;
+}
+
+#exp-ultrasonic-sensor-section .udm-obs-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+}
+
+#exp-ultrasonic-sensor-section .udm-obs-table tr:hover td {
+  background: rgba(6, 182, 212, 0.08);
+}
+
+#exp-ultrasonic-sensor-section .udm-empty-row td {
+  text-align: center;
+  color: #64748b;
+  font-style: italic;
+  padding: 22px;
+}
+
+/* 9. CONTROL DECK (FULL-WIDTH BELOW SIMULATOR & GRAPHS) */
+#exp-ultrasonic-sensor-section .udm-deck-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+#exp-ultrasonic-sensor-section .udm-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  #exp-ultrasonic-sensor-section .udm-deck-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+#exp-ultrasonic-sensor-section .deck-actions-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#exp-ultrasonic-sensor-section .deck-hint {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin: 6px 0 0;
+  line-height: 1.45;
+}
+
+#exp-ultrasonic-sensor-section .deck-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(6, 182, 212, 0.18);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+#exp-ultrasonic-sensor-section .group-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#exp-ultrasonic-sensor-section .group-label-row label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+#exp-ultrasonic-sensor-section .val-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.12);
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(6, 182, 212, 0.25);
+}
+
+#exp-ultrasonic-sensor-section .deck-group input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #08111e;
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+#exp-ultrasonic-sensor-section .deck-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 15%, #06b6d4 65%, #0284c7 100%);
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 0 10px #06b6d4;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+#exp-ultrasonic-sensor-section .deck-group input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+#exp-ultrasonic-sensor-section .pill-presets-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+#exp-ultrasonic-sensor-section .pill-btn {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#exp-ultrasonic-sensor-section .pill-btn:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.5);
+  color: #ffffff;
+}
+
+#exp-ultrasonic-sensor-section .pill-btn.active-pill {
+  background: rgba(6, 182, 212, 0.25);
+  border-color: #06b6d4;
+  color: #38bdf8;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+}
+
+#exp-ultrasonic-sensor-section .btn-toggle-source {
+  width: 100%;
+  height: 34px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  background: rgba(16, 231, 168, 0.12);
+  border: 1px solid #10e7a8;
+  color: #10e7a8;
+  box-shadow: 0 0 10px rgba(16, 231, 168, 0.25);
+  font-family: 'JetBrains Mono', monospace;
+  transition: all 0.2s ease;
+}
+
+#exp-ultrasonic-sensor-section .btn-toggle-source:hover {
+  background: rgba(16, 231, 168, 0.2);
+}
+
+#exp-ultrasonic-sensor-section .btn-align-fringe {
+  width: 100%;
+  height: 38px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, #06b6d4, #0369a1);
+  border: 1px solid rgba(6, 182, 212, 0.5);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.2s ease;
+}
+
+#exp-ultrasonic-sensor-section .btn-align-fringe:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(6, 182, 212, 0.5);
+}
+
+#exp-ultrasonic-sensor-section .btn-align-fringe svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* 10. IN-APP TABBED MANUAL */
+#exp-ultrasonic-sensor-section .udm-manual-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-tabs-bar {
+  display: flex;
+  gap: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-tab-btn {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-tab-btn.active {
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.15);
+  box-shadow: inset 0 -2px 0 #06b6d4;
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-content-wrapper {
+  padding: 18px 4px 10px;
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-panel {
+  display: block;
+  line-height: 1.65;
+  font-size: 13.5px;
+  color: #cbd5e1;
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-panel.hidden {
+  display: none !important;
+}
+
+#exp-ultrasonic-sensor-section .udm-sec-heading {
+  font-family: 'Space Grotesk', Outfit, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 14px 0 8px;
+}
+
+#exp-ultrasonic-sensor-section .udm-formula-callout {
+  background: rgba(15, 23, 42, 0.8);
+  border-left: 3px solid #06b6d4;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 16px;
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-list,
+#exp-ultrasonic-sensor-section .udm-ordered-list {
+  padding-left: 22px;
+  margin: 8px 0;
+}
+
+#exp-ultrasonic-sensor-section .udm-manual-list li,
+#exp-ultrasonic-sensor-section .udm-ordered-list li {
+  margin-bottom: 6px;
+}
+
+#exp-ultrasonic-sensor-section .udm-formula-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+#exp-ultrasonic-sensor-section .udm-f-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+#exp-ultrasonic-sensor-section .udm-f-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#exp-ultrasonic-sensor-section .udm-f-math {
+  font-size: 14px;
+  margin: 8px 0;
+  color: #f8fafc;
+}
+
+#exp-ultrasonic-sensor-section .udm-f-desc {
+  font-size: 11.5px;
+  color: #94a3b8;
+}
+
+#exp-ultrasonic-sensor-section .udm-viva-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+
+#exp-ultrasonic-sensor-section .udm-viva-item {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+#exp-ultrasonic-sensor-section .wf-viva-q {
+  font-weight: 700;
+  color: #38bdf8;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+#exp-ultrasonic-sensor-section .wf-viva-a {
+  color: #cbd5e1;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+/* 6. UDM FULL-WIDTH CHALLENGES SECTION */
+#exp-ultrasonic-sensor-section .udm-challenges-card {
+  width: 100% !important;
+  margin-top: 10px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  box-sizing: border-box;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenges-card .sub-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#exp-ultrasonic-sensor-section .challenge-metrics-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#exp-ultrasonic-sensor-section .metric-badge {
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: #38bdf8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+#exp-ultrasonic-sensor-section .metric-xp {
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  color: #a78bfa;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenges-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item:hover {
+  background: rgba(30, 41, 59, 0.7);
+  border-color: rgba(6, 182, 212, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item.completed {
+  border-color: rgba(34, 197, 94, 0.4);
+  background: rgba(15, 23, 42, 0.75);
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item.completed::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: #22c55e;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item .ch-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item.completed .ch-icon-box {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.35);
+  color: #22c55e;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item .ch-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item .ch-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item .ch-title-row strong {
+  font-size: 13.5px;
+  color: #f1f5f9;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item .challenge-status-tag {
+  font-size: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item.completed .challenge-status-tag {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+  font-weight: 700;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item p {
+  margin: 0;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.45;
+}
+
+#exp-ultrasonic-sensor-section .udm-challenge-item .ch-xp-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #a78bfa;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  padding: 4px 8px;
+  border-radius: 6px;
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   PHOTOREALISTIC 3D HARDWARE, TACTILE CONCAVE CONTROLS & METALLIC CONSOLE (PIC 2)
+   ========================================================================== */
+
+/* 1. Brushed Anodized Console Panels */
+#exp-ultrasonic-sensor-section .workstation-header-card,
+#exp-ultrasonic-sensor-section .workstation-sub-card,
+#exp-ultrasonic-sensor-section .udm-deck-card,
+#exp-ultrasonic-sensor-section .udm-viewports-card,
+#exp-ultrasonic-sensor-section .udm-canvas-box,
+#exp-ultrasonic-sensor-section .udm-graph-card,
+#exp-ultrasonic-sensor-section .udm-result-card,
+#exp-ultrasonic-sensor-section .udm-logbook-card,
+#exp-ultrasonic-sensor-section .udm-challenges-card {
+  background: linear-gradient(180deg, #101726 0%, #0a0f1a 100%) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 10px 25px rgba(0, 0, 0, 0.65) !important;
+  border: 1px solid #1e2d45 !important;
+  border-radius: 14px !important;
+}
+
+#exp-ultrasonic-sensor-section .udm-deck-grid .deck-group {
+  background: rgba(10, 15, 26, 0.75) !important;
+  border: 1px solid #1a283e !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.04), 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 10px !important;
+}
+
+/* 2. Tactile Concave Recessed Preset & Action Buttons */
+#exp-ultrasonic-sensor-section .pill-btn,
+#exp-ultrasonic-sensor-section .btn-step,
+#exp-ultrasonic-sensor-section .btn-align-fringe,
+#exp-ultrasonic-sensor-section .btn-toggle-source,
+#exp-ultrasonic-sensor-section .btn-ctrl-secondary {
+  background: radial-gradient(circle at 50% 50%, #090d16 0%, #141d2e 75%, #1c273d 100%) !important;
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.85), inset 0 -1px 2px rgba(255, 255, 255, 0.06), 0 1px 1px rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid #25354d !important;
+  border-radius: 8px !important;
+  color: #94a3b8 !important;
+  font-family: 'JetBrains Mono', 'Orbitron', monospace !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#exp-ultrasonic-sensor-section .pill-btn:hover,
+#exp-ultrasonic-sensor-section .btn-step:hover,
+#exp-ultrasonic-sensor-section .btn-align-fringe:hover,
+#exp-ultrasonic-sensor-section .btn-toggle-source:hover,
+#exp-ultrasonic-sensor-section .btn-ctrl-secondary:hover {
+  filter: brightness(1.15) !important;
+  border-color: #3b5070 !important;
+  color: #e2e8f0 !important;
+}
+
+#exp-ultrasonic-sensor-section .pill-btn:active,
+#exp-ultrasonic-sensor-section .btn-step:active,
+#exp-ultrasonic-sensor-section .btn-align-fringe:active {
+  transform: translateY(1px) !important;
+}
+
+/* Active Luminous Inner Border Glow (Cyan) */
+#exp-ultrasonic-sensor-section .pill-btn.active-pill,
+#exp-ultrasonic-sensor-section .pill-btn.active,
+#exp-ultrasonic-sensor-section .btn-toggle-source.active {
+  background: radial-gradient(circle at 50% 50%, #061528 0%, #0b223d 75%, #123358 100%) !important;
+  box-shadow: inset 0 3px 8px rgba(0,0,0,0.9), inset 0 0 12px rgba(0, 240, 255, 0.28), 0 0 8px rgba(0, 240, 255, 0.2) !important;
+  border-color: rgba(0, 240, 255, 0.6) !important;
+  color: #00f0ff !important;
+}
+
+/* 3. Grooved Metallic Sliders & Knurled Cylindrical Thumbs */
+#exp-ultrasonic-sensor-section input[type="range"] {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 100% !important;
+  height: 8px !important;
+  background: #05080f !important;
+  box-shadow: inset 0 3px 6px rgba(0,0,0,0.95) !important;
+  border: 1px solid #1c293d !important;
+  border-radius: 6px !important;
+  outline: none !important;
+  cursor: pointer !important;
+}
+
+#exp-ultrasonic-sensor-section input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #b0bfd4 45%, #4a596e 85%, #1e2631 100%) !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.85) !important;
+  cursor: pointer !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+#exp-ultrasonic-sensor-section input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.12) !important;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5), 0 3px 6px rgba(0,0,0,0.9) !important;
+}
+
+#exp-ultrasonic-sensor-section input[type="range"]::-moz-range-thumb {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #b0bfd4 45%, #4a596e 85%, #1e2631 100%) !important;
+  border: 2px solid #cbd5e1 !important;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.85) !important;
+  cursor: pointer !important;
+}
+
+/* 4. Middle 5 Metric Cards (Digital LCD Pill Cutouts) */
+#exp-ultrasonic-sensor-section .udm-telemetry-item {
+  background: #080d17 !important;
+  border: 1px solid #1a283e !important;
+  border-radius: 10px !important;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.8) !important;
+  padding: 10px 14px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#exp-ultrasonic-sensor-section .udm-t-label {
+  color: #64748b !important;
+  font-family: 'Outfit', 'Space Grotesk', sans-serif !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 4px !important;
+}
+
+#exp-ultrasonic-sensor-section .udm-t-val {
+  background: #060a12 !important;
+  border: 1px solid #162840 !important;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.9) !important;
+  padding: 4px 10px !important;
+  border-radius: 5px !important;
+  font-family: 'JetBrains Mono', 'Orbitron', monospace !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #00f0ff !important;
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.5) !important;
+  letter-spacing: 0.5px !important;
+  display: inline-block !important;
+  width: fit-content !important;
+}
+
+/* 5. Full-Width Bottom Record Observation Button 3D Bevel */
+#exp-ultrasonic-sensor-section .btn-record-gradient {
+  box-shadow: inset 0 2px 5px rgba(255,255,255,0.35), inset 0 -3px 6px rgba(0,0,0,0.4), 0 4px 18px rgba(255, 65, 80, 0.35) !important;
+}
+
+/* 6. Oscilloscope CRT Bezel Effect */
+#exp-ultrasonic-sensor-section .udm-canvas-box:nth-child(2) {
+  position: relative !important;
+  box-shadow: inset 0 6px 20px rgba(0,0,0,0.95), 0 6px 18px rgba(0,0,0,0.5) !important;
+}
+
+/* ==========================================================================
+   LIGHT MODE THEME OVERRIDES FOR ULTRASONIC SENSOR (UDM)
+   ========================================================================== */
+body.light-mode #exp-ultrasonic-sensor-section,
+[data-theme="light"] #exp-ultrasonic-sensor-section {
+  color: #0f172a;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .workstation-header-card,
+[data-theme="light"] #exp-ultrasonic-sensor-section .workstation-header-card,
+body.light-mode #exp-ultrasonic-sensor-section .workstation-sub-card,
+[data-theme="light"] #exp-ultrasonic-sensor-section .workstation-sub-card,
+body.light-mode #exp-ultrasonic-sensor-section .workstation-card,
+[data-theme="light"] #exp-ultrasonic-sensor-section .workstation-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 20px rgba(148, 163, 184, 0.12) !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .workstation-title,
+[data-theme="light"] #exp-ultrasonic-sensor-section .workstation-title,
+body.light-mode #exp-ultrasonic-sensor-section .sub-card-header h3,
+[data-theme="light"] #exp-ultrasonic-sensor-section .sub-card-header h3,
+body.light-mode #exp-ultrasonic-sensor-section .sub-card-header h4,
+[data-theme="light"] #exp-ultrasonic-sensor-section .sub-card-header h4,
+body.light-mode #exp-ultrasonic-sensor-section .workstation-title-group h3,
+[data-theme="light"] #exp-ultrasonic-sensor-section .workstation-title-group h3 {
+  color: #0f172a !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .workstation-subtitle,
+[data-theme="light"] #exp-ultrasonic-sensor-section .workstation-subtitle,
+body.light-mode #exp-ultrasonic-sensor-section .workstation-title-group p,
+[data-theme="light"] #exp-ultrasonic-sensor-section .workstation-title-group p,
+body.light-mode #exp-ultrasonic-sensor-section .deck-hint,
+[data-theme="light"] #exp-ultrasonic-sensor-section .deck-hint,
+body.light-mode #exp-ultrasonic-sensor-section .udm-result-note,
+[data-theme="light"] #exp-ultrasonic-sensor-section .udm-result-note {
+  color: #64748b !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .udm-canvas-box,
+[data-theme="light"] #exp-ultrasonic-sensor-section .udm-canvas-box {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .canvas-header-tag,
+[data-theme="light"] #exp-ultrasonic-sensor-section .canvas-header-tag {
+  background: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .deck-group,
+[data-theme="light"] #exp-ultrasonic-sensor-section .deck-group {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(148, 163, 184, 0.08) !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .group-label-row label,
+[data-theme="light"] #exp-ultrasonic-sensor-section .group-label-row label {
+  color: #0f172a !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .val-pill,
+[data-theme="light"] #exp-ultrasonic-sensor-section .val-pill {
+  background: #e0f2fe !important;
+  border-color: #7dd3fc !important;
+  color: #0369a1 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .pill-btn,
+[data-theme="light"] #exp-ultrasonic-sensor-section .pill-btn {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .pill-btn:hover,
+[data-theme="light"] #exp-ultrasonic-sensor-section .pill-btn:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .pill-btn.active-pill,
+[data-theme="light"] #exp-ultrasonic-sensor-section .pill-btn.active-pill {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0369a1 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .btn-ctrl-secondary,
+[data-theme="light"] #exp-ultrasonic-sensor-section .btn-ctrl-secondary {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .udm-telemetry-item,
+[data-theme="light"] #exp-ultrasonic-sensor-section .udm-telemetry-item {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .udm-t-label,
+[data-theme="light"] #exp-ultrasonic-sensor-section .udm-t-label {
+  color: #64748b !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .udm-t-val,
+[data-theme="light"] #exp-ultrasonic-sensor-section .udm-t-val {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0284c7 !important;
+  text-shadow: none !important;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05) !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .udm-stat-row,
+[data-theme="light"] #exp-ultrasonic-sensor-section .udm-stat-row {
+  color: #334155 !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .udm-stat-row strong,
+[data-theme="light"] #exp-ultrasonic-sensor-section .udm-stat-row strong {
+  color: #0f172a !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .udm-stat-row .val-accent,
+[data-theme="light"] #exp-ultrasonic-sensor-section .udm-stat-row .val-accent {
+  color: #0284c7 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .of-stats-summary-bar,
+[data-theme="light"] #exp-ultrasonic-sensor-section .of-stats-summary-bar {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .of-stat-item,
+[data-theme="light"] #exp-ultrasonic-sensor-section .of-stat-item {
+  border-right-color: #e2e8f0 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .of-stat-lbl,
+[data-theme="light"] #exp-ultrasonic-sensor-section .of-stat-lbl {
+  color: #64748b !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .obs-table,
+[data-theme="light"] #exp-ultrasonic-sensor-section .obs-table {
+  color: #0f172a !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .obs-table th,
+[data-theme="light"] #exp-ultrasonic-sensor-section .obs-table th {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  border-bottom-color: #0284c7 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .obs-table td,
+[data-theme="light"] #exp-ultrasonic-sensor-section .obs-table td {
+  border-bottom-color: #e2e8f0 !important;
+  color: #1e293b !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .obs-table tbody tr:hover,
+[data-theme="light"] #exp-ultrasonic-sensor-section .obs-table tbody tr:hover {
+  background: rgba(2, 132, 199, 0.05) !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .challenge-item,
+[data-theme="light"] #exp-ultrasonic-sensor-section .challenge-item {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .challenge-title-row h4,
+[data-theme="light"] #exp-ultrasonic-sensor-section .challenge-title-row h4 {
+  color: #0f172a !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .challenge-info p,
+[data-theme="light"] #exp-ultrasonic-sensor-section .challenge-info p {
+  color: #64748b !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .btn-obs-action,
+[data-theme="light"] #exp-ultrasonic-sensor-section .btn-obs-action {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .btn-obs-action:hover,
+[data-theme="light"] #exp-ultrasonic-sensor-section .btn-obs-action:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+

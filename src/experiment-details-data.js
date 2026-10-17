@@ -2771,6 +2771,759 @@ accentColor: "#00f0ff",
         </ul>
       </div>
     `
+  },
+
+  "laser-divergence": {
+    id: "laser-divergence",
+    title: "Determination of Divergence of a Laser Beam",
+    category: "Optics & Lasers",
+    shortDescription: "Study the divergence of a monochromatic laser beam, measure transverse spot diameters across propagation distances on an optical bench rail, and evaluate divergence half-angle θ and total cone angle Θ.",
+    difficulty: "Undergraduate Optical Physics Practical",
+    duration: "45 Minutes",
+    engine: "Gaussian Beam Wave Optics Solver",
+    accentColor: "#38bdf8",
+
+    referenceBooks: [
+      {
+        title: "Optics (5th Edition)",
+        source: "Eugene Hecht",
+        url: "https://www.pearson.com",
+        description: "Standard university textbook on Gaussian laser beams, coherence, and diffraction."
+      },
+      {
+        title: "Fundamentals of Photonics",
+        source: "Bahaa E. A. Saleh, Malvin Carl Teich",
+        url: "https://www.wiley.com",
+        description: "Comprehensive reference covering TEM00 Gaussian beam propagation, Rayleigh range, and waist parameters."
+      },
+      {
+        title: "Laser Fundamentals & Applications",
+        source: "NPTEL / IIT",
+        url: "https://nptel.ac.in",
+        description: "Detailed video lectures and notes on laser beam properties, spatial coherence, and divergence measurement."
+      }
+    ],
+
+    aim: `<p class="manual-aim-text">To study the divergence of a laser beam and determine how its transverse beam diameter and radius change with propagation distance along a precision optical bench, and calculate the divergence half-angle ($\\theta$) and full divergence angle ($\\Theta$).</p>`,
+
+    apparatus: `<p class="manual-aim-text">He-Ne / Semiconductor Laser source (tunable lines: $632.8\\text{ nm}$ He-Ne red, $532\\text{ nm}$ green, $402\\text{ nm}$ violet, $660\\text{ nm}$ diode red), precision dual-rail optical bench with calibrated metric scale ($0.20\\text{ m} - 2.50\\text{ m}$), sliding detector screen mount with graduated concentric millimeter reticle, digital beam profiler / caliper HUD readout, and linear regression observation workstation.</p>`,
+
+    theory: `
+      <div class="theory-block">
+        <h3>1. Nature of Laser Radiation &amp; Beam Divergence</h3>
+        <p>A laser generates highly monochromatic, spatially coherent light. Although often idealized as a perfectly parallel bundle of rays, real laser beams unavoidably spread outward as they propagate through space. This spatial broadening is called <strong>beam divergence</strong>, and it is caused by fundamental optical wave diffraction arising from the finite lateral aperture of the laser resonator.</p>
+        <p>In the fundamental transverse electromagnetic mode ($\\text{TEM}_{00}$), the cross-sectional intensity profile follows a radial bell-shaped Gaussian distribution:</p>
+        <div class="math-callout">I(r, z) = I_0(z) \\exp\\left(-\\frac{2r^2}{w(z)^2}\\right)</div>
+        <p>where $r$ is the radial distance from the central optical propagation axis and $w(z)$ is the <strong>$1/e^2$ beam radius</strong>—the distance at which optical intensity drops to $1/e^2 \\approx 13.53\\%$ of its on-axis peak value.</p>
+      </div>
+
+      <div class="theory-block">
+        <h3>2. Gaussian Beam Waist &amp; Rayleigh Range</h3>
+        <p>The position along the beam where the cross-sectional radius reaches its minimum value $w_0$ is called the <strong>beam waist</strong> (located at $z = 0$, near the laser output coupler). As the beam travels along axial coordinate $z$, the beam radius expands hyperbolically according to:</p>
+        <div class="math-callout formula-highlight">w(z) = w_0 \\sqrt{1 + \\left(\\frac{z}{z_R}\\right)^2}</div>
+        <p>where $z_R$ is the <strong>Rayleigh range</strong> (or Rayleigh length), defined as:</p>
+        <div class="math-callout formula-highlight">z_R = \\frac{\\pi w_0^2}{\\lambda}</div>
+        <p>The Rayleigh range represents the collimated depth of focus. Over the distance from $z = 0$ to $z = z_R$, the beam radius expands by a factor of $\\sqrt{2}$ ($w(z_R) = \\sqrt{2} w_0$) and the beam cross-sectional area doubles.</p>
+      </div>
+
+      <div class="theory-block">
+        <h3>3. Far-Field Divergence &amp; Two-Point Empirical Formula</h3>
+        <p>At distances far beyond the Rayleigh range ($z \\gg z_R$, known as the far field), the hyperbola asymptotes to a cone with linear envelope. The asymptotic <strong>divergence half-angle</strong> $\\theta$ (the angle between the central optical axis and the $1/e^2$ contour) is given by:</p>
+        <div class="math-callout formula-highlight">\\theta = \\lim_{z \\to \\infty} \\frac{w(z)}{z} = \\frac{\\lambda}{\\pi w_0}</div>
+        <p>The total <strong>full-angle divergence</strong> $\\Theta$ of the radiation cone is twice the half-angle:</p>
+        <div class="math-callout">\\Theta = 2\\theta = \\frac{2\\lambda}{\\pi w_0}</div>
+        <p>In the laboratory, measuring beam spot diameters $W_1$ and $W_2$ (or spot radii $w_1$ and $w_2$) at two distinct screen positions $z_1$ and $z_2$ allows the divergence half-angle to be determined empirically using the small-angle approximation:</p>
+        <div class="math-callout formula-highlight">\\theta \\approx \\frac{w_2 - w_1}{z_2 - z_1} = \\frac{W_2 - W_1}{2(z_2 - z_1)}</div>
+        <p>This confirms that beam divergence is directly proportional to emission wavelength ($\\theta \\propto \\lambda$) and inversely proportional to initial beam waist radius ($\\theta \\propto 1/w_0$).</p>
+      </div>
+    `,
+
+    howToPerform: `
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <div class="step-info">
+            <h4>Power On the Laser Emitter</h4>
+            <p>Click the <strong>Laser ON</strong> toggle switch on the Control Deck. Verify that the pilot LED illuminates and the coherent laser beam emits across the calibrated optical rail.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <div class="step-info">
+            <h4>Select Beam Waist &amp; Wavelength</h4>
+            <p>Select the standard initial beam waist radius ($w_0 = 0.50\\text{ mm}$) and select the He-Ne Red laser line ($\\lambda = 632.8\\text{ nm}$). Notice how the Rayleigh range $z_R = 1.241\\text{ m}$ is computed automatically.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <div class="step-info">
+            <h4>Position Detector at Baseline Station ($z_1$)</h4>
+            <p>Set the screen distance slider to $L = 0.50\\text{ m}$. Click <strong>Calibrate Baseline</strong> to establish the initial spot diameter $W_1 = 1.08\\text{ mm}$ ($w_1 = 0.54\\text{ mm}$).</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <div class="step-info">
+            <h4>Record Baseline Reading</h4>
+            <p>Inspect the circular laser spot on the digital reticle HUD and click <strong>Record Observation</strong> to log Trial #1 into the observation table.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">5</div>
+          <div class="step-info">
+            <h4>Translate Detector along Rail &amp; Log Stations</h4>
+            <p>Move the screen distance progressively to $1.00\\text{ m}, 1.50\\text{ m}, 2.00\\text{ m},$ and $2.50\\text{ m}$. Click <strong>Record Observation</strong> at each station to measure expanding spot diameter $W(z)$.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">6</div>
+          <div class="step-info">
+            <h4>Inspect Linear Fit &amp; Export Lab Report</h4>
+            <p>Review the Propagation Divergence Graph to observe the asymptotic linear slope $dw/dL$. Click <strong>Export PDF Report</strong> to download your formal laboratory datasheet.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    procedure: `
+      <div class="procedure-block">
+        <h4>Methodical Laboratory Procedure</h4>
+        <ol class="manual-ordered-list">
+          <li>Mount the laser source and detector screen coaxially onto the precision optical bench rail.</li>
+          <li>Power ON the laser source and verify alignment with the detector target center.</li>
+          <li>Set the beam waist radius preset to $w_0 = 0.50\\text{ mm}$ and wavelength to $\\lambda = 632.8\\text{ nm}$.</li>
+          <li>Position the detector screen at baseline distance $z_1 = 0.50\\text{ m}$ from the laser aperture.</li>
+          <li>Read the horizontal and vertical beam spot diameters using the calibrated millimeter reticle caliper and record the mean diameter $W_1$.</li>
+          <li>Translate the detector carrier to successive distances: $z_2 = 1.00\\text{ m}, z_3 = 1.50\\text{ m}, z_4 = 2.00\\text{ m},$ and $z_5 = 2.50\\text{ m}$.</li>
+          <li>At each station, measure the corresponding spot diameter $W(z)$ and spot radius $w(z) = W(z)/2$.</li>
+          <li>Compute the incremental difference $\\Delta z = z_i - z_1$ and $\\Delta W = W_i - W_1$, then evaluate the divergence half-angle $\\theta = \\frac{W_i - W_1}{2(z_i - z_1)}$.</li>
+          <li>Plot beam radius $w(z)$ vs propagation distance $z$ and fit a straight line to determine the experimental slope $dw/dz = \\theta$.</li>
+          <li>Switch wavelengths to $532\\text{ nm}$ (Green) and repeat measurements to demonstrate that divergence decreases with shorter wavelengths.</li>
+        </ol>
+      </div>
+    `,
+
+    formula: `
+      <div class="manual-theory-block">
+        <h4>Key Analytical Relationships</h4>
+        <div class="formula-card">
+          <p><strong>Gaussian Beam Radius Profile:</strong></p>
+          $$w(z) = w_0 \\sqrt{1 + \\left(\\frac{z}{z_R}\\right)^2}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Rayleigh Range (Collimation Length):</strong></p>
+          $$z_R = \\frac{\\pi w_0^2}{\\lambda}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Far-Field Divergence Half-Angle (Theoretical):</strong></p>
+          $$\\theta = \\frac{\\lambda}{\\pi w_0} \\quad \\text{[radians]}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Total Full Divergence Cone Angle:</strong></p>
+          $$\\Theta = 2\\theta = \\frac{2\\lambda}{\\pi w_0}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Empirical Two-Point Divergence Formula:</strong></p>
+          $$\\theta \\approx \\frac{w_2 - w_1}{z_2 - z_1} = \\frac{W_2 - W_1}{2(z_2 - z_1)}$$
+        </div>
+      </div>
+    `,
+
+    observation: `
+      <div class="observation-block">
+        <h4>Sample Laboratory Observations (He-Ne Red Laser: $\\lambda = 632.8\\text{ nm}$, $w_0 = 0.50\\text{ mm}$, $z_R = 1.241\\text{ m}$)</h4>
+        <table class="manual-table">
+          <thead>
+            <tr>
+              <th>Trial</th>
+              <th>Distance $z$ (m)</th>
+              <th>Spot Radius $w$ (mm)</th>
+              <th>Spot Diameter $W$ (mm)</th>
+              <th>$\\Delta z$ (m)</th>
+              <th>$\\Delta W$ (mm)</th>
+              <th>Half-Angle $\\theta$ (mrad)</th>
+              <th>Full-Angle $\\Theta$ (mrad)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>#1 (Base)</td><td>0.50</td><td>0.54</td><td>1.08</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+            <tr><td>#2</td><td>1.00</td><td>0.64</td><td>1.28</td><td>0.50</td><td>0.20</td><td>0.200</td><td>0.400</td></tr>
+            <tr><td>#3</td><td>1.50</td><td>0.78</td><td>1.56</td><td>1.00</td><td>0.48</td><td>0.240</td><td>0.480</td></tr>
+            <tr><td>#4</td><td>2.00</td><td>0.95</td><td>1.90</td><td>1.50</td><td>0.82</td><td>0.273</td><td>0.547</td></tr>
+            <tr><td>#5</td><td>2.50</td><td>1.13</td><td>2.26</td><td>2.00</td><td>1.18</td><td>0.295</td><td>0.590</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `,
+
+    result: `
+      <div class="result-box">
+        <h4>Experimental Conclusions:</h4>
+        <ol class="manual-ordered-list">
+          <li>The transverse spot size of the laser beam increases with propagation distance $z$, confirming that real laser beams expand due to fundamental wave diffraction.</li>
+          <li>In the far field ($z > z_R$), the beam envelope follows a linear asymptotic expansion whose slope yields an experimental divergence half-angle $\\theta = 0.403\\text{ mrad}$ (full divergence angle $\\Theta = 0.806\\text{ mrad} = 0.0462^\\circ$).</li>
+          <li>Experimental measurements confirm that beam divergence is directly proportional to emission wavelength ($\\theta \\propto \\lambda$) and inversely proportional to initial beam waist radius ($\\theta \\propto 1/w_0$).</li>
+        </ol>
+      </div>
+    `,
+
+    precautions: `
+      <div class="precautions-block">
+        <ul class="manual-list">
+          <li><strong>Laser Eye Safety:</strong> Never look directly into the primary laser beam or align your eye along the optical bench axis. Wear protective laser safety goggles appropriate for the active emission wavelength.</li>
+          <li><strong>Specular Reflections:</strong> Remove reflective jewelry, watches, or metallic tools from the optical bench area to prevent stray specular reflections.</li>
+          <li><strong>Coaxial Alignment:</strong> Ensure the laser emitter and detector carriage are collinear with the bench rail to avoid asymmetric beam spot distortion.</li>
+          <li><strong>Consistent Caliper Threshold:</strong> Always measure the spot diameter at the standardized $1/e^2$ irradiance contour boundary on the reticle caliper.</li>
+        </ul>
+      </div>
+    `,
+
+    vivaQuestions: [
+      {
+        question: "What is beam divergence in lasers?",
+        answer: "Beam divergence is an angular measure of the increase in beam diameter or radius with distance from the optical aperture or beam waist as the beam propagates."
+      },
+      {
+        question: "Why does a laser beam diverge even though it is highly collimated?",
+        answer: "Due to fundamental wave diffraction (Heisenberg uncertainty for photons). An aperture of finite lateral size necessarily introduces an angular diffraction spread of approximately lambda / d."
+      },
+      {
+        question: "What is Rayleigh range (zR)?",
+        answer: "The axial distance along the propagation direction from the beam waist where the beam cross-sectional area doubles and beam radius increases by a factor of sqrt(2) (zR = pi * w0^2 / lambda)."
+      },
+      {
+        question: "How does laser wavelength affect divergence?",
+        answer: "Divergence is directly proportional to wavelength (theta = lambda / (pi * w0)). Shorter wavelengths (e.g. violet 402 nm or green 532 nm) produce smaller divergence than longer wavelengths (e.g. He-Ne red 632.8 nm) for the same beam waist."
+      }
+    ]
+  },
+
+  "ultrasonic-sensor": {
+    id: "ultrasonic-sensor",
+    title: "Ultrasonic Sensor (UDM)",
+    category: "Sensors, Devices & Nano",
+    shortDescription: "Explore how an ultrasonic sensor measures distance using reflected sound waves and investigate the relationship between distance, echo time, and the speed of sound.",
+    difficulty: "Undergraduate Physics Practical",
+    duration: "35 Minutes",
+    engine: "Acoustic Transceiver Time-of-Flight & Linear Calibration Engine",
+    accentColor: "#06b6d4",
+
+    referenceBooks: [
+      {
+        title: "Speed of Sound & Acoustic Wave Propagation",
+        source: "OpenStax University Physics Vol 1",
+        url: "https://openstax.org/books/university-physics-volume-1/pages/17-2-speed-of-sound",
+        description: "Study adiabatic acoustic compression waves in air, thermodynamic temperature dependence, and pulse-echo transit times."
+      },
+      {
+        title: "Piezoelectric Ultrasonic Transducers & Echo Location",
+        source: "HyperPhysics Acoustics",
+        url: "http://hyperphysics.phy-astr.gsu.edu/hbase/Sound/ultra.html",
+        description: "Review piezoelectric resonance, 40 kHz acoustic beam patterns, specular reflection, and attenuation in ambient media."
+      },
+      {
+        title: "HC-SR04 Transceiver Timing & Calibration Characteristics",
+        source: "All About Circuits",
+        url: "https://www.allaboutcircuits.com/projects/ultrasonic-distance-sensor-hc-sr04/",
+        description: "Detailed analysis of 10 µs trigger pulses, 8-cycle acoustic bursts, comparator thresholds, and transducer blind zone limits."
+      }
+    ],
+
+    aim: `<p class="manual-aim-text">To study the working principle of an ultrasonic distance sensor and investigate how the time taken by an ultrasonic pulse to return as an echo can be used to calculate distance.</p>`,
+
+    apparatus: `<p class="manual-aim-text">40 kHz piezoelectric ultrasonic transceiver module (integrated transmitter &amp; receiver pair), precision metric acoustic bench rail (5.0 cm – 300.0 cm), flat perpendicular acoustic reflector target plate, digital environmental temperature controller (-10.0°C to +50.0°C), dual-trace digital storage oscilloscope HUD (CH1: 10 µs Trigger pulse, CH2: Received echo packet), real-time microsecond telemetry HUD, and least-squares linear regression calibration workstation.</p>`,
+
+    theory: `
+      <div class="manual-theory-block">
+        <h4>1. Ultrasonic Waves &amp; Piezoelectric Transducers</h4>
+        <p>An ultrasonic sensor operates by transmitting high-frequency longitudinal acoustic pressure waves that exceed the normal range of human hearing ($f > 20\\text{ kHz}$). The standard laboratory transducer resonates at $f = 40.0\\text{ kHz}$, utilizing a piezoelectric ceramic disc that mechanically oscillates when excited by an alternating electric field, emitting a directional acoustic wave packet.</p>
+
+        <h4>2. Pulse-Echo Time-of-Flight (ToF) Kinematics</h4>
+        <p>The distance between the sensor and the reflecting target is determined by measuring the round-trip elapsed time $t$ between the emission of the acoustic burst and the detection of the reflected echo:</p>
+        <div class="formula-card">$$d = \\frac{v \\times t}{2}$$</div>
+        <p>Where:</p>
+        <ul class="manual-list">
+          <li>$d$ = one-way distance between sensor face and target reflector plate [m or cm].</li>
+          <li>$v$ = acoustic velocity (speed of sound) in the ambient medium [m/s].</li>
+          <li>$t$ = total elapsed round-trip time-of-flight from pulse burst to echo return [s or µs].</li>
+        </ul>
+        <div class="callout-box">
+          <strong>Why Divide by Two:</strong> The acoustic pulse travels from the transmitter to the target barrier (distance $d$) and reflects back from the target to the receiver transducer (distance $d$). The total trajectory traversed by the acoustic wave is $2d$. Dividing the product $v \\times t$ by two yields the true one-way standoff distance.
+        </div>
+
+        <h4>3. Temperature Dependence of Sound Velocity</h4>
+        <p>Sound is a mechanical pressure wave whose propagation velocity in air depends primarily on absolute thermodynamic temperature $T$. Treating air as an ideal gas with adiabatic index $\\gamma = 1.40$ and average molar mass $M = 0.02897\\text{ kg/mol}$:</p>
+        <div class="formula-card">$$v(T) = 331.3 \\sqrt{1 + \\frac{T}{273.15}} \\approx 331.3 + 0.606 \\cdot T \\quad [\\text{m/s}]$$</div>
+        <p>At standard room temperature ($T = 20.0^\\circ\\text{C}$), the speed of sound is $v \\approx 343.4\\text{ m/s}$ (corresponding to an acoustic round-trip delay of approximately $29.12\\;\\mu\\text{s/cm}$). An uncompensated sensor calibrated at $0^\\circ\\text{C}$ will underestimate distance at higher temperatures because the echo returns earlier than expected.</p>
+
+        <h4>4. Transducer Blind Zone &amp; Specular Reflection</h4>
+        <p>Distances below $d_{\\text{blind}} \\approx 2\\text{ to }4\\text{ cm}$ cannot be resolved accurately because the piezoelectric crystal continues to mechanically ring immediately after firing, preventing the receiver comparator from distinguishing close-in return echoes. Furthermore, the reflecting target must remain perpendicular to the acoustic axis; angular tilt causes specular reflection deflection away from the receiver.</p>
+
+        <h4>5. Linear Sensor Calibration Model</h4>
+        <p>Electronic switching delays, comparator response latencies, and physical transducer setback create a slight linear offset between the measured distance $d_{\\text{meas}}$ and the true reference distance $d_{\\text{ref}}$:</p>
+        <div class="formula-card">$$d_{\\text{meas}} = a \\cdot d_{\\text{ref}} + b$$</div>
+        <p>Where $a$ is the sensitivity slope (scaling gain factor; ideally $1.0000$) and $b$ is the zero-distance offset intercept [cm]. Calibrated distance is given by $d_{\\text{cal}} = \\frac{d_{\\text{meas}} - b}{a}$.</p>
+      </div>
+    `,
+
+    howToPerform: `
+      <div class="step-guide-grid">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <div class="step-info">
+            <h4>Inspect Transducer Bench &amp; HUD</h4>
+            <p>Familiarize yourself with the 40 kHz acoustic propagation bench, dual-trace oscilloscope (CH1: Trig, CH2: Echo), and real-time telemetry HUD.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <div class="step-info">
+            <h4>Set Reference Standoff Distance ($d_{\\text{ref}}$)</h4>
+            <p>Use the <strong>Target Distance</strong> slider or quick preset buttons (10, 30, 50, 100, 150, 200, 250 cm) to position the target plate on the calibrated acoustic rail.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <div class="step-info">
+            <h4>Configure Ambient Air Temperature ($T$)</h4>
+            <p>Adjust the temperature slider from $-10.0^\\circ\\text{C}$ to $+50.0^\\circ\\text{C}$ to examine how sound velocity $v(T)$ modulates acoustic transit time.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <div class="step-info">
+            <h4>Observe Dual-Trace Oscilloscope</h4>
+            <p>Trace the 10 µs trigger burst on CH1 and the echo return waveform on CH2. Note how the time delay $\\Delta t$ corresponds to round-trip travel.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">5</div>
+          <div class="step-info">
+            <h4>Record Calibration Observations</h4>
+            <p>Click <strong>Record Reading</strong> across multiple distances ($10\\text{ to }250\\text{ cm}$) to populate the distance calibration logbook.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">6</div>
+          <div class="step-info">
+            <h4>Evaluate Calibration Curve &amp; Export</h4>
+            <p>Analyze the calibration plot ($d_{\\text{meas}}$ vs $d_{\\text{ref}}$) to verify linearity, slope $a$, and offset $b$. Export your data as CSV or PDF.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    procedure: `
+      <div class="procedure-block">
+        <h4>Methodical Laboratory Procedure</h4>
+        <ol class="manual-ordered-list">
+          <li>Launch the <strong>Ultrasonic Sensor (UDM)</strong> simulator workstation.</li>
+          <li>Identify the acoustic propagation rail, the 40 kHz transceiver, the movable target reflector, the dual-trace digital oscilloscope, and the live telemetry HUD.</li>
+          <li>Set the ambient air temperature to standard room temperature $T = 20.0^\\circ\\text{C}$. Note the calculated speed of sound $v = 343.4\\text{ m/s}$.</li>
+          <li>Position the target reflector at the initial reference distance $d_{\\text{ref}} = 10.0\\text{ cm}$ using the slider or preset button.</li>
+          <li>Observe the transmitted wave packets (pink) propagating toward the reflector and the reflected echo waves (cyan) returning to the receiver.</li>
+          <li>Examine the oscilloscope trace: read the elapsed time-of-flight $t$ between the 10 µs trigger pulse on CH1 and the received echo edge on CH2.</li>
+          <li>Click <strong>Record Reading</strong> to log the reference distance $d_{\\text{ref}}$, echo time $t$, sound velocity $v$, and calculated distance $d_{\\text{meas}} = \\frac{v \\cdot t}{2}$.</li>
+          <li>Repeat the measurement across successive target distances: $30.0\\text{ cm}, 50.0\\text{ cm}, 100.0\\text{ cm}, 150.0\\text{ cm}, 200.0\\text{ cm},$ and $250.0\\text{ cm}$.</li>
+          <li>Inspect the <strong>Sensor Distance Calibration Curve</strong> ($d_{\\text{meas}}$ vs $d_{\\text{ref}}$) to deduce the least-squares sensitivity slope $a$ and zero offset $b$.</li>
+          <li>Vary ambient temperature to $0.0^\\circ\\text{C}$ and $40.0^\\circ\\text{C}$ at a fixed distance to study thermal velocity shift and error quantification.</li>
+        </ol>
+      </div>
+    `,
+
+    formula: `
+      <div class="manual-theory-block">
+        <h4>Key Governing Equations</h4>
+        <div class="formula-card">
+          <p><strong>Pulse-Echo Distance Equation:</strong></p>
+          $$d = \\frac{v \\times t}{2}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Temperature-Dependent Speed of Sound in Air:</strong></p>
+          $$v(T) = 331.3 \\sqrt{1 + \\frac{T}{273.15}} \\approx 331.3 + 0.606 \\times T \\quad [\\text{m/s}]$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Time-of-Flight Duration:</strong></p>
+          $$t = \\frac{2 \\times d}{v}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Linear Calibration Model:</strong></p>
+          $$d_{\\text{meas}} = a \\times d_{\\text{ref}} + b$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Percentage Measurement Error:</strong></p>
+          $$\\%\\text{Error} = \\left| \\frac{d_{\\text{meas}} - d_{\\text{ref}}}{d_{\\text{ref}}} \\right| \\times 100\\%$$
+        </div>
+      </div>
+    `,
+
+    observation: `
+      <div class="observation-block">
+        <h4>Sample Laboratory Observations ($T = 20.0^\\circ\\text{C}$, $v = 343.4\\text{ m/s}$)</h4>
+        <table class="manual-table">
+          <thead>
+            <tr>
+              <th>Reading #</th>
+              <th>Ref Distance $d_{\\text{ref}}$ (cm)</th>
+              <th>Echo Time $t$ (µs)</th>
+              <th>Sound Speed $v$ (m/s)</th>
+              <th>Measured Dist $d_{\\text{meas}}$ (cm)</th>
+              <th>Absolute Error $\\Delta d$ (cm)</th>
+              <th>Error (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>10.0</td><td>582.4</td><td>343.4</td><td>10.0</td><td>0.00</td><td>0.00%</td></tr>
+            <tr><td>2</td><td>30.0</td><td>1747.2</td><td>343.4</td><td>30.0</td><td>0.00</td><td>0.00%</td></tr>
+            <tr><td>3</td><td>50.0</td><td>2912.0</td><td>343.4</td><td>50.0</td><td>0.00</td><td>0.00%</td></tr>
+            <tr><td>4</td><td>100.0</td><td>5824.1</td><td>343.4</td><td>100.0</td><td>0.00</td><td>0.00%</td></tr>
+            <tr><td>5</td><td>150.0</td><td>8736.2</td><td>343.4</td><td>150.0</td><td>0.00</td><td>0.00%</td></tr>
+            <tr><td>6</td><td>200.0</td><td>11648.2</td><td>343.4</td><td>200.0</td><td>0.00</td><td>0.00%</td></tr>
+            <tr><td>7</td><td>250.0</td><td>14560.3</td><td>343.4</td><td>250.0</td><td>0.00</td><td>0.00%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `,
+
+    result: `
+      <div class="result-box">
+        <h4>Experimental Conclusions:</h4>
+        <ol class="manual-ordered-list">
+          <li>The measured round-trip echo time-of-flight $t$ varies directly and linearly with target standoff distance $d_{\\text{ref}}$, confirming the pulse-echo relation $d = \\frac{v \\times t}{2}$.</li>
+          <li>Linear regression calibration yields a sensitivity slope of $a \\approx 1.0000$ and zero-distance offset of $b \\approx 0.0\\text{ cm}$, proving high sensor linearity across the active $5.0\\text{ to }300.0\\text{ cm}$ range.</li>
+          <li>Sound velocity increases with ambient air temperature ($+0.606\\text{ m/s}$ per $+1^\\circ\\text{C}$), demonstrating that accurate acoustic distance measurement requires temperature compensation.</li>
+          <li>Target distances within the $2\\text{–}4\\text{ cm}$ transducer blind zone cannot be resolved due to transducer ringing, defining the physical near-field boundary of pulse-echo sensing.</li>
+        </ol>
+      </div>
+    `,
+
+    precautions: `
+      <div class="precautions-block">
+        <ul class="manual-list">
+          <li><strong>Target Perpendicularity:</strong> Ensure the reflector plate is aligned exactly perpendicular to the acoustic axis to avoid specular deflection away from the receiver.</li>
+          <li><strong>Blind Zone Avoidance:</strong> Never attempt measurements below $4.0\\text{ cm}$ to prevent false triggers from post-transmission transducer crystal ringing.</li>
+          <li><strong>Temperature Compensation:</strong> Record and update ambient temperature before each calibration trial to avoid systematic sound velocity estimation errors.</li>
+          <li><strong>Acoustic Reflection Surface:</strong> Use flat, rigid, non-porous reflector materials (such as acrylic or aluminum). Soft or porous surfaces absorb ultrasonic acoustic energy.</li>
+        </ul>
+      </div>
+    `,
+
+    vivaQuestions: [
+      {
+        question: "What is the fundamental formula used in ultrasonic distance measurement?",
+        answer: "d = (v * t) / 2, where v is the speed of sound in the medium and t is the total round-trip echo time-of-flight."
+      },
+      {
+        question: "Why is the echo transit time divided by 2?",
+        answer: "Because the emitted acoustic wave travels to the target and then reflects back to the sensor, traversing twice the one-way target distance (2d)."
+      },
+      {
+        question: "How does ambient air temperature affect ultrasonic distance measurement?",
+        answer: "Sound travels faster in warmer air (v ≈ 331.3 + 0.606 * T). An uncalibrated sensor assuming room temperature will underestimate distance at higher temperatures because the echo arrives earlier."
+      },
+      {
+        question: "What is the blind zone (or dead zone) of an ultrasonic sensor?",
+        answer: "The minimum distance (~2 to 4 cm) within which echoes return while the transmitter piezoelectric crystal is still mechanically ringing, preventing the receiver comparator from latching the echo."
+      },
+      {
+        question: "In the calibration equation d_meas = a * d_ref + b, what do a and b represent?",
+        answer: "Parameter a is the sensitivity scale factor (ideally 1.0000) and b is the zero-distance offset caused by comparator rise-time latency and acoustic center setback."
+      },
+      {
+        question: "Why is a 40 kHz frequency commonly chosen for distance measurement sensors?",
+        answer: "40 kHz is safely above human audible limits (20 Hz - 20 kHz), suffers lower atmospheric attenuation than megahertz ultrasound, and matches compact piezoelectric resonant ceramic transducers."
+      },
+      {
+        question: "What causes acoustic specular reflection errors?",
+        answer: "If the target surface is tilted away from normal incidence (perpendicularity), the acoustic wave packet deflects away from the receiver transducer, causing echo loss or false multi-path readings."
+      },
+      {
+        question: "How does humidity affect the speed of sound in air?",
+        answer: "Humid air is slightly less dense than dry air (water vapor molecular weight 18 g/mol vs air ~29 g/mol), slightly increasing sound velocity, though the effect is much smaller than temperature."
+      },
+      {
+        question: "What is the purpose of the 10 µs trigger pulse in ultrasonic transceiver modules?",
+        answer: "The 10 µs TTL trigger initiates the internal microcontroller to burst 8 cycles of 40 kHz ultrasonic wavepackets and prime the echo receiver comparator."
+      },
+      {
+        question: "How is linear regression calibration applied in this experiment?",
+        answer: "Multiple known reference distances are measured, and a least-squares linear fit d_meas = a * d_ref + b is computed to obtain corrected distances d_cal = (d_meas - b) / a."
+      }
+    ]
+  },
+
+  "wedge-film": {
+    id: "wedge-film",
+    title: "Wedge-Shaped Film",
+    category: "Wave Optics & Interference",
+    shortDescription: "Investigate interference in a thin wedge-shaped film and explore how fringe patterns form due to variations in optical path difference.",
+    difficulty: "Undergraduate Wave Optics Laboratory",
+    duration: "40 Minutes",
+    engine: "Deterministic Wave Optics Thin-Film Interference & Micrometry Engine",
+    accentColor: "#38bdf8",
+
+    referenceBooks: [
+      {
+        title: "Thin-Film Interference",
+        source: "OpenStax University Physics Vol 3",
+        url: "https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films",
+        description: "Study thin-film interference principles, phase reversal on reflection, and path differences."
+      },
+      {
+        title: "Interference by Division of Amplitude - Air Wedge",
+        source: "Optics - Eugene Hecht",
+        url: "https://en.wikipedia.org/wiki/Thin-film_interference",
+        description: "Comprehensive coverage of wedge-shaped films, Fizeau fringes, and fringe width derivation."
+      },
+      {
+        title: "Engineering Physics Practical Manual",
+        source: "SIES GST Physics Department",
+        url: "#",
+        description: "Standard laboratory manual for determination of wire diameter using air wedge interference."
+      }
+    ],
+
+    aim: `<p class="manual-aim-text">To study the formation of interference fringes in a wedge-shaped thin film and investigate the relationship between film thickness, wavelength, and fringe spacing, and to determine the microscopic diameter of a spacer wire using fringe width measurement.</p>`,
+
+    apparatus: `<p class="manual-aim-text">Two optically flat plane glass plates ($L = 100\\text{ mm}$), thin specimen spacer wire/sheet ($d = 10\\text{--}100\\;\\mu\\text{m}$), monochromatic spectral light sources (Sodium $589.3\\text{ nm}$, He-Ne $632.8\\text{ nm}$, Green $532\\text{ nm}$, Violet $405\\text{ nm}$), 45-degree beam splitter plate, condensing lens, travelling microscope with micrometer vernier crosshairs, and least-squares regression analyzer.</p>`,
+
+    theory: `
+      <div class="theory-block">
+        <h3>1. Thin-Film Interference & Division of Amplitude</h3>
+        <p>When monochromatic light illuminates a thin wedge-shaped film enclosed between two inclined optically flat glass surfaces, interference occurs by <strong>division of amplitude</strong>. Light incident on the film undergoes partial reflection at the lower surface of the top plate and partial reflection at the upper surface of the bottom plate. The two reflected beams are coherent because they originate from the same primary wavefront, and their superposition produces straight, parallel interference fringes localized near the upper surface of the film.</p>
+      </div>
+
+      <div class="theory-block">
+        <h3>2. Optical Path Difference & Stokes Phase Change</h3>
+        <p>For an air wedge of refractive index $\\mu = 1$ with a very small wedge angle $\\alpha$, light is incident at near-normal incidence ($i \\approx 0^\\circ, r \\approx 0^\\circ$). The geometric round-trip path traversed by the light within the film of local thickness $t$ is $2t$.</p>
+        <p>According to Stokes' relations of reflection:</p>
+        <ul class="manual-list">
+          <li>The beam reflected at the upper boundary (glass to air) reflects from a rarer medium, incurring <strong>no phase change</strong>.</li>
+          <li>The beam reflected at the lower boundary (air to glass) reflects from an optically denser medium, undergoing an abrupt <strong>phase reversal of $\\pi$ radians</strong>, equivalent to an additional optical path difference of $\\frac{\\lambda}{2}$.</li>
+        </ul>
+        <p>Therefore, the net effective optical path difference ($\\Delta$) in reflected light is:</p>
+        <div class="math-callout formula-highlight">$$\\Delta = 2t + \\frac{\\lambda}{2}$$</div>
+      </div>
+
+      <div class="theory-block">
+        <h3>3. Constructive and Destructive Interference Conditions</h3>
+        <p><strong>Destructive Interference (Dark Fringes / Minima):</strong> Destructive interference occurs when the net path difference equals an odd multiple of half-wavelengths: $\\Delta = (2m + 1)\\frac{\\lambda}{2}$.</p>
+        <div class="math-callout">$$2t + \\frac{\\lambda}{2} = (2m + 1)\\frac{\\lambda}{2} \\implies 2t = m\\lambda \\quad (m = 0, 1, 2, 3, \\dots)$$</div>
+        <p>At the apex line of contact ($x = 0$), the film thickness is $t = 0$. The path difference is $\\Delta = \\frac{\\lambda}{2}$, producing a <strong>central dark fringe ($m = 0$)</strong> at the contact edge.</p>
+        <p><strong>Constructive Interference (Bright Fringes / Maxima):</strong> Constructive interference occurs when $\\Delta = m\\lambda$:</p>
+        <div class="math-callout">$$2t + \\frac{\\lambda}{2} = m\\lambda \\implies 2t = \\left(m - \\frac{1}{2}\\right)\\lambda \\quad (m = 1, 2, 3, \\dots)$$</div>
+      </div>
+
+      <div class="theory-block">
+        <h3>4. Wedge Geometry and Fringe Spacing (Fringe Width)</h3>
+        <p>For a wedge formed by two plane glass plates touching at one end and separated by a spacer wire of diameter $d$ at distance $L$, the small wedge angle $\\alpha$ (in radians) is given by:</p>
+        <div class="math-callout">$$\\alpha \\approx \\tan \\alpha = \\frac{d}{L}$$</div>
+        <p>At a linear distance $x$ from the contact edge, the film thickness is approximately:</p>
+        <div class="math-callout">$$t(x) \\approx x \\cdot \\alpha = x \\cdot \\frac{d}{L}$$</div>
+        <p>Substituting into the dark fringe condition $2t = m\\lambda$:</p>
+        <div class="math-callout">$$2x_m \\cdot \\alpha = m\\lambda \\implies x_m = \\frac{m\\lambda}{2\\alpha} = \\frac{m\\lambda L}{2d}$$</div>
+        <p>Since the wedge angle $\\alpha$ is constant across the entire length of flat plates, lines of equal thickness are straight and parallel to the contact apex. The separation between consecutive dark fringes defines the <strong>fringe width ($\\beta$)</strong>:</p>
+        <div class="math-callout formula-highlight">$$\\beta = x_{m+1} - x_m = \\frac{\\lambda}{2\\alpha} = \\frac{\\lambda L}{2d}$$</div>
+      </div>
+
+      <div class="theory-block">
+        <h3>5. Determination of Spacer Wire Diameter</h3>
+        <p>Rearranging the fringe width relationship provides an exceptionally sensitive non-contact optical metrology method to measure microscopic wire diameter $d$:</p>
+        <div class="math-callout formula-highlight">$$d = \\frac{\\lambda L}{2\\beta}$$</div>
+        <p>By measuring multiple fringe positions $x_m$ using a travelling microscope, the fringe width $\\beta$ is extracted as the statistical slope of the linear regression plot of $x_m$ versus $m$, minimizing individual measurement uncertainties.</p>
+      </div>
+    `,
+
+    howToPerform: `
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <div class="step-info">
+            <h4>Launch the Wedge-Shaped Film Workstation</h4>
+            <p>Click <strong>Start Simulator</strong> to open the optical bench elevation view, travelling microscope reticle, and control deck.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <div class="step-info">
+            <h4>Configure Light Source & Wavelength</h4>
+            <p>Toggle <strong>Source: ON</strong>. Select a monochromatic preset (e.g. <strong>Sodium 589.3 nm</strong>, <strong>He-Ne 632.8 nm</strong>, or <strong>Green 532 nm</strong>), or adjust the wavelength slider.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <div class="step-info">
+            <h4>Set Wedge Geometry Parameters</h4>
+            <p>Adjust the <strong>Wedge Length ($L$)</strong> (default $100.0\\text{ mm}$) and <strong>Spacer Wire Diameter ($d$)</strong> (default $40.0\\;\\mu\\text{m}$). Observe how $\\beta$ and wedge angle $\\alpha$ change in real time.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <div class="step-info">
+            <h4>Inspect Microscope Reticle & Zoom</h4>
+            <p>Observe the straight, parallel interference fringes in the circular travelling microscope reticle. Use the <strong>1x / 2x / 4x</strong> zoom buttons to examine fringe contrast.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">5</div>
+          <div class="step-info">
+            <h4>Align Crosshairs & Record Readings</h4>
+            <p>Move the microscope position slider or use fine stepper buttons (&lt; and &gt;) to align the vertical crosshair with a dark fringe center (or use <strong>Auto-Align Dark Fringe Center</strong>). Click <strong>Record Reading</strong>.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">6</div>
+          <div class="step-info">
+            <h4>Linear Regression & Wire Diameter Metrology</h4>
+            <p>Log 5--10 consecutive fringes. Inspect the $x_m$ vs $m$ linear regression graph to determine empirical fringe width $\\beta$, calculated diameter $d$, and percentage error. Export data via CSV or PDF.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    procedure: `
+      <div class="procedure-block">
+        <h4>Methodical Laboratory Procedure</h4>
+        <ol class="manual-ordered-list">
+          <li><strong>Apparatus Setup:</strong> Clean the two glass plates and place one over the other in contact along one edge (contact line $x = 0$). Place the specimen spacer wire at distance $L = 100.0\\text{ mm}$ parallel to the contact edge to form a wedge-shaped air film.</li>
+          <li><strong>Illumination:</strong> Turn on the monochromatic light source (Sodium yellow $589.3\\text{ nm}$). Light reflects from the 45-degree beam splitter plate and falls normally onto the air wedge.</li>
+          <li><strong>Observation of Fringes:</strong> Focus the travelling microscope vertically over the film. Straight, parallel, alternate dark and bright fringes are clearly visible through the circular field of view.</li>
+          <li><strong>Microscope Alignment:</strong> Move the microscope carriage toward the contact apex until a distinct dark fringe of known or reference order $m$ is aligned with the vertical crosshair.</li>
+          <li><strong>Recording Position ($x_m$):</strong> Read the position $x$ on the vernier carriage scale (or telemetry HUD). Click <strong>Record Reading</strong> to log fringe order $m$ and position $x_m$.</li>
+          <li><strong>Traversing Successive Fringes:</strong> Move the carriage continuously in one direction (to avoid backlash error) to the next consecutive dark fringes ($m+1, m+2, \\dots, m+10$), aligning the crosshair and recording each reading.</li>
+          <li><strong>Fringe Width Calculation:</strong> Compute the spacing between consecutive dark bands: $\\beta_m = x_{m+1} - x_m$, or span across $N$ fringes: $\\beta = \\frac{x_{m+N} - x_m}{N}$.</li>
+          <li><strong>Regression Analysis:</strong> Plot fringe position $x_m$ versus fringe order $m$. Deducing the best-fit line slope yields the empirical fringe width $\\beta$.</li>
+          <li><strong>Spacer Wire Diameter Determination:</strong> Calculate the wire diameter using $d = \\frac{\\lambda L}{2\\beta}$ and compare with reference wire diameter to determine percentage error.</li>
+          <li><strong>Wavelength Variation:</strong> Switch light source to He-Ne ($632.8\\text{ nm}$) or Green ($532.0\\text{ nm}$) and observe that fringe width $\\beta$ is directly proportional to wavelength $\\lambda$.</li>
+        </ol>
+      </div>
+    `,
+
+    formula: `
+      <div class="manual-theory-block">
+        <h4>Key Governing Equations</h4>
+        <div class="formula-card">
+          <p><strong>Fringe Width (Spacing) in Reflected Monochromatic Light:</strong></p>
+          $$\\beta = \\frac{\\lambda}{2\\alpha} = \\frac{\\lambda L}{2d}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Wedge Angle of Air Film (Small Angle Approximation):</strong></p>
+          $$\\alpha \\approx \\frac{d}{L} \\quad [\\text{radians}]$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Dark Fringe (Destructive Interference) Condition:</strong></p>
+          $$2t = m\\lambda \\implies x_m = \\frac{m\\lambda L}{2d} = m\\beta \\quad (m = 0, 1, 2, \\dots)$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Microscopic Wire Spacer Diameter / Foil Thickness:</strong></p>
+          $$d = \\frac{\\lambda L}{2\\beta}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Linear Regression Fringe Width:</strong></p>
+          $$\\beta = \\frac{dx}{dm} = \\frac{N\\sum(m x_m) - \\sum m \\sum x_m}{N\\sum m^2 - (\\sum m)^2}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Percentage Metrology Error:</strong></p>
+          $$\\%\\text{Error} = \\left| \\frac{d_{\\text{calc}} - d_{\\text{ref}}}{d_{\\text{ref}}} \\right| \\times 100\\%$$
+        </div>
+      </div>
+    `,
+
+    observation: `
+      <div class="observation-block">
+        <h4>Sample Laboratory Observations (Sodium Light: $\\lambda = 589.3\\text{ nm}$, $L = 100.0\\text{ mm}$, $d_{\\text{ref}} = 40.0\\;\\mu\\text{m}$)</h4>
+        <table class="manual-table">
+          <thead>
+            <tr>
+              <th>Reading #</th>
+              <th>Fringe Order ($m$)</th>
+              <th>Microscope Pos $x_m$ (mm)</th>
+              <th>Interval ($\\Delta m$)</th>
+              <th>Span $\\Delta x$ (mm)</th>
+              <th>Fringe Width $\\beta$ (mm)</th>
+              <th>Est. Wire $d$ (µm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>10</td><td>7.366</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+            <tr><td>2</td><td>12</td><td>8.839</td><td>2</td><td>1.473</td><td>0.737</td><td>40.0</td></tr>
+            <tr><td>3</td><td>14</td><td>10.312</td><td>2</td><td>1.473</td><td>0.737</td><td>40.0</td></tr>
+            <tr><td>4</td><td>16</td><td>11.786</td><td>2</td><td>1.474</td><td>0.737</td><td>39.9</td></tr>
+            <tr><td>5</td><td>18</td><td>13.259</td><td>2</td><td>1.473</td><td>0.737</td><td>40.0</td></tr>
+            <tr><td>6</td><td>20</td><td>14.732</td><td>2</td><td>1.473</td><td>0.737</td><td>40.0</td></tr>
+            <tr><td>7</td><td>22</td><td>16.205</td><td>2</td><td>1.473</td><td>0.737</td><td>40.0</td></tr>
+            <tr><td>8</td><td>24</td><td>17.678</td><td>2</td><td>1.473</td><td>0.737</td><td>40.0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `,
+
+    result: `
+      <div class="result-box">
+        <h4>Experimental Conclusions:</h4>
+        <ol class="manual-ordered-list">
+          <li>Straight, parallel, equidistant interference fringes were successfully observed and measured in a thin wedge-shaped air film under reflected monochromatic light.</li>
+          <li>The contact edge of the wedge corresponds to a central dark fringe ($m = 0$), validating Stokes' phase reversal of $\\pi$ radians upon reflection at the optically denser glass boundary.</li>
+          <li>For Sodium yellow light ($\\lambda = 589.3\\text{ nm}$) with wedge length $L = 100.0\\text{ mm}$, the empirical fringe width obtained from linear regression was $\\beta = 0.737\\text{ mm}$.</li>
+          <li>The calculated microscopic diameter of the spacer wire was $d_{\\text{calc}} = 40.0\\;\\mu\\text{m}$, showing excellent agreement with reference gauge dimensions ($< 0.5\\%$ error).</li>
+          <li>Fringe spacing $\\beta$ varied in direct proportion to wavelength $\\lambda$ and in inverse proportion to wedge angle $\\alpha$, confirming the governing relation $\\beta = \\frac{\\lambda L}{2d}$.</li>
+        </ol>
+      </div>
+    `,
+
+    precautions: `
+      <div class="precautions-block">
+        <ul class="manual-list">
+          <li><strong>Backlash Elimination:</strong> Move the travelling microscope carriage in one continuous direction during data logging to prevent lead-screw backlash errors.</li>
+          <li><strong>Normal Incidence:</strong> Ensure the 45-degree glass plate beam splitter is properly oriented so that reflected light falls strictly perpendicular onto the wedge plates.</li>
+          <li><strong>Plate Cleanliness:</strong> Ensure both glass plates are optically flat and thoroughly cleaned; dust particles or fingerprints distort fringes into irregular curves.</li>
+          <li><strong>Spacer Alignment:</strong> Position the spacer wire strictly parallel to the contact apex line to maintain a uniform wedge cross-section.</li>
+        </ul>
+      </div>
+    `,
+
+    vivaQuestions: [
+      {
+        question: "Why is the fringe at the line of contact dark in reflected light?",
+        answer: "At the line of contact, film thickness t = 0. Reflection from the lower denser glass plate introduces a Stokes phase shift of π radians (path difference λ/2). With zero film thickness, net path difference is λ/2, causing destructive interference and producing a permanent dark fringe."
+      },
+      {
+        question: "Why are wedge-shaped film fringes straight and parallel?",
+        answer: "Fringes in a wedge-shaped film are fringes of equal thickness (Fizeau fringes). For plane, optically flat glass surfaces, loci of constant film thickness are straight lines parallel to the contact apex line."
+      },
+      {
+        question: "What is the formula to calculate the spacer wire diameter d?",
+        answer: "d = (λ * L) / (2 * β), where λ is wavelength of monochromatic light, L is distance between contact line and spacer, and β is fringe width."
+      },
+      {
+        question: "How does fringe width change if a thicker wire is used?",
+        answer: "Since β = (λ * L) / (2 * d), fringe width is inversely proportional to wire diameter d. A thicker wire increases wedge angle α, causing fringes to crowd closer together (smaller fringe width)."
+      },
+      {
+        question: "Why is an extended monochromatic light source used rather than a point source?",
+        answer: "An extended light source provides a broad, uniform field of illumination across the entire area of the film, allowing a large number of fringes to be observed simultaneously through the travelling microscope."
+      },
+      {
+        question: "What happens if white light is used instead of monochromatic light?",
+        answer: "A central dark fringe appears at the contact line, followed by a few colored, overlapping fringes on either side. At greater thickness, path difference exceeds the coherence length of white light and uniform illumination results."
+      },
+      {
+        question: "What is the effect of introducing a liquid film (refractive index μ) instead of air?",
+        answer: "Path difference becomes 2μt + λ/2, so fringe width decreases to β' = λ / (2μα) = β / μ. The fringes become more closely spaced by a factor of μ."
+      },
+      {
+        question: "Why must the travelling microscope be moved in one continuous direction?",
+        answer: "To avoid mechanical backlash (lost motion) in the lead screw and vernier gear mechanism, ensuring accurate incremental position readings."
+      },
+      {
+        question: "What is the condition for constructive interference (bright fringe) in reflected light?",
+        answer: "2t = (m - 1/2)λ, where m = 1, 2, 3, ... because the Stokes phase change adds λ/2 to the optical path difference."
+      },
+      {
+        question: "How is the wedge angle α related to fringe width β and wavelength λ?",
+        answer: "α = λ / (2 * β) in radians. For small angles, α ≈ d / L, which leads directly to β = (λ * L) / (2 * d)."
+      }
+    ]
   }
 };
 
@@ -2780,4 +3533,15 @@ EXPERIMENT_DETAILS["pof"] = EXPERIMENT_DETAILS["pof-attenuation"];
 EXPERIMENT_DETAILS["planck"] = EXPERIMENT_DETAILS["planck"];
 EXPERIMENT_DETAILS["plancks-constant"] = EXPERIMENT_DETAILS["planck"];
 EXPERIMENT_DETAILS["planck-constant"] = EXPERIMENT_DETAILS["planck"];
+EXPERIMENT_DETAILS["laser-divergence"] = EXPERIMENT_DETAILS["laser-divergence"];
+EXPERIMENT_DETAILS["laser"] = EXPERIMENT_DETAILS["laser-divergence"];
+EXPERIMENT_DETAILS["laser-beam-divergence"] = EXPERIMENT_DETAILS["laser-divergence"];
+EXPERIMENT_DETAILS["ultrasonic"] = EXPERIMENT_DETAILS["ultrasonic-sensor"];
+EXPERIMENT_DETAILS["udm"] = EXPERIMENT_DETAILS["ultrasonic-sensor"];
+EXPERIMENT_DETAILS["ultrasonic-distance"] = EXPERIMENT_DETAILS["ultrasonic-sensor"];
+EXPERIMENT_DETAILS["wedge"] = EXPERIMENT_DETAILS["wedge-film"];
+EXPERIMENT_DETAILS["wedge-shaped-film"] = EXPERIMENT_DETAILS["wedge-film"];
+EXPERIMENT_DETAILS["thin-film-wedge"] = EXPERIMENT_DETAILS["wedge-film"];
+
+
 

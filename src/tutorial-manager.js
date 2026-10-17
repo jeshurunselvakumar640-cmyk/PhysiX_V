@@ -105,6 +105,9 @@ export function normalizeExpId(expId) {
   if (expId === "diode" || expId === "diode-characteristics") return "diode";
   if (expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof") return "pof-attenuation";
   if (expId === "planck" || expId === "plancks-constant" || expId === "planck-constant") return "planck";
+  if (expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence") return "laser-divergence";
+  if (expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance") return "ultrasonic-sensor";
+  if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") return "wedge-film";
   return "projectile";
 }
 
@@ -119,6 +122,9 @@ export function getExperimentFriendlyName(expId) {
     case "diode": return "Exp 6: Diode Characteristics";
     case "pof-attenuation": return "Exp 7: Plastic Optical Fiber Attenuation";
     case "planck": return "Exp 8: Planck's Constant Experiment";
+    case "laser-divergence": return "Exp 9: Laser Beam Divergence";
+    case "ultrasonic-sensor": return "Exp 10: Ultrasonic Sensor (UDM)";
+    case "wedge-film": return "Exp 11: Wedge-Shaped Film";
     case "sandbox": return "Physics Sandbox";
     default: return "Interactive Physics Lab";
   }
@@ -925,6 +931,199 @@ export const TUTORIAL_DEFINITIONS = {
       title: "Interpret Physical Loss Mechanisms",
       category: "13. PHYSICAL INTERPRETATION",
       description: "Identify the dominant physical mechanisms causing attenuation in plastic optical fibers (absorption, Rayleigh scattering, Fresnel reflections, macrobending) and submit your analysis.",
+      placement: "top"
+    }
+  ],
+
+  "laser-divergence": [
+    {
+      id: "ld-tour-1",
+      selector: "#ld-power-switch",
+      title: "Power ON Laser Emitter",
+      category: "1. OPTICAL EMISSION",
+      description: "Toggle the laser power switch to emit a monochromatic Gaussian beam across the precision optical bench.",
+      placement: "bottom"
+    },
+    {
+      id: "ld-tour-2",
+      selector: ".ld-subgroup-waist",
+      title: "Configure Beam Waist (w₀)",
+      category: "2. BEAM WAIST PARAMETER",
+      description: "Select initial beam waist radius $w_0$ (0.25 mm, 0.50 mm, or 0.75 mm). This directly dictates the Rayleigh range $z_R = \\pi w_0^2 / \\lambda$.",
+      placement: "bottom"
+    },
+    {
+      id: "ld-tour-3",
+      selector: ".ld-group-distance",
+      title: "Translate Screen Distance (L)",
+      category: "3. PROPAGATION DISTANCE",
+      description: "Slide the detector carriage along the calibrated rail from 0.20 m to 2.50 m to observe transverse beam expansion.",
+      placement: "bottom"
+    },
+    {
+      id: "ld-tour-4",
+      selector: ".ld-group-wavelength",
+      title: "Select Spectral Laser Lines",
+      category: "4. EMISSION WAVELENGTH",
+      description: "Switch between He-Ne Red (632.8 nm), Green (532 nm), Violet (402 nm), and Red Diode (660 nm) to verify $\\theta \\propto \\lambda$.",
+      placement: "bottom"
+    },
+    {
+      id: "ld-tour-5",
+      selector: "#ld-screen-canvas",
+      title: "Digital Reticle Caliper HUD",
+      category: "5. DETECTOR RETICLE",
+      description: "Inspect the transverse laser spot size on the graduated millimeter reticle rings, calibrated directly at the $1/e^2$ irradiance threshold.",
+      placement: "left"
+    },
+    {
+      id: "ld-tour-6",
+      selector: ".ld-live-results-section",
+      title: "Real-Time Telemetry Readout",
+      category: "6. GAUSSIAN OPTICS TELEMETRY",
+      description: "View real-time physics parameters: Rayleigh range $z_R$, beam radius $w(z)$, diameter $W(z)$, half-angle $\\theta$, and full-angle $\\Theta$.",
+      placement: "top"
+    },
+    {
+      id: "ld-tour-7",
+      selector: "#ld-btn-record",
+      title: "Log Observation",
+      category: "7. DATA LOGGING",
+      description: "Click 'RECORD OBSERVATION' to capture the current station distance and spot diameter into the scientific logbook.",
+      placement: "bottom"
+    },
+    {
+      id: "ld-tour-8",
+      selector: ".ld-graph-card",
+      title: "Propagation Divergence Graph",
+      category: "8. LEAST-SQUARES FIT",
+      description: "Inspect the linear regression fit of beam expansion $dw/dL$ to extract the empirical divergence angle.",
+      placement: "top"
+    }
+  ],
+
+  "ultrasonic-sensor": [
+    {
+      id: "udm-tour-1",
+      selector: "#udm-bench-canvas",
+      title: "Acoustic Propagation Bench & Target Stage",
+      category: "1. ACOUSTIC RAIL",
+      description: "Observe the 40 kHz piezoelectric transceiver launching expanding acoustic wavepackets along the millimeter bench toward the movable target reflector plate.",
+      placement: "bottom"
+    },
+    {
+      id: "udm-tour-2",
+      selector: "#udm-osc-canvas",
+      title: "Digital Storage Oscilloscope HUD",
+      category: "2. OSCILLOSCOPE TRACE",
+      description: "Examine Channel 1 (10 µs trigger burst) and Channel 2 (received echo pulse packet). The horizontal time interval represents the round-trip transit time $t$.",
+      placement: "left"
+    },
+    {
+      id: "udm-tour-3",
+      selector: "#udm-slider-dist",
+      title: "Adjust Target Reflector Distance",
+      category: "3. TARGET STANDOFF DISTANCE",
+      description: "Translate the target plate from 5.0 cm to 300.0 cm using the slider or click quick preset buttons (10, 30, 50, 100, 150, 200, 250 cm).",
+      placement: "bottom"
+    },
+    {
+      id: "udm-tour-4",
+      selector: "#udm-slider-temp",
+      title: "Ambient Temperature Controller",
+      category: "4. THERMAL VELOCITY MODULATION",
+      description: "Vary ambient air temperature from -10°C to +50°C. Notice how the speed of sound $v(T) = 331.3\\sqrt{1 + T/273.15}$ modulates echo transit times.",
+      placement: "bottom"
+    },
+    {
+      id: "udm-tour-5",
+      selector: ".udm-telemetry-strip",
+      title: "Real-Time Telemetry HUD",
+      category: "5. SENSOR TELEMETRY",
+      description: "Monitor live microsecond echo time-of-flight, calculated sound velocity, reference distance, calculated distance, and percentage error.",
+      placement: "top"
+    },
+    {
+      id: "udm-tour-6",
+      selector: "#udm-btn-record",
+      title: "Record Calibration Observation",
+      category: "6. DATA LOGGING",
+      description: "Click 'Record Reading' to append distance telemetry to the calibration logbook. Log multiple points to plot the calibration curve.",
+      placement: "bottom"
+    },
+    {
+      id: "udm-tour-7",
+      selector: ".udm-graph-card",
+      title: "Sensor Distance Calibration Curve",
+      category: "7. LINEAR CALIBRATION FIT",
+      description: "Analyze the least-squares regression line $d_{\\text{meas}} = a \\cdot d_{\\text{ref}} + b$ to evaluate sensitivity slope $a$ and zero-distance offset $b$.",
+      placement: "top"
+    }
+  ],
+
+  "wedge-film": [
+    {
+      id: "wf-tour-1",
+      selector: "#wf-setup-canvas",
+      title: "Optical Bench Elevation View",
+      category: "1. APPARATUS SETUP",
+      description: "Observe the two plane glass plates touching at one end and separated by a spacer wire of diameter $d$ at distance $L$, forming an air wedge illuminated by monochromatic light through a 45° beam splitter.",
+      placement: "bottom"
+    },
+    {
+      id: "wf-tour-2",
+      selector: "#wf-reticle-canvas",
+      title: "Travelling Microscope Reticle",
+      category: "2. RETICLE FIELD OF VIEW",
+      description: "View straight, parallel, equidistant interference fringes through the microscope. Use the 1x / 2x / 4x zoom buttons to inspect fine fringe details.",
+      placement: "left"
+    },
+    {
+      id: "wf-tour-3",
+      selector: "#wf-slider-wavelength",
+      title: "Monochromatic Spectral Source",
+      category: "3. WAVELENGTH SELECTION",
+      description: "Select calibrated spectral emission presets: Sodium (589.3 nm), He-Ne (632.8 nm), Green (532 nm), or Violet (405 nm), or tune the wavelength continuously.",
+      placement: "bottom"
+    },
+    {
+      id: "wf-tour-4",
+      selector: "#wf-slider-length",
+      title: "Wedge Length & Spacer Wire",
+      category: "4. WEDGE GEOMETRY",
+      description: "Adjust wedge length $L$ and spacer wire diameter $d$. Notice how wedge angle $\\alpha \\approx d/L$ inversely dictates fringe spacing $\\beta = \\frac{\\lambda L}{2d}$.",
+      placement: "bottom"
+    },
+    {
+      id: "wf-tour-5",
+      selector: "#wf-slider-pos",
+      title: "Microscope Carriage Micrometry",
+      category: "5. CARRIAGE POSITIONING",
+      description: "Move the microscope carriage along position $x$ with the slider or fine stepper buttons (&lt; and &gt;), or click 'Auto-Align Dark Fringe Center' to center crosshairs on a fringe.",
+      placement: "bottom"
+    },
+    {
+      id: "wf-tour-6",
+      selector: ".wf-telemetry-strip",
+      title: "Real-Time Telemetry HUD",
+      category: "6. LIVE OPTICAL TELEMETRY",
+      description: "Monitor live fringe width $\\beta$, wedge angle $\\alpha$, local film thickness $t(x)$, and dark fringe order $m$ directly from the telemetry readout strip.",
+      placement: "top"
+    },
+    {
+      id: "wf-tour-7",
+      selector: "#wf-btn-record-deck",
+      title: "Record Fringe Observation",
+      category: "7. DATA LOGGING",
+      description: "Click 'RECORD OBSERVATION' to log crosshair position $x_m$ for consecutive dark fringes into the observation logbook.",
+      placement: "top"
+    },
+    {
+      id: "wf-tour-8",
+      selector: ".wf-graph-card",
+      title: "Position vs. Fringe Order Regression",
+      category: "8. WIRE DIAMETER METROLOGY",
+      description: "Examine the linear regression slope $\\beta = \\frac{dx}{dm}$ to evaluate experimental fringe width and deduce microscopic wire diameter $d = \\frac{\\lambda L}{2\\beta}$.",
       placement: "top"
     }
   ]
