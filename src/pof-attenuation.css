@@ -672,6 +672,41 @@
   box-shadow: 0 0 12px #38bdf8;
 }
 
+/* POF Secondary Control & Reset Buttons */
+#exp-pof-attenuation-section .btn-secondary,
+#exp-pof-attenuation-section #pof-btn-reset-exp,
+#exp-pof-attenuation-section #pof-insp-dismiss-btn {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+#exp-pof-attenuation-section .btn-secondary:hover:not(:disabled),
+#exp-pof-attenuation-section #pof-btn-reset-exp:hover,
+#exp-pof-attenuation-section #pof-insp-dismiss-btn:hover {
+  background: rgba(51, 65, 85, 0.9);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-1px);
+}
+
+#exp-pof-attenuation-section .btn-secondary:active:not(:disabled),
+#exp-pof-attenuation-section #pof-btn-reset-exp:active,
+#exp-pof-attenuation-section #pof-insp-dismiss-btn:active {
+  transform: translateY(0);
+}
+
 /* Transverse Micrometer Alignment Controls */
 .pof-align-row {
   display: flex;
@@ -1412,4 +1447,25 @@ body.light-mode .pof-align-gauge-track,
 [data-theme="light"] .pof-align-gauge-track {
   background: #e2e8f0 !important;
   border-color: #cbd5e1 !important;
+}
+
+body.light-mode #exp-pof-attenuation-section .btn-secondary,
+[data-theme="light"] #exp-pof-attenuation-section .btn-secondary,
+body.light-mode #exp-pof-attenuation-section #pof-btn-reset-exp,
+[data-theme="light"] #exp-pof-attenuation-section #pof-btn-reset-exp,
+body.light-mode #exp-pof-attenuation-section #pof-insp-dismiss-btn,
+[data-theme="light"] #exp-pof-attenuation-section #pof-insp-dismiss-btn {
+  background: #f1f5f9 !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+  color: #1e293b !important;
+}
+
+body.light-mode #exp-pof-attenuation-section .btn-secondary:hover:not(:disabled),
+[data-theme="light"] #exp-pof-attenuation-section .btn-secondary:hover:not(:disabled),
+body.light-mode #exp-pof-attenuation-section #pof-btn-reset-exp:hover,
+[data-theme="light"] #exp-pof-attenuation-section #pof-btn-reset-exp:hover,
+body.light-mode #exp-pof-attenuation-section #pof-insp-dismiss-btn:hover,
+[data-theme="light"] #exp-pof-attenuation-section #pof-insp-dismiss-btn:hover {
+  background: #e2e8f0 !important;
+  color: #0f172a !important;
 }

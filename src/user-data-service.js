@@ -54,6 +54,7 @@ import {
   onSnapshot,
   runTransaction
 } from "./firebase.js";
+import { normalizeToLocalDateString, getDayDifference } from "./streak.js";
 
 /**
  * Network status check for offline protection
@@ -206,23 +207,41 @@ export async function syncUserToFirestore(user, customData = {}) {
       updates.highestStreak = Math.max(currentHighest, incomingHighest, incomingStreak);
 
       if (typeof customData.streak === "number") {
-        const currentLoginDate = current.lastLoginDate || null;
-        const incomingLoginDate = customData.lastLoginDate || null;
-        if (incomingLoginDate && (!currentLoginDate || incomingLoginDate >= currentLoginDate)) {
-          updates.streak = customData.streak;
-          updates.lastLoginDate = incomingLoginDate;
-        } else if (incomingStreak >= currentStreak) {
+        const currentLoginDate = current.lastLoginDate ? normalizeToLocalDateString(current.lastLoginDate) : null;
+        const incomingLoginDate = customData.lastLoginDate ? normalizeToLocalDateString(customData.lastLoginDate) : null;
+
+        if (currentLoginDate && incomingLoginDate) {
+          const dayDiff = getDayDifference(currentLoginDate, incomingLoginDate);
+          if (dayDiff > 0) {
+            // Incoming is newer calendar day
+            if (dayDiff === 1) {
+              // Consecutive calendar day: streak should be at least currentStreak + 1 or incoming
+              updates.streak = Math.max(incomingStreak, currentStreak + 1);
+            } else {
+              // Genuinely missed calendar day (> 1): reset to incoming streak
+              updates.streak = incomingStreak;
+            }
+            updates.lastLoginDate = incomingLoginDate;
+          } else if (dayDiff === 0) {
+            // Same calendar day: preserve the highest streak on this day
+            updates.streak = Math.max(currentStreak, incomingStreak);
+            updates.lastLoginDate = currentLoginDate;
+          } else {
+            // Incoming date is older than current date (out-of-order stale update): preserve current
+            updates.streak = currentStreak;
+            updates.lastLoginDate = currentLoginDate;
+          }
+        } else if (incomingLoginDate) {
           updates.streak = incomingStreak;
-          if (incomingLoginDate) updates.lastLoginDate = incomingLoginDate;
+          updates.lastLoginDate = incomingLoginDate;
         } else {
-          // Preserve valid existing streak
-          updates.streak = currentStreak;
+          updates.streak = Math.max(currentStreak, incomingStreak);
         }
       } else {
         updates.streak = currentStreak;
       }
       if (customData.lastLoginDate && !updates.lastLoginDate) {
-        updates.lastLoginDate = customData.lastLoginDate;
+        updates.lastLoginDate = normalizeToLocalDateString(customData.lastLoginDate);
       }
       // Never overwrite a higher Firestore experimentsPerformed with a lower local count
       if (typeof customData.experimentsPerformed === "number") {
@@ -766,6 +785,12 @@ export function getExperimentNameById(id) {
     case "exp-wedge":
     case "exp-wedge-film":
       return "Wedge-Shaped Film";
+    case "newton":
+    case "newtons-rings":
+    case "newtons-ring":
+    case "newton-rings":
+    case "exp-newtons-rings":
+      return "Newton's Rings";
     default:
       return id;
   }

@@ -119,6 +119,14 @@ export function normalizeLatexFormula(rawStr) {
   str = str.replace(/\$\{([a-zA-Z0-9_]+)\}/g, "{$1}")
            .replace(/\\\$([a-zA-Z0-9_]+)/g, "$1");
 
+  // Recover escaped LaTeX keywords corrupted by unescaped JS string template literals
+  str = str.replace(/\x0crac/g, "\\frac")
+           .replace(/\x09heta/g, "\\theta")
+           .replace(/\x09ext/g, "\\text")
+           .replace(/\x09imes/g, "\\times")
+           .replace(/\x09au/g, "\\tau")
+           .replace(/\x08eta/g, "\\beta");
+
   // Fix accidental double backslashes before LaTeX keywords (e.g. \\frac -> \frac), but preserve \\ line breaks
   LATEX_KEYWORDS.forEach(kw => {
     const re = new RegExp("\\\\\\\\" + kw + "(?![a-zA-Z])", "g");
@@ -443,12 +451,15 @@ export function renderMathInDOM(root = document.body) {
                       el.classList.contains("math-callout") ||
                       el.classList.contains("math-display") ||
                       el.classList.contains("formula-latex") ||
-                      el.classList.contains("f-formula");
+                      el.classList.contains("f-formula") ||
+                      el.tagName.toLowerCase() === "code" ||
+                      el.closest(".formula-item") !== null ||
+                      el.closest(".manual-formula-card") !== null;
 
       const norm = normalizeLatexFormula(raw);
       try {
         const renderedHtml = katex.renderToString(norm, {
-          displayMode: isBlock,
+          displayMode: isBlock || norm.includes("\\frac"),
           throwOnError: false,
           errorColor: "#ef4444"
         });
@@ -470,7 +481,7 @@ export function renderMathInDOM(root = document.body) {
         const norm = normalizeLatexFormula(text);
         try {
           codeEl.innerHTML = katex.renderToString(norm, {
-            displayMode: false,
+            displayMode: norm.includes("\\frac") || codeEl.closest(".formula-item") !== null,
             throwOnError: false,
             errorColor: "#ef4444"
           });

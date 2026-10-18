@@ -5,7 +5,7 @@
  * Configured timezone: Asia/Kolkata (IST, UTC+05:30).
  */
 
-import { db, doc, getDoc, setDoc } from "./firebase.js";
+import { db, doc, getDoc, setDoc, runTransaction } from "./firebase.js";
 import { api } from "./api.js";
 import {
   showStreakLostAnimation,
@@ -44,10 +44,12 @@ export function getCalendarDateString(date = new Date(), timeZone = STREAK_TIMEZ
     console.warn(`[Streak] Intl format failed for timezone ${timeZone}:`, err);
   }
 
-  // Fallback: standard calendar components
-  const year = safeDate.getFullYear();
-  const month = String(safeDate.getMonth() + 1).padStart(2, "0");
-  const day = String(safeDate.getDate()).padStart(2, "0");
+  // Robust fallback: exact UTC + 330 minutes (+05:30 Asia/Kolkata) calendar arithmetic
+  const istOffsetMs = 5.5 * 60 * 60 * 1000;
+  const istDate = new Date(safeDate.getTime() + istOffsetMs);
+  const year = istDate.getUTCFullYear();
+  const month = String(istDate.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(istDate.getUTCDate()).padStart(2, "0");
   return `${year}-${month}-${day}`;
 }
 
@@ -127,6 +129,46 @@ export function isConsecutiveCalendarDay(prevDateStr, nextDateStr, timeZone = ST
   return getDayDifference(prevDateStr, nextDateStr, timeZone) === 1;
 }
 
+/**
+ * Helper: Calculate maximum consecutive active days ending at today or yesterday from an array of activity dates.
+ * Strictly verifies physical recorded dates in history without fabricating activity.
+ */
+export function calculateConsecutiveDaysFromHistory(activityDates = [], referenceDateStr = getCalendarDateString()) {
+  if (!Array.isArray(activityDates) || activityDates.length === 0) return 0;
+
+  const validDates = activityDates
+    .map((d) => normalizeToLocalDateString(d))
+    .filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d));
+
+  const uniqueSortedDesc = Array.from(new Set(validDates)).sort().reverse();
+  if (uniqueSortedDesc.length === 0) return 0;
+
+  const targetDateStr = normalizeToLocalDateString(referenceDateStr);
+  const mostRecent = uniqueSortedDesc[0];
+  const diffFromTarget = getDayDifference(mostRecent, targetDateStr);
+
+  // If the latest recorded activity is older than yesterday (> 1), streak is broken (0 active consecutive days)
+  if (diffFromTarget > 1) return 0;
+
+  let count = 1;
+  let cursor = mostRecent;
+
+  for (let i = 1; i < uniqueSortedDesc.length; i++) {
+    const prev = uniqueSortedDesc[i];
+    const step = getDayDifference(prev, cursor);
+    if (step === 1) {
+      count++;
+      cursor = prev;
+    } else if (step === 0) {
+      continue;
+    } else {
+      break;
+    }
+  }
+
+  return count;
+}
+
 // Helper: Check if streak day count matches milestone criteria (10, 50, 100, 200, 300, 400, etc.)
 export function isStreakMilestone(streak) {
   if (!streak || streak < 10) return false;
@@ -158,7 +200,7 @@ export function getStoredUserStreak(userId = "guest") {
         const currentStreak = Number(parsed.currentStreak) || 0;
         const highestStreak = Number(parsed.highestStreak) || currentStreak || 0;
         const activityDates = Array.isArray(parsed.activityDates)
-          ? Array.from(new Set(parsed.activityDates.filter(Boolean)))
+          ? Array.from(new Set(parsed.activityDates.filter(Boolean).map((d) => normalizeToLocalDateString(d))))
           : [];
         return {
           currentStreak,
@@ -194,7 +236,9 @@ export function saveStoredUserStreak(userId = "guest", streakData) {
     const highestStreak = Math.max(Number(streakData.highestStreak) || 0, currentStreak);
 
     // Maintain recent activity dates history (unique sorted list, capped to last 60 days)
-    const existingDates = Array.isArray(streakData.activityDates) ? streakData.activityDates : [];
+    const existingDates = Array.isArray(streakData.activityDates)
+      ? streakData.activityDates.map((d) => normalizeToLocalDateString(d))
+      : [];
     const dateSet = new Set(existingDates);
     if (lastLogin) dateSet.add(lastLogin);
     const activityDates = Array.from(dateSet).sort().slice(-60);
@@ -244,17 +288,68 @@ export async function syncStreakWithFirebase(user, streakData) {
     updatedAt: now
   };
 
-  // 1. Sync to Firebase Firestore
+  // 1. Sync to Firebase Firestore using atomic transaction when possible
   if (db) {
     try {
       const userRef = doc(db, "users", user.uid);
-      await setDoc(userRef, {
-        streak: payload.streak,
-        highestStreak: payload.highestStreak,
-        lastLoginDate: payload.lastLoginDate,
-        lastActiveDate: payload.lastActiveDate,
-        updatedAt: payload.updatedAt
-      }, { merge: true });
+      if (typeof runTransaction === "function") {
+        await runTransaction(db, async (transaction) => {
+          const snap = await transaction.get(userRef);
+          if (snap.exists()) {
+            const currentData = snap.data() || {};
+            const docStreak = Number(currentData.streak) || 0;
+            const docHighest = Math.max(Number(currentData.highestStreak) || 0, docStreak);
+            const docLastLogin = currentData.lastLoginDate ? normalizeToLocalDateString(currentData.lastLoginDate) : null;
+            const incomingLastLogin = payload.lastLoginDate;
+
+            let targetStreak = payload.streak;
+            let targetHighest = Math.max(docHighest, payload.highestStreak, payload.streak);
+            let targetLastLogin = incomingLastLogin;
+
+            if (docLastLogin && incomingLastLogin) {
+              const diff = getDayDifference(docLastLogin, incomingLastLogin);
+              if (diff < 0) {
+                // Cloud document has a newer calendar activity date; do not overwrite with stale local date
+                targetLastLogin = docLastLogin;
+                targetStreak = docStreak;
+              } else if (diff === 0) {
+                // Same calendar day: preserve highest streak recorded today
+                targetStreak = Math.max(docStreak, payload.streak);
+              } else if (diff === 1) {
+                // Consecutive calendar day
+                targetStreak = Math.max(docStreak + 1, payload.streak);
+              }
+            }
+
+            transaction.set(userRef, {
+              streak: targetStreak,
+              highestStreak: targetHighest,
+              lastLoginDate: targetLastLogin,
+              lastActiveDate: payload.lastActiveDate,
+              updatedAt: payload.updatedAt
+            }, { merge: true });
+          } else {
+            transaction.set(userRef, {
+              email: payload.email,
+              uid: payload.uid,
+              streak: payload.streak,
+              highestStreak: payload.highestStreak,
+              lastLoginDate: payload.lastLoginDate,
+              lastActiveDate: payload.lastActiveDate,
+              authProvider: payload.authProvider,
+              updatedAt: payload.updatedAt
+            }, { merge: true });
+          }
+        });
+      } else {
+        await setDoc(userRef, {
+          streak: payload.streak,
+          highestStreak: payload.highestStreak,
+          lastLoginDate: payload.lastLoginDate,
+          lastActiveDate: payload.lastActiveDate,
+          updatedAt: payload.updatedAt
+        }, { merge: true });
+      }
 
       // Mark local copy as successfully synchronized
       saveStoredUserStreak(user.uid, {
@@ -292,6 +387,7 @@ export async function fetchStreakFromFirebase(user) {
     return null;
   }
 
+  let firestoreData = null;
   // 1. Try Firebase Firestore
   if (db) {
     try {
@@ -303,7 +399,7 @@ export async function fetchStreakFromFirebase(user) {
           const rawDate = data.lastLoginDate || data.lastActiveDate || null;
           const currentStreak = Number(data.streak) || 0;
           const highestStreak = Math.max(Number(data.highestStreak) || 0, currentStreak);
-          return {
+          firestoreData = {
             currentStreak,
             highestStreak,
             lastLoginDate: rawDate ? normalizeToLocalDateString(rawDate) : null
@@ -312,26 +408,46 @@ export async function fetchStreakFromFirebase(user) {
       }
     } catch (err) {
       console.warn("[Firebase] Could not fetch Firestore streak:", err.message);
-      throw err; // Propagate so caller knows it was an error, not an empty record
+      // Do not rethrow; allow Express Backend fallback / reconciliation
     }
   }
 
   // 2. Express Backend Fallback
+  let backendData = null;
   try {
     const res = await api.getProfile(user.uid);
-    if (res && res.profile && (res.profile.streak !== undefined || res.profile.lastLoginDate)) {
-      const rawDate = res.profile.lastLoginDate || res.profile.updatedAt || null;
-      const currentStreak = Number(res.profile.streak) || 0;
-      const highestStreak = Math.max(Number(res.profile.highestStreak) || 0, currentStreak);
-      return {
+    const profile = (res && res.profile) ? res.profile : res;
+    if (profile && (profile.streak !== undefined || profile.lastLoginDate)) {
+      const rawDate = profile.lastLoginDate || profile.updatedAt || null;
+      const currentStreak = Number(profile.streak) || 0;
+      const highestStreak = Math.max(Number(profile.highestStreak) || 0, currentStreak);
+      backendData = {
         currentStreak,
         highestStreak,
         lastLoginDate: rawDate ? normalizeToLocalDateString(rawDate) : null
       };
     }
-  } catch (err) {}
+  } catch (err) {
+    console.warn("[Streak] Express backend fetch notice:", err.message);
+  }
 
-  return null;
+  // Reconcile Firestore and Express Backend records
+  if (firestoreData && backendData) {
+    const dDiff = getDayDifference(firestoreData.lastLoginDate, backendData.lastLoginDate);
+    if (dDiff > 0) {
+      return backendData;
+    } else if (dDiff < 0) {
+      return firestoreData;
+    } else {
+      return {
+        currentStreak: Math.max(firestoreData.currentStreak, backendData.currentStreak),
+        highestStreak: Math.max(firestoreData.highestStreak, backendData.highestStreak),
+        lastLoginDate: firestoreData.lastLoginDate || backendData.lastLoginDate
+      };
+    }
+  }
+
+  return firestoreData || backendData || null;
 }
 
 // Lock to prevent concurrent execution of streak updates per user
@@ -362,8 +478,8 @@ export async function processUserDailyStreak(user) {
 
       const isOffline = !navigator.onLine || !isCloudOperationAllowed();
 
-      // If user is authenticated and online, reconcile with Firestore
-      if (user && db && !isOffline) {
+      // If user is authenticated and online, reconcile with Cloud
+      if (user && !isOffline) {
         try {
           const remoteData = await fetchStreakFromFirebase(user);
           if (remoteData) {
@@ -405,17 +521,30 @@ export async function processUserDailyStreak(user) {
               mergedStreak = Math.max(remoteData.currentStreak, stored.currentStreak);
             }
 
+            // Authentic Streak Recovery:
+            // If remote streak has a verified higher streak (e.g. 3-day streak), or if local had a falsely broken streak
+            if (remoteData.currentStreak > mergedStreak) {
+              mergedStreak = remoteData.currentStreak;
+            }
+            if (stored.lastBrokenStreak > mergedStreak) {
+              const breakDiff = storedDate ? getDayDifference(storedDate, todayStr) : 0;
+              if (breakDiff <= 1 && bestHighest >= stored.lastBrokenStreak) {
+                mergedStreak = stored.lastBrokenStreak;
+              }
+            }
+
             stored = {
               ...stored,
               currentStreak: mergedStreak,
               highestStreak: bestHighest,
-              lastLoginDate: mergedLastLogin
+              lastLoginDate: mergedLastLogin,
+              lastBrokenStreak: 0,
+              lastBrokenDate: null
             };
           }
         } catch (fetchErr) {
           // Network or Firestore failure: DO NOT break streak!
           console.warn("[Streak] Cloud fetch encountered temporary error; preserving local streak:", fetchErr);
-          // Flag for sync later
           stored.pendingSync = true;
         }
       }
@@ -478,7 +607,7 @@ export async function processUserDailyStreak(user) {
         }
 
         // Check if user reached a milestone (10, 50, 100, 200, 300, 400, etc.)
-        if (isStreakMilestone(nextStreak)) {
+        if (isStreakMilestone(nextStreak) && user && user.uid && user.uid !== "guest") {
           setTimeout(() => {
             showStreakMilestoneAnimation({
               streakDays: nextStreak,
@@ -509,8 +638,8 @@ export async function processUserDailyStreak(user) {
           syncStreakWithFirebase(user, newStreakData);
         }
 
-        // Trigger Streak Lost Animation if previous streak was 1 or higher
-        if (lostStreakCount >= 1) {
+        // Trigger Streak Lost Animation ONLY for authenticated users if previous streak was 1 or higher
+        if (lostStreakCount >= 1 && user && user.uid && user.uid !== "guest") {
           setTimeout(() => {
             showStreakLostAnimation({
               lostStreak: lostStreakCount,
@@ -525,12 +654,16 @@ export async function processUserDailyStreak(user) {
 
       // Fallback for clock skew (diffDays < 0): preserve streak
       return { ...stored, status: "unchanged", changed: false, offline: isOffline };
-    } finally {
-      activeStreakProcessings.delete(userId);
+    } catch (err) {
+      console.warn("[Streak] Error processing daily streak:", err);
+      return stored || { currentStreak: 1, highestStreak: 1, lastLoginDate: todayStr, status: "initial" };
     }
   })();
 
   activeStreakProcessings.set(userId, promise);
+  promise.finally(() => {
+    activeStreakProcessings.delete(userId);
+  });
   return promise;
 }
 

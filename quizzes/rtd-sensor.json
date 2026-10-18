@@ -1,0 +1,760 @@
+{
+  "experiment": "RTD Temperature Sensors (Pt100) - Question Bank",
+  "experimentId": "rtd-sensor",
+  "quizId": "rtd-sensor-mastery-quiz",
+  "experimentName": "RTD Temperature Sensors (Pt100)",
+  "description": "Comprehensive 50-Question Physics Question Bank for RTD Temperature Sensors (Pt100)",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": "rtd-q1",
+      "question": "What does the acronym 'RTD' stand for in measurement instrumentation?",
+      "options": [
+        "Resistance Temperature Detector",
+        "Radial Thermal Diaphragm",
+        "Resonant Thermoelectric Device",
+        "Rotary Torque Dynamometer"
+      ],
+      "answer": "Resistance Temperature Detector",
+      "correct_option": "Resistance Temperature Detector",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "An RTD is a temperature sensor that exploits the predictable increase in electrical resistance of metals with temperature."
+    },
+    {
+      "id": "rtd-q2",
+      "question": "What is the nominal resistance of an industry-standard Pt100 RTD at 0°C (the ice point)?",
+      "options": [
+        "100.00 Ω",
+        "0.00 Ω",
+        "1000.0 Ω",
+        "50.00 Ω"
+      ],
+      "answer": "100.00 Ω",
+      "correct_option": "100.00 Ω",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "By definition, a Pt100 sensor is made of platinum (Pt) and has an exact nominal resistance of 100.00 Ω at 0.00°C."
+    },
+    {
+      "id": "rtd-q3",
+      "question": "Why is Platinum (Pt) the most widely used metal in high-precision RTDs?",
+      "options": [
+        "It has exceptional chemical inertness, high melting point, and a highly stable, linear resistance-temperature relationship",
+        "It is the cheapest metal available",
+        "It has zero electrical resistance at room temperature",
+        "It is radioactive"
+      ],
+      "answer": "It has exceptional chemical inertness, high melting point, and a highly stable, linear resistance-temperature relationship",
+      "correct_option": "It has exceptional chemical inertness, high melting point, and a highly stable, linear resistance-temperature relationship",
+      "difficulty": "easy",
+      "global_id": 3,
+      "explanation": "Platinum resists oxidation and corrosion up to ~850°C, offering unmatched long-term stability, reproducibility, and linearity compared to nickel or copper."
+    },
+    {
+      "id": "rtd-q4",
+      "question": "What is the standard European (IEC 60751 / DIN 43760) temperature coefficient of resistance (alpha, α) for a Pt100 RTD?",
+      "options": [
+        "0.003851 °C⁻¹ (or 0.3851 Ω/°C on average between 0°C and 100°C)",
+        "0.001000 °C⁻¹",
+        "0.050000 °C⁻¹",
+        "0.003920 °C⁻¹ (American reference grade)"
+      ],
+      "answer": "0.003851 °C⁻¹ (or 0.3851 Ω/°C on average between 0°C and 100°C)",
+      "correct_option": "0.003851 °C⁻¹ (or 0.3851 Ω/°C on average between 0°C and 100°C)",
+      "difficulty": "medium",
+      "global_id": 4,
+      "explanation": "Under IEC 60751, α = (R_100 - R_0) / (100 * R_0) = (138.51 - 100.00) / 10000 = 0.003851 °C⁻¹."
+    },
+    {
+      "id": "rtd-q5",
+      "question": "What is the theoretical resistance of an IEC 60751 Pt100 RTD at 100°C (the boiling point of water at 1 atm)?",
+      "options": [
+        "138.51 Ω",
+        "200.00 Ω",
+        "100.00 Ω",
+        "150.00 Ω"
+      ],
+      "answer": "138.51 Ω",
+      "correct_option": "138.51 Ω",
+      "difficulty": "easy",
+      "global_id": 5,
+      "explanation": "Under the DIN/IEC 60751 curve, R(100°C) = 100.00 * (1 + 0.003851 * 100) = 138.51 Ω."
+    },
+    {
+      "id": "rtd-q6",
+      "question": "What is the governing equation used to describe the resistance-temperature relationship of a platinum RTD for temperatures above 0°C (Callendar-Van Dusen equation)?",
+      "options": [
+        "R(T) = R_0 * (1 + A * T + B * T²)",
+        "R(T) = R_0 * exp(B / T)",
+        "R(T) = R_0 / (1 + A * T)",
+        "R(T) = R_0 + A * T³"
+      ],
+      "answer": "R(T) = R_0 * (1 + A * T + B * T²)",
+      "correct_option": "R(T) = R_0 * (1 + A * T + B * T²)",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "For T ≥ 0°C, the Callendar-Van Dusen equation truncates to a quadratic: R(T) = R_0(1 + A T + B T²), where A ≈ 3.9083e-3 and B ≈ -5.775e-7 °C⁻²."
+    },
+    {
+      "id": "rtd-q7",
+      "question": "For temperatures below 0°C (-200°C to 0°C), what additional term is included in the Callendar-Van Dusen equation?",
+      "options": [
+        "C * (T - 100) * T³",
+        "A * T⁴",
+        "exp(-T / 100)",
+        "B * T³"
+      ],
+      "answer": "C * (T - 100) * T³",
+      "correct_option": "C * (T - 100) * T³",
+      "difficulty": "hard",
+      "global_id": 7,
+      "explanation": "For T < 0°C, the equation is R(T) = R_0 [1 + A T + B T² + C(T - 100°C)T³], where C ≈ -4.183 x 10⁻¹² °C⁻⁴."
+    },
+    {
+      "id": "rtd-q8",
+      "question": "What is the sign of the temperature coefficient of resistance (TCR) for an RTD metal like platinum?",
+      "options": [
+        "Positive (PTC: resistance increases as temperature rises)",
+        "Negative (NTC: resistance decreases as temperature rises)",
+        "Zero (constant resistance)",
+        "Alternating sign with frequency"
+      ],
+      "answer": "Positive (PTC: resistance increases as temperature rises)",
+      "correct_option": "Positive (PTC: resistance increases as temperature rises)",
+      "difficulty": "easy",
+      "global_id": 8,
+      "explanation": "In metals, increased thermal lattice vibrations (phonons) scatter conduction electrons, increasing electrical resistivity with temperature (Positive Temperature Coefficient)."
+    },
+    {
+      "id": "rtd-q9",
+      "question": "How does an RTD fundamentally differ from a standard NTC thermistor in terms of temperature coefficient and linearity?",
+      "options": [
+        "RTDs have a positive temperature coefficient and near-linear response; NTC thermistors have a negative coefficient and steep exponential non-linearity",
+        "RTDs are non-linear; thermistors are perfectly linear",
+        "RTDs measure voltage directly; thermistors measure current",
+        "RTDs work only at 0°C"
+      ],
+      "answer": "RTDs have a positive temperature coefficient and near-linear response; NTC thermistors have a negative coefficient and steep exponential non-linearity",
+      "correct_option": "RTDs have a positive temperature coefficient and near-linear response; NTC thermistors have a negative coefficient and steep exponential non-linearity",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "Thermistors use semiconductor ceramics with negative dR/dT described by the exponential Steinhart-Hart equation; RTDs use pure metals with gentle, highly linear positive dR/dT."
+    },
+    {
+      "id": "rtd-q10",
+      "question": "What is the primary drawback of a 2-wire RTD circuit configuration in industrial installations?",
+      "options": [
+        "The electrical resistance of the two lead wires (R_L1 + R_L2) adds directly to the sensor resistance, causing a false high temperature reading",
+        "2-wire sensors cannot measure temperatures above 50°C",
+        "2-wire sensors require AC voltage",
+        "2-wire connections reverse the temperature polarity"
+      ],
+      "answer": "The electrical resistance of the two lead wires (R_L1 + R_L2) adds directly to the sensor resistance, causing a false high temperature reading",
+      "correct_option": "The electrical resistance of the two lead wires (R_L1 + R_L2) adds directly to the sensor resistance, causing a false high temperature reading",
+      "difficulty": "medium",
+      "global_id": 10,
+      "explanation": "In a 2-wire circuit, the measured resistance R_measured = R_RTD + 2*R_lead. Since 1 Ω of lead resistance causes ~2.6°C error in a Pt100, long leads cause huge errors."
+    },
+    {
+      "id": "rtd-q11",
+      "question": "How does a 3-wire RTD configuration compensate for lead wire resistance in a Wheatstone bridge?",
+      "options": [
+        "One lead wire is placed in an adjacent bridge arm to cancel the resistance of the return lead, assuming both leads have identical resistance",
+        "It uses three separate RTD sensors in parallel",
+        "It steps up the bridge voltage by 3x",
+        "It grounds the middle lead to absorb noise"
+      ],
+      "answer": "One lead wire is placed in an adjacent bridge arm to cancel the resistance of the return lead, assuming both leads have identical resistance",
+      "correct_option": "One lead wire is placed in an adjacent bridge arm to cancel the resistance of the return lead, assuming both leads have identical resistance",
+      "difficulty": "medium",
+      "global_id": 11,
+      "explanation": "By placing lead 1 in series with the RTD and lead 2 in the balancing bridge arm, their equal resistances cancel out, leaving the measurement independent of lead length."
+    },
+    {
+      "id": "rtd-q12",
+      "question": "Which RTD wiring configuration provides the highest accuracy by completely eliminating lead wire resistance errors, even if the leads have unequal resistances?",
+      "options": [
+        "4-wire (Kelvin connection)",
+        "2-wire connection",
+        "3-wire connection",
+        "Single-wire coaxial connection"
+      ],
+      "answer": "4-wire (Kelvin connection)",
+      "correct_option": "4-wire (Kelvin connection)",
+      "difficulty": "easy",
+      "global_id": 12,
+      "explanation": "A 4-wire connection passes a known constant current through two outer leads while a high-impedance voltmeter measures voltage across the two inner leads, drawing zero current through the sense leads."
+    },
+    {
+      "id": "rtd-q13",
+      "question": "What is self-heating error in an RTD sensor?",
+      "options": [
+        "The measurement current flowing through the RTD dissipates electrical power (I²R), causing the sensor to warm up above the ambient fluid temperature",
+        "The sensor absorbing ambient infrared radiation",
+        "Friction between lead wires",
+        "Chemical reaction with the fluid"
+      ],
+      "answer": "The measurement current flowing through the RTD dissipates electrical power (I²R), causing the sensor to warm up above the ambient fluid temperature",
+      "correct_option": "The measurement current flowing through the RTD dissipates electrical power (I²R), causing the sensor to warm up above the ambient fluid temperature",
+      "difficulty": "medium",
+      "global_id": 13,
+      "explanation": "Joule heating P = I² R heats the platinum element. The temperature rise ΔT = P / S_dissipation leads to positive measurement errors if excitation current is too high."
+    },
+    {
+      "id": "rtd-q14",
+      "question": "What is the typical recommended excitation current used for a Pt100 RTD to minimize self-heating errors?",
+      "options": [
+        "0.5 mA to 1.0 mA (dissipating less than 0.1 mW)",
+        "100 mA",
+        "10 A",
+        "10 µA (too low for noise immunity)"
+      ],
+      "answer": "0.5 mA to 1.0 mA (dissipating less than 0.1 mW)",
+      "correct_option": "0.5 mA to 1.0 mA (dissipating less than 0.1 mW)",
+      "difficulty": "medium",
+      "global_id": 14,
+      "explanation": "Keeping current at or below 1 mA limits power dissipation to P = (1 mA)² * 100 Ω = 0.1 mW, keeping self-heating typically below 0.05°C in fluids."
+    },
+    {
+      "id": "rtd-q15",
+      "question": "Using the linear approximation R(T) ≈ R_0 * (1 + α * T) with α = 0.00385 °C⁻¹, what is the approximate temperature T if a Pt100 measures 119.25 Ω?",
+      "options": [
+        "50.0°C",
+        "25.0°C",
+        "75.0°C",
+        "100.0°C"
+      ],
+      "answer": "50.0°C",
+      "correct_option": "50.0°C",
+      "difficulty": "medium",
+      "global_id": 15,
+      "explanation": "T = (R_T - R_0) / (R_0 * α) = (119.25 - 100.00) / (100 * 0.00385) = 19.25 / 0.385 = 50.0°C."
+    },
+    {
+      "id": "rtd-q16",
+      "question": "What is the nominal resistance of a Pt1000 RTD at 0°C, and what is its primary advantage over a Pt100?",
+      "options": [
+        "1000 Ω at 0°C; its 10x higher resistance reduces the relative percentage error caused by lead wire resistance",
+        "1000 Ω; it has 10x higher melting point",
+        "1000 Ω; it operates without electric current",
+        "100 Ω; it is 10 times smaller in physical size"
+      ],
+      "answer": "1000 Ω at 0°C; its 10x higher resistance reduces the relative percentage error caused by lead wire resistance",
+      "correct_option": "1000 Ω at 0°C; its 10x higher resistance reduces the relative percentage error caused by lead wire resistance",
+      "difficulty": "medium",
+      "global_id": 16,
+      "explanation": "With sensitivity of ~3.85 Ω/°C (vs 0.385 Ω/°C for Pt100), lead wire resistance of 1 Ω causes only 0.26°C error in a Pt1000, allowing accurate 2-wire connections over moderate distances."
+    },
+    {
+      "id": "rtd-q17",
+      "question": "What is the tolerance limit for a Class A Pt100 sensor under IEC 60751 at temperature T (°C)?",
+      "options": [
+        "±(0.15 + 0.002 * |T|) °C",
+        "±(0.30 + 0.005 * |T|) °C",
+        "±1.0 °C constant",
+        "±0.01 °C constant"
+      ],
+      "answer": "±(0.15 + 0.002 * |T|) °C",
+      "correct_option": "±(0.15 + 0.002 * |T|) °C",
+      "difficulty": "hard",
+      "global_id": 17,
+      "explanation": "IEC 60751 defines Class A tolerance as ±(0.15 + 0.002 |T|), meaning ±0.15°C at 0°C and ±0.35°C at 100°C."
+    },
+    {
+      "id": "rtd-q18",
+      "question": "What is the tolerance limit for a Class B Pt100 sensor under IEC 60751 at temperature T (°C)?",
+      "options": [
+        "±(0.30 + 0.005 * |T|) °C",
+        "±(0.15 + 0.002 * |T|) °C",
+        "±0.05 °C",
+        "±2.5 °C"
+      ],
+      "answer": "±(0.30 + 0.005 * |T|) °C",
+      "correct_option": "±(0.30 + 0.005 * |T|) °C",
+      "difficulty": "hard",
+      "global_id": 18,
+      "explanation": "Class B (standard industrial grade) has tolerance ±(0.30 + 0.005 |T|), corresponding to ±0.30°C at 0°C and ±0.80°C at 100°C."
+    },
+    {
+      "id": "rtd-q19",
+      "question": "What is a 1/10 DIN (or Class 1/10B) RTD?",
+      "options": [
+        "A high-precision sensor with tolerance equal to 1/10th of Class B (±0.03°C at 0°C)",
+        "A sensor that measures 1/10th of a volt",
+        "A sensor with 10 platinum wires",
+        "A sensor calibrated at 10 temperatures"
+      ],
+      "answer": "A high-precision sensor with tolerance equal to 1/10th of Class B (±0.03°C at 0°C)",
+      "correct_option": "A high-precision sensor with tolerance equal to 1/10th of Class B (±0.03°C at 0°C)",
+      "difficulty": "medium",
+      "global_id": 19,
+      "explanation": "1/10 DIN sensors are specially selected and calibrated for laboratory metrology, offering ±0.03°C accuracy at the ice point."
+    },
+    {
+      "id": "rtd-q20",
+      "question": "What are the two common physical construction types of RTD elements?",
+      "options": [
+        "Wire-wound (platinum wire coiled around a ceramic core) and Thin-film (platinum deposited on a ceramic substrate)",
+        "Solid bar and hollow tube",
+        "Liquid mercury and alcohol capillary",
+        "Carbon disc and ferrite bead"
+      ],
+      "answer": "Wire-wound (platinum wire coiled around a ceramic core) and Thin-film (platinum deposited on a ceramic substrate)",
+      "correct_option": "Wire-wound (platinum wire coiled around a ceramic core) and Thin-film (platinum deposited on a ceramic substrate)",
+      "difficulty": "easy",
+      "global_id": 20,
+      "explanation": "Wire-wound elements offer highest accuracy and stability over wide ranges (-200°C to +850°C); thin-film elements offer compact size, low cost, and fast thermal response."
+    },
+    {
+      "id": "rtd-q21",
+      "question": "Why do thin-film RTDs generally have faster thermal response times than wire-wound RTDs?",
+      "options": [
+        "They have much smaller physical mass and thermal capacitance, allowing rapid thermal equilibrium",
+        "Thin films have higher thermal conductivity than pure platinum",
+        "Thin films do not conduct electricity",
+        "Thin films generate microwave radiation"
+      ],
+      "answer": "They have much smaller physical mass and thermal capacitance, allowing rapid thermal equilibrium",
+      "correct_option": "They have much smaller physical mass and thermal capacitance, allowing rapid thermal equilibrium",
+      "difficulty": "medium",
+      "global_id": 21,
+      "explanation": "The low thermal mass of a microscopic platinum film on an alumina substrate enables fast thermal time constants (τ < 0.1 s in water)."
+    },
+    {
+      "id": "rtd-q22",
+      "question": "What is the thermal time constant (tau, τ) of a temperature sensor?",
+      "options": [
+        "The time required for the sensor to record 63.2% of a sudden step change in temperature",
+        "The time to reach 100% equilibrium",
+        "The time required to melt the sensor",
+        "The time between calibration cycles"
+      ],
+      "answer": "The time required for the sensor to record 63.2% of a sudden step change in temperature",
+      "correct_option": "The time required for the sensor to record 63.2% of a sudden step change in temperature",
+      "difficulty": "medium",
+      "global_id": 22,
+      "explanation": "In first-order thermal response, T(t) = T_final + (T_initial - T_final) * exp(-t/τ). At t = τ, the change completed is 1 - e⁻¹ ≈ 63.2%."
+    },
+    {
+      "id": "rtd-q23",
+      "question": "What is the typical usable measurement temperature range for an industrial platinum RTD?",
+      "options": [
+        "-200°C to +650°C (up to 850°C with specialized ceramic packaging)",
+        "-50°C to +100°C only",
+        "0°C to 100°C only",
+        "+500°C to +3000°C"
+      ],
+      "answer": "-200°C to +650°C (up to 850°C with specialized ceramic packaging)",
+      "correct_option": "-200°C to +650°C (up to 850°C with specialized ceramic packaging)",
+      "difficulty": "easy",
+      "global_id": 23,
+      "explanation": "Platinum RTDs cover the broad range from cryogenic temperatures (-200°C) to intense industrial heat (+650°C to +850°C)."
+    },
+    {
+      "id": "rtd-q24",
+      "question": "What protective casing is typically placed around an RTD sensor when installed inside an industrial pressurized fluid pipe?",
+      "options": [
+        "A thermowell (metal protection sheath)",
+        "A glass test tube",
+        "Plastic shrink wrap",
+        "A wooden dowel"
+      ],
+      "answer": "A thermowell (metal protection sheath)",
+      "correct_option": "A thermowell (metal protection sheath)",
+      "difficulty": "easy",
+      "global_id": 24,
+      "explanation": "A thermowell isolates the RTD from high pressure, corrosive chemicals, and flow erosion, permitting sensor replacement without draining the process pipe."
+    },
+    {
+      "id": "rtd-q25",
+      "question": "Why does an RTD have higher measurement repeatability and long-term stability than a thermocouple?",
+      "options": [
+        "Platinum resistance changes strictly via stable metallic lattice scattering without junction degradation or chemical drift",
+        "RTDs generate their own power",
+        "Thermocouple wires melt at 50°C",
+        "RTDs are immune to all noise"
+      ],
+      "answer": "Platinum resistance changes strictly via stable metallic lattice scattering without junction degradation or chemical drift",
+      "correct_option": "Platinum resistance changes strictly via stable metallic lattice scattering without junction degradation or chemical drift",
+      "difficulty": "medium",
+      "global_id": 25,
+      "explanation": "Thermocouples suffer from wire oxidation, cold-junction drift, and metallurgical inhomogeneities; pure platinum RTD elements maintain resistance calibration to within a few thousandths of a degree over years."
+    },
+    {
+      "id": "rtd-q26",
+      "question": "What is the Seebeck effect, and why is it an unwanted source of error in RTD circuits?",
+      "options": [
+        "Dissimilar metal junctions (e.g. copper lead to platinum lead) generate parasitic thermoelectric EMF voltages if a temperature gradient exists across the terminals",
+        "Magnetic fields induce eddy currents in platinum",
+        "Mechanical stress alters wire resistance",
+        "Thermal expansion cracks the casing"
+      ],
+      "answer": "Dissimilar metal junctions (e.g. copper lead to platinum lead) generate parasitic thermoelectric EMF voltages if a temperature gradient exists across the terminals",
+      "correct_option": "Dissimilar metal junctions (e.g. copper lead to platinum lead) generate parasitic thermoelectric EMF voltages if a temperature gradient exists across the terminals",
+      "difficulty": "hard",
+      "global_id": 26,
+      "explanation": "Connecting copper leads to platinum creates a thermocouple junction; if the two terminals are at slightly different temperatures, parasitic DC microvolts skew the voltage measurement."
+    },
+    {
+      "id": "rtd-q27",
+      "question": "How can parasitic thermoelectric EMF voltages in RTD circuits be eliminated electronically?",
+      "options": [
+        "Using current-reversal (alternating DC excitation) and averaging the two voltage readings",
+        "Increasing excitation current to 10 A",
+        "Cooling the leads with liquid nitrogen",
+        "Using AC power at 50 Hz"
+      ],
+      "answer": "Using current-reversal (alternating DC excitation) and averaging the two voltage readings",
+      "correct_option": "Using current-reversal (alternating DC excitation) and averaging the two voltage readings",
+      "difficulty": "hard",
+      "global_id": 27,
+      "explanation": "By measuring V_forward = V_RTD + V_EMF and V_reverse = -V_RTD + V_EMF, subtracting gives V_RTD = (V_forward - V_reverse) / 2, canceling V_EMF completely."
+    },
+    {
+      "id": "rtd-q28",
+      "question": "If an uncalibrated 2-wire Pt100 sensor has two copper lead wires with resistance R_lead = 1.925 Ω each, what false temperature offset will be reported at 0°C?",
+      "options": [
+        "+10.0°C (reads 10.0°C instead of 0.0°C)",
+        "+1.925°C",
+        "-10.0°C",
+        "+0.385°C"
+      ],
+      "answer": "+10.0°C (reads 10.0°C instead of 0.0°C)",
+      "correct_option": "+10.0°C (reads 10.0°C instead of 0.0°C)",
+      "difficulty": "medium",
+      "global_id": 28,
+      "explanation": "Total lead resistance R_lead_total = 2 * 1.925 Ω = 3.85 Ω. Since α * R_0 = 0.385 Ω/°C, the false offset is 3.85 Ω / 0.385 Ω/°C = +10.0°C."
+    },
+    {
+      "id": "rtd-q29",
+      "question": "What is the ice point calibration procedure for an RTD in a standards laboratory?",
+      "options": [
+        "Immersing the sensor in a prepared ice-water bath of shaved pure distilled water ice saturated with air-saturated water (0.000°C)",
+        "Placing the sensor in a domestic freezer",
+        "Holding an ice cube against the sheath",
+        "Measuring dry ice vapor"
+      ],
+      "answer": "Immersing the sensor in a prepared ice-water bath of shaved pure distilled water ice saturated with air-saturated water (0.000°C)",
+      "correct_option": "Immersing the sensor in a prepared ice-water bath of shaved pure distilled water ice saturated with air-saturated water (0.000°C)",
+      "difficulty": "easy",
+      "global_id": 29,
+      "explanation": "A properly prepared ice point bath with shaved distilled water ice and deionized water provides an accurate, reproducible 0.000°C ± 0.002°C physical reference."
+    },
+    {
+      "id": "rtd-q30",
+      "question": "What is the Triple Point of Water (TPW), the primary defining fixed point on the International Temperature Scale of 1990 (ITS-90)?",
+      "options": [
+        "0.01°C (273.16 K at 611.657 Pa)",
+        "0.00°C exactly",
+        "-273.15°C",
+        "100.00°C"
+      ],
+      "answer": "0.01°C (273.16 K at 611.657 Pa)",
+      "correct_option": "0.01°C (273.16 K at 611.657 Pa)",
+      "difficulty": "medium",
+      "global_id": 30,
+      "explanation": "The triple point of water—where solid, liquid, and vapor coexist in thermodynamic equilibrium—is defined as exactly 273.16 K (0.01°C) in ITS-90."
+    },
+    {
+      "id": "rtd-q31",
+      "question": "In an automated data acquisition system, what integrated circuit architecture is typically used to interface with a 4-wire RTD (e.g. ADS1220, MAX31865)?",
+      "options": [
+        "A precision 24-bit delta-sigma ADC with matched programmable internal current sources (IDACs) and ratiometric reference",
+        "A simple 8-bit counter",
+        "A 555 timer oscillator",
+        "A digital phase locked loop"
+      ],
+      "answer": "A precision 24-bit delta-sigma ADC with matched programmable internal current sources (IDACs) and ratiometric reference",
+      "correct_option": "A precision 24-bit delta-sigma ADC with matched programmable internal current sources (IDACs) and ratiometric reference",
+      "difficulty": "medium",
+      "global_id": 31,
+      "explanation": "Modern RTD frontend ICs use dual matched current sources and ratiometric conversion: the excitation current flows through both the RTD and a precision reference resistor, making conversion independent of absolute current drift."
+    },
+    {
+      "id": "rtd-q32",
+      "question": "What is 'ratiometric measurement' in RTD signal conditioning?",
+      "options": [
+        "The measurement where sensor voltage is measured as a ratio against the voltage across a known precision reference resistor (R_ref) carrying the identical current",
+        "Measuring the ratio of length to width",
+        "Measuring voltage divided by power",
+        "Measuring the ratio of AC to DC noise"
+      ],
+      "answer": "The measurement where sensor voltage is measured as a ratio against the voltage across a known precision reference resistor (R_ref) carrying the identical current",
+      "correct_option": "The measurement where sensor voltage is measured as a ratio against the voltage across a known precision reference resistor (R_ref) carrying the identical current",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "Since V_RTD = I * R_RTD and V_ref = I * R_ref, the ADC code V_RTD / V_ref = R_RTD / R_ref cancels out excitation current fluctuations completely."
+    },
+    {
+      "id": "rtd-q33",
+      "question": "If a Pt100 RTD resistance drops to 80.31 Ω, what is the approximate temperature T of the medium?",
+      "options": [
+        "-50.0°C",
+        "-20.0°C",
+        "-100.0°C",
+        "0.0°C"
+      ],
+      "answer": "-50.0°C",
+      "correct_option": "-50.0°C",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "Using linear slope ~0.385 Ω/°C: ΔR = 80.31 - 100.00 = -19.69 Ω. T ≈ -19.69 / 0.3851 ≈ -51.1°C (exact Callendar-Van Dusen gives -50.0°C)."
+    },
+    {
+      "id": "rtd-q34",
+      "question": "What is the resistance of a Pt100 RTD at -200°C (liquid nitrogen temperature)?",
+      "options": [
+        "Approximately 18.52 Ω",
+        "0.00 Ω",
+        "50.00 Ω",
+        "100.00 Ω"
+      ],
+      "answer": "Approximately 18.52 Ω",
+      "correct_option": "Approximately 18.52 Ω",
+      "difficulty": "hard",
+      "global_id": 34,
+      "explanation": "At -200°C, platinum resistance drops dramatically down to 18.52 Ω according to the cryogenic Callendar-Van Dusen equation."
+    },
+    {
+      "id": "rtd-q35",
+      "question": "What metal is used in Nickel RTDs (e.g. Ni120), and what is its main characteristic compared to Platinum?",
+      "options": [
+        "Nickel has higher sensitivity (α ≈ 0.00672 °C⁻¹), but poorer linearity and a narrower temperature range (-80°C to +260°C)",
+        "Nickel is completely immune to radiation",
+        "Nickel is superconductive at room temperature",
+        "Nickel has negative temperature coefficient"
+      ],
+      "answer": "Nickel has higher sensitivity (α ≈ 0.00672 °C⁻¹), but poorer linearity and a narrower temperature range (-80°C to +260°C)",
+      "correct_option": "Nickel has higher sensitivity (α ≈ 0.00672 °C⁻¹), but poorer linearity and a narrower temperature range (-80°C to +260°C)",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "Nickel offers almost twice the resistance change per degree compared to platinum, but suffers from significant curvature and limited thermal endurance."
+    },
+    {
+      "id": "rtd-q36",
+      "question": "What is a Copper RTD (e.g. Cu10, Cu50) most noted for in precision laboratory work over moderate temperatures (-50°C to +150°C)?",
+      "options": [
+        "Extremely high linearity over its range with α ≈ 0.00427 °C⁻¹",
+        "Ability to withstand 2000°C",
+        "High chemical reactivity",
+        "Negative resistance"
+      ],
+      "answer": "Extremely high linearity over its range with α ≈ 0.00427 °C⁻¹",
+      "correct_option": "Extremely high linearity over its range with α ≈ 0.00427 °C⁻¹",
+      "difficulty": "medium",
+      "global_id": 36,
+      "explanation": "Copper has one of the most linear resistance-vs-temperature curves of any pure metal between -50°C and +150°C, though its low resistivity requires long wires."
+    },
+    {
+      "id": "rtd-q37",
+      "question": "What causes hysteresis in an RTD sensor subjected to cyclic thermal shocks?",
+      "options": [
+        "Mechanical strain induced on the platinum wire by differential thermal expansion between platinum and the ceramic support substrate",
+        "Electromagnetic interference",
+        "Chemical oxidation of gold leads",
+        "Air pressure changes"
+      ],
+      "answer": "Mechanical strain induced on the platinum wire by differential thermal expansion between platinum and the ceramic support substrate",
+      "correct_option": "Mechanical strain induced on the platinum wire by differential thermal expansion between platinum and the ceramic support substrate",
+      "difficulty": "hard",
+      "global_id": 37,
+      "explanation": "Because platinum and alumina have different thermal expansion coefficients, heating cycles exert piezoresistive strain on the wire, causing slight resistance shifts upon returning to 0°C."
+    },
+    {
+      "id": "rtd-q38",
+      "question": "How do strain-free wire-wound RTD designs eliminate mechanical strain hysteresis in primary laboratory standards (SPRTs)?",
+      "options": [
+        "The platinum wire is wound loosely in a bifilar spiral inside glass/quartz capillaries without being glued or cemented",
+        "The wire is stretched under 100 kg tension",
+        "The wire is melted into a solid bead",
+        "The wire is coated in silicone rubber"
+      ],
+      "answer": "The platinum wire is wound loosely in a bifilar spiral inside glass/quartz capillaries without being glued or cemented",
+      "correct_option": "The platinum wire is wound loosely in a bifilar spiral inside glass/quartz capillaries without being glued or cemented",
+      "difficulty": "hard",
+      "global_id": 38,
+      "explanation": "Standard Platinum Resistance Thermometers (SPRTs) support the platinum wire freely in helical quartz tubes, allowing it to expand and contract with zero mechanical stress."
+    },
+    {
+      "id": "rtd-q39",
+      "question": "In a Wheatstone bridge circuit with four equal 100 Ω resistors powered by a 5.0 V supply, what is the output voltage ΔV when a Pt100 changes from 100 Ω to 101 Ω?",
+      "options": [
+        "Approximately 12.44 mV",
+        "1.00 V",
+        "50.0 mV",
+        "0.00 mV"
+      ],
+      "answer": "Approximately 12.44 mV",
+      "correct_option": "Approximately 12.44 mV",
+      "difficulty": "hard",
+      "global_id": 39,
+      "explanation": "ΔV = V_s * [R_RTD / (R_RTD + R) - 1/2] = 5.0 * [101 / 201 - 0.5] = 5.0 * [0.502488 - 0.5] = 5.0 * 0.002488 ≈ 12.44 mV."
+    },
+    {
+      "id": "rtd-q40",
+      "question": "Why are RTDs preferred over thermocouples for pharmaceutical cleanrooms and HVAC building automation?",
+      "options": [
+        "Higher accuracy (±0.1°C), excellent stability, and zero requirement for cold-junction reference compensation",
+        "RTDs cost less than copper wire",
+        "RTDs measure air speed directly",
+        "RTDs emit ultraviolet sterilizing rays"
+      ],
+      "answer": "Higher accuracy (±0.1°C), excellent stability, and zero requirement for cold-junction reference compensation",
+      "correct_option": "Higher accuracy (±0.1°C), excellent stability, and zero requirement for cold-junction reference compensation",
+      "difficulty": "easy",
+      "global_id": 40,
+      "explanation": "Over ambient and moderate temperature ranges, RTDs deliver unmatched precision and drift-free operation without needing thermocouple CJC circuitry."
+    },
+    {
+      "id": "rtd-q41",
+      "question": "What is the effect of moisture or water ingress into the ceramic housing of an RTD probe?",
+      "options": [
+        "It creates a parallel parasitic resistance path (insulation resistance degradation), lowering the measured resistance and reading falsely cold",
+        "It causes the sensor resistance to jump to 1 MΩ",
+        "It doubles the speed of current",
+        "It has no effect on resistance"
+      ],
+      "answer": "It creates a parallel parasitic resistance path (insulation resistance degradation), lowering the measured resistance and reading falsely cold",
+      "correct_option": "It creates a parallel parasitic resistance path (insulation resistance degradation), lowering the measured resistance and reading falsely cold",
+      "difficulty": "medium",
+      "global_id": 41,
+      "explanation": "Moisture provides a parallel ionic conduction path across the platinum element: 1/R_meas = 1/R_RTD + 1/R_leakage, artificially decreasing measured resistance."
+    },
+    {
+      "id": "rtd-q42",
+      "question": "What minimum insulation resistance is required between the RTD element and its outer metal protective sheath at room temperature (under IEC 60751)?",
+      "options": [
+        "At least 100 MΩ at 100 V DC",
+        "At least 1 Ω",
+        "At least 100 Ω",
+        "Zero ohms (sheath must be grounded to element)"
+      ],
+      "answer": "At least 100 MΩ at 100 V DC",
+      "correct_option": "At least 100 MΩ at 100 V DC",
+      "difficulty": "hard",
+      "global_id": 42,
+      "explanation": "IEC 60751 mandates an insulation resistance greater than 100 MΩ at 100 V DC to prevent leakage currents to ground from distorting the temperature reading."
+    },
+    {
+      "id": "rtd-q43",
+      "question": "If a Pt100 RTD has an alpha of α = 0.00385 °C⁻¹, what is the resistance change per degree Celsius (sensitivity dR/dT) near 0°C?",
+      "options": [
+        "0.385 Ω/°C",
+        "3.85 Ω/°C",
+        "1.00 Ω/°C",
+        "0.0385 Ω/°C"
+      ],
+      "answer": "0.385 Ω/°C",
+      "correct_option": "0.385 Ω/°C",
+      "difficulty": "easy",
+      "global_id": 43,
+      "explanation": "Sensitivity S = R_0 * α = 100 Ω * 0.003851 °C⁻¹ = 0.3851 Ω/°C."
+    },
+    {
+      "id": "rtd-q44",
+      "question": "For a Pt500 RTD (R0 = 500 Ω), what is the sensitivity dR/dT near 0°C?",
+      "options": [
+        "1.925 Ω/°C",
+        "0.385 Ω/°C",
+        "5.00 Ω/°C",
+        "0.500 Ω/°C"
+      ],
+      "answer": "1.925 Ω/°C",
+      "correct_option": "1.925 Ω/°C",
+      "difficulty": "medium",
+      "global_id": 44,
+      "explanation": "Sensitivity S = 500 Ω * 0.003851 °C⁻¹ = 1.9255 Ω/°C (5 times higher than Pt100)."
+    },
+    {
+      "id": "rtd-q45",
+      "question": "Why does an RTD measurement system convert the measured resistance to temperature using the inverse Callendar-Van Dusen polynomial or lookup table rather than simple linear extrapolation?",
+      "options": [
+        "Because platinum resistance exhibits slight negative curvature (B * T² term) as temperature rises",
+        "Because linear math is impossible on computers",
+        "Because Ohm's law fails at 100°C",
+        "To double the sampling rate"
+      ],
+      "answer": "Because platinum resistance exhibits slight negative curvature (B * T² term) as temperature rises",
+      "correct_option": "Because platinum resistance exhibits slight negative curvature (B * T² term) as temperature rises",
+      "difficulty": "medium",
+      "global_id": 45,
+      "explanation": "Since B = -5.775 x 10⁻⁷ is negative, the actual R-vs-T curve curves slightly downward. Linear approximation introduces errors up to ~0.4°C at 50°C and ~2.5°C at 500°C."
+    },
+    {
+      "id": "rtd-q46",
+      "question": "What is the boiling point of liquid nitrogen at 1 atm, a common cryogenic calibration reference point for RTDs?",
+      "options": [
+        "-195.8°C (77.36 K)",
+        "-273.15°C (0 K)",
+        "-78.5°C (194.7 K)",
+        "0.0°C"
+      ],
+      "answer": "-195.8°C (77.36 K)",
+      "correct_option": "-195.8°C (77.36 K)",
+      "difficulty": "easy",
+      "global_id": 46,
+      "explanation": "Liquid nitrogen boils at 77.36 K (-195.79°C) at standard atmospheric pressure."
+    },
+    {
+      "id": "rtd-q47",
+      "question": "What is the primary factor determining the immersion depth required for an RTD in a thermowell?",
+      "options": [
+        "Stem conduction error: heat conducted along the metallic sheath must not alter the temperature of the sensing tip",
+        "The electrical resistance of the thermowell",
+        "The speed of sound in oil",
+        "The voltage of the battery"
+      ],
+      "answer": "Stem conduction error: heat conducted along the metallic sheath must not alter the temperature of the sensing tip",
+      "correct_option": "Stem conduction error: heat conducted along the metallic sheath must not alter the temperature of the sensing tip",
+      "difficulty": "medium",
+      "global_id": 47,
+      "explanation": "Heat conducting along the probe shaft to the colder ambient air creates a thermal gradient; adequate immersion (typically 10-15x probe diameter) ensures the sensing tip reaches true process temperature."
+    },
+    {
+      "id": "rtd-q48",
+      "question": "If an RTD has a self-heating dissipation constant of 25 mW/°C in stirred water, how much will a 2 mA excitation current through 100 Ω raise its internal temperature?",
+      "options": [
+        "0.016°C",
+        "0.16°C",
+        "1.6°C",
+        "16.0°C"
+      ],
+      "answer": "0.016°C",
+      "correct_option": "0.016°C",
+      "difficulty": "hard",
+      "global_id": 48,
+      "explanation": "Power P = I² R = (0.002 A)² * 100 Ω = 4.0e-6 * 100 = 0.40 mW. Temperature rise ΔT = P / Dissipation_Constant = 0.40 mW / (25 mW/°C) = 0.016°C."
+    },
+    {
+      "id": "rtd-q49",
+      "question": "Under IEC 60751, what is the required purity of platinum wire indicated by the resistance ratio R(100°C) / R(0°C)?",
+      "options": [
+        "At least 1.3851 for industrial grade, and ≥ 1.3925 for laboratory SPRT standard grade",
+        "Exactly 1.0000",
+        "At least 2.0000",
+        "0.3851"
+      ],
+      "answer": "At least 1.3851 for industrial grade, and ≥ 1.3925 for laboratory SPRT standard grade",
+      "correct_option": "At least 1.3851 for industrial grade, and ≥ 1.3925 for laboratory SPRT standard grade",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "Higher purity platinum exhibits higher temperature coefficient: industrial grade requires W(100) ≥ 1.3851, while ITS-90 primary SPRT standard requires W(100) ≥ 1.3925 (99.999% pure annealed Pt)."
+    },
+    {
+      "id": "rtd-q50",
+      "question": "In an automated microcontroller lab system, how is temperature T calculated from measured resistance R using the quadratic Callendar-Van Dusen equation R = R0(1 + AT + BT²)?",
+      "options": [
+        "Using the quadratic formula: T = [-A + √(A² - 4 * B * (1 - R/R_0))] / (2 * B)",
+        "T = (R - R_0) / A",
+        "T = R * A * B",
+        "T = √(R / R_0)"
+      ],
+      "answer": "Using the quadratic formula: T = [-A + √(A² - 4 * B * (1 - R/R_0))] / (2 * B)",
+      "correct_option": "Using the quadratic formula: T = [-A + √(A² - 4 * B * (1 - R/R_0))] / (2 * B)",
+      "difficulty": "hard",
+      "global_id": 50,
+      "explanation": "Rearranging into B T² + A T + (1 - R/R_0) = 0 and applying the quadratic formula yields the exact closed-form solution for T ≥ 0°C."
+    }
+  ]
+}

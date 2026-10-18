@@ -108,6 +108,8 @@ export function normalizeExpId(expId) {
   if (expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence") return "laser-divergence";
   if (expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance") return "ultrasonic-sensor";
   if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") return "wedge-film";
+  if (expId === "newtons-rings" || expId === "newton" || expId === "newtons-ring" || expId === "newton-rings") return "newtons-rings";
+  if (expId === "rtd-sensor" || expId === "rtd" || expId === "rtd-sensors" || expId === "pt100") return "rtd-sensor";
   return "projectile";
 }
 
@@ -125,6 +127,8 @@ export function getExperimentFriendlyName(expId) {
     case "laser-divergence": return "Exp 9: Laser Beam Divergence";
     case "ultrasonic-sensor": return "Exp 10: Ultrasonic Sensor (UDM)";
     case "wedge-film": return "Exp 11: Wedge-Shaped Film";
+    case "newtons-rings": return "Exp 12: Newton's Rings";
+    case "rtd-sensor": return "Exp 13: RTD Sensors";
     case "sandbox": return "Physics Sandbox";
     default: return "Interactive Physics Lab";
   }

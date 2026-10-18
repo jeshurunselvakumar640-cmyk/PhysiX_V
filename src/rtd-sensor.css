@@ -1,0 +1,482 @@
+/* ==========================================================================
+   PhysiX — RTD Sensors Simulation Styles (EXP 13)
+   Resistance Temperature Detector (Pt100 / Pt1000) & Callendar–Van Dusen
+   ========================================================================== */
+
+#exp-rtd-sensor-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% 0%, rgba(20, 184, 166, 0.08) 0%, transparent 60%),
+                linear-gradient(180deg, #060b13 0%, #03070d 100%);
+    box-sizing: border-box;
+}
+
+#exp-rtd-sensor-section.hidden {
+    display: none !important;
+}
+
+.rtd-lab-shell {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    color: #f1f5f9;
+}
+
+.rtd-lab-header,
+.rtd-panel-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.rtd-lab-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+}
+
+.rtd-eyebrow {
+    display: inline-block;
+    margin-bottom: 0.35rem;
+    color: #5eead4;
+    font: 600 0.7rem "JetBrains Mono", monospace;
+    text-transform: uppercase;
+}
+
+.rtd-lab-header h1,
+.rtd-panel-heading h2 {
+    margin: 0;
+    color: #f8fafc;
+    font-family: "Orbitron", sans-serif;
+}
+
+.rtd-lab-header h1 {
+    font-size: 1.65rem;
+}
+
+.rtd-panel-heading h2 {
+    font-size: 1.05rem;
+}
+
+.rtd-lab-header p {
+    max-width: 760px;
+    margin: 0.4rem 0 0;
+    color: #a8b7c4;
+    line-height: 1.55;
+}
+
+.rtd-workspace,
+.rtd-analysis-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    gap: 1rem;
+}
+
+.rtd-panel {
+    min-width: 0;
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    background: rgba(10, 24, 31, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.rtd-apparatus-frame,
+.rtd-graph-frame {
+    height: 270px;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    background: #07141b;
+    position: relative;
+}
+
+.rtd-graph-frame {
+    height: 320px;
+}
+
+#rtd-apparatus-canvas,
+#rtd-graph-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.rtd-live-readings,
+.rtd-kpi-grid,
+.rtd-meter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    gap: 0.65rem;
+}
+
+.rtd-live-reading,
+.rtd-kpi {
+    min-width: 0;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.5rem;
+    background: rgba(2, 6, 23, 0.42);
+}
+
+.rtd-live-reading span,
+.rtd-kpi span,
+.rtd-meter-grid span {
+    display: block;
+    color: #94a3b8;
+    font: 0.68rem "JetBrains Mono", monospace;
+    text-transform: uppercase;
+}
+
+.rtd-live-reading strong,
+.rtd-kpi strong,
+.rtd-meter-grid strong {
+    display: block;
+    margin-top: 0.3rem;
+    color: #ccfbf1;
+    font: 600 1rem "JetBrains Mono", monospace;
+    overflow-wrap: anywhere;
+}
+
+.rtd-kpi-grid {
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+}
+
+.rtd-kpi strong {
+    font-size: 1.05rem;
+}
+
+.rtd-control-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.rtd-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.rtd-field label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.75rem;
+    color: #d1dbe3;
+    font-size: 0.8rem;
+}
+
+.rtd-field label strong {
+    color: #5eead4;
+    font-family: "JetBrains Mono", monospace;
+}
+
+.rtd-field select,
+.rtd-action-btn {
+    min-height: 2.45rem;
+    padding: 0.5rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 0.45rem;
+    background: #10232b;
+    color: #e5eef3;
+    font: 500 0.8rem "JetBrains Mono", monospace;
+}
+
+.rtd-field select {
+    cursor: pointer;
+}
+
+.rtd-slider {
+    width: 100%;
+    accent-color: #14b8a6;
+    cursor: pointer;
+}
+
+.rtd-action-btn {
+    cursor: pointer;
+    transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+    user-select: none;
+}
+
+.rtd-action-btn:hover {
+    background: #17323a;
+    border-color: rgba(94, 234, 212, 0.45);
+    transform: translateY(-1px);
+}
+
+.rtd-action-btn.active {
+    color: #042f2e;
+    background: #5eead4;
+    border-color: #99f6e4;
+    font-weight: 700;
+}
+
+.rtd-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.55rem;
+}
+
+.rtd-actions .rtd-action-btn {
+    flex: 0 1 auto;
+}
+
+.rtd-missions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.rtd-mission {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 0.5rem;
+    background: rgba(15, 35, 42, 0.65);
+    transition: all 0.2s ease;
+}
+
+.rtd-mission.completed {
+    border-color: rgba(45, 212, 191, 0.5);
+    background: rgba(20, 184, 166, 0.1);
+}
+
+.rtd-mission strong {
+    font-size: 0.84rem;
+    color: #f1f5f9;
+}
+
+.rtd-mission p {
+    margin: 0.25rem 0 0;
+    color: #9fb0bb;
+    font-size: 0.74rem;
+    line-height: 1.4;
+}
+
+.rtd-mission>span {
+    flex: none;
+    color: #5eead4;
+    font: 700 0.74rem "JetBrains Mono", monospace;
+    background: rgba(94, 234, 212, 0.12);
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(94, 234, 212, 0.25);
+}
+
+.rtd-empty {
+    color: #94a3b8;
+    font-size: 0.85rem;
+}
+
+.rtd-table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.5rem;
+    background: rgba(2, 6, 23, 0.4);
+}
+
+.rtd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font: 0.76rem "JetBrains Mono", monospace;
+    text-align: left;
+}
+
+.rtd-table th {
+    padding: 0.65rem 0.75rem;
+    color: #a5b4c0;
+    background: #12252d;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rtd-table td {
+    padding: 0.6rem 0.75rem;
+    color: #d2dde3;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    white-space: nowrap;
+}
+
+.rtd-table tr:hover td {
+    background: rgba(255, 255, 255, 0.035);
+}
+
+/* ==========================================================================
+   Light Mode Support for RTD Sensors
+   ========================================================================== */
+body.light-mode #exp-rtd-sensor-section,
+[data-theme="light"] #exp-rtd-sensor-section {
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-lab-shell,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-lab-shell {
+    color: #1e293b;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-lab-header,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-lab-header {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-lab-header h1,
+body.light-mode #exp-rtd-sensor-section .rtd-panel-heading h2,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-lab-header h1,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-panel-heading h2 {
+    color: #0f172a;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-lab-header p,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-lab-header p {
+    color: #475569;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-panel,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-panel {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-live-reading,
+body.light-mode #exp-rtd-sensor-section .rtd-kpi,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-live-reading,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-kpi {
+    background: #f1f5f9;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-live-reading strong,
+body.light-mode #exp-rtd-sensor-section .rtd-kpi strong,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-live-reading strong,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-kpi strong {
+    color: #0f766e;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-field label,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-field label {
+    color: #334155;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-field select,
+body.light-mode #exp-rtd-sensor-section .rtd-action-btn,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-field select,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-action-btn {
+    background: #f8fafc;
+    border-color: rgba(0, 0, 0, 0.14);
+    color: #0f172a;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-action-btn:hover,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-action-btn:hover {
+    background: #e2e8f0;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-action-btn.active,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-action-btn.active {
+    background: #0d9488;
+    color: #ffffff;
+    border-color: #0f766e;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-mission,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-mission {
+    background: #f8fafc;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-mission strong,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-mission strong {
+    color: #0f172a;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-mission p,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-mission p {
+    color: #475569;
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-mission.completed,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-mission.completed {
+    background: rgba(13, 148, 136, 0.08);
+    border-color: rgba(13, 148, 136, 0.35);
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-table-wrap,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-table-wrap {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-table th,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-table th {
+    background: #f1f5f9;
+    color: #334155;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-table td,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-table td {
+    color: #1e293b;
+    border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+body.light-mode #exp-rtd-sensor-section .rtd-table tr:hover td,
+[data-theme="light"] #exp-rtd-sensor-section .rtd-table tr:hover td {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 900px) {
+    .rtd-workspace,
+    .rtd-analysis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .rtd-lab-shell {
+        padding: 1rem 0.75rem 2rem;
+    }
+
+    .rtd-panel {
+        padding: 0.85rem;
+    }
+
+    .rtd-apparatus-frame {
+        height: 225px;
+    }
+
+    .rtd-graph-frame {
+        height: 280px;
+    }
+
+    .rtd-mission {
+        align-items: flex-start;
+    }
+
+    .rtd-actions {
+        justify-content: stretch;
+    }
+
+    .rtd-actions .rtd-action-btn {
+        flex: 1 1 42%;
+    }
+}

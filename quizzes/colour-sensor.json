@@ -1,0 +1,760 @@
+{
+  "experiment": "Study of Colour Sensor - Question Bank",
+  "experimentId": "colour-sensor",
+  "quizId": "colour-sensor-mastery-quiz",
+  "experimentName": "Study of Colour Sensor (TCS3200)",
+  "description": "Comprehensive 50-Question Physics Question Bank for Study of Colour Sensor (TCS3200)",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the main purpose of a colour sensor?",
+      "options": [
+        "Detect colours/light characteristics",
+        "Measure temperature",
+        "Measure pressure",
+        "Measure mass"
+      ],
+      "answer": "Detect colours/light characteristics",
+      "correct_option": "Detect colours/light characteristics",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "Colour sensors quantify spectral reflectance/emission across RGB wavelengths to classify target chromaticity."
+    },
+    {
+      "id": 2,
+      "question": "RGB stands for:",
+      "options": [
+        "Red, Green, Blue",
+        "Red, Grey, Black",
+        "Radiation, Green, Brightness",
+        "Range, Gain, Band"
+      ],
+      "answer": "Red, Green, Blue",
+      "correct_option": "Red, Green, Blue",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "RGB represents the additive primary color channels in optoelectronics and trichromatic vision."
+    },
+    {
+      "id": 3,
+      "question": "Which component is commonly used to detect light?",
+      "options": [
+        "Photodiode",
+        "Fuse",
+        "Switch",
+        "Transformer"
+      ],
+      "answer": "Photodiode",
+      "correct_option": "Photodiode",
+      "difficulty": "easy",
+      "global_id": 3,
+      "explanation": "Photodiodes generate current proportional to the flux of incident photons on their p-n junction."
+    },
+    {
+      "id": 4,
+      "question": "Which RGB colour has the longest wavelength?",
+      "options": [
+        "Red",
+        "Green",
+        "Blue",
+        "All are equal"
+      ],
+      "answer": "Red",
+      "correct_option": "Red",
+      "difficulty": "easy",
+      "global_id": 4,
+      "explanation": "Red light occupies the long-wavelength end of the visible spectrum (~620–750 nm)."
+    },
+    {
+      "id": 5,
+      "question": "Which RGB colour has the shortest wavelength?",
+      "options": [
+        "Blue",
+        "Red",
+        "Green",
+        "All are equal"
+      ],
+      "answer": "Blue",
+      "correct_option": "Blue",
+      "difficulty": "easy",
+      "global_id": 5,
+      "explanation": "Blue/violet light has the shortest wavelength in visible spectrum (~400–495 nm)."
+    },
+    {
+      "id": 6,
+      "question": "If a surface reflects mostly red light, it generally appears:",
+      "options": [
+        "Red",
+        "Blue",
+        "Green",
+        "Black"
+      ],
+      "answer": "Red",
+      "correct_option": "Red",
+      "difficulty": "easy",
+      "global_id": 6,
+      "explanation": "An object's apparent color is determined by the spectral bands it reflects into the detector."
+    },
+    {
+      "id": 7,
+      "question": "Visible light is a part of:",
+      "options": [
+        "Electromagnetic radiation",
+        "Sound radiation",
+        "Mechanical radiation",
+        "Nuclear radiation only"
+      ],
+      "answer": "Electromagnetic radiation",
+      "correct_option": "Electromagnetic radiation",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "Visible light consists of electromagnetic waves in the frequency range ~430–750 THz."
+    },
+    {
+      "id": 8,
+      "question": "The approximate visible-light wavelength range is:",
+      "options": [
+        "400–700 nm",
+        "1–10 nm",
+        "10–100 m",
+        "1–10 km"
+      ],
+      "answer": "400–700 nm",
+      "correct_option": "400–700 nm",
+      "difficulty": "easy",
+      "global_id": 8,
+      "explanation": "Human and sensor visible spectral sensitivity spans roughly 380/400 nm (violet) to 700/750 nm (deep red)."
+    },
+    {
+      "id": 9,
+      "question": "A photodiode converts incident light into an:",
+      "options": [
+        "Electrical signal",
+        "Sound wave",
+        "Mechanical force",
+        "Chemical fuel"
+      ],
+      "answer": "Electrical signal",
+      "correct_option": "Electrical signal",
+      "difficulty": "easy",
+      "global_id": 9,
+      "explanation": "The photoelectric effect creates electron-hole pairs, producing a measurable photocurrent or voltage."
+    },
+    {
+      "id": 10,
+      "question": "Equal high RGB intensities ideally produce:",
+      "options": [
+        "White",
+        "Black",
+        "Red",
+        "Magenta"
+      ],
+      "answer": "White",
+      "correct_option": "White",
+      "difficulty": "easy",
+      "global_id": 10,
+      "explanation": "Additive mixing of full-intensity Red, Green, and Blue produces White light."
+    },
+    {
+      "id": 11,
+      "question": "Very low RGB intensities correspond approximately to:",
+      "options": [
+        "Black",
+        "White",
+        "Yellow",
+        "Cyan"
+      ],
+      "answer": "Black",
+      "correct_option": "Black",
+      "difficulty": "easy",
+      "global_id": 11,
+      "explanation": "The absence of reflected or emitted light (R=G=B≈0) corresponds to Black."
+    },
+    {
+      "id": 12,
+      "question": "Red plus green light produces:",
+      "options": [
+        "Yellow",
+        "Cyan",
+        "Magenta",
+        "Blue"
+      ],
+      "answer": "Yellow",
+      "correct_option": "Yellow",
+      "difficulty": "easy",
+      "global_id": 12,
+      "explanation": "In additive color synthesis, Red + Green = Yellow."
+    },
+    {
+      "id": 13,
+      "question": "Green plus blue light produces:",
+      "options": [
+        "Cyan",
+        "Yellow",
+        "Red",
+        "Orange"
+      ],
+      "answer": "Cyan",
+      "correct_option": "Cyan",
+      "difficulty": "easy",
+      "global_id": 13,
+      "explanation": "In additive color synthesis, Green + Blue = Cyan."
+    },
+    {
+      "id": 14,
+      "question": "Red plus blue light produces:",
+      "options": [
+        "Magenta",
+        "Green",
+        "Cyan",
+        "Yellow"
+      ],
+      "answer": "Magenta",
+      "correct_option": "Magenta",
+      "difficulty": "easy",
+      "global_id": 14,
+      "explanation": "In additive color synthesis, Red + Blue = Magenta."
+    },
+    {
+      "id": 15,
+      "question": "The unit nm commonly represents:",
+      "options": [
+        "Wavelength",
+        "Mass",
+        "Pressure",
+        "Current"
+      ],
+      "answer": "Wavelength",
+      "correct_option": "Wavelength",
+      "difficulty": "easy",
+      "global_id": 15,
+      "explanation": "1 nanometer (nm) = 10⁻⁹ meters, standard for optical wavelengths."
+    },
+    {
+      "id": 16,
+      "question": "A sensor is a device that:",
+      "options": [
+        "Detects a physical quantity and produces a usable signal",
+        "Stores energy only",
+        "Displays images only",
+        "Acts only as a battery"
+      ],
+      "answer": "Detects a physical quantity and produces a usable signal",
+      "correct_option": "Detects a physical quantity and produces a usable signal",
+      "difficulty": "easy",
+      "global_id": 16,
+      "explanation": "Transducers/sensors convert physical stimuli into readable electrical responses."
+    },
+    {
+      "id": 17,
+      "question": "A colour sensor mainly detects:",
+      "options": [
+        "Light",
+        "Sound",
+        "Pressure",
+        "Mass"
+      ],
+      "answer": "Light",
+      "correct_option": "Light",
+      "difficulty": "easy",
+      "global_id": 17,
+      "explanation": "Colour sensors measure electromagnetic radiation in the visible band."
+    },
+    {
+      "id": 18,
+      "question": "If a surface absorbs most visible light, it appears:",
+      "options": [
+        "Dark",
+        "White",
+        "Transparent",
+        "Bright yellow always"
+      ],
+      "answer": "Dark",
+      "correct_option": "Dark",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "High absorption with minimal reflection reflects almost no photons back to the sensor."
+    },
+    {
+      "id": 19,
+      "question": "Which region is normally detected by a visible colour sensor?",
+      "options": [
+        "Visible spectrum",
+        "X-ray",
+        "Gamma-ray",
+        "Radio"
+      ],
+      "answer": "Visible spectrum",
+      "correct_option": "Visible spectrum",
+      "difficulty": "easy",
+      "global_id": 19,
+      "explanation": "Visible sensors have optical filters calibrated for human visual bandwidths (400–700 nm)."
+    },
+    {
+      "id": 20,
+      "question": "The three common colour channels in an RGB sensor are:",
+      "options": [
+        "R, G and B",
+        "X, Y and Z only",
+        "A, B and C only",
+        "P, Q and R only"
+      ],
+      "answer": "R, G and B",
+      "correct_option": "R, G and B",
+      "difficulty": "easy",
+      "global_id": 20,
+      "explanation": "TCS3200 uses an 8x8 array of photodiodes partitioned with Red, Green, Blue, and Clear filters."
+    },
+    {
+      "id": 21,
+      "question": "Why are multiple RGB channels useful?",
+      "options": [
+        "They allow different spectral components to be compared",
+        "They measure pressure",
+        "They remove all light",
+        "They increase object mass"
+      ],
+      "answer": "They allow different spectral components to be compared",
+      "correct_option": "They allow different spectral components to be compared",
+      "difficulty": "medium",
+      "global_id": 21,
+      "explanation": "Comparing relative filter responses lets the system differentiate hue and saturation independently of light intensity."
+    },
+    {
+      "id": 22,
+      "question": "If the red-channel reading is much higher than green and blue, the target has a strong:",
+      "options": [
+        "Red component",
+        "Green component",
+        "Blue component",
+        "Cyan component"
+      ],
+      "answer": "Red component",
+      "correct_option": "Red component",
+      "difficulty": "medium",
+      "global_id": 22,
+      "explanation": "High red filter transmittance indicates abundant photons in the ~650 nm wavelength region."
+    },
+    {
+      "id": 23,
+      "question": "What is the role of an ADC?",
+      "options": [
+        "Convert an analog signal into digital values",
+        "Produce visible light",
+        "Measure mass",
+        "Store mechanical energy"
+      ],
+      "answer": "Convert an analog signal into digital values",
+      "correct_option": "Convert an analog signal into digital values",
+      "difficulty": "medium",
+      "global_id": 23,
+      "explanation": "Analog-to-Digital Converters (ADCs) quantize continuous photocurrent voltages into discrete digital numbers."
+    },
+    {
+      "id": 24,
+      "question": "Why is calibration important for a colour sensor?",
+      "options": [
+        "It improves accuracy and accounts for system variations",
+        "It changes the object's mass",
+        "It removes all light",
+        "It makes wavelength constant"
+      ],
+      "answer": "It improves accuracy and accounts for system variations",
+      "correct_option": "It improves accuracy and accounts for system variations",
+      "difficulty": "medium",
+      "global_id": 24,
+      "explanation": "Calibration normalizes for ambient lighting, LED color temperature, detector responsivity offsets, and distance."
+    },
+    {
+      "id": 25,
+      "question": "Why can the same object give different readings under different light sources?",
+      "options": [
+        "Illumination spectrum and intensity can change",
+        "Its mass changes automatically",
+        "Gravity changes its colour",
+        "The sensor becomes a thermometer"
+      ],
+      "answer": "Illumination spectrum and intensity can change",
+      "correct_option": "Illumination spectrum and intensity can change",
+      "difficulty": "medium",
+      "global_id": 25,
+      "explanation": "Reflected spectrum = Incident spectrum × Reflectance curve. If the source spectrum changes (e.g. tungsten vs sunlight), reflected light changes."
+    },
+    {
+      "id": 26,
+      "question": "Why should sensor-to-target distance often be kept constant?",
+      "options": [
+        "To keep measurement conditions consistent",
+        "To increase wavelength",
+        "To change the target colour",
+        "To increase gravity"
+      ],
+      "answer": "To keep measurement conditions consistent",
+      "correct_option": "To keep measurement conditions consistent",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "Light intensity obeys the inverse-square law; varying distance shifts signal amplitudes."
+    },
+    {
+      "id": 27,
+      "question": "What is spectral response?",
+      "options": [
+        "Variation of sensor output with wavelength",
+        "Variation of mass with time",
+        "Variation of pressure with height",
+        "Variation of resistance with length only"
+      ],
+      "answer": "Variation of sensor output with wavelength",
+      "correct_option": "Variation of sensor output with wavelength",
+      "difficulty": "medium",
+      "global_id": 27,
+      "explanation": "Spectral responsivity R(λ) defines the output current per watt of incident optical power as a function of wavelength."
+    },
+    {
+      "id": 28,
+      "question": "Which is most directly related to colour rather than just brightness?",
+      "options": [
+        "Relative RGB values",
+        "Battery weight",
+        "Screw size",
+        "Room temperature alone"
+      ],
+      "answer": "Relative RGB values",
+      "correct_option": "Relative RGB values",
+      "difficulty": "medium",
+      "global_id": 28,
+      "explanation": "Ratios r = R/(R+G+B) isolate chromaticity (hue/saturation) from luminance."
+    },
+    {
+      "id": 29,
+      "question": "If all RGB readings rise by roughly the same proportion, what likely changed?",
+      "options": [
+        "Overall illumination intensity",
+        "Hue only",
+        "Object mass",
+        "Wavelength of every photon necessarily"
+      ],
+      "answer": "Overall illumination intensity",
+      "correct_option": "Overall illumination intensity",
+      "difficulty": "medium",
+      "global_id": 29,
+      "explanation": "Scaling all color channels uniformly indicates a change in light source brightness or distance, not color."
+    },
+    {
+      "id": 30,
+      "question": "What is the purpose of a white reference surface?",
+      "options": [
+        "Provide a known response for comparison/calibration",
+        "Block all light",
+        "Generate a laser",
+        "Absorb all wavelengths"
+      ],
+      "answer": "Provide a known response for comparison/calibration",
+      "correct_option": "Provide a known response for comparison/calibration",
+      "difficulty": "medium",
+      "global_id": 30,
+      "explanation": "A high-reflectance white standard (like barium sulfate or PTFE) provides full-spectrum reference calibration."
+    },
+    {
+      "id": 31,
+      "question": "Why can ambient light affect a colour sensor?",
+      "options": [
+        "It adds unwanted light to the measured signal",
+        "It changes gravity",
+        "It changes object mass",
+        "It stops the sensor from detecting red"
+      ],
+      "answer": "It adds unwanted light to the measured signal",
+      "correct_option": "It adds unwanted light to the measured signal",
+      "difficulty": "medium",
+      "global_id": 31,
+      "explanation": "Stray background photons combine with the target reflection, skewing RGB proportions."
+    },
+    {
+      "id": 32,
+      "question": "What does wavelength describe?",
+      "options": [
+        "Distance between corresponding points of a wave",
+        "Photon mass",
+        "Brightness only",
+        "Electrical resistance"
+      ],
+      "answer": "Distance between corresponding points of a wave",
+      "correct_option": "Distance between corresponding points of a wave",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "Wavelength λ is the spatial period of the optical wave crest-to-crest."
+    },
+    {
+      "id": 33,
+      "question": "Photon energy is related to frequency by:",
+      "options": [
+        "E = hf",
+        "E = h/f",
+        "E = f/h",
+        "E = h+f"
+      ],
+      "answer": "E = hf",
+      "correct_option": "E = hf",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "Planck-Einstein relation: E = hf = hc/λ, where h is Planck's constant."
+    },
+    {
+      "id": 34,
+      "question": "For electromagnetic radiation in vacuum:",
+      "options": [
+        "c = fλ",
+        "c = f/λ",
+        "c = λ/f",
+        "c = f+λ"
+      ],
+      "answer": "c = fλ",
+      "correct_option": "c = fλ",
+      "difficulty": "medium",
+      "global_id": 34,
+      "explanation": "The wave speed equals frequency times wavelength: c = fλ ≈ 3 × 10⁸ m/s."
+    },
+    {
+      "id": 35,
+      "question": "If wavelength increases in vacuum, frequency:",
+      "options": [
+        "Decreases",
+        "Increases",
+        "Becomes zero",
+        "Always stays the same"
+      ],
+      "answer": "Decreases",
+      "correct_option": "Decreases",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "Because c = fλ is constant, frequency is inversely proportional to wavelength (f = c/λ)."
+    },
+    {
+      "id": 36,
+      "question": "Which condition improves repeatability of colour measurements?",
+      "options": [
+        "Controlled illumination",
+        "Changing sensor distance each time",
+        "Changing the target angle randomly",
+        "Ignoring calibration"
+      ],
+      "answer": "Controlled illumination",
+      "correct_option": "Controlled illumination",
+      "difficulty": "medium",
+      "global_id": 36,
+      "explanation": "Consistent lighting and fixed sensor geometry guarantee reproducible spectral measurements."
+    },
+    {
+      "id": 37,
+      "question": "RGB values can be normalized mainly to reduce the effect of:",
+      "options": [
+        "Overall brightness variation",
+        "Object mass",
+        "Gravity",
+        "Room size"
+      ],
+      "answer": "Overall brightness variation",
+      "correct_option": "Overall brightness variation",
+      "difficulty": "medium",
+      "global_id": 37,
+      "explanation": "Normalization converts raw values into chromaticity coordinates r, g, b where r + g + b = 1."
+    },
+    {
+      "id": 38,
+      "question": "A matte surface is often easier to measure consistently because it:",
+      "options": [
+        "Reduces strong specular reflections",
+        "Emits its own light",
+        "Absorbs all colours",
+        "Has infinite reflectivity"
+      ],
+      "answer": "Reduces strong specular reflections",
+      "correct_option": "Reduces strong specular reflections",
+      "difficulty": "medium",
+      "global_id": 38,
+      "explanation": "Lambertian (matte) diffusion scatters light uniformly in all directions, avoiding specular glare spikes."
+    },
+    {
+      "id": 39,
+      "question": "A colour sensor's output is most directly related to:",
+      "options": [
+        "Light reaching its photodetectors",
+        "Object weight",
+        "Sound reaching the sensor",
+        "Air pressure only"
+      ],
+      "answer": "Light reaching its photodetectors",
+      "correct_option": "Light reaching its photodetectors",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "The electrical output directly corresponds to the radiant flux captured by the filtered photodiode array."
+    },
+    {
+      "id": 40,
+      "question": "Under additive colour mixing, equal red and green with little blue appears approximately:",
+      "options": [
+        "Yellow",
+        "Cyan",
+        "Magenta",
+        "Blue"
+      ],
+      "answer": "Yellow",
+      "correct_option": "Yellow",
+      "difficulty": "medium",
+      "global_id": 40,
+      "explanation": "Combining Red and Green spectral emissions stimulates red and green cone photoreceptors, perceived as Yellow."
+    },
+    {
+      "id": 41,
+      "question": "A sensor gives R=200,G=50,B=40 and another gives R=100,G=25,B=20 under identical conditions. Best conclusion:",
+      "options": [
+        "Their relative colour composition is similar but the second signal is weaker",
+        "The second must be blue",
+        "The first must be white",
+        "They necessarily have different hues"
+      ],
+      "answer": "Their relative colour composition is similar but the second signal is weaker",
+      "correct_option": "Their relative colour composition is similar but the second signal is weaker",
+      "difficulty": "hard",
+      "global_id": 41,
+      "explanation": "Both maintain a 4:1:0.8 channel ratio, meaning the hue is identical while luminance differs."
+    },
+    {
+      "id": 42,
+      "question": "Why are RGB values not exact wavelength measurements?",
+      "options": [
+        "Each channel usually responds over a range of wavelengths",
+        "Each channel detects one exact wavelength",
+        "RGB sensors detect mass",
+        "Wavelength is unrelated to light"
+      ],
+      "answer": "Each channel usually responds over a range of wavelengths",
+      "correct_option": "Each channel usually responds over a range of wavelengths",
+      "difficulty": "hard",
+      "global_id": 42,
+      "explanation": "Broadband optical filters integrate photon flux over wide transmission passbands (~50–100 nm FWHM)."
+    },
+    {
+      "id": 43,
+      "question": "If the same spectrum is made twice as bright, what should ideally remain similar for colour estimation?",
+      "options": [
+        "Normalized RGB ratios",
+        "Raw RGB values",
+        "Sensor distance automatically",
+        "Object mass"
+      ],
+      "answer": "Normalized RGB ratios",
+      "correct_option": "Normalized RGB ratios",
+      "difficulty": "hard",
+      "global_id": 43,
+      "explanation": "Scaling intensity doubles numerator and denominator, leaving ratios R/(R+G+B) invariant."
+    },
+    {
+      "id": 44,
+      "question": "Why is ambient-light shielding useful?",
+      "options": [
+        "It reduces unwanted light added to the measured signal",
+        "It changes red into blue",
+        "It increases object reflectivity",
+        "It removes the need for calibration in every system"
+      ],
+      "answer": "It reduces unwanted light added to the measured signal",
+      "correct_option": "It reduces unwanted light added to the measured signal",
+      "difficulty": "hard",
+      "global_id": 44,
+      "explanation": "Optical hoods prevent room fluorescent/daylight flicker from contaminating the reflected LED signal."
+    },
+    {
+      "id": 45,
+      "question": "If RGB spectral responses overlap, then:",
+      "options": [
+        "One wavelength range can contribute to multiple channels",
+        "Each channel detects exactly one wavelength",
+        "No colour can be detected",
+        "Only brightness can be measured"
+      ],
+      "answer": "One wavelength range can contribute to multiple channels",
+      "correct_option": "One wavelength range can contribute to multiple channels",
+      "difficulty": "hard",
+      "global_id": 45,
+      "explanation": "Intermediate wavelengths (e.g. 580 nm yellow) pass partially through both Red and Green filter curves."
+    },
+    {
+      "id": 46,
+      "question": "Why is a white reference useful before measuring unknown colours?",
+      "options": [
+        "It provides a baseline for channel responses under the current illumination",
+        "It blocks all visible light",
+        "It generates photons",
+        "It makes all objects white"
+      ],
+      "answer": "It provides a baseline for channel responses under the current illumination",
+      "correct_option": "It provides a baseline for channel responses under the current illumination",
+      "difficulty": "hard",
+      "global_id": 46,
+      "explanation": "White balance calibration normalizes channel gains against the true spectral power distribution of the illuminant."
+    },
+    {
+      "id": 47,
+      "question": "If room lighting changes and readings become unstable, the most likely issue is:",
+      "options": [
+        "Uncontrolled illumination",
+        "Incorrect object mass",
+        "Wrong gravity",
+        "Excessive cable length"
+      ],
+      "answer": "Uncontrolled illumination",
+      "correct_option": "Uncontrolled illumination",
+      "difficulty": "hard",
+      "global_id": 47,
+      "explanation": "Unshielded fluctuations in ambient room lights contaminate photodiode integration."
+    },
+    {
+      "id": 48,
+      "question": "A dominant red-channel response primarily means:",
+      "options": [
+        "More red-region light is reaching the sensor relative to other channel responses",
+        "The surface emits only red photons",
+        "The surface absorbs no light",
+        "The sensor has no green/blue sensitivity"
+      ],
+      "answer": "More red-region light is reaching the sensor relative to other channel responses",
+      "correct_option": "More red-region light is reaching the sensor relative to other channel responses",
+      "difficulty": "hard",
+      "global_id": 48,
+      "explanation": "Photocurrent from the red-filtered photodiodes exceeds that from green/blue filters."
+    },
+    {
+      "id": 49,
+      "question": "Best way to compare colours when overall brightness varies:",
+      "options": [
+        "Use calibrated or normalized channel values",
+        "Compare only raw red values",
+        "Ignore calibration",
+        "Use object weight"
+      ],
+      "answer": "Use calibrated or normalized channel values",
+      "correct_option": "Use calibrated or normalized channel values",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "Chromaticity normalization removes the scalar dependence on lux/illumination level."
+    },
+    {
+      "id": 50,
+      "question": "Which statement best summarizes a colour-sensor experiment?",
+      "options": [
+        "Relating optical response to different colours/light conditions and electrical output",
+        "Measuring mass of coloured objects",
+        "Studying sound reflection",
+        "Measuring room temperature only"
+      ],
+      "answer": "Relating optical response to different colours/light conditions and electrical output",
+      "correct_option": "Relating optical response to different colours/light conditions and electrical output",
+      "difficulty": "hard",
+      "global_id": 50,
+      "explanation": "The experiment studies the optoelectronic transduction of spectral reflectance into calibrated RGB frequency/voltage signals."
+    }
+  ]
+}

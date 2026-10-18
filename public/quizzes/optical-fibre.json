@@ -1,0 +1,760 @@
+{
+  "experiment": "Optical Fibre Numerical Aperture - Question Bank",
+  "experimentId": "optical",
+  "quizId": "optical-fibre-mastery-quiz",
+  "experimentName": "Optical Fibre Numerical Aperture",
+  "description": "Comprehensive 50-Question Physics Question Bank for Optical Fibre Numerical Aperture",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the basic principle of optical fibre transmission?",
+      "options": [
+        "Total internal reflection",
+        "Photoelectric effect",
+        "Diffraction only",
+        "Electromagnetic induction"
+      ],
+      "answer": "Total internal reflection",
+      "correct_option": "Total internal reflection",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "Light signals are confined and guided inside an optical fibre by continuous total internal reflections."
+    },
+    {
+      "id": 2,
+      "question": "The central light-guiding region of an optical fibre is called:",
+      "options": [
+        "Core",
+        "Cladding",
+        "Jacket",
+        "Coating"
+      ],
+      "answer": "Core",
+      "correct_option": "Core",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "The core is the inner cylindrical optical medium through which light travels."
+    },
+    {
+      "id": 3,
+      "question": "The layer surrounding the core is called:",
+      "options": [
+        "Cladding",
+        "Anode",
+        "Cathode",
+        "Terminal"
+      ],
+      "answer": "Cladding",
+      "correct_option": "Cladding",
+      "difficulty": "easy",
+      "global_id": 3,
+      "explanation": "The cladding wraps around the core with a slightly lower refractive index to facilitate TIR."
+    },
+    {
+      "id": 4,
+      "question": "The refractive index of the core is generally:",
+      "options": [
+        "Greater than that of cladding",
+        "Less than cladding",
+        "Equal to air always",
+        "Zero"
+      ],
+      "answer": "Greater than that of cladding",
+      "correct_option": "Greater than that of cladding",
+      "difficulty": "easy",
+      "global_id": 4,
+      "explanation": "TIR requires light to propagate from a medium of higher refractive index (n₁) to lower index (n₂), so n₁ > n₂."
+    },
+    {
+      "id": 5,
+      "question": "TIR stands for:",
+      "options": [
+        "Total Internal Reflection",
+        "Total Intensity Radiation",
+        "Transmitted Internal Refraction",
+        "Total Infrared Response"
+      ],
+      "answer": "Total Internal Reflection",
+      "correct_option": "Total Internal Reflection",
+      "difficulty": "easy",
+      "global_id": 5,
+      "explanation": "Total Internal Reflection is the optical phenomenon where 100% of incident light is reflected back into the denser medium."
+    },
+    {
+      "id": 6,
+      "question": "For TIR, light must travel from:",
+      "options": [
+        "Optically denser to optically rarer medium",
+        "Rarer to denser medium",
+        "Vacuum to vacuum",
+        "Any medium at any angle"
+      ],
+      "answer": "Optically denser to optically rarer medium",
+      "correct_option": "Optically denser to optically rarer medium",
+      "difficulty": "easy",
+      "global_id": 6,
+      "explanation": "TIR can only take place when light travels from higher optical density (core) towards lower optical density (cladding)."
+    },
+    {
+      "id": 7,
+      "question": "The angle of incidence for TIR must be:",
+      "options": [
+        "Greater than the critical angle",
+        "Less than critical angle",
+        "Always 0°",
+        "Always 90°"
+      ],
+      "answer": "Greater than the critical angle",
+      "correct_option": "Greater than the critical angle",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "When θi > θc, refraction into the rarer medium cannot satisfy Snell's law, causing total reflection."
+    },
+    {
+      "id": 8,
+      "question": "Optical fibre is commonly used for:",
+      "options": [
+        "Communication",
+        "Measuring mass",
+        "Generating mechanical power",
+        "Heating rooms"
+      ],
+      "answer": "Communication",
+      "correct_option": "Communication",
+      "difficulty": "easy",
+      "global_id": 8,
+      "explanation": "Optical fibres form the backbone of modern global high-speed telecommunications and internet infrastructure."
+    },
+    {
+      "id": 9,
+      "question": "Which material is commonly used to make optical fibres?",
+      "options": [
+        "Glass or plastic",
+        "Iron only",
+        "Copper only",
+        "Wood"
+      ],
+      "answer": "Glass or plastic",
+      "correct_option": "Glass or plastic",
+      "difficulty": "easy",
+      "global_id": 9,
+      "explanation": "High-purity silica glass (SiO₂) or transparent polymers (PMMA) are standard optical fibre materials."
+    },
+    {
+      "id": 10,
+      "question": "A single-mode fibre has:",
+      "options": [
+        "A very small core and mainly one propagation mode",
+        "A very large metal core",
+        "No cladding",
+        "Only electrical current"
+      ],
+      "answer": "A very small core and mainly one propagation mode",
+      "correct_option": "A very small core and mainly one propagation mode",
+      "difficulty": "easy",
+      "global_id": 10,
+      "explanation": "Single-mode fibres (core diameter ~8-10 µm) guide only the fundamental optical mode, eliminating modal dispersion."
+    },
+    {
+      "id": 11,
+      "question": "Multimode fibre generally has:",
+      "options": [
+        "A larger core",
+        "No core",
+        "Only one photon",
+        "No cladding"
+      ],
+      "answer": "A larger core",
+      "correct_option": "A larger core",
+      "difficulty": "easy",
+      "global_id": 11,
+      "explanation": "Multimode fibres typically have larger core diameters (50 µm to 62.5 µm), allowing multiple ray propagation paths."
+    },
+    {
+      "id": 12,
+      "question": "Numerical aperture indicates the fibre's:",
+      "options": [
+        "Light-gathering ability",
+        "Mass",
+        "Length only",
+        "Electrical resistance only"
+      ],
+      "answer": "Light-gathering ability",
+      "correct_option": "Light-gathering ability",
+      "difficulty": "easy",
+      "global_id": 12,
+      "explanation": "NA = sin(θmax) characterizes the range of launch angles from which the fibre can accept and guide light."
+    },
+    {
+      "id": 13,
+      "question": "Acceptance angle is related to:",
+      "options": [
+        "Maximum angle for light to enter and remain guided",
+        "Fibre mass",
+        "Core temperature",
+        "Electrical power"
+      ],
+      "answer": "Maximum angle for light to enter and remain guided",
+      "correct_option": "Maximum angle for light to enter and remain guided",
+      "difficulty": "easy",
+      "global_id": 13,
+      "explanation": "Acceptance angle θmax is the maximum semi-angle of the incident light cone that undergoes TIR at core-cladding boundary."
+    },
+    {
+      "id": 14,
+      "question": "The critical angle depends on:",
+      "options": [
+        "Refractive indices of the two media",
+        "Mass only",
+        "Colour name only",
+        "Fibre length only"
+      ],
+      "answer": "Refractive indices of the two media",
+      "correct_option": "Refractive indices of the two media",
+      "difficulty": "easy",
+      "global_id": 14,
+      "explanation": "The critical angle is determined by sin(θc) = n₂ / n₁."
+    },
+    {
+      "id": 15,
+      "question": "The outer protective layer of a fibre is generally called:",
+      "options": [
+        "Jacket/coating",
+        "Core",
+        "Cladding index",
+        "Lens"
+      ],
+      "answer": "Jacket/coating",
+      "correct_option": "Jacket/coating",
+      "difficulty": "easy",
+      "global_id": 15,
+      "explanation": "The buffer coating and outer polymer jacket protect the fragile glass core/cladding against moisture and mechanical stress."
+    },
+    {
+      "id": 16,
+      "question": "In an optical fibre, light is guided mainly through the:",
+      "options": [
+        "Core",
+        "Jacket",
+        "Air outside",
+        "Connector pin"
+      ],
+      "answer": "Core",
+      "correct_option": "Core",
+      "difficulty": "easy",
+      "global_id": 16,
+      "explanation": "The high refractive index core traps and propagates the optical wave."
+    },
+    {
+      "id": 17,
+      "question": "Optical fibre communication offers:",
+      "options": [
+        "High bandwidth",
+        "Very low bandwidth only",
+        "No data transmission",
+        "Only audio transmission"
+      ],
+      "answer": "High bandwidth",
+      "correct_option": "High bandwidth",
+      "difficulty": "easy",
+      "global_id": 17,
+      "explanation": "Optical frequencies (~hundreds of Terahertz) support gigabits-to-terabits per second data transmission bandwidth."
+    },
+    {
+      "id": 18,
+      "question": "Optical fibres are immune to ordinary:",
+      "options": [
+        "Electromagnetic interference",
+        "Gravity",
+        "Light",
+        "All temperature effects"
+      ],
+      "answer": "Electromagnetic interference",
+      "correct_option": "Electromagnetic interference",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "Dielectric glass fibres do not conduct electrical current, making them completely immune to EMI and radio noise."
+    },
+    {
+      "id": 19,
+      "question": "A ray travelling exactly along the normal at a boundary has angle of incidence:",
+      "options": [
+        "0°",
+        "45°",
+        "90°",
+        "180°"
+      ],
+      "answer": "0°",
+      "correct_option": "0°",
+      "difficulty": "easy",
+      "global_id": 19,
+      "explanation": "Angle of incidence is measured relative to the normal; normal incidence means θ = 0°."
+    },
+    {
+      "id": 20,
+      "question": "The unit commonly used for refractive index is:",
+      "options": [
+        "No unit",
+        "Metre",
+        "Newton",
+        "Watt"
+      ],
+      "answer": "No unit",
+      "correct_option": "No unit",
+      "difficulty": "easy",
+      "global_id": 20,
+      "explanation": "Refractive index n = c/v is a dimensionless ratio of two velocities."
+    },
+    {
+      "id": 21,
+      "question": "Snell's law relates:",
+      "options": [
+        "Angles and refractive indices",
+        "Mass and force",
+        "Power and time",
+        "Charge and current only"
+      ],
+      "answer": "Angles and refractive indices",
+      "correct_option": "Angles and refractive indices",
+      "difficulty": "medium",
+      "global_id": 21,
+      "explanation": "Snell's Law: n₁ sin(θ₁) = n₂ sin(θ₂)."
+    },
+    {
+      "id": 22,
+      "question": "For an optical fibre with core index n1 and cladding index n2, guidance requires:",
+      "options": [
+        "n1 > n2",
+        "n1 < n2",
+        "n1 = 0",
+        "n2 = 0 always"
+      ],
+      "answer": "n1 > n2",
+      "correct_option": "n1 > n2",
+      "difficulty": "medium",
+      "global_id": 22,
+      "explanation": "Core must be optically denser than cladding to support TIR."
+    },
+    {
+      "id": 23,
+      "question": "Critical angle C at a core-cladding boundary satisfies:",
+      "options": [
+        "sin C = n2/n1",
+        "sin C = n1/n2",
+        "C = n1+n2",
+        "C = n1n2"
+      ],
+      "answer": "sin C = n2/n1",
+      "correct_option": "sin C = n2/n1",
+      "difficulty": "medium",
+      "global_id": 23,
+      "explanation": "Setting refracted angle θ₂ = 90° in Snell's law gives n₁ sin(C) = n₂ sin(90°) => sin(C) = n₂/n₁."
+    },
+    {
+      "id": 24,
+      "question": "For air outside a fibre, numerical aperture is commonly given by:",
+      "options": [
+        "NA = √(n1² − n2²)",
+        "NA = n1+n2",
+        "NA = n1/n2",
+        "NA = n1n2"
+      ],
+      "answer": "NA = √(n1² − n2²)",
+      "correct_option": "NA = √(n1² − n2²)",
+      "difficulty": "medium",
+      "global_id": 24,
+      "explanation": "NA = n₀ sin(θmax) = √(n₁² - n₂²) when launching from air (n₀ = 1.0)."
+    },
+    {
+      "id": 25,
+      "question": "Acceptance angle increases when NA:",
+      "options": [
+        "Increases",
+        "Decreases",
+        "Becomes zero",
+        "Is unrelated"
+      ],
+      "answer": "Increases",
+      "correct_option": "Increases",
+      "difficulty": "medium",
+      "global_id": 25,
+      "explanation": "θmax = arcsin(NA); higher NA directly widens the acceptance cone angle."
+    },
+    {
+      "id": 26,
+      "question": "If n1 = n2, the ideal numerical aperture is:",
+      "options": [
+        "Zero",
+        "One",
+        "n1+n2",
+        "Infinite"
+      ],
+      "answer": "Zero",
+      "correct_option": "Zero",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "NA = √(n₁² - n₂²) = √(n₁² - n₁²) = 0; no refractive index contrast means zero light-guiding capability."
+    },
+    {
+      "id": 27,
+      "question": "Why does cladding have a lower refractive index than the core?",
+      "options": [
+        "To enable total internal reflection at the interface",
+        "To absorb all light",
+        "To stop all transmission",
+        "To generate photons"
+      ],
+      "answer": "To enable total internal reflection at the interface",
+      "correct_option": "To enable total internal reflection at the interface",
+      "difficulty": "medium",
+      "global_id": 27,
+      "explanation": "Without a lower-index cladding, light would refract and leak out into surroundings."
+    },
+    {
+      "id": 28,
+      "question": "Which fibre is generally preferred for very long-distance, high-bandwidth links?",
+      "options": [
+        "Single-mode fibre",
+        "Multimode step-index only",
+        "Metal wire",
+        "Plastic tube"
+      ],
+      "answer": "Single-mode fibre",
+      "correct_option": "Single-mode fibre",
+      "difficulty": "medium",
+      "global_id": 28,
+      "explanation": "Single-mode fibres provide extremely low attenuation and zero intermodal pulse dispersion over hundreds of kilometers."
+    },
+    {
+      "id": 29,
+      "question": "Step-index fibre means the refractive index of the core:",
+      "options": [
+        "Is approximately constant and changes abruptly at the cladding",
+        "Changes smoothly throughout the core",
+        "Is always zero",
+        "Equals air everywhere"
+      ],
+      "answer": "Is approximately constant and changes abruptly at the cladding",
+      "correct_option": "Is approximately constant and changes abruptly at the cladding",
+      "difficulty": "medium",
+      "global_id": 29,
+      "explanation": "Step-index profile features uniform core index n₁ with a sharp step change to n₂ at the cladding boundary."
+    },
+    {
+      "id": 30,
+      "question": "In a graded-index multimode fibre, core refractive index:",
+      "options": [
+        "Gradually decreases away from the centre",
+        "Is constant everywhere",
+        "Is zero at the centre",
+        "Changes only at the jacket"
+      ],
+      "answer": "Gradually decreases away from the centre",
+      "correct_option": "Gradually decreases away from the centre",
+      "difficulty": "medium",
+      "global_id": 30,
+      "explanation": "Parabolic grading curves outer rays back towards the axis, equalizing travel times across modes."
+    },
+    {
+      "id": 31,
+      "question": "Modal dispersion is especially associated with:",
+      "options": [
+        "Multimode propagation",
+        "Single-mode propagation only",
+        "No optical propagation",
+        "Electrical wires only"
+      ],
+      "answer": "Multimode propagation",
+      "correct_option": "Multimode propagation",
+      "difficulty": "medium",
+      "global_id": 31,
+      "explanation": "Different modes take paths of different geometric lengths, spreading the optical pulse."
+    },
+    {
+      "id": 32,
+      "question": "Attenuation in fibre refers to:",
+      "options": [
+        "Loss of optical power during propagation",
+        "Increase in optical power",
+        "Change in fibre mass",
+        "Increase in wavelength only"
+      ],
+      "answer": "Loss of optical power during propagation",
+      "correct_option": "Loss of optical power during propagation",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "Attenuation (measured in dB/km) is signal power decay as photons travel through the fibre."
+    },
+    {
+      "id": 33,
+      "question": "One important cause of attenuation is:",
+      "options": [
+        "Absorption and scattering",
+        "Gravity",
+        "Magnetism only",
+        "Sound"
+      ],
+      "answer": "Absorption and scattering",
+      "correct_option": "Absorption and scattering",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "Rayleigh scattering (from density fluctuations) and material absorption are primary intrinsic losses."
+    },
+    {
+      "id": 34,
+      "question": "A connector in an optical system is used mainly to:",
+      "options": [
+        "Couple light between fibre/device interfaces",
+        "Increase gravity",
+        "Generate electricity",
+        "Change glass into metal"
+      ],
+      "answer": "Couple light between fibre/device interfaces",
+      "correct_option": "Couple light between fibre/device interfaces",
+      "difficulty": "medium",
+      "global_id": 34,
+      "explanation": "Optical connectors provide low-loss, repeatable optical alignment between fibres and transmitter/receiver ports."
+    },
+    {
+      "id": 35,
+      "question": "If the refractive index of the core increases while cladding index stays fixed, NA generally:",
+      "options": [
+        "Increases",
+        "Decreases to zero",
+        "Stays exactly zero",
+        "Becomes negative"
+      ],
+      "answer": "Increases",
+      "correct_option": "Increases",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "NA = √(n₁² - n₂²); increasing n₁ increases the radical value, raising NA."
+    },
+    {
+      "id": 36,
+      "question": "For TIR, the refracted ray at the boundary:",
+      "options": [
+        "Does not enter the second medium as a propagating ray",
+        "Has maximum intensity outside",
+        "Always travels backward through air",
+        "Becomes a sound wave"
+      ],
+      "answer": "Does not enter the second medium as a propagating ray",
+      "correct_option": "Does not enter the second medium as a propagating ray",
+      "difficulty": "medium",
+      "global_id": 36,
+      "explanation": "No propagating wave carries energy into the rarer medium (only a non-propagating evanescent field exists)."
+    },
+    {
+      "id": 37,
+      "question": "The acceptance cone represents:",
+      "options": [
+        "The range of input directions accepted by the fibre",
+        "The fibre's temperature range",
+        "The output power only",
+        "The cable diameter only"
+      ],
+      "answer": "The range of input directions accepted by the fibre",
+      "correct_option": "The range of input directions accepted by the fibre",
+      "difficulty": "medium",
+      "global_id": 37,
+      "explanation": "It is the 3D cone formed by rotating the maximum acceptance angle θmax about the core axis."
+    },
+    {
+      "id": 38,
+      "question": "Why is optical fibre useful in medical endoscopy?",
+      "options": [
+        "It can transmit light/images through a flexible path",
+        "It produces X-rays",
+        "It measures mass directly",
+        "It blocks all visible light"
+      ],
+      "answer": "It can transmit light/images through a flexible path",
+      "correct_option": "It can transmit light/images through a flexible path",
+      "difficulty": "medium",
+      "global_id": 38,
+      "explanation": "Coherent fibre bundles allow illumination and visual inspection inside internal organs non-invasively."
+    },
+    {
+      "id": 39,
+      "question": "Compared with copper communication cables, fibre generally has:",
+      "options": [
+        "Lower transmission loss over suitable long links and higher bandwidth",
+        "Much lower bandwidth",
+        "Higher electromagnetic interference",
+        "No communication capability"
+      ],
+      "answer": "Lower transmission loss over suitable long links and higher bandwidth",
+      "correct_option": "Lower transmission loss over suitable long links and higher bandwidth",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "Optical attenuation (~0.2 dB/km at 1550 nm) is orders of magnitude lower than electrical cable attenuation."
+    },
+    {
+      "id": 40,
+      "question": "A fibre's V-number (normalized frequency) depends on:",
+      "options": [
+        "Core/cladding indices, core radius and wavelength",
+        "Mass only",
+        "Cable colour only",
+        "Room pressure only"
+      ],
+      "answer": "Core/cladding indices, core radius and wavelength",
+      "correct_option": "Core/cladding indices, core radius and wavelength",
+      "difficulty": "medium",
+      "global_id": 40,
+      "explanation": "V = (2π a / λ) √(n₁² - n₂²) = (2π a / λ) NA."
+    },
+    {
+      "id": 41,
+      "question": "If n1 = 1.50 and n2 = 1.48, the NA in air is approximately:",
+      "options": [
+        "0.244",
+        "0.020",
+        "1.49",
+        "2.98"
+      ],
+      "answer": "0.244",
+      "correct_option": "0.244",
+      "difficulty": "hard",
+      "global_id": 41,
+      "explanation": "NA = √(1.50² - 1.48²) = √(2.25 - 2.1904) = √0.0596 ≈ 0.2441."
+    },
+    {
+      "id": 42,
+      "question": "For n1 = 1.5 and n2 = 1.0, the critical angle is approximately:",
+      "options": [
+        "41.8°",
+        "30°",
+        "60°",
+        "90°"
+      ],
+      "answer": "41.8°",
+      "correct_option": "41.8°",
+      "difficulty": "hard",
+      "global_id": 42,
+      "explanation": "sin(θc) = 1.0 / 1.5 = 0.6667 => θc = arcsin(0.6667) ≈ 41.81°."
+    },
+    {
+      "id": 43,
+      "question": "If NA = 0.5 in air, the acceptance half-angle is approximately:",
+      "options": [
+        "30°",
+        "15°",
+        "45°",
+        "60°"
+      ],
+      "answer": "30°",
+      "correct_option": "30°",
+      "difficulty": "hard",
+      "global_id": 43,
+      "explanation": "sin(θmax) = NA = 0.5 => θmax = arcsin(0.5) = 30°."
+    },
+    {
+      "id": 44,
+      "question": "If the fibre core radius is increased while other parameters remain fixed, the normalized frequency V:",
+      "options": [
+        "Increases",
+        "Decreases",
+        "Becomes zero",
+        "Does not depend on radius"
+      ],
+      "answer": "Increases",
+      "correct_option": "Increases",
+      "difficulty": "hard",
+      "global_id": 44,
+      "explanation": "V = (2π a / λ) NA is directly proportional to core radius a."
+    },
+    {
+      "id": 45,
+      "question": "A fibre has n1 = 1.50 and n2 = 1.47. Its NA is closest to:",
+      "options": [
+        "0.30",
+        "0.03",
+        "1.485",
+        "2.97"
+      ],
+      "answer": "0.30",
+      "correct_option": "0.30",
+      "difficulty": "hard",
+      "global_id": 45,
+      "explanation": "NA = √(1.50² - 1.47²) = √(2.25 - 2.1609) = √0.0891 ≈ 0.2985 ≈ 0.30."
+    },
+    {
+      "id": 46,
+      "question": "Why does single-mode fibre reduce modal dispersion?",
+      "options": [
+        "Only one mode is primarily guided",
+        "It has no cladding",
+        "It uses electrical current",
+        "It has no refractive index difference"
+      ],
+      "answer": "Only one mode is primarily guided",
+      "correct_option": "Only one mode is primarily guided",
+      "difficulty": "hard",
+      "global_id": 46,
+      "explanation": "With only one spatial mode allowed (V < 2.405), there are no multiple ray paths to delay one another."
+    },
+    {
+      "id": 47,
+      "question": "If the wavelength increases while fibre radius and indices remain fixed, normalized frequency V:",
+      "options": [
+        "Decreases",
+        "Increases",
+        "Stays exactly same",
+        "Becomes infinite"
+      ],
+      "answer": "Decreases",
+      "correct_option": "Decreases",
+      "difficulty": "hard",
+      "global_id": 47,
+      "explanation": "V ∝ 1/λ; longer wavelengths produce lower V numbers."
+    },
+    {
+      "id": 48,
+      "question": "For a fibre with greater NA, the acceptance cone is generally:",
+      "options": [
+        "Wider",
+        "Narrower",
+        "Absent",
+        "Always 0°"
+      ],
+      "answer": "Wider",
+      "correct_option": "Wider",
+      "difficulty": "hard",
+      "global_id": 48,
+      "explanation": "Higher NA means larger sin(θmax), opening a broader angular cone of accepted light."
+    },
+    {
+      "id": 49,
+      "question": "If core-cladding index difference is reduced significantly, TIR guidance generally becomes:",
+      "options": [
+        "Less strongly confined and NA decreases",
+        "Stronger with larger NA",
+        "Independent of indices",
+        "Impossible only because wavelength changes"
+      ],
+      "answer": "Less strongly confined and NA decreases",
+      "correct_option": "Less strongly confined and NA decreases",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "Lower index contrast Δ = (n₁ - n₂)/n₁ reduces the numerical aperture and makes the mode field more prone to bending loss."
+    },
+    {
+      "id": 50,
+      "question": "Which change most directly reduces coupling errors at a fibre input?",
+      "options": [
+        "Accurate alignment of the source with the acceptance cone",
+        "Increasing cable weight",
+        "Changing the jacket colour",
+        "Heating the connector"
+      ],
+      "answer": "Accurate alignment of the source with the acceptance cone",
+      "correct_option": "Accurate alignment of the source with the acceptance cone",
+      "difficulty": "hard",
+      "global_id": 50,
+      "explanation": "Matching the source emission angle to the fibre's acceptance angle minimizes geometric insertion loss."
+    }
+  ]
+}

@@ -1,0 +1,760 @@
+{
+  "experiment": "Ultrasonic Distance Measurement - Question Bank",
+  "experimentId": "ultrasonic-sensor",
+  "quizId": "ultrasonic-sensor-mastery-quiz",
+  "experimentName": "Ultrasonic Distance Meter (UDM)",
+  "description": "Comprehensive 50-Question Physics Question Bank for Ultrasonic Distance Meter (UDM)",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": "udm-q1",
+      "question": "What is the governing formula used to calculate one-way target distance in pulse-echo ultrasonic measurement?",
+      "options": [
+        "d = (v * t) / 2",
+        "d = v * t",
+        "d = 2 * v * t",
+        "d = (v^2 * t) / 2"
+      ],
+      "answer": "d = (v * t) / 2",
+      "correct_option": "d = (v * t) / 2",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "Because the acoustic pulse travels to the target reflector and returns back, the wave traverses twice the distance (2d = v * t, hence d = v * t / 2)."
+    },
+    {
+      "id": "udm-q2",
+      "question": "Why is the elapsed round-trip time-of-flight (t) divided by 2 in distance calculation?",
+      "options": [
+        "The sound wave traverses the distance twice: to the target and back as an echo",
+        "Because only half of the piezoelectric crystal is active during receive mode",
+        "To compensate for the 50% duty cycle of the 40 kHz square wave trigger",
+        "Because sound velocity doubles upon acoustic reflection at the barrier"
+      ],
+      "answer": "The sound wave traverses the distance twice: to the target and back as an echo",
+      "correct_option": "The sound wave traverses the distance twice: to the target and back as an echo",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "Pulse-echo kinematics measures total round-trip trajectory 2d. Dividing by two yields the true one-way standoff distance."
+    },
+    {
+      "id": "udm-q3",
+      "question": "How does ambient air temperature (T) affect the speed of sound and uncalibrated distance measurements?",
+      "options": [
+        "Sound travels faster at higher temperatures; uncalibrated sensors underestimate target distance",
+        "Sound travels slower at higher temperatures; uncalibrated sensors underestimate target distance",
+        "Temperature has no effect on longitudinal acoustic speed in diatomic air",
+        "Sound travels faster at higher temperatures; uncalibrated sensors overestimate target distance"
+      ],
+      "answer": "Sound travels faster at higher temperatures; uncalibrated sensors underestimate target distance",
+      "correct_option": "Sound travels faster at higher temperatures; uncalibrated sensors underestimate target distance",
+      "difficulty": "medium",
+      "global_id": 3,
+      "explanation": "Acoustic velocity increases with temperature (v ≈ 331.3 + 0.606 * T). If sound travels faster, the echo returns sooner, causing an uncalibrated timer to report a shorter distance."
+    },
+    {
+      "id": "udm-q4",
+      "question": "What physical mechanism creates the blind zone / dead zone (~2 to 4 cm) in ultrasonic transducers?",
+      "options": [
+        "Mechanical crystal ringing immediately after pulse excitation obscures returning close-in echoes",
+        "Complete acoustic phase cancellation by destructive atmospheric interference",
+        "Electronic saturation of the comparator by background electromagnetic radiation",
+        "Total absorption of 40 kHz acoustic energy by air moisture within 4 cm"
+      ],
+      "answer": "Mechanical crystal ringing immediately after pulse excitation obscures returning close-in echoes",
+      "correct_option": "Mechanical crystal ringing immediately after pulse excitation obscures returning close-in echoes",
+      "difficulty": "medium",
+      "global_id": 4,
+      "explanation": "The piezoelectric ceramic element continues to mechanically resonate and ring after firing; echoes returning during this decay window cannot be differentiated by the receiver comparator."
+    },
+    {
+      "id": "udm-q5",
+      "question": "In the linear calibration model d_meas = a * d_ref + b, what do parameters a and b represent?",
+      "options": [
+        "a is the sensitivity slope (gain factor, ideal = 1.0) and b is the zero-distance offset intercept",
+        "a is acoustic attenuation in dB/m and b is receiver threshold voltage in volts",
+        "a is ambient atmospheric pressure and b is temperature in Celsius",
+        "a is piezoelectric resonant frequency and b is acoustic wavelength in air"
+      ],
+      "answer": "a is the sensitivity slope (gain factor, ideal = 1.0) and b is the zero-distance offset intercept",
+      "correct_option": "a is the sensitivity slope (gain factor, ideal = 1.0) and b is the zero-distance offset intercept",
+      "difficulty": "medium",
+      "global_id": 5,
+      "explanation": "Linear regression calibration models the sensor response where a represents scaling sensitivity (ideally 1.0000) and b accounts for hardware latch latencies and acoustic center setback."
+    },
+    {
+      "id": "udm-q6",
+      "question": "Why is 40 kHz commonly selected as the operating acoustic center frequency for ultrasonic distance transceivers?",
+      "options": [
+        "It is safely above the human audible limit (20 kHz) with low atmospheric absorption and compact piezoelectric element size",
+        "40 kHz is the electromagnetic resonant frequency of air molecules",
+        "Lower frequencies cannot reflect off metallic or acrylic barriers",
+        "Higher frequencies travel faster than the standard speed of sound"
+      ],
+      "answer": "It is safely above the human audible limit (20 kHz) with low atmospheric absorption and compact piezoelectric element size",
+      "correct_option": "It is safely above the human audible limit (20 kHz) with low atmospheric absorption and compact piezoelectric element size",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "40 kHz is inaudible to human hearing, suffers manageable attenuation in ambient air compared to megahertz ultrasound, and matches the natural mechanical resonance of small ceramic discs."
+    },
+    {
+      "id": "udm-q7",
+      "question": "What causes acoustic specular reflection failure when the target barrier is tilted away from perpendicular alignment?",
+      "options": [
+        "The reflected acoustic wavepacket deflects away from the receiver transducer according to the law of reflection",
+        "The frequency of ultrasound shifts above 100 kHz due to Doppler compression",
+        "The sound wave penetrates through the barrier without reflecting",
+        "Piezoelectric crystal polarization reverses"
+      ],
+      "answer": "The reflected acoustic wavepacket deflects away from the receiver transducer according to the law of reflection",
+      "correct_option": "The reflected acoustic wavepacket deflects away from the receiver transducer according to the law of reflection",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "Smooth surfaces act as specular reflectors. If the incident acoustic beam is tilted away from normal incidence (perpendicularity), reflected energy bounces away from the receiver port."
+    },
+    {
+      "id": "udm-q8",
+      "question": "What is the speed of sound in dry air at standard room temperature (T = 20.0 °C)?",
+      "options": [
+        "343.4 m/s",
+        "299.8 m/s",
+        "331.3 m/s",
+        "1482 m/s"
+      ],
+      "answer": "343.4 m/s",
+      "correct_option": "343.4 m/s",
+      "difficulty": "easy",
+      "global_id": 8,
+      "explanation": "v = 331.3 * sqrt(1 + 20 / 273.15) ≈ 343.4 m/s (or 331.3 + 0.606 * 20 = 343.4 m/s)."
+    },
+    {
+      "id": "udm-q9",
+      "question": "What is the role of the 10 µs trigger pulse applied to the ultrasonic module (such as HC-SR04)?",
+      "options": [
+        "It commands the internal microcontroller to burst an 8-cycle 40 kHz ultrasonic wavepacket",
+        "It powers the piezoelectric transducer directly for the entire measurement duration",
+        "It discharges static electricity from the acoustic bench guide rails",
+        "It calibrates the analog-to-digital converter clock to absolute zero"
+      ],
+      "answer": "It commands the internal microcontroller to burst an 8-cycle 40 kHz ultrasonic wavepacket",
+      "correct_option": "It commands the internal microcontroller to burst an 8-cycle 40 kHz ultrasonic wavepacket",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "A 10 µs high-level TTL pulse at the trigger pin initiates the module's burst sequence (8 cycles of 40 kHz) and primes the echo receiver latch."
+    },
+    {
+      "id": "udm-q10",
+      "question": "Given a measured distance d_meas and calibrated parameters a (slope) and b (offset), how is the corrected distance d_cal computed?",
+      "options": [
+        "d_cal = (d_meas - b) / a",
+        "d_cal = a * d_meas + b",
+        "d_cal = (d_meas + b) * a",
+        "d_cal = a / (d_meas - b)"
+      ],
+      "answer": "d_cal = (d_meas - b) / a",
+      "correct_option": "d_cal = (d_meas - b) / a",
+      "difficulty": "easy",
+      "global_id": 10,
+      "explanation": "Inverting the linear calibration equation d_meas = a * d_ref + b yields the corrected true standoff distance d_cal = (d_meas - b) / a."
+    },
+    {
+      "id": "udm-q11",
+      "question": "Why is ultrasound typically defined as acoustic waves with frequencies above 20 kHz?",
+      "options": [
+        "20 kHz is the upper threshold of normal human hearing",
+        "Acoustic attenuation in air drops to zero above 20 kHz",
+        "Air molecules cannot vibrate below 20 kHz",
+        "Electromagnetic interference begins at 20 kHz"
+      ],
+      "answer": "20 kHz is the upper threshold of normal human hearing",
+      "correct_option": "20 kHz is the upper threshold of normal human hearing",
+      "difficulty": "easy",
+      "global_id": 11,
+      "explanation": "In acoustics, ultrasound comprises mechanical longitudinal vibrations above the human audible limit (~20 Hz to 20,000 Hz)."
+    },
+    {
+      "id": "udm-q12",
+      "question": "What is the common operating resonant frequency of standard ultrasonic distance modules such as HC-SR04?",
+      "options": [
+        "40 kHz",
+        "10 kHz",
+        "1 MHz",
+        "100 kHz"
+      ],
+      "answer": "40 kHz",
+      "correct_option": "40 kHz",
+      "difficulty": "easy",
+      "global_id": 12,
+      "explanation": "40 kHz is the industry standard for airborne rangefinding, providing an optimal compromise between atmospheric attenuation and directional resolution."
+    },
+    {
+      "id": "udm-q13",
+      "question": "At 40 kHz, what is the acoustic wavelength λ in room-temperature air (v = 343 m/s)?",
+      "options": [
+        "8.58 mm",
+        "1.72 mm",
+        "17.2 mm",
+        "34.3 mm"
+      ],
+      "answer": "8.58 mm",
+      "correct_option": "8.58 mm",
+      "difficulty": "medium",
+      "global_id": 13,
+      "explanation": "λ = v / f = 343 m/s / 40,000 Hz = 0.008575 m ≈ 8.58 mm."
+    },
+    {
+      "id": "udm-q14",
+      "question": "How does ambient air temperature T (in Celsius) affect the speed of sound v in air?",
+      "options": [
+        "v ≈ 331.3 + 0.606 * T (m/s)",
+        "v ≈ 331.3 - 0.606 * T (m/s)",
+        "v ≈ 331.3 * T (m/s)",
+        "v is completely independent of temperature"
+      ],
+      "answer": "v ≈ 331.3 + 0.606 * T (m/s)",
+      "correct_option": "v ≈ 331.3 + 0.606 * T (m/s)",
+      "difficulty": "medium",
+      "global_id": 14,
+      "explanation": "Sound speed in an ideal gas scales as √(T_kelvin). The linear Taylor expansion around 0°C is v ≈ 331.3 + 0.606 * T (°C)."
+    },
+    {
+      "id": "udm-q15",
+      "question": "If an uncalibrated ultrasonic sensor assumes v = 340 m/s on a cold day where actual v = 328 m/s, how will the calculated distance compare to true distance?",
+      "options": [
+        "The calculated distance will be larger than the true distance",
+        "The calculated distance will be smaller than the true distance",
+        "The calculated distance will be exact",
+        "The sensor will fail to detect echoes"
+      ],
+      "answer": "The calculated distance will be larger than the true distance",
+      "correct_option": "The calculated distance will be larger than the true distance",
+      "difficulty": "medium",
+      "global_id": 15,
+      "explanation": "Distance d = v_assumed * t / 2. Since v_assumed (340) > v_actual (328), the calculated distance overestimates true distance by ~3.7%."
+    },
+    {
+      "id": "udm-q16",
+      "question": "What is the primary physical reason for the 'blind zone' (minimum measuring distance ~2 cm to 3 cm) in ultrasonic sensors?",
+      "options": [
+        "Transducer mechanical ringing after excitation prevents sensing returning echoes immediately",
+        "Acoustic waves take 1 second to leave the transducer",
+        "Air ionization near the transmitter blocks reception",
+        "The receiver is turned off permanently below 5 cm"
+      ],
+      "answer": "Transducer mechanical ringing after excitation prevents sensing returning echoes immediately",
+      "correct_option": "Transducer mechanical ringing after excitation prevents sensing returning echoes immediately",
+      "difficulty": "medium",
+      "global_id": 16,
+      "explanation": "After transmitting an 8-cycle 40 kHz burst, the piezoelectric crystal continues ringing (decaying resonance). Any echo returning during this time is masked."
+    },
+    {
+      "id": "udm-q17",
+      "question": "What triggering electrical pulse width is required by an HC-SR04 ultrasonic sensor on its Trig pin to initiate a ping?",
+      "options": [
+        "At least 10 µs high-level TTL pulse",
+        "At least 1 second continuous pulse",
+        "10 ms AC voltage pulse",
+        "A single clock cycle at 16 MHz"
+      ],
+      "answer": "At least 10 µs high-level TTL pulse",
+      "correct_option": "At least 10 µs high-level TTL pulse",
+      "difficulty": "easy",
+      "global_id": 17,
+      "explanation": "The HC-SR04 specification requires a 10 µs TTL high trigger pulse, which commands the internal ASIC to emit an 8-cycle 40 kHz ultrasound burst."
+    },
+    {
+      "id": "udm-q18",
+      "question": "How many ultrasonic wave cycles are typically emitted in a single transmission burst by standard 40 kHz ranging sensors?",
+      "options": [
+        "8 cycles",
+        "1 cycle",
+        "100 cycles",
+        "500 cycles"
+      ],
+      "answer": "8 cycles",
+      "correct_option": "8 cycles",
+      "difficulty": "medium",
+      "global_id": 18,
+      "explanation": "An 8-cycle burst (lasting 8 / 40,000 = 200 µs) provides sufficient energy to detect reliable echoes while keeping transmission pulse duration short."
+    },
+    {
+      "id": "udm-q19",
+      "question": "If the echo pin of an ultrasonic sensor remains HIGH for 1.176 milliseconds, what is the measured one-way distance to the target in air (v = 340 m/s)?",
+      "options": [
+        "20.0 cm",
+        "10.0 cm",
+        "40.0 cm",
+        "5.88 cm"
+      ],
+      "answer": "20.0 cm",
+      "correct_option": "20.0 cm",
+      "difficulty": "medium",
+      "global_id": 19,
+      "explanation": "d = (v * t) / 2 = (340 m/s * 0.001176 s) / 2 = 0.400 m / 2 = 0.200 m = 20.0 cm."
+    },
+    {
+      "id": "udm-q20",
+      "question": "What happens when an ultrasonic beam strikes a smooth, flat surface at a large oblique angle of incidence (> 45°)?",
+      "options": [
+        "Specular reflection deflects the acoustic energy away, resulting in no detectable echo at the receiver",
+        "The sound wave is completely absorbed and turned into heat",
+        "The sound wave reflects directly back to the sensor regardless of angle",
+        "The wave frequency shifts to 80 kHz"
+      ],
+      "answer": "Specular reflection deflects the acoustic energy away, resulting in no detectable echo at the receiver",
+      "correct_option": "Specular reflection deflects the acoustic energy away, resulting in no detectable echo at the receiver",
+      "difficulty": "medium",
+      "global_id": 20,
+      "explanation": "Smooth surfaces act as acoustic mirrors; by the law of reflection (θ_r = θ_i), energy reflects away from the sensor, causing false 'no target' readings."
+    },
+    {
+      "id": "udm-q21",
+      "question": "Why do porous materials like acoustic foam, velvet, and fiberglass make poor ultrasonic targets?",
+      "options": [
+        "They have high acoustic absorption and low reflection coefficient due to impedance damping",
+        "They reflect sound faster than the speed of light",
+        "They cancel the trigger pulse electrically",
+        "They produce continuous constructive interference"
+      ],
+      "answer": "They have high acoustic absorption and low reflection coefficient due to impedance damping",
+      "correct_option": "They have high acoustic absorption and low reflection coefficient due to impedance damping",
+      "difficulty": "easy",
+      "global_id": 21,
+      "explanation": "Porous, fibrous materials trap air and convert acoustic kinetic energy into viscous heat dissipation, drastically attenuating the returning echo."
+    },
+    {
+      "id": "udm-q22",
+      "question": "What is acoustic impedance Z mathematically defined as for a medium?",
+      "options": [
+        "Z = ρ * v (density times speed of sound)",
+        "Z = ρ / v",
+        "Z = v / ρ",
+        "Z = ρ * v²"
+      ],
+      "answer": "Z = ρ * v (density times speed of sound)",
+      "correct_option": "Z = ρ * v (density times speed of sound)",
+      "difficulty": "medium",
+      "global_id": 22,
+      "explanation": "Specific acoustic impedance is the product of mass density ρ and acoustic wave propagation speed v (in Rayls or kg/(m²·s))."
+    },
+    {
+      "id": "udm-q23",
+      "question": "Why is an acoustic matching layer placed on the front face of a piezoelectric ultrasonic transducer?",
+      "options": [
+        "To bridge the huge acoustic impedance mismatch between PZT (Z ≈ 30 MRayl) and air (Z ≈ 400 Rayl)",
+        "To make the transducer waterproof",
+        "To change the frequency of ultrasound",
+        "To provide electrical insulation from ground"
+      ],
+      "answer": "To bridge the huge acoustic impedance mismatch between PZT (Z ≈ 30 MRayl) and air (Z ≈ 400 Rayl)",
+      "correct_option": "To bridge the huge acoustic impedance mismatch between PZT (Z ≈ 30 MRayl) and air (Z ≈ 400 Rayl)",
+      "difficulty": "hard",
+      "global_id": 23,
+      "explanation": "Without a matching layer (ideally Z_layer = √(Z_pzt * Z_air)), over 99.9% of acoustic energy would reflect back at the crystal-air boundary due to impedance mismatch."
+    },
+    {
+      "id": "udm-q24",
+      "question": "What type of acoustic wave propagates through open air from an ultrasonic rangefinder?",
+      "options": [
+        "Longitudinal compression-rarefaction wave",
+        "Transverse shear wave",
+        "Torsional wave",
+        "Electromagnetic wave"
+      ],
+      "answer": "Longitudinal compression-rarefaction wave",
+      "correct_option": "Longitudinal compression-rarefaction wave",
+      "difficulty": "easy",
+      "global_id": 24,
+      "explanation": "Fluids (gases and liquids) cannot support static shear stresses; hence, acoustic waves in air propagate purely as longitudinal pressure fluctuations."
+    },
+    {
+      "id": "udm-q25",
+      "question": "How does relative humidity affect the attenuation of 40 kHz ultrasound in air at room temperature?",
+      "options": [
+        "Molecular relaxation of oxygen/nitrogen causes frequency-dependent absorption that peaks at intermediate humidity levels (~20%-30%)",
+        "Higher humidity eliminates all sound attenuation",
+        "Sound travels twice as fast in 100% humidity",
+        "Humidity only affects audible sound"
+      ],
+      "answer": "Molecular relaxation of oxygen/nitrogen causes frequency-dependent absorption that peaks at intermediate humidity levels (~20%-30%)",
+      "correct_option": "Molecular relaxation of oxygen/nitrogen causes frequency-dependent absorption that peaks at intermediate humidity levels (~20%-30%)",
+      "difficulty": "hard",
+      "global_id": 25,
+      "explanation": "Water vapor catalysts accelerate vibrational relaxation of oxygen and nitrogen molecules, producing a distinct absorption peak around 20%-30% RH at 40 kHz."
+    },
+    {
+      "id": "udm-q26",
+      "question": "What is the typical half-power beam angle (beam divergence) of a standard commercial 40 kHz transducer horn?",
+      "options": [
+        "Approximately 15° to 30°",
+        "Exactly 0° (perfect pencil beam)",
+        "180° (hemispherical)",
+        "90°"
+      ],
+      "answer": "Approximately 15° to 30°",
+      "correct_option": "Approximately 15° to 30°",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "Because the transducer diameter (~16 mm) is only about twice the acoustic wavelength (8.5 mm), diffraction creates a cone angle of roughly 15° to 30°."
+    },
+    {
+      "id": "udm-q27",
+      "question": "What causes 'crosstalk' in a dual-transducer ultrasonic module (separate transmitter and receiver)?",
+      "options": [
+        "Direct acoustic or structural vibration transmission from transmitter to receiver before reaching the target",
+        "Bluetooth wireless interference between components",
+        "High-frequency electromagnetic radio emission",
+        "Refraction by the earth's magnetic field"
+      ],
+      "answer": "Direct acoustic or structural vibration transmission from transmitter to receiver before reaching the target",
+      "correct_option": "Direct acoustic or structural vibration transmission from transmitter to receiver before reaching the target",
+      "difficulty": "medium",
+      "global_id": 27,
+      "explanation": "Crosstalk occurs when ultrasonic vibrations leak sideways through the PCB, casing, or direct air path from transmitter to receiver without target reflection."
+    },
+    {
+      "id": "udm-q28",
+      "question": "In ultrasonic rangefinding, what is the effect of environmental air turbulence or thermal convection currents (e.g. above a heater)?",
+      "options": [
+        "Causes fluctuations in sound velocity along the path, leading to jitter and noise in distance measurements",
+        "Increases the speed of sound to supersonic velocities",
+        "Changes the resonant frequency of the piezoelectric crystal",
+        "Inverts the echo pulse polarity"
+      ],
+      "answer": "Causes fluctuations in sound velocity along the path, leading to jitter and noise in distance measurements",
+      "correct_option": "Causes fluctuations in sound velocity along the path, leading to jitter and noise in distance measurements",
+      "difficulty": "medium",
+      "global_id": 28,
+      "explanation": "Thermal gradients produce localized pockets of varying density and sound speed, refracting the beam and causing acoustic arrival-time jitter."
+    },
+    {
+      "id": "udm-q29",
+      "question": "What is the primary disadvantage of using ultrasonic distance meters compared to optical LiDAR sensors?",
+      "options": [
+        "Much slower update rate due to speed of sound (343 m/s vs 3x10⁸ m/s) and wider beam spread",
+        "Inability to detect clear glass windows",
+        "Sensitivity to ambient room lighting",
+        "Extremely high electrical power consumption"
+      ],
+      "answer": "Much slower update rate due to speed of sound (343 m/s vs 3x10⁸ m/s) and wider beam spread",
+      "correct_option": "Much slower update rate due to speed of sound (343 m/s vs 3x10⁸ m/s) and wider beam spread",
+      "difficulty": "medium",
+      "global_id": 29,
+      "explanation": "Sound travels ~1 million times slower than light, limiting sampling rate at long distances (e.g. measuring 4 m takes ~23 ms round-trip). Wide divergence also gives lower spatial resolution."
+    },
+    {
+      "id": "udm-q30",
+      "question": "What unique advantage do ultrasonic distance sensors possess over optical time-of-flight sensors?",
+      "options": [
+        "Ultrasonic sensors reliably detect transparent targets like glass and clear acrylic sheets",
+        "Ultrasonic waves travel at the speed of light",
+        "Ultrasonic sensors work inside a complete vacuum",
+        "Ultrasonic sensors have nanometer spatial resolution"
+      ],
+      "answer": "Ultrasonic sensors reliably detect transparent targets like glass and clear acrylic sheets",
+      "correct_option": "Ultrasonic sensors reliably detect transparent targets like glass and clear acrylic sheets",
+      "difficulty": "easy",
+      "global_id": 30,
+      "explanation": "Transparent materials that let optical light pass through act as solid acoustic boundaries that reflect acoustic pressure waves cleanly."
+    },
+    {
+      "id": "udm-q31",
+      "question": "Can an ultrasonic distance meter operate in a vacuum (such as in outer space)?",
+      "options": [
+        "No, acoustic waves require a physical material medium (mass and elasticity) to propagate",
+        "Yes, ultrasonic waves are a type of electromagnetic radiation",
+        "Yes, but only if the temperature is above 0°C",
+        "Yes, because piezoelectric crystals generate their own atmosphere"
+      ],
+      "answer": "No, acoustic waves require a physical material medium (mass and elasticity) to propagate",
+      "correct_option": "No, acoustic waves require a physical material medium (mass and elasticity) to propagate",
+      "difficulty": "easy",
+      "global_id": 31,
+      "explanation": "Sound is a mechanical pressure wave consisting of particle collisions; in a vacuum without matter, acoustic propagation is physically impossible."
+    },
+    {
+      "id": "udm-q32",
+      "question": "In an experimental calibration of an ultrasonic sensor, what mathematical relationship describes the plotted graph of True Distance (y) vs Echo Time (x)?",
+      "options": [
+        "A straight line passing through the origin with slope equal to v / 2",
+        "A parabola opening upwards",
+        "An exponential decay curve",
+        "A sinusoidal wave"
+      ],
+      "answer": "A straight line passing through the origin with slope equal to v / 2",
+      "correct_option": "A straight line passing through the origin with slope equal to v / 2",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "Since d = (v/2) * t, the relationship is strictly linear with slope m = v/2 and y-intercept near zero (offset by transducer front-face positioning)."
+    },
+    {
+      "id": "udm-q33",
+      "question": "If linear regression of calibration data yields d = 0.1715 * t (where d is in meters and t in milliseconds), what is the calculated speed of sound?",
+      "options": [
+        "343.0 m/s",
+        "171.5 m/s",
+        "686.0 m/s",
+        "331.3 m/s"
+      ],
+      "answer": "343.0 m/s",
+      "correct_option": "343.0 m/s",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "Slope = v / 2 = 0.1715 m/ms = 171.5 m/s. Therefore v = 2 * 171.5 m/s = 343.0 m/s."
+    },
+    {
+      "id": "udm-q34",
+      "question": "What is the maximum practical range of a standard 40 kHz airborne sensor (e.g. HC-SR04)?",
+      "options": [
+        "Approximately 4 to 5 meters",
+        "50 to 100 meters",
+        "500 meters",
+        "1 kilometer"
+      ],
+      "answer": "Approximately 4 to 5 meters",
+      "correct_option": "Approximately 4 to 5 meters",
+      "difficulty": "easy",
+      "global_id": 34,
+      "explanation": "At 40 kHz, atmospheric absorption (~1.2 dB/m) combined with spherical inverse-square spreading loss limits echo signal-to-noise ratio beyond 4-5 m."
+    },
+    {
+      "id": "udm-q35",
+      "question": "If an obstacle is positioned at 3.43 meters distance, what is the total round-trip flight time of the acoustic pulse (at v = 343 m/s)?",
+      "options": [
+        "20.0 milliseconds",
+        "10.0 milliseconds",
+        "5.0 milliseconds",
+        "40.0 milliseconds"
+      ],
+      "answer": "20.0 milliseconds",
+      "correct_option": "20.0 milliseconds",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "Total round-trip distance = 2 * 3.43 m = 6.86 m. Time t = 6.86 m / 343 m/s = 0.020 s = 20.0 ms."
+    },
+    {
+      "id": "udm-q36",
+      "question": "What is the phenomenon called when an echo bounces multiple times between the sensor and target, creating phantom readings at integer multiples of the true distance?",
+      "options": [
+        "Multipath / multi-bounce reflection",
+        "Doppler shifting",
+        "Acoustic cavitations",
+        "Rayleigh scattering"
+      ],
+      "answer": "Multipath / multi-bounce reflection",
+      "correct_option": "Multipath / multi-bounce reflection",
+      "difficulty": "medium",
+      "global_id": 36,
+      "explanation": "A strong echo reflecting back from the sensor face can travel to the target a second time, producing a false echo at twice the distance if the ping cycle is too fast."
+    },
+    {
+      "id": "udm-q37",
+      "question": "What minimum delay between successive measurement pings is recommended to prevent previous echo interference?",
+      "options": [
+        "Around 50 ms to 60 ms",
+        "1 microsecond",
+        "10 seconds",
+        "Zero delay"
+      ],
+      "answer": "Around 50 ms to 60 ms",
+      "correct_option": "Around 50 ms to 60 ms",
+      "difficulty": "medium",
+      "global_id": 37,
+      "explanation": "Waiting 50-60 ms between pings gives previous ultrasonic pulses sufficient time to dissipate below the receiver detection threshold."
+    },
+    {
+      "id": "udm-q38",
+      "question": "How does the directivity D of an ultrasonic transducer change if its diameter D_transducer is increased at constant frequency?",
+      "options": [
+        "The beam becomes narrower and more directional",
+        "The beam spreads wider in all directions",
+        "Directivity remains unchanged",
+        "The acoustic frequency doubles"
+      ],
+      "answer": "The beam becomes narrower and more directional",
+      "correct_option": "The beam becomes narrower and more directional",
+      "difficulty": "medium",
+      "global_id": 38,
+      "explanation": "By diffraction theory, beam divergence half-angle θ ≈ 1.22 λ / D. Increasing aperture diameter D narrows the emission beam."
+    },
+    {
+      "id": "udm-q39",
+      "question": "What electronic circuit block inside an ultrasonic receiver amplifies the weak microvolt signal generated by the receiving piezoelectric element?",
+      "options": [
+        "A high-gain bandpass preamplifier and comparator",
+        "A step-down transformer",
+        "A power inverter",
+        "A phase-locked loop frequency multiplier"
+      ],
+      "answer": "A high-gain bandpass preamplifier and comparator",
+      "correct_option": "A high-gain bandpass preamplifier and comparator",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "The receiving crystal generates tiny piezoelectric voltages; a multi-stage bandpass amplifier tuned to 40 kHz boosts the signal and a comparator generates a clean digital logic pulse."
+    },
+    {
+      "id": "udm-q40",
+      "question": "Why is automatic gain control (Time-Gain Compensation / TGC) often implemented in advanced ultrasonic receivers?",
+      "options": [
+        "To progressively increase amplifier gain over time as echoes arrive from farther, more attenuated targets",
+        "To decrease power consumption when idle",
+        "To shift the acoustic frequency during flight",
+        "To prevent the transmitter from overheating"
+      ],
+      "answer": "To progressively increase amplifier gain over time as echoes arrive from farther, more attenuated targets",
+      "correct_option": "To progressively increase amplifier gain over time as echoes arrive from farther, more attenuated targets",
+      "difficulty": "hard",
+      "global_id": 40,
+      "explanation": "Echoes from distant targets suffer greater geometric spreading and atmospheric attenuation; Time-Gain Compensation increases gain proportionally with time to equalize sensitivity."
+    },
+    {
+      "id": "udm-q41",
+      "question": "What is the acoustic pressure reflection coefficient R at normal incidence between two media of impedances Z1 and Z2?",
+      "options": [
+        "R = (Z2 - Z1) / (Z2 + Z1)",
+        "R = (Z2 + Z1) / (Z2 - Z1)",
+        "R = Z1 * Z2",
+        "R = (Z2 - Z1)²"
+      ],
+      "answer": "R = (Z2 - Z1) / (Z2 + Z1)",
+      "correct_option": "R = (Z2 - Z1) / (Z2 + Z1)",
+      "difficulty": "hard",
+      "global_id": 41,
+      "explanation": "The pressure reflection coefficient is R = (Z2 - Z1) / (Z2 + Z1). When Z2 >> Z1 (like air to steel or wall), R ≈ +1, producing near-total reflection."
+    },
+    {
+      "id": "udm-q42",
+      "question": "If a moving vehicle approaches an ultrasonic sensor, what physical effect causes the returning frequency to be higher than 40 kHz?",
+      "options": [
+        "The Doppler Effect",
+        "The Joule-Thomson Effect",
+        "The Seebeck Effect",
+        "The Hall Effect"
+      ],
+      "answer": "The Doppler Effect",
+      "correct_option": "The Doppler Effect",
+      "difficulty": "easy",
+      "global_id": 42,
+      "explanation": "Relative motion between source and receiver shifts the observed wave frequency: f_observed = f_source * (v + v_target) / (v - v_target)."
+    },
+    {
+      "id": "udm-q43",
+      "question": "What is the wavelength of a 40 kHz acoustic wave in water (where sound speed is v ≈ 1500 m/s)?",
+      "options": [
+        "37.5 mm",
+        "8.58 mm",
+        "1.50 mm",
+        "75.0 mm"
+      ],
+      "answer": "37.5 mm",
+      "correct_option": "37.5 mm",
+      "difficulty": "medium",
+      "global_id": 43,
+      "explanation": "λ = v / f = 1500 m/s / 40,000 Hz = 0.0375 m = 37.5 mm. (Sound travels ~4.4x faster in water than in air)."
+    },
+    {
+      "id": "udm-q44",
+      "question": "Why does an ultrasonic sensor struggle to measure the distance to a sphere compared to a flat wall?",
+      "options": [
+        "A sphere has only a tiny tangential surface area perpendicular to the beam, scattering most energy away",
+        "Spheres absorb ultrasonic waves completely",
+        "Spherical objects reflect ultrasound into the 4th dimension",
+        "Sound speed slows down near curved objects"
+      ],
+      "answer": "A sphere has only a tiny tangential surface area perpendicular to the beam, scattering most energy away",
+      "correct_option": "A sphere has only a tiny tangential surface area perpendicular to the beam, scattering most energy away",
+      "difficulty": "medium",
+      "global_id": 44,
+      "explanation": "Curved surfaces act as convex acoustic mirrors that disperse incident acoustic rays outward, leaving only a weak specular echo returning to the sensor."
+    },
+    {
+      "id": "udm-q45",
+      "question": "What is the effect of wind blowing parallel to the ultrasonic pulse (towards the target)?",
+      "options": [
+        "The effective speed of sound increases (v_eff = v_sound + v_wind), shortening the round-trip travel time",
+        "The frequency of the wave drops to zero",
+        "The beam freezes in mid-air",
+        "Wind has no effect on sound propagation"
+      ],
+      "answer": "The effective speed of sound increases (v_eff = v_sound + v_wind), shortening the round-trip travel time",
+      "correct_option": "The effective speed of sound increases (v_eff = v_sound + v_wind), shortening the round-trip travel time",
+      "difficulty": "hard",
+      "global_id": 45,
+      "explanation": "Sound propagates relative to the moving air medium. A tailwind adds to sound velocity on the outward leg, while a headwind subtracts on the return leg."
+    },
+    {
+      "id": "udm-q46",
+      "question": "In an experimental calibration curve, what does the y-intercept represent if the model is d = m * t + c?",
+      "options": [
+        "The systematic offset error, including acoustic zero-point distance and internal electronic processing delay",
+        "The room temperature in Kelvin",
+        "The acoustic absorption coefficient",
+        "The mass of the transducer crystal"
+      ],
+      "answer": "The systematic offset error, including acoustic zero-point distance and internal electronic processing delay",
+      "correct_option": "The systematic offset error, including acoustic zero-point distance and internal electronic processing delay",
+      "difficulty": "medium",
+      "global_id": 46,
+      "explanation": "The y-intercept c accounts for the physical distance from the circuit zero to the transducer front face, plus fixed hardware triggering/detector delays."
+    },
+    {
+      "id": "udm-q47",
+      "question": "What digital filtering algorithm is commonly used in software to eliminate outlier readings caused by missed ultrasonic pings?",
+      "options": [
+        "Median filter",
+        "Fast Fourier Transform inverter only",
+        "Differentiation filter",
+        "Uncompensated integration"
+      ],
+      "answer": "Median filter",
+      "correct_option": "Median filter",
+      "difficulty": "medium",
+      "global_id": 47,
+      "explanation": "A median filter over a window of 5-7 readings effectively rejects isolated dropouts (such as 0 cm or 400 cm false spikes) without lagging smooth distance changes."
+    },
+    {
+      "id": "udm-q48",
+      "question": "What happens to the acoustic power of an ultrasonic wave as it propagates in free space away from a point-like source?",
+      "options": [
+        "Intensity decreases inversely with the square of distance (1/r²) plus exponential atmospheric absorption",
+        "Intensity remains perfectly constant",
+        "Intensity drops linearly with distance (1/r)",
+        "Intensity increases due to acoustic resonance"
+      ],
+      "answer": "Intensity decreases inversely with the square of distance (1/r²) plus exponential atmospheric absorption",
+      "correct_option": "Intensity decreases inversely with the square of distance (1/r²) plus exponential atmospheric absorption",
+      "difficulty": "medium",
+      "global_id": 48,
+      "explanation": "Geometric spherical spreading reduces acoustic power density according to the inverse-square law (1/r²), supplemented by absorption loss exp(-2αr)."
+    },
+    {
+      "id": "udm-q49",
+      "question": "Why is the lead zirconate titanate (PZT) crystal in an ultrasonic transducer poled with a strong electric field during manufacturing?",
+      "options": [
+        "To align internal ferroelectric dipoles so the ceramic exhibits macroscopic piezoelectricity",
+        "To make the crystal electrically conductive",
+        "To prevent thermal expansion",
+        "To melt the crystal into a disc"
+      ],
+      "answer": "To align internal ferroelectric dipoles so the ceramic exhibits macroscopic piezoelectricity",
+      "correct_option": "To align internal ferroelectric dipoles so the ceramic exhibits macroscopic piezoelectricity",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "Unpoled polycrystalline PZT has randomly oriented ferroelectric domains that cancel out; poling under high DC field at elevated temperature aligns dipoles to produce strong piezoelectric response."
+    },
+    {
+      "id": "udm-q50",
+      "question": "If an ultrasonic sensor is calibrated at 20°C (v = 343.4 m/s) and then used at 40°C (v = 355.3 m/s) without temperature compensation, what percentage error occurs in distance measurement?",
+      "options": [
+        "Approximately -3.5% (underestimates distance by ~3.5%)",
+        "Approximately +15%",
+        "Exactly 0%",
+        "Approximately +50%"
+      ],
+      "answer": "Approximately -3.5% (underestimates distance by ~3.5%)",
+      "correct_option": "Approximately -3.5% (underestimates distance by ~3.5%)",
+      "difficulty": "hard",
+      "global_id": 50,
+      "explanation": "At 40°C, the echo returns faster. Because the uncompensated firmware calculates d = v_calibrated * t / 2, the calculated distance is (343.4 / 355.3) = 0.9665 of true distance, underestimating by ~3.46%."
+    }
+  ]
+}

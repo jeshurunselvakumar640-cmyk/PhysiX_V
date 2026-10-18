@@ -1,0 +1,373 @@
+/* ==========================================================================
+   PhysiX — Cinematic Sideways Experiment Card Entrance System
+   Inspired by ProjectCard: Alternating horizontal slide, blur-to-clear,
+   subtle vertical drift, and independent lift & scale interactions.
+   ========================================================================== */
+
+/* Prevent horizontal scrollbars caused by initial off-canvas card translations */
+.exp-list-card-container,
+.exp-dashboard-layout,
+.exp-section-wrapper,
+#physix-experiments-page,
+.labs-grid-wrapper {
+  overflow-x: clip !important;
+}
+
+/* Experiments Page Cards Grid Layout Optimization */
+.exp-page-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)) !important;
+  gap: 28px !important;
+  width: 100% !important;
+  max-height: none !important;
+  overflow: visible !important;
+  padding: 6px !important;
+  box-sizing: border-box !important;
+}
+
+/* Unified Card Dimensions and Proportions */
+.exp-page-grid .lab-card {
+  position: relative;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  min-height: 440px !important;
+  height: 100% !important;
+  border-radius: 24px !important;
+  box-sizing: border-box !important;
+  padding: 24px 22px 24px 22px !important;
+
+  /* Natural layout space occupied immediately to eliminate layout shift */
+  will-change: transform, opacity, filter;
+  opacity: 0;
+  filter: blur(10px);
+
+  /* Cinematic entrance transitions (duration ~0.85s, ease: cinematic cubic-bezier) */
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s ease,
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Alternating Horizontal Initial Positions */
+/* Left entrance: translated -48px X, +26px Y, scaled 0.97, blurred */
+.exp-page-grid .lab-card.card-slide-left {
+  transform: translate3d(-48px, 26px, 0) scale(0.97);
+}
+
+/* Right entrance: translated +48px X, +26px Y, scaled 0.97, blurred */
+.exp-page-grid .lab-card.card-slide-right {
+  transform: translate3d(48px, 26px, 0) scale(0.97);
+}
+
+/* Default fallback before directional class is attached */
+.exp-page-grid .lab-card:not(.card-slide-left):not(.card-slide-right) {
+  transform: translate3d(0, 32px, 0) scale(0.97);
+}
+
+/* Revealed / In-View State (Smoothly reaches full opacity and sharp focus) */
+.exp-page-grid .lab-card.card-in-view {
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
+}
+
+/* Independent Interaction: Subtle Hover Lift & Scale (Requirement 4) */
+/* Only triggers when card has arrived in view, without disrupting entrance animation */
+.exp-page-grid .lab-card.card-in-view:hover {
+  transform: translate3d(0, -8px, 0) scale(1.018) !important;
+  border-color: rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.8),
+              0 0 28px -4px rgba(56, 189, 248, 0.3) !important;
+}
+
+/* Pinned Horizontal Gallery Cards Track Alignment & Protection */
+#exp-gallery-section .exp-gallery-cards-track .lab-card,
+#exp-gallery-track #exp-page-labs-grid .lab-card,
+#exp-page-labs-grid .lab-card {
+  align-self: center !important;
+  margin: 0 !important;
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0);
+}
+
+#exp-gallery-section .exp-gallery-cards-track .lab-card.card-slide-left,
+#exp-gallery-section .exp-gallery-cards-track .lab-card.card-slide-right,
+#exp-gallery-track #exp-page-labs-grid .lab-card.card-slide-left,
+#exp-gallery-track #exp-page-labs-grid .lab-card.card-slide-right,
+#exp-page-labs-grid .lab-card.card-slide-left,
+#exp-page-labs-grid .lab-card.card-slide-right {
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0);
+}
+
+/* ==========================================================================
+   EXPLORE LABS HUB MODAL — RESTORE AUTHENTIC LAYOUT & POSITIONING
+   Protects the modal cards from horizontal entrance transforms and displacement.
+   ========================================================================== */
+#explorer-modal .labs-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)) !important;
+  gap: 26px !important;
+  padding: 16px 4px 32px 4px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  position: static !important;
+  transform: none !important;
+  box-sizing: border-box !important;
+}
+
+#explorer-modal .labs-grid .lab-card {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+  min-height: 440px !important;
+  max-height: none !important;
+  flex-shrink: 1 !important;
+  padding: 22px 20px 24px 20px !important;
+  border-radius: 24px !important;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
+  transform-style: flat !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s ease,
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+#explorer-modal .labs-grid .lab-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(168, 85, 247, 0.4) !important;
+  box-shadow: 0 20px 42px -10px rgba(0, 0, 0, 0.75),
+              0 0 22px -4px rgba(168, 85, 247, 0.2) !important;
+}
+
+#explorer-modal .labs-grid .lab-card.card-slide-left,
+#explorer-modal .labs-grid .lab-card.card-slide-right {
+  transform: none !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+#explorer-modal .labs-grid .lab-card .card-header-bar {
+  transform: none !important;
+  margin-bottom: 8px !important;
+  width: 100% !important;
+}
+
+#explorer-modal .labs-grid .lab-card .card-preview-art {
+  height: 95px !important;
+  width: 100% !important;
+  aspect-ratio: auto !important;
+  margin: 4px 0 14px 0 !important;
+  transform: none !important;
+  border-radius: 14px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+#explorer-modal .labs-grid .lab-card .card-content-block {
+  transform: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  width: 100% !important;
+}
+
+#explorer-modal .labs-grid .lab-card .card-title {
+  font-family: inherit !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 7px !important;
+  flex-wrap: wrap !important;
+  line-height: 1.25 !important;
+  margin: 0 0 8px 0 !important;
+}
+
+#explorer-modal .labs-grid .lab-card .card-desc {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+  color: #94a3b8 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+#explorer-modal .labs-grid .lab-card .card-action-bar {
+  transform: none !important;
+  margin-top: auto !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+#explorer-modal .labs-grid .lab-card .btn-perform {
+  transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px 30px !important;
+  min-width: 110px !important;
+  height: auto !important;
+}
+
+#explorer-modal .labs-grid .lab-card .card-glare,
+#explorer-modal .labs-grid .lab-card .card-fx-glare {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+  #explorer-modal .labs-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #explorer-modal .labs-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 12px 2px 24px 2px !important;
+  }
+
+  #explorer-modal .labs-grid .lab-card {
+    min-height: 380px !important;
+    padding: 18px 16px 20px 16px !important;
+  }
+}
+
+
+/* Smooth Preview Art Zoom on Hover, mirroring reference ProjectCard */
+.lab-card .card-preview-art {
+  overflow: hidden !important;
+  border-radius: 14px;
+}
+
+.lab-card .card-preview-art .preview-svg {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform-origin: center center;
+}
+
+.lab-card.card-in-view:hover .card-preview-art .preview-svg {
+  transform: scale(1.055) !important;
+}
+
+/* Consistent Internal Content Layout & Typography Alignment */
+.lab-card .card-content-block {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin-top: 14px !important;
+}
+
+.lab-card .card-title {
+  font-size: 1.25rem !important;
+  line-height: 1.35 !important;
+  margin-bottom: 8px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 5px !important;
+  align-items: baseline !important;
+}
+
+.lab-card .card-desc {
+  font-size: 0.88rem !important;
+  line-height: 1.55 !important;
+  color: #94a3b8 !important;
+  margin-bottom: 16px !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.lab-card .card-action-bar {
+  margin-top: auto !important;
+  padding-top: 12px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+
+.lab-card .card-action-bar .lab-card-btn {
+  width: 100% !important;
+  text-align: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease !important;
+}
+
+.lab-card .card-action-bar .lab-card-btn:hover {
+  transform: translateY(-2px) scale(1.01) !important;
+}
+
+/* Light Mode Card Contrast & Hover Glow */
+[data-theme="light"] .exp-page-grid .lab-card,
+body.light-mode .exp-page-grid .lab-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 249, 255, 0.95) 100%) !important;
+  border-color: #bae6fd !important;
+}
+
+[data-theme="light"] .exp-page-grid .lab-card.card-in-view:hover,
+body.light-mode .exp-page-grid .lab-card.card-in-view:hover {
+  border-color: rgba(37, 99, 235, 0.45) !important;
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.16),
+              0 0 24px -2px rgba(37, 99, 235, 0.18) !important;
+}
+
+[data-theme="light"] .lab-card .card-desc,
+body.light-mode .lab-card .card-desc {
+  color: #475569 !important;
+}
+
+/* Responsive Grid Breakpoints */
+@media (max-width: 960px) {
+  .exp-page-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 22px !important;
+  }
+}
+
+@media (max-width: 680px) {
+  .exp-page-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    padding: 0 !important;
+  }
+  .lab-card {
+    min-height: auto !important;
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .exp-page-grid .lab-card,
+  .labs-grid .lab-card {
+    transition: opacity 0.3s ease !important;
+    transform: none !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+
+  .lab-card.card-in-view:hover .card-preview-art .preview-svg {
+    transform: none !important;
+  }
+
+  .lab-card .card-action-bar .lab-card-btn:hover {
+    transform: none !important;
+  }
+}

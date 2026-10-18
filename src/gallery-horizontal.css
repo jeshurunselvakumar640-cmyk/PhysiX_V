@@ -1,0 +1,1762 @@
+/* ==========================================================================
+   PhysiX — Cinematic Pinned Horizontal-Scrolling Experiment Gallery
+   Originals Architecture & UX Engine Reference Implementation
+   - Pinned vertical-to-horizontal scrolling with spring physics & sticky 100vh
+   - Interactive 3D card tilt & pointer-following dynamic glare (fx.tsx)
+   - Synchronized bottom progress indicator
+   - Ambient blue radial gradient accent
+   - Responsive fallback for touch devices and reduced motion
+   - Outro GitHub Card & Project Detail Modal Dialog UX
+   ========================================================================== */
+
+:root {
+  --color-ink: #07070a;
+  --color-ink-2: #0e0e13;
+  --color-bone: #f4f1ec;
+  --color-crimson: #3b82f6;
+  --color-crimson-2: #60a5fa;
+  --color-mist: #a7a6ad;
+  --color-smoke: #6d6c75;
+  --ease-cine: cubic-bezier(0.22, 1, 0.36, 1);
+  --font-display: 'Bebas Neue', 'Orbitron', 'Space Grotesk', Impact, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Prevent horizontal overflow without breaking position: sticky */
+html,
+body,
+body.on-standalone-page,
+#physix-experiments-page,
+.exp-gallery-section,
+.exp-gallery-wrap,
+.gallery-pinned-wrapper,
+.originals-pinned-wrapper {
+  overflow-x: clip !important;
+}
+
+/* Master Gallery Outer Section */
+.exp-gallery-section {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Gallery Pinning Wrapper (Height dynamically calculated: 100vh + dist) */
+.exp-gallery-wrap,
+.gallery-pinned-wrapper,
+.originals-pinned-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Pinned Viewport Container (Sticky at top of screen during vertical scroll) */
+.exp-gallery-viewport,
+.gallery-sticky-viewport,
+.originals-sticky-viewport {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: var(--bg-main, #030611);
+}
+
+/* Ambient Radial Background Accent */
+.exp-gallery-ambient-bg,
+.originals-ambient-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(50% 60% at 70% 50%, rgba(59, 130, 246, 0.12), transparent 70%);
+  pointer-events: none !important;
+  z-index: 1;
+}
+
+/* Top Quick Status Pill Inside Pinned Viewport */
+.exp-gallery-top-controls {
+  position: absolute;
+  top: 24px;
+  left: clamp(20px, 5vw, 64px);
+  right: clamp(20px, 5vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  z-index: 25;
+  pointer-events: auto;
+}
+
+.exp-gallery-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #38bdf8;
+  text-transform: uppercase;
+}
+
+.exp-gallery-status-pill .status-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: expGalleryPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes expGalleryPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Horizontally Translated Experiment Track */
+.exp-gallery-track {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 36px;
+  padding: 0 clamp(24px, 5vw, 72px);
+  padding-right: clamp(24px, 5vw, 72px);
+  width: max-content;
+  will-change: transform;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.originals-track {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 36px;
+  padding: 0 clamp(24px, 5vw, 72px);
+  padding-right: clamp(24px, 5vw, 72px);
+  width: max-content;
+  will-change: transform;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Introduction Panel (Originals-inspired Hero Leading Panel) */
+.exp-gallery-intro-panel,
+.originals-intro {
+  flex-shrink: 0;
+  width: clamp(280px, 32vw, 460px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin: 0;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.exp-gallery-intro-panel .exp-intro-eyebrow,
+.intro-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #60a5fa;
+}
+
+.exp-gallery-intro-panel .exp-intro-eyebrow-line,
+.kicker-line {
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background-color: #60a5fa;
+  border-radius: 2px;
+}
+
+.exp-gallery-intro-panel .exp-intro-heading,
+.intro-title {
+  font-family: var(--font-space, 'Orbitron', 'Space Grotesk', 'Outfit', sans-serif);
+  font-size: clamp(3.2rem, 7vw, 6.8rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  color: var(--color-bone, #f8fafc);
+  margin: 0 0 18px 0;
+  text-shadow: 0 2px 20px rgba(59, 130, 246, 0.25);
+}
+
+.exp-gallery-intro-panel .exp-intro-desc,
+.intro-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(248, 250, 252, 0.75);
+  max-width: 380px;
+  margin: 0 0 26px 0;
+}
+
+.exp-gallery-intro-panel .exp-intro-hint,
+.intro-scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: rgba(96, 165, 250, 0.75);
+  text-transform: uppercase;
+  animation: expGalleryScrollBounce 2.4s ease-in-out infinite;
+}
+
+@keyframes expGalleryScrollBounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+
+/* Horizontal Cards Track (#exp-page-labs-grid inside the horizontal track) */
+#exp-page-labs-grid,
+#exp-page-labs-grid.exp-gallery-cards-track,
+.exp-gallery-cards-track,
+.cards-render-container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 32px !important;
+  flex-shrink: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 3D Perspective Shell Wrapper */
+.card-perspective-shell {
+  width: clamp(340px, 31vw, 470px) !important;
+  flex-shrink: 0 !important;
+  perspective: 1000px !important;
+  align-self: center !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Pinned Horizontal Gallery Card Base Styling */
+.experiment-card,
+#exp-page-labs-grid .lab-card,
+.exp-gallery-cards-track .lab-card {
+  position: relative !important;
+  flex-shrink: 0 !important;
+  width: clamp(330px, 30vw, 460px) !important;
+  min-width: 320px !important;
+  max-width: 480px !important;
+  height: clamp(500px, 66vh, 590px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-self: center !important;
+  margin: 0 !important;
+  padding: 24px 24px 24px 24px !important;
+  border-radius: 20px !important;
+  box-sizing: border-box !important;
+  background: radial-gradient(110% 85% at 90% 12%, rgba(147, 51, 234, 0.46) 0%, rgba(107, 33, 168, 0.25) 40%, transparent 72%),
+              radial-gradient(85% 70% at 8% 95%, rgba(59, 7, 100, 0.32) 0%, transparent 65%),
+              linear-gradient(165deg, #160728 0%, #0b0314 48%, #050109 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.85),
+              0 0 26px -6px rgba(147, 51, 234, 0.22) !important;
+  
+  /* 1. 3D Interactive Perspective Shell: Allows child layers to tilt and float in Z space */
+  transform-style: preserve-3d !important;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0);
+  overflow: hidden !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  cursor: pointer !important;
+  will-change: transform, border-color, box-shadow;
+  transition: border-color 0.28s ease,
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* ==========================================================================
+   INDIVIDUAL VIBRANT CARD BACKGROUND COLOURS PER EXPERIMENT
+   ========================================================================== */
+
+/* 1. Projectile Motion — Cosmic Royal Violet (Matches Reference Image) */
+#exp-page-labs-grid .lab-card[data-id="projectile"],
+#exp-page-labs-grid .lab-card[data-exp-target="projectile"],
+.lab-card[data-id="projectile"],
+.lab-card[data-exp-target="projectile"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+1) .lab-card,
+.card-perspective-shell:nth-child(14n+1) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(168, 85, 247, 0.58) 0%, rgba(126, 34, 206, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(59, 7, 100, 0.38) 0%, transparent 65%),
+              linear-gradient(165deg, #1c0834 0%, #0d0318 48%, #05010a 100%) !important;
+  border-color: rgba(168, 85, 247, 0.32) !important;
+  color: #c084fc;
+}
+#exp-page-labs-grid .lab-card[data-id="projectile"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="projectile"]:hover,
+.lab-card[data-id="projectile"]:hover,
+.lab-card[data-exp-target="projectile"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+1) .lab-card:hover {
+  border-color: rgba(192, 132, 252, 0.6) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(168, 85, 247, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="projectile"] .card-preview-art .preview-svg,
+.lab-card[data-id="projectile"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(168, 85, 247, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="projectile"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="projectile"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="projectile"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="projectile"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="projectile"] .card-preview-art .preview-svg path,
+.lab-card[data-id="projectile"] .card-preview-art .preview-svg line,
+.lab-card[data-id="projectile"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="projectile"] .card-preview-art .preview-svg rect {
+  stroke: #c084fc !important;
+}
+
+/* 2. Optical Fibre NA — Electric Cyan / Deep Oceanic Glow */
+#exp-page-labs-grid .lab-card[data-id="optical"],
+#exp-page-labs-grid .lab-card[data-exp-target="optical"],
+.lab-card[data-id="optical"],
+.lab-card[data-exp-target="optical"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+2) .lab-card,
+.card-perspective-shell:nth-child(14n+2) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(14, 165, 233, 0.58) 0%, rgba(3, 105, 161, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(8, 47, 73, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #03213a 0%, #020e1a 48%, #01060b 100%) !important;
+  border-color: rgba(56, 189, 248, 0.32) !important;
+  color: #38bdf8;
+}
+#exp-page-labs-grid .lab-card[data-id="optical"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="optical"]:hover,
+.lab-card[data-id="optical"]:hover,
+.lab-card[data-exp-target="optical"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+2) .lab-card:hover {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(14, 165, 233, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="optical"] .card-preview-art .preview-svg,
+.lab-card[data-id="optical"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(14, 165, 233, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="optical"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="optical"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="optical"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="optical"] .card-preview-art .preview-svg ellipse,
+#exp-page-labs-grid .lab-card[data-id="optical"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="optical"] .card-preview-art .preview-svg path,
+.lab-card[data-id="optical"] .card-preview-art .preview-svg line,
+.lab-card[data-id="optical"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="optical"] .card-preview-art .preview-svg ellipse,
+.lab-card[data-id="optical"] .card-preview-art .preview-svg rect {
+  stroke: #38bdf8 !important;
+}
+
+/* 3. Colour Sensor — Neon Fuchsia / Magenta */
+#exp-page-labs-grid .lab-card[data-id="colour-sensor"],
+#exp-page-labs-grid .lab-card[data-exp-target="colour-sensor"],
+.lab-card[data-id="colour-sensor"],
+.lab-card[data-exp-target="colour-sensor"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+3) .lab-card,
+.card-perspective-shell:nth-child(14n+3) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(217, 70, 239, 0.55) 0%, rgba(147, 51, 234, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(74, 4, 78, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #280831 0%, #130319 48%, #07010a 100%) !important;
+  border-color: rgba(232, 121, 249, 0.32) !important;
+  color: #e879f9;
+}
+#exp-page-labs-grid .lab-card[data-id="colour-sensor"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="colour-sensor"]:hover,
+.lab-card[data-id="colour-sensor"]:hover,
+.lab-card[data-exp-target="colour-sensor"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+3) .lab-card:hover {
+  border-color: rgba(232, 121, 249, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(217, 70, 239, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg,
+.lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(217, 70, 239, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg path,
+.lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg line,
+.lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="colour-sensor"] .card-preview-art .preview-svg rect {
+  stroke: #e879f9 !important;
+}
+
+/* 4. Newton's Rings — Oceanic Mint / Deep Aqua Teal */
+#exp-page-labs-grid .lab-card[data-id="newtons-rings"],
+#exp-page-labs-grid .lab-card[data-exp-target="newtons-rings"],
+.lab-card[data-id="newtons-rings"],
+.lab-card[data-exp-target="newtons-rings"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+4) .lab-card,
+.card-perspective-shell:nth-child(14n+4) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(20, 184, 166, 0.58) 0%, rgba(13, 148, 136, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(19, 78, 74, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #032724 0%, #021513 48%, #010807 100%) !important;
+  border-color: rgba(45, 212, 191, 0.32) !important;
+  color: #2dd4bf;
+}
+#exp-page-labs-grid .lab-card[data-id="newtons-rings"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="newtons-rings"]:hover,
+.lab-card[data-id="newtons-rings"]:hover,
+.lab-card[data-exp-target="newtons-rings"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+4) .lab-card:hover {
+  border-color: rgba(45, 212, 191, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(20, 184, 166, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg,
+.lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(20, 184, 166, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg path,
+.lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg line,
+.lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="newtons-rings"] .card-preview-art .preview-svg rect {
+  stroke: #2dd4bf !important;
+}
+
+/* 5. Wedge-Shaped Film — Emerald Jade / Radiant Spring */
+#exp-page-labs-grid .lab-card[data-id="wedge-film"],
+#exp-page-labs-grid .lab-card[data-exp-target="wedge-film"],
+.lab-card[data-id="wedge-film"],
+.lab-card[data-exp-target="wedge-film"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+5) .lab-card,
+.card-perspective-shell:nth-child(14n+5) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(34, 197, 94, 0.55) 0%, rgba(21, 128, 61, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(6, 78, 59, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #052914 0%, #02160b 48%, #010804 100%) !important;
+  border-color: rgba(74, 222, 128, 0.32) !important;
+  color: #4ade80;
+}
+#exp-page-labs-grid .lab-card[data-id="wedge-film"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="wedge-film"]:hover,
+.lab-card[data-id="wedge-film"]:hover,
+.lab-card[data-exp-target="wedge-film"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+5) .lab-card:hover {
+  border-color: rgba(74, 222, 128, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(34, 197, 94, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="wedge-film"] .card-preview-art .preview-svg,
+.lab-card[data-id="wedge-film"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(34, 197, 94, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="wedge-film"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="wedge-film"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="wedge-film"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="wedge-film"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="wedge-film"] .card-preview-art .preview-svg path,
+.lab-card[data-id="wedge-film"] .card-preview-art .preview-svg line,
+.lab-card[data-id="wedge-film"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="wedge-film"] .card-preview-art .preview-svg rect {
+  stroke: #4ade80 !important;
+}
+
+/* 6. Hall Effect — Imperial Indigo / Royal Iris */
+#exp-page-labs-grid .lab-card[data-id="hall-effect"],
+#exp-page-labs-grid .lab-card[data-exp-target="hall-effect"],
+.lab-card[data-id="hall-effect"],
+.lab-card[data-exp-target="hall-effect"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+6) .lab-card,
+.card-perspective-shell:nth-child(14n+6) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(99, 102, 241, 0.58) 0%, rgba(67, 56, 202, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(30, 27, 75, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #11153f 0%, #080a22 48%, #030410 100%) !important;
+  border-color: rgba(129, 140, 248, 0.32) !important;
+  color: #818cf8;
+}
+#exp-page-labs-grid .lab-card[data-id="hall-effect"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="hall-effect"]:hover,
+.lab-card[data-id="hall-effect"]:hover,
+.lab-card[data-exp-target="hall-effect"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+6) .lab-card:hover {
+  border-color: rgba(129, 140, 248, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(99, 102, 241, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="hall-effect"] .card-preview-art .preview-svg,
+.lab-card[data-id="hall-effect"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(99, 102, 241, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="hall-effect"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="hall-effect"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="hall-effect"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="hall-effect"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="hall-effect"] .card-preview-art .preview-svg path,
+.lab-card[data-id="hall-effect"] .card-preview-art .preview-svg line,
+.lab-card[data-id="hall-effect"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="hall-effect"] .card-preview-art .preview-svg rect {
+  stroke: #818cf8 !important;
+}
+
+/* 7. Diffraction Grating — Rose Crimson / Vivid Coral */
+#exp-page-labs-grid .lab-card[data-id="diffraction-grating"],
+#exp-page-labs-grid .lab-card[data-exp-target="diffraction-grating"],
+#exp-page-labs-grid .lab-card[data-exp-target="diffraction"],
+.lab-card[data-id="diffraction-grating"],
+.lab-card[data-exp-target="diffraction-grating"],
+.lab-card[data-exp-target="diffraction"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+7) .lab-card,
+.card-perspective-shell:nth-child(14n+7) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(244, 63, 94, 0.58) 0%, rgba(190, 24, 93, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(88, 7, 39, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #2e0817 0%, #17040d 48%, #090105 100%) !important;
+  border-color: rgba(251, 113, 133, 0.32) !important;
+  color: #fb7185;
+}
+#exp-page-labs-grid .lab-card[data-id="diffraction-grating"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="diffraction-grating"]:hover,
+.lab-card[data-id="diffraction-grating"]:hover,
+.lab-card[data-exp-target="diffraction-grating"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+7) .lab-card:hover {
+  border-color: rgba(251, 113, 133, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(244, 63, 94, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg,
+.lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(244, 63, 94, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg path,
+.lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg line,
+.lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="diffraction-grating"] .card-preview-art .preview-svg rect {
+  stroke: #fb7185 !important;
+}
+
+/* 8. Physics Sandbox — Radiant Amber / Warm Topaz */
+#exp-page-labs-grid .lab-card[data-id="sandbox"],
+#exp-page-labs-grid .lab-card[data-exp-target="sandbox"],
+.lab-card[data-id="sandbox"],
+.lab-card[data-exp-target="sandbox"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+8) .lab-card,
+.card-perspective-shell:nth-child(14n+8) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(245, 158, 11, 0.58) 0%, rgba(180, 83, 9, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(69, 26, 3, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #2e1a03 0%, #170d01 48%, #0a0500 100%) !important;
+  border-color: rgba(251, 191, 36, 0.32) !important;
+  color: #fbbf24;
+}
+#exp-page-labs-grid .lab-card[data-id="sandbox"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="sandbox"]:hover,
+.lab-card[data-id="sandbox"]:hover,
+.lab-card[data-exp-target="sandbox"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+8) .lab-card:hover {
+  border-color: rgba(251, 191, 36, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(245, 158, 11, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="sandbox"] .card-preview-art .preview-svg,
+.lab-card[data-id="sandbox"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(245, 158, 11, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="sandbox"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="sandbox"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="sandbox"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="sandbox"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="sandbox"] .card-preview-art .preview-svg path,
+.lab-card[data-id="sandbox"] .card-preview-art .preview-svg line,
+.lab-card[data-id="sandbox"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="sandbox"] .card-preview-art .preview-svg rect {
+  stroke: #fbbf24 !important;
+}
+
+/* 9. Planck's Constant — Electric Sky Blue / Azure Glow */
+#exp-page-labs-grid .lab-card[data-id="planck"],
+#exp-page-labs-grid .lab-card[data-exp-target="planck"],
+#exp-page-labs-grid .lab-card[data-exp-target="photoelectric"],
+.lab-card[data-id="planck"],
+.lab-card[data-exp-target="planck"],
+.lab-card[data-exp-target="photoelectric"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+9) .lab-card,
+.card-perspective-shell:nth-child(14n+9) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(56, 189, 248, 0.58) 0%, rgba(2, 132, 199, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(8, 47, 73, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #042238 0%, #02111d 48%, #01060b 100%) !important;
+  border-color: rgba(56, 189, 248, 0.32) !important;
+  color: #38bdf8;
+}
+#exp-page-labs-grid .lab-card[data-id="planck"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="planck"]:hover,
+.lab-card[data-id="planck"]:hover,
+.lab-card[data-exp-target="planck"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+9) .lab-card:hover {
+  border-color: rgba(56, 189, 248, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(56, 189, 248, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="planck"] .card-preview-art .preview-svg,
+.lab-card[data-id="planck"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="planck"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="planck"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="planck"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="planck"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="planck"] .card-preview-art .preview-svg path,
+.lab-card[data-id="planck"] .card-preview-art .preview-svg line,
+.lab-card[data-id="planck"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="planck"] .card-preview-art .preview-svg rect {
+  stroke: #38bdf8 !important;
+}
+
+/* 10. POF Attenuation — Electric Orchid / Amethyst */
+#exp-page-labs-grid .lab-card[data-id="pof-attenuation"],
+#exp-page-labs-grid .lab-card[data-exp-target="pof-attenuation"],
+#exp-page-labs-grid .lab-card[data-exp-target="optical-attenuation"],
+.lab-card[data-id="pof-attenuation"],
+.lab-card[data-exp-target="pof-attenuation"],
+.lab-card[data-exp-target="optical-attenuation"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+10) .lab-card,
+.card-perspective-shell:nth-child(14n+10) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(192, 132, 252, 0.58) 0%, rgba(147, 51, 234, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(59, 7, 100, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #220a3a 0%, #11041d 48%, #06010b 100%) !important;
+  border-color: rgba(216, 180, 254, 0.32) !important;
+  color: #d8b4fe;
+}
+#exp-page-labs-grid .lab-card[data-id="pof-attenuation"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="pof-attenuation"]:hover,
+.lab-card[data-id="pof-attenuation"]:hover,
+.lab-card[data-exp-target="pof-attenuation"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+10) .lab-card:hover {
+  border-color: rgba(216, 180, 254, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(192, 132, 252, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg,
+.lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(192, 132, 252, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg path,
+.lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg line,
+.lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="pof-attenuation"] .card-preview-art .preview-svg rect {
+  stroke: #d8b4fe !important;
+}
+
+/* 11. Diode Characteristics — Flame Orange / Sunset Tangerine */
+#exp-page-labs-grid .lab-card[data-id="diode"],
+#exp-page-labs-grid .lab-card[data-exp-target="diode"],
+.lab-card[data-id="diode"],
+.lab-card[data-exp-target="diode"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+11) .lab-card,
+.card-perspective-shell:nth-child(14n+11) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(249, 115, 22, 0.58) 0%, rgba(194, 65, 12, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(67, 20, 7, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #301303 0%, #190901 48%, #0a0400 100%) !important;
+  border-color: rgba(251, 146, 60, 0.32) !important;
+  color: #fb923c;
+}
+#exp-page-labs-grid .lab-card[data-id="diode"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="diode"]:hover,
+.lab-card[data-id="diode"]:hover,
+.lab-card[data-exp-target="diode"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+11) .lab-card:hover {
+  border-color: rgba(251, 146, 60, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(249, 115, 22, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="diode"] .card-preview-art .preview-svg,
+.lab-card[data-id="diode"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(249, 115, 22, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="diode"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="diode"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="diode"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="diode"] .card-preview-art .preview-svg rect,
+#exp-page-labs-grid .lab-card[data-id="diode"] .card-preview-art .preview-svg polygon,
+.lab-card[data-id="diode"] .card-preview-art .preview-svg path,
+.lab-card[data-id="diode"] .card-preview-art .preview-svg line,
+.lab-card[data-id="diode"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="diode"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="diode"] .card-preview-art .preview-svg polygon {
+  stroke: #fb923c !important;
+}
+
+/* 12. Laser Divergence — Radiant Ruby / Scarlet Flame */
+#exp-page-labs-grid .lab-card[data-id="laser-divergence"],
+#exp-page-labs-grid .lab-card[data-exp-target="laser-divergence"],
+.lab-card[data-id="laser-divergence"],
+.lab-card[data-exp-target="laser-divergence"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+12) .lab-card,
+.card-perspective-shell:nth-child(14n+12) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(239, 68, 68, 0.58) 0%, rgba(185, 28, 28, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(69, 10, 10, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #2d0808 0%, #170404 48%, #0a0101 100%) !important;
+  border-color: rgba(248, 113, 113, 0.32) !important;
+  color: #f87171;
+}
+#exp-page-labs-grid .lab-card[data-id="laser-divergence"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="laser-divergence"]:hover,
+.lab-card[data-id="laser-divergence"]:hover,
+.lab-card[data-exp-target="laser-divergence"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+12) .lab-card:hover {
+  border-color: rgba(248, 113, 113, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(239, 68, 68, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg,
+.lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(239, 68, 68, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg path,
+.lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg line,
+.lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="laser-divergence"] .card-preview-art .preview-svg rect {
+  stroke: #f87171 !important;
+}
+
+/* 13. Ultrasonic Sensor — Cyber Turquoise / Neon Cyan */
+#exp-page-labs-grid .lab-card[data-id="ultrasonic-sensor"],
+#exp-page-labs-grid .lab-card[data-exp-target="ultrasonic-sensor"],
+#exp-page-labs-grid .lab-card[data-exp-target="ultrasonic"],
+.lab-card[data-id="ultrasonic-sensor"],
+.lab-card[data-exp-target="ultrasonic-sensor"],
+.lab-card[data-exp-target="ultrasonic"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+13) .lab-card,
+.card-perspective-shell:nth-child(14n+13) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(6, 182, 212, 0.58) 0%, rgba(8, 145, 178, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(8, 47, 73, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #032328 0%, #021215 48%, #010608 100%) !important;
+  border-color: rgba(34, 211, 238, 0.32) !important;
+  color: #22d3ee;
+}
+#exp-page-labs-grid .lab-card[data-id="ultrasonic-sensor"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="ultrasonic-sensor"]:hover,
+.lab-card[data-id="ultrasonic-sensor"]:hover,
+.lab-card[data-exp-target="ultrasonic-sensor"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n+13) .lab-card:hover {
+  border-color: rgba(34, 211, 238, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(6, 182, 212, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg,
+.lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(6, 182, 212, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg path,
+.lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg line,
+.lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="ultrasonic-sensor"] .card-preview-art .preview-svg rect {
+  stroke: #22d3ee !important;
+}
+
+/* 14. RTD Temperature Sensors — Coral Pink / Carmine Flame */
+#exp-page-labs-grid .lab-card[data-id="rtd-sensor"],
+#exp-page-labs-grid .lab-card[data-exp-target="rtd-sensor"],
+#exp-page-labs-grid .lab-card[data-exp-target="rtd"],
+.lab-card[data-id="rtd-sensor"],
+.lab-card[data-exp-target="rtd-sensor"],
+.lab-card[data-exp-target="rtd"],
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n) .lab-card,
+.card-perspective-shell:nth-child(14n) .lab-card {
+  background: radial-gradient(110% 85% at 88% 14%, rgba(251, 113, 133, 0.58) 0%, rgba(225, 29, 72, 0.32) 42%, transparent 74%),
+              radial-gradient(85% 70% at 8% 95%, rgba(76, 5, 25, 0.45) 0%, transparent 65%),
+              linear-gradient(165deg, #2b0610 0%, #150308 48%, #080103 100%) !important;
+  border-color: rgba(253, 164, 175, 0.32) !important;
+  color: #fda4af;
+}
+#exp-page-labs-grid .lab-card[data-id="rtd-sensor"]:hover,
+#exp-page-labs-grid .lab-card[data-exp-target="rtd-sensor"]:hover,
+.lab-card[data-id="rtd-sensor"]:hover,
+.lab-card[data-exp-target="rtd-sensor"]:hover,
+#exp-page-labs-grid .card-perspective-shell:nth-child(14n) .lab-card:hover {
+  border-color: rgba(253, 164, 175, 0.65) !important;
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 36px rgba(251, 113, 133, 0.42) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg,
+.lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg {
+  filter: drop-shadow(0 0 14px rgba(251, 113, 133, 0.45)) !important;
+}
+#exp-page-labs-grid .lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg path,
+#exp-page-labs-grid .lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg line,
+#exp-page-labs-grid .lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg circle,
+#exp-page-labs-grid .lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg rect,
+.lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg path,
+.lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg line,
+.lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg circle,
+.lab-card[data-id="rtd-sensor"] .card-preview-art .preview-svg rect {
+  stroke: #fda4af !important;
+}
+
+/* Cinematic Scanlines & Bottom Vignette Scrim */
+.experiment-card::before,
+#exp-page-labs-grid .lab-card::before,
+.exp-gallery-cards-track .lab-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+  opacity: 0.12 !important;
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 4px
+  ) !important;
+  z-index: 1 !important;
+}
+
+.experiment-card::after,
+#exp-page-labs-grid .lab-card::after,
+.exp-gallery-cards-track .lab-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+  background: linear-gradient(to top, rgba(5, 1, 9, 0.96) 0%, rgba(5, 1, 9, 0.72) 42%, rgba(5, 1, 9, 0.12) 68%, transparent 100%) !important;
+  z-index: 3 !important;
+}
+
+/* Focus Ring */
+.experiment-card:focus-visible,
+#exp-page-labs-grid .lab-card:focus-visible,
+.exp-gallery-cards-track .lab-card:focus-visible {
+  outline: 2px solid #a855f7 !important;
+  outline-offset: 4px !important;
+}
+
+/* Hover Elevation & Accent Glow Ring (following reference fx.tsx) */
+.experiment-card:hover,
+#exp-page-labs-grid .lab-card:hover,
+.exp-gallery-cards-track .lab-card:hover {
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* 2. Light Glare Sheen (Specular reflection following cursor) */
+.card-glare,
+.card-fx-glare,
+.lab-card .card-fx-glare {
+  position: absolute !important;
+  inset: 0 !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+  mix-blend-mode: overlay !important;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 25 !important;
+}
+
+.experiment-card:hover .card-glare,
+.experiment-card:hover .card-fx-glare,
+.lab-card:hover .card-glare,
+.lab-card:hover .card-fx-glare {
+  opacity: 1 !important;
+}
+
+/* Backdrop Artwork Layer with Cinema Zoom */
+.card-backdrop {
+  position: absolute !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+  border-radius: inherit !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.card-art-gradient {
+  position: absolute !important;
+  inset: 0 !important;
+  transition: transform 1.4s var(--ease-cine, cubic-bezier(0.22, 1, 0.36, 1)) !important;
+  transform-origin: center center !important;
+}
+
+.experiment-card:hover .card-art-gradient,
+.lab-card:hover .card-art-gradient {
+  transform: scale(1.08) !important;
+}
+
+.card-scrim {
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(to top, rgba(7, 7, 10, 0.94) 0%, rgba(7, 7, 10, 0.4) 45%, transparent 100%) !important;
+  pointer-events: none !important;
+}
+
+/* 3. Visual Preview Art — Positioned in the upper background behind the title */
+.card-art-wrap,
+.card-preview-art,
+#exp-page-labs-grid .card-preview-art,
+.exp-gallery-cards-track .lab-card .card-preview-art,
+.experiment-card .card-preview-art {
+  position: absolute !important;
+  top: 14px !important;
+  right: 8px !important;
+  width: 86% !important;
+  height: 54% !important;
+  z-index: 4 !important;
+  pointer-events: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  background: transparent !important;
+  border: none !important;
+  overflow: visible !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0.95 !important;
+}
+
+.card-art,
+.card-preview-art .preview-svg,
+.exp-gallery-cards-track .lab-card .card-preview-art .preview-svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 240px !important;
+  object-fit: contain !important;
+  overflow: visible !important;
+  transition: transform 1.4s var(--ease-cine, cubic-bezier(0.22, 1, 0.36, 1)) !important;
+  transform-origin: center right !important;
+  filter: drop-shadow(0 0 12px rgba(192, 132, 252, 0.35)) !important;
+}
+
+/* On card hover, zoom artwork with cinema easing */
+.experiment-card:hover .card-art,
+.experiment-card:hover .card-preview-art .preview-svg,
+.lab-card:hover .card-preview-art .preview-svg,
+.lab-card:hover .card-art {
+  transform: scale(1.07) !important;
+}
+
+/* Diagram vector elements default styling */
+.card-preview-art .preview-svg path,
+.card-preview-art .preview-svg line,
+.card-preview-art .preview-svg circle,
+.card-preview-art .preview-svg rect,
+.card-preview-art .preview-svg polyline {
+  stroke: currentColor;
+}
+.card-preview-art .preview-svg circle[fill]:not([fill="none"]),
+.card-preview-art .preview-svg rect[fill]:not([fill="none"]) {
+  fill: currentColor !important;
+  opacity: 0.25;
+}
+
+/* 4. Top Header Bar & Badges */
+.card-header-row,
+.card-header-bar,
+.exp-gallery-cards-track .lab-card .card-header-bar {
+  transform: translateZ(30px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  position: relative !important;
+  z-index: 10 !important;
+  width: 100% !important;
+  margin-bottom: auto !important;
+}
+
+/* "dont add J original" -> Hide circular badge / icon badge */
+.card-icon-badge {
+  display: none !important;
+}
+
+.card-category-badge {
+  display: none !important;
+}
+
+.brand-badge {
+  display: none !important;
+}
+
+/* Top-right Year Tag */
+.year-tag {
+  font-family: inherit !important;
+  font-size: 10.5px !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  padding: 3px 8px !important;
+  border-radius: 5px !important;
+  color: rgba(244, 241, 236, 0.9) !important;
+  letter-spacing: 0.1em !important;
+  background: rgba(0, 0, 0, 0.3) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* 5. Experiment Title & Description (Shifted down to bottom directly above launch sim button) */
+.card-content,
+.card-content-block,
+.card-content-layer,
+.exp-gallery-cards-track .lab-card .card-content-block,
+.experiment-card .card-content-block,
+#exp-page-labs-grid .lab-card .card-content-block {
+  transform: translateZ(40px) !important;
+  flex: 0 0 auto !important;
+  margin-top: auto !important;
+  margin-bottom: 14px !important;
+  position: relative !important;
+  z-index: 15 !important;
+  width: 100% !important;
+}
+
+/* "dont add matter.js | express.js | physics engine" */
+.card-genre,
+.card-category {
+  display: none !important;
+}
+
+/* "change physix into experiment name" & "font should be the current font of the site only" */
+.exp-gallery-cards-track .lab-card .card-title,
+.experiment-card .title,
+.card-title {
+  margin: 0 0 8px 0 !important;
+  font-family: inherit !important;
+  font-size: clamp(21px, 2.1vw, 29px) !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+  display: block !important;
+  line-height: 1.1 !important;
+  color: #f4f1ec !important;
+  -webkit-text-fill-color: #f4f1ec !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8) !important;
+}
+
+#exp-page-labs-grid .card-title .title-grad,
+.exp-gallery-cards-track .card-title .title-grad,
+#exp-page-labs-grid .card-title .title-main,
+.exp-gallery-cards-track .card-title .title-main {
+  color: #f4f1ec !important;
+  -webkit-text-fill-color: #f4f1ec !important;
+  background: none !important;
+  font-family: inherit !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: uppercase !important;
+}
+
+/* "add description accordingly" — Shifted higher up with 2 crisp lines */
+.exp-gallery-cards-track .lab-card .card-desc,
+.experiment-card .description,
+.card-logline {
+  font-family: inherit !important;
+  font-size: 13px !important;
+  line-height: 1.48 !important;
+  color: rgba(244, 241, 236, 0.78) !important;
+  font-weight: 400 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  margin-bottom: 0 !important;
+  max-width: 380px !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* "dont add matter.js, express.js, javascript, html, css" */
+.card-tags,
+.card-stack,
+.tag-pill {
+  display: none !important;
+}
+
+/* 6. Action Buttons Bar — Aligned horizontally on one row (flex-wrap: nowrap) */
+.card-action-bar,
+.card-button-row,
+.experiment-card .card-action-bar,
+.lab-card .card-action-bar,
+#exp-page-labs-grid .card-action-bar,
+.exp-gallery-cards-track .lab-card .card-action-bar {
+  transform: translateZ(45px) !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 2px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  position: relative !important;
+  z-index: 25 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* "launch sim button is too big theory button is not visible fix it" */
+/* Launch Sim Button (Primary Solid Bone / Ink text) — Compact, perfectly sized */
+.btn-primary,
+.exp-gallery-cards-track .lab-card .lab-card-btn.btn-perform,
+#exp-page-labs-grid .lab-card-btn.btn-perform,
+.experiment-card .btn-perform {
+  flex: 0 0 auto !important;
+  min-height: 38px !important;
+  height: 38px !important;
+  max-height: 38px !important;
+  min-width: 0 !important;
+  width: auto !important;
+  padding: 0 16px !important;
+  border-radius: 8px !important;
+  background-color: #f4f1ec !important;
+  border: none !important;
+  color: #07070a !important;
+  font-family: inherit !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4) !important;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.btn-primary:hover,
+.exp-gallery-cards-track .lab-card .lab-card-btn.btn-perform:hover,
+#exp-page-labs-grid .lab-card-btn.btn-perform:hover,
+.experiment-card .btn-perform:hover {
+  background-color: #ffffff !important;
+  color: #07070a !important;
+  transform: scale(1.02) !important;
+  box-shadow: 0 5px 16px rgba(255, 255, 255, 0.22) !important;
+}
+
+/* Theory Button (Secondary Dark Glass / White Border) — Clearly visible beside Launch Sim */
+.btn-secondary,
+.btn-theory-link,
+#exp-page-labs-grid .btn-theory-link,
+.exp-gallery-cards-track .btn-theory-link,
+.experiment-card .btn-theory-link {
+  flex: 0 0 auto !important;
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 38px !important;
+  height: 38px !important;
+  max-height: 38px !important;
+  min-width: 0 !important;
+  width: auto !important;
+  padding: 0 14px !important;
+  border-radius: 8px !important;
+  background-color: rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.32) !important;
+  color: #f4f1ec !important;
+  font-family: inherit !important;
+  font-weight: 600 !important;
+  font-size: 13px !important;
+  letter-spacing: 0.01em !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  outline: none !important;
+  white-space: nowrap !important;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+.btn-secondary:hover,
+.btn-theory-link:hover,
+#exp-page-labs-grid .btn-theory-link:hover,
+.exp-gallery-cards-track .btn-theory-link:hover,
+.experiment-card .btn-theory-link:hover {
+  border-color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.14) !important;
+  color: #ffffff !important;
+  transform: scale(1.02) !important;
+}
+
+/* Ambient nebula and light accents non-interfering */
+.card-ambient-nebula,
+.card-white-light-effect,
+.card-specular-rim {
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+/* Card Bookmark Button */
+.exp-gallery-cards-track .lab-card .card-bookmark-btn {
+  background: rgba(0, 0, 0, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  border-radius: 6px !important;
+  width: 28px !important;
+  height: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, color 0.2s ease, border-color 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.exp-gallery-cards-track .lab-card .card-bookmark-btn:hover {
+  transform: scale(1.08) !important;
+  color: #f8fafc !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.exp-gallery-cards-track .lab-card .card-bookmark-btn.bookmarked {
+  background: rgba(168, 85, 247, 0.25) !important;
+  border-color: #c084fc !important;
+  color: #c084fc !important;
+}
+
+/* Outro / GitHub Card (Reference Architecture) */
+.originals-outro-card {
+  width: clamp(260px, 24vw, 340px) !important;
+  height: clamp(470px, 64vh, 570px) !important;
+  flex-shrink: 0 !important;
+  align-self: center !important;
+  border: 1px dashed rgba(255, 255, 255, 0.22) !important;
+  border-radius: 24px !important;
+  background: rgba(14, 23, 48, 0.4) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-decoration: none !important;
+  transition: border-color 0.3s ease, background-color 0.3s ease, transform 0.3s ease !important;
+  box-sizing: border-box !important;
+  padding: 2rem !important;
+}
+
+.originals-outro-card:hover {
+  border-color: #60a5fa !important;
+  background: rgba(14, 23, 48, 0.7) !important;
+  transform: translateY(-4px) !important;
+}
+
+.outro-arrow {
+  width: 3.8rem !important;
+  height: 3.8rem !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.6rem !important;
+  color: #fff !important;
+  transition: transform 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+}
+
+.originals-outro-card:hover .outro-arrow {
+  transform: scale(1.12) !important;
+  border-color: #60a5fa !important;
+  color: #60a5fa !important;
+  box-shadow: 0 0 20px rgba(96, 165, 250, 0.4) !important;
+}
+
+.outro-title {
+  font-family: var(--font-display) !important;
+  font-size: 2.2rem !important;
+  color: var(--color-bone, #f4f1ec) !important;
+  margin-top: 1.25rem !important;
+  letter-spacing: 0.02em !important;
+}
+
+.outro-subtitle {
+  font-size: 12px !important;
+  color: var(--color-mist, #a7a6ad) !important;
+  letter-spacing: 0.08em !important;
+  margin-top: 0.3rem !important;
+}
+
+/* Synchronized Bottom Progress Indicator */
+.exp-gallery-progress-bar-wrap,
+.originals-progress-bar-wrap {
+  position: absolute;
+  bottom: 26px;
+  left: clamp(24px, 5vw, 72px);
+  right: clamp(24px, 5vw, 72px);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 30;
+  user-select: none;
+}
+
+.exp-gallery-progress-label,
+.progress-label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: rgba(248, 250, 252, 0.5);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.exp-gallery-progress-rail,
+.progress-track {
+  height: 2px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.exp-gallery-progress-fill,
+.progress-fill {
+  height: 100%;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
+  background: linear-gradient(90deg, #38bdf8 0%, #3b82f6 50%, #60a5fa 100%);
+  border-radius: 9999px;
+  will-change: transform;
+}
+
+.exp-gallery-counter {
+  font-family: 'JetBrains Mono', 'Orbitron', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(96, 165, 250, 0.85);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* Project Detail Modal Dialog (Reference Architecture) */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.project-modal.active {
+  display: flex;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 6, 17, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 820px;
+  max-height: 88vh;
+  overflow-y: auto;
+  background: #0b0f19;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1.25rem;
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9), 0 0 40px -10px rgba(59, 130, 246, 0.25);
+  animation: modalPop 0.35s var(--ease-cine);
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.94) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 20;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  transform: scale(1.1);
+  background: rgba(239, 68, 68, 0.8);
+}
+
+.modal-billboard {
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.25rem 1.25rem 0 0;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.modal-header-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.modal-category {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: #60a5fa;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.modal-year {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-mist, #a7a6ad);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  line-height: 0.95;
+  margin: 0 0 1rem;
+  color: var(--color-bone, #f4f1ec);
+}
+
+.modal-logline {
+  color: rgba(244, 241, 236, 0.8);
+  font-size: 15px;
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+}
+
+.modal-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-val {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+.metric-lbl {
+  font-size: 11px;
+  color: var(--color-smoke, #6d6c75);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+
+.modal-section-title {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-bone, #f4f1ec);
+  margin: 1.5rem 0 0.75rem;
+  font-weight: 700;
+}
+
+.modal-features-list {
+  padding-left: 1.25rem;
+  color: rgba(244, 241, 236, 0.75);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.25rem;
+}
+
+/* Light Theme Adaptive Overrides */
+[data-theme="light"] .exp-gallery-viewport,
+body.light-mode .exp-gallery-viewport {
+  background-color: #f8fafc !important;
+}
+
+[data-theme="light"] .exp-gallery-ambient-bg,
+body.light-mode .exp-gallery-ambient-bg {
+  background: radial-gradient(50% 60% at 70% 50%, rgba(37, 99, 235, 0.08), transparent 70%) !important;
+}
+
+[data-theme="light"] .exp-gallery-intro-panel .exp-intro-heading,
+[data-theme="light"] .intro-title,
+body.light-mode .exp-gallery-intro-panel .exp-intro-heading,
+body.light-mode .intro-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .exp-gallery-intro-panel .exp-intro-desc,
+[data-theme="light"] .intro-desc,
+body.light-mode .exp-gallery-intro-panel .exp-intro-desc,
+body.light-mode .intro-desc {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .exp-gallery-cards-track .lab-card,
+[data-theme="light"] .experiment-card,
+body.light-mode .exp-gallery-cards-track .lab-card,
+body.light-mode .experiment-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.8) !important;
+}
+
+[data-theme="light"] .exp-gallery-cards-track .lab-card:hover,
+[data-theme="light"] .experiment-card:hover,
+body.light-mode .exp-gallery-cards-track .lab-card:hover,
+body.light-mode .experiment-card:hover {
+  border-color: rgba(37, 99, 235, 0.4) !important;
+  box-shadow: 0 32px 64px -16px rgba(15, 23, 42, 0.18), 0 0 24px -4px rgba(37, 99, 235, 0.2) !important;
+}
+
+[data-theme="light"] .exp-gallery-cards-track .lab-card .card-title,
+[data-theme="light"] .card-title,
+body.light-mode .exp-gallery-cards-track .lab-card .card-title,
+body.light-mode .card-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .exp-gallery-cards-track .lab-card .card-desc,
+[data-theme="light"] .card-logline,
+body.light-mode .exp-gallery-cards-track .lab-card .card-desc,
+body.light-mode .card-logline {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .exp-gallery-cards-track .lab-card .card-preview-art,
+body.light-mode .exp-gallery-cards-track .lab-card .card-preview-art {
+  background: #f1f5f9 !important;
+  border-color: rgba(226, 232, 240, 0.8) !important;
+}
+
+[data-theme="light"] .exp-gallery-progress-rail,
+body.light-mode .exp-gallery-progress-rail {
+  background: rgba(15, 23, 42, 0.12) !important;
+}
+
+[data-theme="light"] .tag-pill,
+body.light-mode .tag-pill {
+  background: rgba(241, 245, 249, 0.9) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+  color: #1e293b !important;
+}
+
+[data-theme="light"] .card-category-badge,
+body.light-mode .card-category-badge {
+  background: rgba(2, 132, 199, 0.12) !important;
+  border-color: rgba(2, 132, 199, 0.3) !important;
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .btn-primary,
+body.light-mode .btn-primary {
+  background: #0f172a !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .btn-secondary,
+body.light-mode .btn-secondary {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .originals-outro-card,
+body.light-mode .originals-outro-card {
+  background: rgba(241, 245, 249, 0.8) !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .outro-title,
+body.light-mode .outro-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .modal-dialog,
+body.light-mode .modal-dialog {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 40px 100px -20px rgba(15, 23, 42, 0.25) !important;
+}
+
+[data-theme="light"] .modal-title,
+body.light-mode .modal-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .modal-logline,
+body.light-mode .modal-logline {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .metric-val,
+body.light-mode .metric-val {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .modal-section-title,
+body.light-mode .modal-section-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .modal-features-list,
+body.light-mode .modal-features-list {
+  color: #475569 !important;
+}
+
+/* Tablet & Mobile Touch Adaptation */
+@media (max-width: 1023px) {
+  .exp-gallery-viewport {
+    height: auto !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    overflow-x: hidden !important;
+    padding: 80px 0 60px 0 !important;
+  }
+
+  .exp-gallery-wrap {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .exp-gallery-track {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    gap: 28px !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  .exp-gallery-intro-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 10px 0 20px 0 !important;
+  }
+
+  .exp-gallery-cards-track {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+    width: 100% !important;
+  }
+
+  .exp-gallery-cards-track .lab-card,
+  .experiment-card {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 480px !important;
+    transform: none !important;
+  }
+
+  .card-perspective-shell {
+    width: 100% !important;
+  }
+
+  .exp-gallery-progress-bar-wrap {
+    display: none !important;
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .exp-gallery-track {
+    transition: none !important;
+  }
+
+  .exp-gallery-cards-track .lab-card,
+  .experiment-card {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .exp-gallery-cards-track .lab-card .card-preview-art .preview-svg {
+    transition: none !important;
+  }
+
+  .exp-gallery-progress-fill {
+    transition: none !important;
+  }
+}
+
+/* Ensure the Experiments page terminates cleanly at the physics experiment section without trailing scroll */
+html:has(#physix-experiments-page:not(.hidden)) {
+  padding-bottom: 0 !important;
+}
+
+#physix-experiments-page .exp-page-container {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#physix-experiments-page .exp-gallery-section {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#physix-experiments-page .standalone-page-footer {
+  display: none !important;
+}

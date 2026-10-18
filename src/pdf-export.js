@@ -252,6 +252,8 @@ function getExperimentDetails(expCodeOrId) {
   else if (raw.includes("laser") || raw.includes("divergence")) normId = "laser-divergence";
   else if (raw.includes("ultrasonic") || raw.includes("udm")) normId = "ultrasonic-sensor";
   else if (raw.includes("wedge")) normId = "wedge-film";
+  else if (raw.includes("newton") || raw.includes("rings")) normId = "newtons-rings";
+  else if (raw.includes("rtd") || raw.includes("pt100")) normId = "rtd-sensor";
   else if (raw.includes("planck")) normId = "planck";
   else if (raw.includes("sandbox")) normId = "sandbox";
   else if (raw.includes("proj")) normId = "projectile";

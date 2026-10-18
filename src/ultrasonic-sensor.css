@@ -1248,9 +1248,50 @@
   width: fit-content !important;
 }
 
-/* 5. Full-Width Bottom Record Observation Button 3D Bevel */
-#exp-ultrasonic-sensor-section .btn-record-gradient {
-  box-shadow: inset 0 2px 5px rgba(255,255,255,0.35), inset 0 -3px 6px rgba(0,0,0,0.4), 0 4px 18px rgba(255, 65, 80, 0.35) !important;
+/* 5. Full-Width Bottom Record Observation Button */
+#exp-ultrasonic-sensor-section .btn-record-gradient,
+#exp-ultrasonic-sensor-section #udm-btn-record-deck {
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #1d4ed8 100%);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 12px;
+  color: #ffffff;
+  padding: 14px 24px;
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 4px 18px rgba(37, 99, 235, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#exp-ultrasonic-sensor-section .btn-record-gradient:hover,
+#exp-ultrasonic-sensor-section #udm-btn-record-deck:hover {
+  background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #2563eb 100%);
+  border-color: #38bdf8;
+  box-shadow: 0 6px 22px rgba(37, 99, 235, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.35);
+  transform: translateY(-1.5px);
+  filter: brightness(1.05);
+}
+
+#exp-ultrasonic-sensor-section .btn-record-gradient:active,
+#exp-ultrasonic-sensor-section #udm-btn-record-deck:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4), inset 0 2px 4px rgba(0, 0, 0, 0.25);
+  filter: brightness(0.95);
+}
+
+#exp-ultrasonic-sensor-section .btn-record-gradient:focus-visible,
+#exp-ultrasonic-sensor-section #udm-btn-record-deck:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
 }
 
 /* 6. Oscilloscope CRT Bezel Effect */
@@ -1462,5 +1503,23 @@ body.light-mode #exp-ultrasonic-sensor-section .btn-obs-action:hover,
 [data-theme="light"] #exp-ultrasonic-sensor-section .btn-obs-action:hover {
   background: #e2e8f0 !important;
   color: #0f172a !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .btn-record-gradient,
+[data-theme="light"] #exp-ultrasonic-sensor-section .btn-record-gradient,
+body.light-mode #exp-ultrasonic-sensor-section #udm-btn-record-deck,
+[data-theme="light"] #exp-ultrasonic-sensor-section #udm-btn-record-deck {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+  border-color: #1d4ed8 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
+}
+
+body.light-mode #exp-ultrasonic-sensor-section .btn-record-gradient:hover,
+[data-theme="light"] #exp-ultrasonic-sensor-section .btn-record-gradient:hover,
+body.light-mode #exp-ultrasonic-sensor-section #udm-btn-record-deck:hover,
+[data-theme="light"] #exp-ultrasonic-sensor-section #udm-btn-record-deck:hover {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45) !important;
 }
 

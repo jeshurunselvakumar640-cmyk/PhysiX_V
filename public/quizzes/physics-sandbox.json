@@ -1,0 +1,760 @@
+{
+  "experiment": "Physics Sandbox Dynamics - Question Bank",
+  "experimentId": "sandbox",
+  "quizId": "physics-sandbox-mastery-quiz",
+  "experimentName": "Physics Sandbox Dynamics",
+  "description": "Comprehensive 50-Question Physics Question Bank for Physics Sandbox Dynamics",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "According to Newton's First Law, what happens to an object moving in zero gravity with no external forces?",
+      "options": [
+        "It continues moving with constant velocity in a straight line",
+        "It gradually slows down and stops",
+        "It begins to rotate in a circular orbit",
+        "It falls downward at 9.8 m/s²"
+      ],
+      "answer": "It continues moving with constant velocity in a straight line",
+      "correct_option": "It continues moving with constant velocity in a straight line",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "Newton's First Law (Law of Inertia) states that in the absence of net external forces, an object at rest stays at rest and an object in motion maintains constant velocity."
+    },
+    {
+      "id": 2,
+      "question": "Newton's Second Law mathematically relates net force, mass, and acceleration as:",
+      "options": [
+        "F_net = m · a",
+        "F_net = m / a",
+        "F_net = a / m",
+        "F_net = m · a²"
+      ],
+      "answer": "F_net = m · a",
+      "correct_option": "F_net = m · a",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "Newton's Second Law states that acceleration is directly proportional to net force and inversely proportional to inertial mass: F = ma."
+    },
+    {
+      "id": 3,
+      "question": "What is the physical definition of mechanical impulse (J)?",
+      "options": [
+        "The integral of force over time (J = F · Δt = Δp)",
+        "The rate of change of work over distance",
+        "The ratio of mass to kinetic energy",
+        "The gravitational potential energy per unit height"
+      ],
+      "answer": "The integral of force over time (J = F · Δt = Δp)",
+      "correct_option": "The integral of force over time (J = F · Δt = Δp)",
+      "difficulty": "medium",
+      "global_id": 3,
+      "explanation": "Impulse J is defined as the force integrated over the collision duration, which strictly equals the total change in linear momentum Δp."
+    },
+    {
+      "id": 4,
+      "question": "In an isolated physical system with no external forces, what physical quantity is conserved in all collisions?",
+      "options": [
+        "Total linear momentum",
+        "Kinetic energy only",
+        "Gravitational potential energy only",
+        "Temperature only"
+      ],
+      "answer": "Total linear momentum",
+      "correct_option": "Total linear momentum",
+      "difficulty": "easy",
+      "global_id": 4,
+      "explanation": "By Newton's Third Law, internal collision forces sum to zero, guaranteeing that total linear momentum Σp is conserved in all collisions."
+    },
+    {
+      "id": 5,
+      "question": "A collision in which total kinetic energy is conserved before and after impact is called:",
+      "options": [
+        "A perfectly elastic collision",
+        "An inelastic collision",
+        "A completely plastic collision",
+        "A dissipative collision"
+      ],
+      "answer": "A perfectly elastic collision",
+      "correct_option": "A perfectly elastic collision",
+      "difficulty": "easy",
+      "global_id": 5,
+      "explanation": "In a perfectly elastic collision, no kinetic energy is converted into thermal energy, sound, or permanent deformation work (KE_initial = KE_final)."
+    },
+    {
+      "id": 6,
+      "question": "The coefficient of restitution (e) is defined as the ratio of:",
+      "options": [
+        "Relative separation speed to relative approach speed",
+        "Total final momentum to total initial momentum",
+        "Frictional force to normal force",
+        "Potential energy to kinetic energy"
+      ],
+      "answer": "Relative separation speed to relative approach speed",
+      "correct_option": "Relative separation speed to relative approach speed",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "Restitution is defined as e = |v₂f - v₁f| / |v₁i - v₂i|, quantifying the elasticity of an impact."
+    },
+    {
+      "id": 7,
+      "question": "For a completely inelastic collision where colliding bodies stick together, restitution e equals:",
+      "options": [
+        "0.0",
+        "1.0",
+        "0.5",
+        "-1.0"
+      ],
+      "answer": "0.0",
+      "correct_option": "0.0",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "When objects stick together after collision, their separation speed is zero, meaning e = 0."
+    },
+    {
+      "id": 8,
+      "question": "For a perfectly elastic collision, what is the value of restitution e?",
+      "options": [
+        "1.0",
+        "0.0",
+        "0.5",
+        "Infinity"
+      ],
+      "answer": "1.0",
+      "correct_option": "1.0",
+      "difficulty": "easy",
+      "global_id": 8,
+      "explanation": "For perfectly elastic collisions, relative separation speed equals relative approach speed, giving e = 1.0."
+    },
+    {
+      "id": 9,
+      "question": "What is the gravitational potential energy of a body of mass m raised to height h in gravity g?",
+      "options": [
+        "PE = m · g · h",
+        "PE = 1/2 · m · g · h²",
+        "PE = m · v² / 2",
+        "PE = g · h / m"
+      ],
+      "answer": "PE = m · g · h",
+      "correct_option": "PE = m · g · h",
+      "difficulty": "easy",
+      "global_id": 9,
+      "explanation": "Work done against uniform gravity equals force times displacement: W = F · h = mgh."
+    },
+    {
+      "id": 10,
+      "question": "Total mechanical energy of an undamped conservative rigid body system is:",
+      "options": [
+        "E = KE + PE = 1/2 m v² + m g h",
+        "E = KE - PE",
+        "E = m · a · t",
+        "E = F · v / t"
+      ],
+      "answer": "E = KE + PE = 1/2 m v² + m g h",
+      "correct_option": "E = KE + PE = 1/2 m v² + m g h",
+      "difficulty": "easy",
+      "global_id": 10,
+      "explanation": "Total mechanical energy is the sum of translational kinetic energy (1/2 mv²) and gravitational potential energy (mgh)."
+    },
+    {
+      "id": 11,
+      "question": "If a net continuous force of 10 N acts on a 2.0 kg box for 3.0 seconds, what is its velocity increase?",
+      "options": [
+        "15.0 m/s",
+        "5.0 m/s",
+        "30.0 m/s",
+        "6.67 m/s"
+      ],
+      "answer": "15.0 m/s",
+      "correct_option": "15.0 m/s",
+      "difficulty": "medium",
+      "global_id": 11,
+      "explanation": "Acceleration a = F / m = 10 N / 2 kg = 5.0 m/s². Velocity change Δv = a · t = 5.0 × 3.0 = 15.0 m/s."
+    },
+    {
+      "id": 12,
+      "question": "What is the kinetic energy of a 4.0 kg ball moving at a speed of 5.0 m/s?",
+      "options": [
+        "50.0 Joules",
+        "20.0 Joules",
+        "100.0 Joules",
+        "10.0 Joules"
+      ],
+      "answer": "50.0 Joules",
+      "correct_option": "50.0 Joules",
+      "difficulty": "easy",
+      "global_id": 12,
+      "explanation": "KE = 1/2 · m · v² = 0.5 × 4.0 kg × (5.0 m/s)² = 2 × 25 = 50.0 J."
+    },
+    {
+      "id": 13,
+      "question": "Newton's Third Law states that every action force has an equal and opposite reaction force. Why do they not cancel each other out?",
+      "options": [
+        "Because they act on two different bodies",
+        "Because they occur at different times",
+        "Because action is always greater than reaction",
+        "Because friction eliminates the reaction force"
+      ],
+      "answer": "Because they act on two different bodies",
+      "correct_option": "Because they act on two different bodies",
+      "difficulty": "medium",
+      "global_id": 13,
+      "explanation": "Action-reaction pairs act on opposite interacting bodies (F_AB = -F_BA), never on the same isolated body."
+    },
+    {
+      "id": 14,
+      "question": "The kinetic friction force opposing sliding between two flat surfaces is modeled as:",
+      "options": [
+        "f_k = μ_k · N",
+        "f_k = μ_k / N",
+        "f_k = μ_k · m · v",
+        "f_k = 1/2 · μ_k · N²"
+      ],
+      "answer": "f_k = μ_k · N",
+      "correct_option": "f_k = μ_k · N",
+      "difficulty": "easy",
+      "global_id": 14,
+      "explanation": "Amontons-Coulomb friction law states that friction is proportional to the normal contact force: f_k = μ_k N."
+    },
+    {
+      "id": 15,
+      "question": "If a ball bounces off a rigid floor with restitution e = 0.8 after falling from height h, its rebound height h' is:",
+      "options": [
+        "h' = e² · h = 0.64 h",
+        "h' = e · h = 0.80 h",
+        "h' = 2e · h = 1.6 h",
+        "h' = e³ · h = 0.512 h"
+      ],
+      "answer": "h' = e² · h = 0.64 h",
+      "correct_option": "h' = e² · h = 0.64 h",
+      "difficulty": "hard",
+      "global_id": 15,
+      "explanation": "Impact speed is v = √(2gh). Rebound speed is v' = e·v. Rebound height is h' = v'² / (2g) = e²·v²/(2g) = e²·h = 0.64 h."
+    },
+    {
+      "id": 16,
+      "question": "In zero-gravity mode (g = 0 m/s²), what trajectory does a ball launched at 10 m/s follow inside the sandbox?",
+      "options": [
+        "A straight line at constant velocity until colliding with a wall",
+        "A downward parabolic arc",
+        "An upward hyperbolic arc",
+        "An immediate stationary freeze"
+      ],
+      "answer": "A straight line at constant velocity until colliding with a wall",
+      "correct_option": "A straight line at constant velocity until colliding with a wall",
+      "difficulty": "easy",
+      "global_id": 16,
+      "explanation": "With g = 0 and no atmospheric drag, net vertical and horizontal forces are zero, producing unaccelerated rectilinear motion."
+    },
+    {
+      "id": 17,
+      "question": "When two identical billiard balls (m₁ = m₂) collide head-on elastically with the second ball initially at rest, what occurs?",
+      "options": [
+        "The first ball stops completely and the second ball moves away with the initial velocity",
+        "Both balls stick together and move at half speed",
+        "Both balls bounce backwards at equal speeds",
+        "The first ball speeds up while the second remains still"
+      ],
+      "answer": "The first ball stops completely and the second ball moves away with the initial velocity",
+      "correct_option": "The first ball stops completely and the second ball moves away with the initial velocity",
+      "difficulty": "medium",
+      "global_id": 17,
+      "explanation": "Equal masses in a 1D elastic collision completely exchange velocities: v₁f = 0 and v₂f = v₁i."
+    },
+    {
+      "id": 18,
+      "question": "What physical quantity does the mathematical slope of a velocity versus time graph represent?",
+      "options": [
+        "Acceleration",
+        "Total displacement",
+        "Momentum",
+        "Net work done"
+      ],
+      "answer": "Acceleration",
+      "correct_option": "Acceleration",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "By definition, the time derivative of velocity is instantaneous acceleration: a = dv / dt."
+    },
+    {
+      "id": 19,
+      "question": "If gravity is switched from Earth (9.81 m/s²) to Moon (1.62 m/s²), a dropped object:",
+      "options": [
+        "Accelerates downward ~6x slower, taking ~2.46x longer to reach the ground",
+        "Falls at identical velocity",
+        "Floats upwards indefinitely",
+        "Loses all inertial mass"
+      ],
+      "answer": "Accelerates downward ~6x slower, taking ~2.46x longer to reach the ground",
+      "correct_option": "Accelerates downward ~6x slower, taking ~2.46x longer to reach the ground",
+      "difficulty": "medium",
+      "global_id": 19,
+      "explanation": "Because fall time t = √(2h/g), reducing gravity by 6x increases fall time by √6 ≈ 2.46 times."
+    },
+    {
+      "id": 20,
+      "question": "In an inelastic collision, the kinetic energy that is lost is primarily converted into:",
+      "options": [
+        "Internal thermal energy (heat), acoustic vibrations (sound), and structural deformation",
+        "Gravitational mass",
+        "Electrical potential voltage",
+        "Cosmic radiation"
+      ],
+      "answer": "Internal thermal energy (heat), acoustic vibrations (sound), and structural deformation",
+      "correct_option": "Internal thermal energy (heat), acoustic vibrations (sound), and structural deformation",
+      "difficulty": "easy",
+      "global_id": 20,
+      "explanation": "By the First Law of Thermodynamics, non-conserved macroscopic mechanical energy dissipates into microscopic internal heat, sound waves, and plastic deformation."
+    },
+    {
+      "id": 21,
+      "question": "What does the Work-Energy Theorem state for a rigid body moving in 2D space?",
+      "options": [
+        "The net work done by all external forces equals the change in kinetic energy (W_net = ΔKE)",
+        "Net work done always equals zero",
+        "Work is the time derivative of momentum",
+        "Potential energy equals kinetic energy at all points"
+      ],
+      "answer": "The net work done by all external forces equals the change in kinetic energy (W_net = ΔKE)",
+      "correct_option": "The net work done by all external forces equals the change in kinetic energy (W_net = ΔKE)",
+      "difficulty": "easy",
+      "global_id": 21,
+      "explanation": "W_net = ∫ F_net · dr = Δ(½ m v²). Work done on a body translates directly into a change in translational kinetic energy."
+    },
+    {
+      "id": 22,
+      "question": "What is the formula for gravitational potential energy (PE) near a planetary surface of acceleration g?",
+      "options": [
+        "PE = m · g · h",
+        "PE = ½ m · g · h²",
+        "PE = m · g / h",
+        "PE = m · v · g"
+      ],
+      "answer": "PE = m · g · h",
+      "correct_option": "PE = m · g · h",
+      "difficulty": "easy",
+      "global_id": 22,
+      "explanation": "Gravitational potential energy of an object at height h relative to a datum datum is PE = mgh."
+    },
+    {
+      "id": 23,
+      "question": "If a body speed increases from 2.0 m/s to 6.0 m/s (3x increase), by what factor does its kinetic energy increase?",
+      "options": [
+        "9 times (since KE ∝ v²)",
+        "3 times",
+        "6 times",
+        "12 times"
+      ],
+      "answer": "9 times (since KE ∝ v²)",
+      "correct_option": "9 times (since KE ∝ v²)",
+      "difficulty": "easy",
+      "global_id": 23,
+      "explanation": "Kinetic energy scales quadratically with speed: KE = ½ m v². Tripling the velocity increases KE by 3² = 9 times."
+    },
+    {
+      "id": 24,
+      "question": "A constant horizontal thrust force of F = 50 N is applied to a mass of m = 10 kg on a frictionless surface. What is its acceleration?",
+      "options": [
+        "5.0 m/s²",
+        "500 m/s²",
+        "0.2 m/s²",
+        "50 m/s²"
+      ],
+      "answer": "5.0 m/s²",
+      "correct_option": "5.0 m/s²",
+      "difficulty": "easy",
+      "global_id": 24,
+      "explanation": "a = F / m = 50 N / 10 kg = 5.0 m/s²."
+    },
+    {
+      "id": 25,
+      "question": "An instantaneous impulse kick of J = 24 N·s is delivered to a stationary crate of mass m = 3.0 kg. What is its speed immediately following impact?",
+      "options": [
+        "8.0 m/s",
+        "72 m/s",
+        "0.125 m/s",
+        "24 m/s"
+      ],
+      "answer": "8.0 m/s",
+      "correct_option": "8.0 m/s",
+      "difficulty": "easy",
+      "global_id": 25,
+      "explanation": "J = Δp = m · Δv. Δv = J / m = 24 N·s / 3.0 kg = 8.0 m/s."
+    },
+    {
+      "id": 26,
+      "question": "In a 1D elastic collision between two identical masses (m₁ = m₂), where m₂ is initially at rest, what happens after collision?",
+      "options": [
+        "m₁ stops completely and m₂ moves forward with the initial velocity of m₁",
+        "Both masses stick together and move at half speed",
+        "m₁ rebounds with half speed while m₂ stays at rest",
+        "Both masses come to an immediate halt"
+      ],
+      "answer": "m₁ stops completely and m₂ moves forward with the initial velocity of m₁",
+      "correct_option": "m₁ stops completely and m₂ moves forward with the initial velocity of m₁",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "In equal-mass 1D elastic collisions, bodies exchange velocities completely: v₁f = 0 and v₂f = v₁i."
+    },
+    {
+      "id": 27,
+      "question": "Two identical 2 kg clay balls moving toward each other at 4 m/s collide and stick together in a completely inelastic collision. What is their final speed?",
+      "options": [
+        "0.0 m/s (they stop dead at center)",
+        "4.0 m/s",
+        "2.0 m/s",
+        "8.0 m/s"
+      ],
+      "answer": "0.0 m/s (they stop dead at center)",
+      "correct_option": "0.0 m/s (they stop dead at center)",
+      "difficulty": "easy",
+      "global_id": 27,
+      "explanation": "Total initial momentum p_initial = (2)(4) + (2)(-4) = 0. Since momentum is conserved, v_final = 0 / 4 = 0 m/s."
+    },
+    {
+      "id": 28,
+      "question": "What is the maximum static friction force f_s,max between a body and surface with static coefficient μ_s and normal force N?",
+      "options": [
+        "f_s,max = μ_s · N",
+        "f_s,max = μ_s / N",
+        "f_s,max = N / μ_s",
+        "f_s,max = μ_s · m · v"
+      ],
+      "answer": "f_s,max = μ_s · N",
+      "correct_option": "f_s,max = μ_s · N",
+      "difficulty": "easy",
+      "global_id": 28,
+      "explanation": "Amontons-Coulomb law states that static friction opposes motion up to a maximum threshold f_s,max = μ_s · N."
+    },
+    {
+      "id": 29,
+      "question": "For typical physical contact interfaces in Newtonian mechanics, how does the kinetic friction coefficient μ_k compare to the static coefficient μ_s?",
+      "options": [
+        "μ_k is less than μ_s (μ_k < μ_s)",
+        "μ_k is always greater than μ_s",
+        "μ_k is always exactly equal to μ_s",
+        "μ_k is always zero"
+      ],
+      "answer": "μ_k is less than μ_s (μ_k < μ_s)",
+      "correct_option": "μ_k is less than μ_s (μ_k < μ_s)",
+      "difficulty": "easy",
+      "global_id": 29,
+      "explanation": "Once relative sliding begins, microscopic electrostatic asperities have less time to form cold bonds, so kinetic friction is typically lower than static friction."
+    },
+    {
+      "id": 30,
+      "question": "On a flat horizontal plane, what is the normal force N exerted by the surface on a static crate of mass m under gravitational acceleration g?",
+      "options": [
+        "N = m · g",
+        "N = m / g",
+        "N = 0",
+        "N = m · g · cos(45°)"
+      ],
+      "answer": "N = m · g",
+      "correct_option": "N = m · g",
+      "difficulty": "easy",
+      "global_id": 30,
+      "explanation": "Vertical equilibrium ΣFy = 0 requires normal support force N to exactly balance downward gravity: N = mg."
+    },
+    {
+      "id": 31,
+      "question": "On an incline of angle θ to the horizontal, what component of gravitational force pulls an object down along the ramp surface?",
+      "options": [
+        "F_parallel = m · g · sin(θ)",
+        "F_parallel = m · g · cos(θ)",
+        "F_parallel = m · g · tan(θ)",
+        "F_parallel = m · g"
+      ],
+      "answer": "F_parallel = m · g · sin(θ)",
+      "correct_option": "F_parallel = m · g · sin(θ)",
+      "difficulty": "medium",
+      "global_id": 31,
+      "explanation": "Resolving gravity vector mg into components: perpendicular component is mg cos θ, and downslope parallel component is mg sin θ."
+    },
+    {
+      "id": 32,
+      "question": "What is the normal reaction force N exerted on a crate of mass m sitting on an inclined plane of angle θ?",
+      "options": [
+        "N = m · g · cos(θ)",
+        "N = m · g · sin(θ)",
+        "N = m · g · tan(θ)",
+        "N = m · g"
+      ],
+      "answer": "N = m · g · cos(θ)",
+      "correct_option": "N = m · g · cos(θ)",
+      "difficulty": "easy",
+      "global_id": 32,
+      "explanation": "Equilibrium perpendicular to the ramp surface yields N - mg cos θ = 0 ⟹ N = mg cos θ."
+    },
+    {
+      "id": 33,
+      "question": "In a Zero-G physics environment (g = 0 m/s²), what path does an object follow when given an initial velocity v₀?",
+      "options": [
+        "A uniform straight-line trajectory at constant speed until colliding with a wall",
+        "A downward parabolic trajectory",
+        "A logarithmic circular spiral",
+        "It decelerates to an immediate stop"
+      ],
+      "answer": "A uniform straight-line trajectory at constant speed until colliding with a wall",
+      "correct_option": "A uniform straight-line trajectory at constant speed until colliding with a wall",
+      "difficulty": "easy",
+      "global_id": 33,
+      "explanation": "With g = 0 and no drag (F_net = 0), Newton First Law dictates uniform rectilinear motion: r(t) = r₀ + v₀ t."
+    },
+    {
+      "id": 34,
+      "question": "Where is the center of mass (X_cm) located for two bodies of equal mass m situated at x₁ = 2.0 m and x₂ = 8.0 m?",
+      "options": [
+        "X_cm = 5.0 m",
+        "X_cm = 4.0 m",
+        "X_cm = 6.0 m",
+        "X_cm = 10.0 m"
+      ],
+      "answer": "X_cm = 5.0 m",
+      "correct_option": "X_cm = 5.0 m",
+      "difficulty": "easy",
+      "global_id": 34,
+      "explanation": "X_cm = (m·2 + m·8) / (2m) = 10m / 2m = 5.0 m."
+    },
+    {
+      "id": 35,
+      "question": "What physical quantity represents rotational inertia in angular dynamics?",
+      "options": [
+        "Moment of Inertia (I)",
+        "Torque (τ)",
+        "Angular velocity (ω)",
+        "Rotational impulse"
+      ],
+      "answer": "Moment of Inertia (I)",
+      "correct_option": "Moment of Inertia (I)",
+      "difficulty": "easy",
+      "global_id": 35,
+      "explanation": "Moment of inertia I = Σ m_i r_i² quantifies an object resistance to rotational acceleration, serving as the rotational analog of mass."
+    },
+    {
+      "id": 36,
+      "question": "What is the formula for the rotational kinetic energy of a rigid body rotating with angular speed ω about a principal axis?",
+      "options": [
+        "KE_rot = ½ I · ω²",
+        "KE_rot = I · ω",
+        "KE_rot = ½ m · ω²",
+        "KE_rot = I² · ω"
+      ],
+      "answer": "KE_rot = ½ I · ω²",
+      "correct_option": "KE_rot = ½ I · ω²",
+      "difficulty": "easy",
+      "global_id": 36,
+      "explanation": "Rotational kinetic energy is defined as KE_rot = ½ I ω², directly analogous to translational kinetic energy KE_trans = ½ m v²."
+    },
+    {
+      "id": 37,
+      "question": "Which of Newton laws guarantees that momentum is strictly conserved in internal two-body collisions?",
+      "options": [
+        "Newton Third Law (Action and Reaction forces are equal and opposite: F₁₂ = -F₂₁)",
+        "Newton First Law only",
+        "Law of Universal Gravitation",
+        "Coulomb Law"
+      ],
+      "answer": "Newton Third Law (Action and Reaction forces are equal and opposite: F₁₂ = -F₂₁)",
+      "correct_option": "Newton Third Law (Action and Reaction forces are equal and opposite: F₁₂ = -F₂₁)",
+      "difficulty": "medium",
+      "global_id": 37,
+      "explanation": "Because F₁₂ = -F₂₁, integrating over collision time yields J₁ = -J₂ ⟹ Δp₁ + Δp₂ = 0, proving conservation of total momentum."
+    },
+    {
+      "id": 38,
+      "question": "What is the apparent weight reading of a person of mass 70 kg inside an elevator in free fall (a = g downward)?",
+      "options": [
+        "0 N (Apparent weightlessness)",
+        "686 N",
+        "1372 N",
+        "343 N"
+      ],
+      "answer": "0 N (Apparent weightlessness)",
+      "correct_option": "0 N (Apparent weightlessness)",
+      "difficulty": "easy",
+      "global_id": 38,
+      "explanation": "N - mg = m(-g) ⟹ N = 0 N. In free fall, the support scale exerts zero normal force, producing apparent weightlessness."
+    },
+    {
+      "id": 39,
+      "question": "What is the surface gravity of the Moon relative to Earth surface gravity (g = 9.81 m/s²)?",
+      "options": [
+        "~1.62 m/s² (about 1/6 of Earth gravity)",
+        "~3.72 m/s²",
+        "~9.81 m/s²",
+        "~24.79 m/s²"
+      ],
+      "answer": "~1.62 m/s² (about 1/6 of Earth gravity)",
+      "correct_option": "~1.62 m/s² (about 1/6 of Earth gravity)",
+      "difficulty": "easy",
+      "global_id": 39,
+      "explanation": "Lunar surface gravity is approximately 1.62 m/s², roughly 16.5% (~1/6) of Earth standard gravity."
+    },
+    {
+      "id": 40,
+      "question": "What is the surface gravity of Mars relative to Earth surface gravity?",
+      "options": [
+        "~3.72 m/s² (about 38% of Earth gravity)",
+        "~1.62 m/s²",
+        "~9.81 m/s²",
+        "~0.00 m/s²"
+      ],
+      "answer": "~3.72 m/s² (about 38% of Earth gravity)",
+      "correct_option": "~3.72 m/s² (about 38% of Earth gravity)",
+      "difficulty": "easy",
+      "global_id": 40,
+      "explanation": "Martian surface gravity is approximately 3.72 m/s², approximately 38% of terrestrial gravity."
+    },
+    {
+      "id": 41,
+      "question": "What is the surface gravity of Jupiter compared to Earth?",
+      "options": [
+        "~24.79 m/s² (about 2.53 times Earth gravity)",
+        "~9.81 m/s²",
+        "~1.62 m/s²",
+        "~50.0 m/s²"
+      ],
+      "answer": "~24.79 m/s² (about 2.53 times Earth gravity)",
+      "correct_option": "~24.79 m/s² (about 2.53 times Earth gravity)",
+      "difficulty": "easy",
+      "global_id": 41,
+      "explanation": "Jupiter intense planetary mass produces a surface gravity of ~24.79 m/s², over 2.5 times that of Earth."
+    },
+    {
+      "id": 42,
+      "question": "What is mechanical power defined as in physics?",
+      "options": [
+        "The rate at which work is done or energy transferred: P = dW / dt = F · v",
+        "The total work done multiplied by time",
+        "The momentum per unit area",
+        "The potential energy divided by mass"
+      ],
+      "answer": "The rate at which work is done or energy transferred: P = dW / dt = F · v",
+      "correct_option": "The rate at which work is done or energy transferred: P = dW / dt = F · v",
+      "difficulty": "easy",
+      "global_id": 42,
+      "explanation": "Power P is the instantaneous rate of energy transfer: P = dW / dt = F · (dr/dt) = F · v."
+    },
+    {
+      "id": 43,
+      "question": "A rocket engine exerts a thrust of 400 N on a vehicle traveling at 25 m/s. What mechanical power is being delivered?",
+      "options": [
+        "10,000 Watts (10 kW)",
+        "16 Watts",
+        "1,000 Watts",
+        "425 Watts"
+      ],
+      "answer": "10,000 Watts (10 kW)",
+      "correct_option": "10,000 Watts (10 kW)",
+      "difficulty": "easy",
+      "global_id": 43,
+      "explanation": "P = F · v = (400 N) × (25 m/s) = 10,000 W = 10 kW."
+    },
+    {
+      "id": 44,
+      "question": "A superball with coefficient of restitution e = 0.80 impacts a rigid concrete floor at 15.0 m/s. What is its rebound velocity?",
+      "options": [
+        "12.0 m/s upwards",
+        "15.0 m/s upwards",
+        "9.6 m/s upwards",
+        "0.0 m/s"
+      ],
+      "answer": "12.0 m/s upwards",
+      "correct_option": "12.0 m/s upwards",
+      "difficulty": "medium",
+      "global_id": 44,
+      "explanation": "v_rebound = e · v_impact = 0.80 × 15.0 m/s = 12.0 m/s."
+    },
+    {
+      "id": 45,
+      "question": "What fraction of kinetic energy is retained after a collision against an immovable wall with coefficient of restitution e?",
+      "options": [
+        "e² (i.e. KE_f / KE_i = e²)",
+        "e",
+        "1 - e",
+        "½ e²"
+      ],
+      "answer": "e² (i.e. KE_f / KE_i = e²)",
+      "correct_option": "e² (i.e. KE_f / KE_i = e²)",
+      "difficulty": "medium",
+      "global_id": 45,
+      "explanation": "KE_f = ½ m (e v_i)² = e² · (½ m v_i²) = e² · KE_i. For e = 0.8, 64% of kinetic energy is preserved."
+    },
+    {
+      "id": 46,
+      "question": "In two-dimensional oblique collisions, along which direction is linear momentum conserved?",
+      "options": [
+        "Along both independent Cartesian axes (x-axis and y-axis independently)",
+        "Only along the line of centers (normal direction)",
+        "Only along the tangential plane",
+        "Momentum is never conserved in 2D collisions"
+      ],
+      "answer": "Along both independent Cartesian axes (x-axis and y-axis independently)",
+      "correct_option": "Along both independent Cartesian axes (x-axis and y-axis independently)",
+      "difficulty": "medium",
+      "global_id": 46,
+      "explanation": "Because momentum is a vector quantity (p = m·v), conservation applies independently to each orthogonal component: Σpx_i = Σpx_f and Σpy_i = Σpy_f."
+    },
+    {
+      "id": 47,
+      "question": "What happens to a sliding crate entering a region with kinetic friction coefficient μ_k under gravity g?",
+      "options": [
+        "It decelerates with constant acceleration a = -μ_k · g until stopping",
+        "It accelerates forward",
+        "It maintains constant velocity",
+        "It floats upwards"
+      ],
+      "answer": "It decelerates with constant acceleration a = -μ_k · g until stopping",
+      "correct_option": "It decelerates with constant acceleration a = -μ_k · g until stopping",
+      "difficulty": "easy",
+      "global_id": 47,
+      "explanation": "Friction force f_k = μ_k · N = μ_k · m · g. Acceleration a = -f_k / m = -μ_k · g."
+    },
+    {
+      "id": 48,
+      "question": "If two masses m₁ = 2.0 kg and m₂ = 8.0 kg experience the identical net thrust force F, what is the ratio of their accelerations a₁ / a₂?",
+      "options": [
+        "4.0 (a₁ is 4x greater than a₂)",
+        "0.25",
+        "1.0",
+        "16.0"
+      ],
+      "answer": "4.0 (a₁ is 4x greater than a₂)",
+      "correct_option": "4.0 (a₁ is 4x greater than a₂)",
+      "difficulty": "easy",
+      "global_id": 48,
+      "explanation": "a = F / m. Therefore a₁ / a₂ = (F / m₁) / (F / m₂) = m₂ / m₁ = 8.0 / 2.0 = 4.0."
+    },
+    {
+      "id": 49,
+      "question": "What are the SI base units of linear momentum and mechanical impulse?",
+      "options": [
+        "kg · m / s (equivalent to N · s)",
+        "kg · m² / s²",
+        "kg / (m · s)",
+        "N / s"
+      ],
+      "answer": "kg · m / s (equivalent to N · s)",
+      "correct_option": "kg · m / s (equivalent to N · s)",
+      "difficulty": "easy",
+      "global_id": 49,
+      "explanation": "Momentum p = mv has units kg·(m/s). Impulse J = F·Δt has units N·s = (kg·m/s²)·s = kg·m/s."
+    },
+    {
+      "id": 50,
+      "question": "In rigid-body physics simulation (such as Matter.js), why are multiple constraint iterations performed per animation frame?",
+      "options": [
+        "To accurately resolve overlapping contact manifolds and satisfy momentum conservation without visual penetration",
+        "To generate random colors for objects",
+        "To save memory on the GPU",
+        "To synchronize system clocks with UTC"
+      ],
+      "answer": "To accurately resolve overlapping contact manifolds and satisfy momentum conservation without visual penetration",
+      "correct_option": "To accurately resolve overlapping contact manifolds and satisfy momentum conservation without visual penetration",
+      "difficulty": "hard",
+      "global_id": 50,
+      "explanation": "Iterative impulse solvers (Sequential Impulses) iteratively project velocity and position constraints to solve resting contacts and collision responses accurately without sinking or exploding."
+    }
+  ]
+}

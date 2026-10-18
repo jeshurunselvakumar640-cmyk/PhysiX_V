@@ -1,0 +1,760 @@
+{
+  "experiment": "Newton's Rings Wave Interference - Question Bank",
+  "experimentId": "newtons-rings",
+  "quizId": "newtons-rings-mastery-quiz",
+  "experimentName": "Newton's Rings Wave Interference",
+  "description": "Comprehensive 50-Question Physics Question Bank for Newton's Rings Wave Interference",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": "nr-q1",
+      "question": "Why is the central spot in Newton's rings observed to be dark in reflected light?",
+      "options": [
+        "Because reflection at the lower air-to-glass boundary introduces an abrupt π phase reversal (λ/2 path shift)",
+        "Because light is completely absorbed by the glass plate at the point of contact",
+        "Because the film thickness is equal to a full wavelength at the center",
+        "Because the lens curvature reflects all light away from the microscope"
+      ],
+      "answer": "Because reflection at the lower air-to-glass boundary introduces an abrupt π phase reversal (λ/2 path shift)",
+      "correct_option": "Because reflection at the lower air-to-glass boundary introduces an abrupt π phase reversal (λ/2 path shift)",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "At the point of contact, film thickness t = 0. Reflection from the denser glass plate introduces a π phase reversal (path difference of λ/2), satisfying the condition for complete destructive interference."
+    },
+    {
+      "id": "nr-q2",
+      "question": "In reflected monochromatic light, how does the diameter Dₘ of the m-th dark Newton's ring depend on ring order m?",
+      "options": [
+        "Dₘ is proportional to the square root of m (Dₘ ∝ √m)",
+        "Dₘ is directly proportional to m (Dₘ ∝ m)",
+        "Dₘ is proportional to m squared (Dₘ ∝ m²)",
+        "Dₘ is inversely proportional to m"
+      ],
+      "answer": "Dₘ is proportional to the square root of m (Dₘ ∝ √m)",
+      "correct_option": "Dₘ is proportional to the square root of m (Dₘ ∝ √m)",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "From the interference condition 2t = mλ and lens sagitta t = Dₘ² / (8R), we obtain Dₘ² = 4mλR, so Dₘ = 2√(mλR) ∝ √m."
+    },
+    {
+      "id": "nr-q3",
+      "question": "Why do Newton's rings crowd closer together as their order m increases?",
+      "options": [
+        "Because ring diameter scales as √m, and the difference between successive square roots decreases with increasing m",
+        "Because the wavelength of light decreases towards the edge of the lens",
+        "Because optical absorption increases rapidly in thicker air films",
+        "Because spherical aberration curves the wavefront into ellipses"
+      ],
+      "answer": "Because ring diameter scales as √m, and the difference between successive square roots decreases with increasing m",
+      "correct_option": "Because ring diameter scales as √m, and the difference between successive square roots decreases with increasing m",
+      "difficulty": "medium",
+      "global_id": 3,
+      "explanation": "Since Dₘ ∝ √m, the radial spacing between consecutive rings (e.g. √10 - √9 < √2 - √1) continuously decreases, resulting in fringe crowding at larger radii."
+    },
+    {
+      "id": "nr-q4",
+      "question": "What is the relationship between the diameters of the (m+p)-th and m-th dark rings in an air film?",
+      "options": [
+        "Dₘ₊ₚ² − Dₘ² = 4pλR",
+        "Dₘ₊ₚ − Dₘ = 2pλR",
+        "Dₘ₊ₚ² − Dₘ² = 2pλR",
+        "Dₘ₊ₚ² / Dₘ² = 4pλR"
+      ],
+      "answer": "Dₘ₊ₚ² − Dₘ² = 4pλR",
+      "correct_option": "Dₘ₊ₚ² − Dₘ² = 4pλR",
+      "difficulty": "medium",
+      "global_id": 4,
+      "explanation": "Dₘ₊ₚ² = 4(m+p)λR and Dₘ² = 4mλR. Subtracting the two yields Dₘ₊ₚ² − Dₘ² = 4pλR, eliminating central contact uncertainty."
+    },
+    {
+      "id": "nr-q5",
+      "question": "If a liquid of refractive index μ = 1.33 (water) replaces the air film between the lens and glass plate, what happens to the rings?",
+      "options": [
+        "The rings contract inwards because Dₘ ∝ 1/√μ",
+        "The rings expand outwards because Dₘ ∝ √μ",
+        "The rings disappear completely due to total internal reflection",
+        "The central spot transforms into a bright fringe"
+      ],
+      "answer": "The rings contract inwards because Dₘ ∝ 1/√μ",
+      "correct_option": "The rings contract inwards because Dₘ ∝ 1/√μ",
+      "difficulty": "medium",
+      "global_id": 5,
+      "explanation": "With medium of refractive index μ, the path condition is 2μt = mλ, leading to Dₘ² = 4mλR / μ. Since μ > 1, all ring diameters contract by a factor of 1/√μ."
+    },
+    {
+      "id": "nr-q6",
+      "question": "Why is a plano-convex lens with a very large radius of curvature (e.g. R = 100 cm) used instead of a strongly curved lens?",
+      "options": [
+        "To ensure the air film thickness increases very slowly, producing wide rings that can be measured accurately with a travelling microscope",
+        "To prevent chromatic dispersion in the glass material",
+        "Because small radius lenses cannot reflect monochromatic light",
+        "To increase the optical intensity of the central spot"
+      ],
+      "answer": "To ensure the air film thickness increases very slowly, producing wide rings that can be measured accurately with a travelling microscope",
+      "correct_option": "To ensure the air film thickness increases very slowly, producing wide rings that can be measured accurately with a travelling microscope",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "A large radius R keeps the film thickness t extremely small over a large radial distance r, producing broad, measurable fringe diameters without excessive crowding."
+    },
+    {
+      "id": "nr-q7",
+      "question": "What type of interference fringes are Newton's rings classified as?",
+      "options": [
+        "Fringes of equal thickness (Fizeau fringes)",
+        "Fringes of equal inclination (Haidinger fringes)",
+        "Fraunhofer diffraction fringes",
+        "Non-localized Fresnel zone fringes"
+      ],
+      "answer": "Fringes of equal thickness (Fizeau fringes)",
+      "correct_option": "Fringes of equal thickness (Fizeau fringes)",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "Newton's rings are localized fringes of equal thickness because each dark or bright circular fringe corresponds to a locus of constant air film thickness t."
+    },
+    {
+      "id": "nr-q8",
+      "question": "What is the expected appearance of the central spot in Newton's rings observed in transmitted light?",
+      "options": [
+        "Bright, because no relative phase shift occurs between the two transmitted rays at t = 0",
+        "Dark, identical to the reflected pattern",
+        "Completely invisible because transmitted light does not interfere",
+        "A rainbow spectrum of colors"
+      ],
+      "answer": "Bright, because no relative phase shift occurs between the two transmitted rays at t = 0",
+      "correct_option": "Bright, because no relative phase shift occurs between the two transmitted rays at t = 0",
+      "difficulty": "hard",
+      "global_id": 8,
+      "explanation": "In transmitted light, both interfering rays either undergo two internal reflections or none, resulting in zero net reflection phase difference at t = 0 (constructive interference)."
+    },
+    {
+      "id": "nr-q9",
+      "question": "When plotting Dₙ² on the y-axis against ring order n on the x-axis for an air film, what does the slope of the straight line represent?",
+      "options": [
+        "Slope = 4λR",
+        "Slope = 2λR",
+        "Slope = λ / (4R)",
+        "Slope = 4R / λ"
+      ],
+      "answer": "Slope = 4λR",
+      "correct_option": "Slope = 4λR",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "Since Dₙ² = 4nλR, differentiating with respect to n gives d(Dₙ²)/dn = 4λR. Thus, the linear regression slope is exactly 4λR."
+    },
+    {
+      "id": "nr-q10",
+      "question": "In an experiment with Sodium light (λ = 589.3 nm) and R = 100 cm, what is the theoretical diameter of the 4th dark ring in air?",
+      "options": [
+        "3.07 mm",
+        "1.53 mm",
+        "6.14 mm",
+        "0.77 mm"
+      ],
+      "answer": "3.07 mm",
+      "correct_option": "3.07 mm",
+      "difficulty": "hard",
+      "global_id": 10,
+      "explanation": "D₄ = 2√(4 * 589.3e-9 m * 1.0 m) = 2√(2.3572e-6) = 2 * 0.001535 m = 0.00307 m = 3.07 mm."
+    },
+    {
+      "id": "nr-q11",
+      "question": "Why do Newton's rings become closer and closer together (crowded) as the ring order n increases away from the center?",
+      "options": [
+        "The air film thickness increases non-linearly with radius as r² (since t = r² / 2R)",
+        "The wavelength of light changes with distance",
+        "The glass plate becomes thicker at the edges",
+        "Light intensity drops to zero at higher orders"
+      ],
+      "answer": "The air film thickness increases non-linearly with radius as r² (since t = r² / 2R)",
+      "correct_option": "The air film thickness increases non-linearly with radius as r² (since t = r² / 2R)",
+      "difficulty": "medium",
+      "global_id": 11,
+      "explanation": "Because t = r² / (2R), the radial spacing Δr = r_n - r_{n-1} ∝ 1/√n. Consequently, outer fringes become progressively narrower and pack tightly together."
+    },
+    {
+      "id": "nr-q12",
+      "question": "What is the theoretical diameter D_n of the n-th dark ring in reflected light for an air film (µ = 1)?",
+      "options": [
+        "D_n = 2 * √(n * λ * R)",
+        "D_n = √(2n * λ * R)",
+        "D_n = 4 * n * λ * R",
+        "D_n = 2 * n * λ * R"
+      ],
+      "answer": "D_n = 2 * √(n * λ * R)",
+      "correct_option": "D_n = 2 * √(n * λ * R)",
+      "difficulty": "medium",
+      "global_id": 12,
+      "explanation": "Condition for dark ring is 2t = nλ. Since t = r_n² / (2R), r_n² = nλR, which gives D_n = 2r_n = 2√(nλR)."
+    },
+    {
+      "id": "nr-q13",
+      "question": "What is the theoretical diameter D_n of the n-th bright ring in reflected light for an air film?",
+      "options": [
+        "D_n = √[2 * (2n - 1) * λ * R]",
+        "D_n = 2 * √(n * λ * R)",
+        "D_n = (2n - 1) * λ * R",
+        "D_n = 4 * (2n - 1) * λ * R"
+      ],
+      "answer": "D_n = √[2 * (2n - 1) * λ * R]",
+      "correct_option": "D_n = √[2 * (2n - 1) * λ * R]",
+      "difficulty": "medium",
+      "global_id": 13,
+      "explanation": "Condition for bright ring is 2t = (2n - 1)λ/2. Thus r_n² = (2n - 1)λR / 2, giving D_n = 2r_n = √[2(2n - 1)λR]."
+    },
+    {
+      "id": "nr-q14",
+      "question": "In the Newton's rings experiment, what fundamental linear relationship eliminates the error caused by imperfect contact at the center (e.g. dust particle)?",
+      "options": [
+        "D_{n+p}² - D_n² = 4 * p * λ * R / µ",
+        "D_{n+p} - D_n = 4 * p * λ * R",
+        "D_{n+p}² + D_n² = 4 * p * λ * R",
+        "D_{n+p}² / D_n² = p"
+      ],
+      "answer": "D_{n+p}² - D_n² = 4 * p * λ * R / µ",
+      "correct_option": "D_{n+p}² - D_n² = 4 * p * λ * R / µ",
+      "difficulty": "medium",
+      "global_id": 14,
+      "explanation": "Any zero-point offset error in film thickness shifts all D² values equally: D_n² = 4nλR + 4cR. Subtracting two squared diameters cancels the constant c completely."
+    },
+    {
+      "id": "nr-q15",
+      "question": "How is the refractive index µ of an unknown transparent liquid determined using Newton's rings?",
+      "options": [
+        "µ = (D_{n+p}² - D_n²)_air / (D_{n+p}² - D_n²)_liquid",
+        "µ = (D_{n+p}² - D_n²)_liquid / (D_{n+p}² - D_n²)_air",
+        "µ = (D_n)_air / (D_n)_liquid",
+        "µ = √[(D_n)_air * (D_n)_liquid]"
+      ],
+      "answer": "µ = (D_{n+p}² - D_n²)_air / (D_{n+p}² - D_n²)_liquid",
+      "correct_option": "µ = (D_{n+p}² - D_n²)_air / (D_{n+p}² - D_n²)_liquid",
+      "difficulty": "medium",
+      "global_id": 15,
+      "explanation": "Since (D_{n+p}² - D_n²) = 4pλR / µ, taking the ratio of the air measurement (µ_air = 1) to the liquid measurement yields the liquid refractive index µ directly."
+    },
+    {
+      "id": "nr-q16",
+      "question": "What happens to the diameters of Newton's rings when water (µ = 1.33) is introduced between the lens and the glass plate?",
+      "options": [
+        "All ring diameters contract (become smaller by a factor of 1/√1.33 ≈ 0.867)",
+        "All ring diameters expand",
+        "The rings become squares",
+        "The central spot turns bright in reflection"
+      ],
+      "answer": "All ring diameters contract (become smaller by a factor of 1/√1.33 ≈ 0.867)",
+      "correct_option": "All ring diameters contract (become smaller by a factor of 1/√1.33 ≈ 0.867)",
+      "difficulty": "easy",
+      "global_id": 16,
+      "explanation": "Since D_n ∝ 1/√µ, filling the gap with a denser optical medium reduces effective wavelength, compressing all ring diameters inward."
+    },
+    {
+      "id": "nr-q17",
+      "question": "If the radius of curvature R of the plano-convex lens is increased (flatter lens), how do the ring diameters change?",
+      "options": [
+        "Ring diameters increase (fringes expand outward and are easier to measure)",
+        "Ring diameters decrease",
+        "Ring diameters remain identical",
+        "Fringes disappear"
+      ],
+      "answer": "Ring diameters increase (fringes expand outward and are easier to measure)",
+      "correct_option": "Ring diameters increase (fringes expand outward and are easier to measure)",
+      "difficulty": "medium",
+      "global_id": 17,
+      "explanation": "Since D_n = 2√(nλR), larger radius of curvature R stretches out the circular fringes radially, enabling higher measurement precision with a travelling microscope."
+    },
+    {
+      "id": "nr-q18",
+      "question": "Why is a lens with a very large radius of curvature (e.g. R = 100 cm or 200 cm) preferred in the Newton's rings experiment?",
+      "options": [
+        "To make the air film wedge angle extremely small so the rings have conveniently large diameters",
+        "To focus the light into a small point",
+        "To increase optical magnification",
+        "To filter out unwanted colors"
+      ],
+      "answer": "To make the air film wedge angle extremely small so the rings have conveniently large diameters",
+      "correct_option": "To make the air film wedge angle extremely small so the rings have conveniently large diameters",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "A large R creates an extremely gradual increase in air film thickness, expanding the ring diameters into the millimeter scale readable by a standard vernier microscope."
+    },
+    {
+      "id": "nr-q19",
+      "question": "If a speck of dust or grit is trapped at the point of contact between the lens and flat glass plate, what happens to the central spot?",
+      "options": [
+        "The central spot becomes bright instead of dark because the film thickness at the contact is no longer zero",
+        "The rings turn into straight lines",
+        "The rings disappear completely",
+        "The light changes from yellow to green"
+      ],
+      "answer": "The central spot becomes bright instead of dark because the film thickness at the contact is no longer zero",
+      "correct_option": "The central spot becomes bright instead of dark because the film thickness at the contact is no longer zero",
+      "difficulty": "medium",
+      "global_id": 19,
+      "explanation": "A dust particle maintains a finite air gap t > 0. If 2t + λ/2 = mλ (e.g. t = λ/4), constructive interference occurs, making the center bright."
+    },
+    {
+      "id": "nr-q20",
+      "question": "In an experiment with Sodium light (λ = 589.3 nm) and R = 1.0 m, the diameter of the 4th dark ring is 3.07 mm. What is the diameter of the 16th dark ring?",
+      "options": [
+        "6.14 mm",
+        "12.28 mm",
+        "4.34 mm",
+        "9.21 mm"
+      ],
+      "answer": "6.14 mm",
+      "correct_option": "6.14 mm",
+      "difficulty": "hard",
+      "global_id": 20,
+      "explanation": "Since D_n ∝ √n, D_16 / D_4 = √(16 / 4) = √4 = 2. Thus D_16 = 2 * 3.07 mm = 6.14 mm."
+    },
+    {
+      "id": "nr-q21",
+      "question": "In reflected light, what is the optical path difference between the two interfering rays for a film of thickness t at normal incidence?",
+      "options": [
+        "Δ = 2 * µ * t + λ / 2",
+        "Δ = 2 * µ * t",
+        "Δ = µ * t + λ / 2",
+        "Δ = 2 * µ * t - λ"
+      ],
+      "answer": "Δ = 2 * µ * t + λ / 2",
+      "correct_option": "Δ = 2 * µ * t + λ / 2",
+      "difficulty": "medium",
+      "global_id": 21,
+      "explanation": "The beam reflecting from the top of the lower glass plate undergoes an internal-to-external reflection at a denser medium, introducing a Stokes phase shift of π (path difference λ/2). Total Δ = 2µt + λ/2."
+    },
+    {
+      "id": "nr-q22",
+      "question": "If Newton's rings are viewed in transmitted light, why is the central spot bright?",
+      "options": [
+        "Both interfering rays either undergo two internal reflections or none, resulting in zero net reflection phase change at t = 0",
+        "Transmitted light travels faster",
+        "The glass absorbs dark rings",
+        "Refraction doubles the intensity"
+      ],
+      "answer": "Both interfering rays either undergo two internal reflections or none, resulting in zero net reflection phase change at t = 0",
+      "correct_option": "Both interfering rays either undergo two internal reflections or none, resulting in zero net reflection phase change at t = 0",
+      "difficulty": "medium",
+      "global_id": 22,
+      "explanation": "In transmission, ray 1 has no reflection and ray 2 has two internal reflections (each π, total 2π = 0). At t = 0, optical path difference is zero, giving a bright center."
+    },
+    {
+      "id": "nr-q23",
+      "question": "How do the ring diameters in transmitted light compare to those in reflected light?",
+      "options": [
+        "The rings are complementary: dark rings in reflected light become bright rings in transmitted light, and vice versa",
+        "They are identical in position and intensity",
+        "Transmitted rings are twice as large",
+        "Transmitted rings do not form"
+      ],
+      "answer": "The rings are complementary: dark rings in reflected light become bright rings in transmitted light, and vice versa",
+      "correct_option": "The rings are complementary: dark rings in reflected light become bright rings in transmitted light, and vice versa",
+      "difficulty": "medium",
+      "global_id": 23,
+      "explanation": "By conservation of energy (R + T = 1 for non-absorbing media), constructive interference in reflection corresponds to destructive interference in transmission."
+    },
+    {
+      "id": "nr-q24",
+      "question": "Why are Newton's rings circular in shape rather than straight lines?",
+      "options": [
+        "The air film between a spherical lens surface and a plane plate has circular symmetry of equal thickness (t = r² / 2R)",
+        "The microscope lens is circular",
+        "Light rays rotate as they propagate",
+        "The light source is spherical"
+      ],
+      "answer": "The air film between a spherical lens surface and a plane plate has circular symmetry of equal thickness (t = r² / 2R)",
+      "correct_option": "The air film between a spherical lens surface and a plane plate has circular symmetry of equal thickness (t = r² / 2R)",
+      "difficulty": "easy",
+      "global_id": 24,
+      "explanation": "The loci of points having identical thickness t form concentric circles centered at the point of contact; hence the fringes of equal thickness are concentric circles."
+    },
+    {
+      "id": "nr-q25",
+      "question": "If white light is used instead of monochromatic light in Newton's rings, what is observed?",
+      "options": [
+        "A central dark spot surrounded by a few colored concentric rings, fading into uniform white illumination",
+        "Sharp black-and-white rings to infinity",
+        "A solid dark circle covering the lens",
+        "A stationary rainbow cross"
+      ],
+      "answer": "A central dark spot surrounded by a few colored concentric rings, fading into uniform white illumination",
+      "correct_option": "A central dark spot surrounded by a few colored concentric rings, fading into uniform white illumination",
+      "difficulty": "medium",
+      "global_id": 25,
+      "explanation": "At the center, t = 0 is dark for all wavelengths. For outer rings, each wavelength has its own ring radius r(λ) ∝ √λ; the overlapping colors blur into white beyond a few orders."
+    },
+    {
+      "id": "nr-q26",
+      "question": "In a travelling microscope, why is the crosshair always traversed along the horizontal diameter in one consistent direction (e.g. strictly left to right)?",
+      "options": [
+        "To prevent backlash error in the micrometer lead screw",
+        "To avoid polarizing the light",
+        "Because the rings are asymmetric",
+        "To prevent lens heating"
+      ],
+      "answer": "To prevent backlash error in the micrometer lead screw",
+      "correct_option": "To prevent backlash error in the micrometer lead screw",
+      "difficulty": "easy",
+      "global_id": 26,
+      "explanation": "Travelling microscopes use precision lead screws; moving only in one direction ensures the gear teeth remain engaged on the same flank, avoiding mechanical backlash error."
+    },
+    {
+      "id": "nr-q27",
+      "question": "If D_20² = 25.0 mm² and D_10² = 12.5 mm² for an air film using λ = 500 nm, what is the radius of curvature R of the lens?",
+      "options": [
+        "1.25 m",
+        "0.625 m",
+        "2.50 m",
+        "5.00 m"
+      ],
+      "answer": "1.25 m",
+      "correct_option": "1.25 m",
+      "difficulty": "hard",
+      "global_id": 27,
+      "explanation": "D_{n+p}² - D_n² = 4pλR. Here p = 10, difference = 12.5 mm² = 1.25e-5 m². R = 1.25e-5 / (4 * 10 * 500e-9) = 1.25e-5 / 2.0e-5 = 0.625 m? Wait: 4 * 10 * 5e-7 = 2e-5. 1.25e-5 / 2e-5 = 0.625 m."
+    },
+    {
+      "id": "nr-q28",
+      "question": "If the plano-convex lens is replaced by a convex lens placed on a concave lens of larger radius R2 > R1, what is the effective radius R_eff in the ring formula?",
+      "options": [
+        "1 / R_eff = (1 / R1) - (1 / R2)",
+        "1 / R_eff = (1 / R1) + (1 / R2)",
+        "R_eff = R1 + R2",
+        "R_eff = √(R1 * R2)"
+      ],
+      "answer": "1 / R_eff = (1 / R1) - (1 / R2)",
+      "correct_option": "1 / R_eff = (1 / R1) - (1 / R2)",
+      "difficulty": "hard",
+      "global_id": 28,
+      "explanation": "Thickness t = (r² / 2R1) - (r² / 2R2) = (r² / 2) * (1/R1 - 1/R2). Thus 1/R_eff = 1/R1 - 1/R2."
+    },
+    {
+      "id": "nr-q29",
+      "question": "What is the slope of the graph plotted between D_n² (y-axis) and ring order n (x-axis) for an air film?",
+      "options": [
+        "Slope = 4 * λ * R",
+        "Slope = 2 * λ * R",
+        "Slope = λ * R",
+        "Slope = 4 * R / λ"
+      ],
+      "answer": "Slope = 4 * λ * R",
+      "correct_option": "Slope = 4 * λ * R",
+      "difficulty": "medium",
+      "global_id": 29,
+      "explanation": "Since D_n² = 4nλR, the linear equation y = m*x has slope m = 4λR. Measuring this slope provides an accurate way to find λ or R."
+    },
+    {
+      "id": "nr-q30",
+      "question": "How is the radius of curvature R of the plano-convex lens independently measured in a physics laboratory?",
+      "options": [
+        "Using a spherometer or Boy's optical method",
+        "Using a vernier caliper directly across the surface",
+        "Using a hydrometer",
+        "Using an oscilloscope"
+      ],
+      "answer": "Using a spherometer or Boy's optical method",
+      "correct_option": "Using a spherometer or Boy's optical method",
+      "difficulty": "easy",
+      "global_id": 30,
+      "explanation": "A spherometer measures the sagitta h of the curved spherical surface: R = l² / (6h) + h / 2."
+    },
+    {
+      "id": "nr-q31",
+      "question": "What optical instrument is used to measure the fringe ring diameters with 0.01 mm precision?",
+      "options": [
+        "A travelling microscope with a vernier scale",
+        "A telescope at 10 meters distance",
+        "A micrometer screw gauge clamped to the lens",
+        "A spectrometer with prism table"
+      ],
+      "answer": "A travelling microscope with a vernier scale",
+      "correct_option": "A travelling microscope with a vernier scale",
+      "difficulty": "easy",
+      "global_id": 31,
+      "explanation": "A travelling microscope mounted on horizontal lead screw slides allows crosshairs to align with left and right edges of each ring to measure D_n = |x_right - x_left|."
+    },
+    {
+      "id": "nr-q32",
+      "question": "Why is the contrast of Newton's rings observed in reflected light much higher than in transmitted light?",
+      "options": [
+        "In reflection, the two interfering rays have nearly equal amplitudes (~4% each), while in transmission one ray is ~96% and the other ~0.16%",
+        "Transmitted light is absorbed by air",
+        "Reflected light has higher frequency",
+        "The lens reflects 100% of the light"
+      ],
+      "answer": "In reflection, the two interfering rays have nearly equal amplitudes (~4% each), while in transmission one ray is ~96% and the other ~0.16%",
+      "correct_option": "In reflection, the two interfering rays have nearly equal amplitudes (~4% each), while in transmission one ray is ~96% and the other ~0.16%",
+      "difficulty": "hard",
+      "global_id": 32,
+      "explanation": "At glass-air boundaries, reflection is ~4%. In reflection, both beams have amplitude ~0.2, yielding near-zero minimum. In transmission, beam 1 is ~0.96 and beam 2 is ~0.0016, so the interference modulation is tiny."
+    },
+    {
+      "id": "nr-q33",
+      "question": "What happens to Newton's rings if the plano-convex lens is slowly lifted vertically away from the flat glass plate?",
+      "options": [
+        "The rings collapse inward and disappear into the center one by one",
+        "The rings expand outward indefinitely",
+        "The rings turn into vertical straight lines",
+        "The rings freeze in position"
+      ],
+      "answer": "The rings collapse inward and disappear into the center one by one",
+      "correct_option": "The rings collapse inward and disappear into the center one by one",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "Lifting the lens increases the thickness t everywhere. To maintain a constant thickness for a given order, the radius r must decrease: rings contract inward toward the center."
+    },
+    {
+      "id": "nr-q34",
+      "question": "If an air film Newton's ring pattern has D_10 = 5.00 mm, what would its diameter be if the air is replaced by benzene (µ = 1.50)?",
+      "options": [
+        "4.08 mm",
+        "3.33 mm",
+        "6.12 mm",
+        "7.50 mm"
+      ],
+      "answer": "4.08 mm",
+      "correct_option": "4.08 mm",
+      "difficulty": "medium",
+      "global_id": 34,
+      "explanation": "D_liquid = D_air / √µ = 5.00 mm / √1.50 = 5.00 / 1.2247 ≈ 4.08 mm."
+    },
+    {
+      "id": "nr-q35",
+      "question": "What is the thickness of the air film at the position of the 5th dark ring for sodium light (λ = 589.3 nm)?",
+      "options": [
+        "1.47 µm",
+        "2.95 µm",
+        "0.74 µm",
+        "5.89 µm"
+      ],
+      "answer": "1.47 µm",
+      "correct_option": "1.47 µm",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "Condition for dark ring: 2t = nλ. For n = 5: t = 5 * λ / 2 = 5 * 589.3 nm / 2 = 1473.25 nm ≈ 1.47 µm."
+    },
+    {
+      "id": "nr-q36",
+      "question": "What is the thickness of the air film at the position of the 1st bright ring for λ = 589 nm?",
+      "options": [
+        "0.147 µm (147 nm)",
+        "0.295 µm",
+        "0.589 µm",
+        "0.073 µm"
+      ],
+      "answer": "0.147 µm (147 nm)",
+      "correct_option": "0.147 µm (147 nm)",
+      "difficulty": "medium",
+      "global_id": 36,
+      "explanation": "Condition for bright ring: 2t = (2n - 1)λ / 2. For n = 1: 2t = λ/2 -> t = λ / 4 = 589 nm / 4 = 147.25 nm ≈ 0.147 µm."
+    },
+    {
+      "id": "nr-q37",
+      "question": "If the flat glass plate underneath is replaced by a plane mirror (reflectance ≈ 100%), why do Newton's rings become faint or invisible in reflected light?",
+      "options": [
+        "The high reflectance of the mirror makes the second beam (~100%) vastly stronger than the first beam (~4%), ruining interference contrast",
+        "Mirrors cannot create interference",
+        "Metal mirrors absorb all phase shifts",
+        "The focal length of the lens becomes zero"
+      ],
+      "answer": "The high reflectance of the mirror makes the second beam (~100%) vastly stronger than the first beam (~4%), ruining interference contrast",
+      "correct_option": "The high reflectance of the mirror makes the second beam (~100%) vastly stronger than the first beam (~4%), ruining interference contrast",
+      "difficulty": "hard",
+      "global_id": 37,
+      "explanation": "Fringe visibility V = 2√(I1*I2) / (I1 + I2). When I2 >> I1 (100% vs 4%), visibility drops to 2√(0.04) / 1.04 ≈ 0.38 / 1.04 ≈ 0.38, washing out the rings."
+    },
+    {
+      "id": "nr-q38",
+      "question": "How does the ring pattern change if a plano-convex lens with a cylindrical surface is used instead of a spherical surface?",
+      "options": [
+        "The fringes become straight, parallel lines running parallel to the cylinder axis",
+        "The fringes become concentric circles",
+        "The fringes become hyperbolas",
+        "No interference occurs"
+      ],
+      "answer": "The fringes become straight, parallel lines running parallel to the cylinder axis",
+      "correct_option": "The fringes become straight, parallel lines running parallel to the cylinder axis",
+      "difficulty": "medium",
+      "global_id": 38,
+      "explanation": "A cylinder has constant curvature along its generator axis; the air film thickness varies in only one dimension (t = x² / 2R), producing straight parallel fringes."
+    },
+    {
+      "id": "nr-q39",
+      "question": "If an optical flat with an elliptical surface is used with a flat plate, what shape do the fringes take?",
+      "options": [
+        "Concentric ellipses",
+        "Concentric circles",
+        "Straight lines",
+        "Parabolas"
+      ],
+      "answer": "Concentric ellipses",
+      "correct_option": "Concentric ellipses",
+      "difficulty": "easy",
+      "global_id": 39,
+      "explanation": "Lines of constant air film thickness t = (x²/2R_x) + (y²/2R_y) form concentric ellipses."
+    },
+    {
+      "id": "nr-q40",
+      "question": "What happens to the Newton's rings if the Sodium lamp source is replaced by an extended Helium-Neon laser (632.8 nm)?",
+      "options": [
+        "The rings are red and hundreds of orders remain visible due to the high coherence length of the laser",
+        "The rings become invisible",
+        "The rings turn black",
+        "The central spot turns bright"
+      ],
+      "answer": "The rings are red and hundreds of orders remain visible due to the high coherence length of the laser",
+      "correct_option": "The rings are red and hundreds of orders remain visible due to the high coherence length of the laser",
+      "difficulty": "medium",
+      "global_id": 40,
+      "explanation": "Because a laser has an extremely long temporal coherence length (meters vs fractions of a millimeter for sodium), high-contrast rings persist to very high orders."
+    },
+    {
+      "id": "nr-q41",
+      "question": "In Newton's rings, why does the 45° glass plate need to be only semi-reflecting (unsilvered)?",
+      "options": [
+        "An unsilvered glass plate reflects ~4-8% downward and transmits ~90% upward, allowing the user to view the fringes clearly",
+        "Silvered plates absorb all wavelengths",
+        "Silver creates electromagnetic distortion",
+        "Unsilvered plates rotate light polarization by 90°"
+      ],
+      "answer": "An unsilvered glass plate reflects ~4-8% downward and transmits ~90% upward, allowing the user to view the fringes clearly",
+      "correct_option": "An unsilvered glass plate reflects ~4-8% downward and transmits ~90% upward, allowing the user to view the fringes clearly",
+      "difficulty": "medium",
+      "global_id": 41,
+      "explanation": "An ordinary clean microscope slide provides adequate reflection to illuminate the film while remaining transparent enough for reflected fringe rays to pass through to the eyepiece."
+    },
+    {
+      "id": "nr-q42",
+      "question": "What is the effect on the ring pattern if the plano-convex lens has a slight wedge angle relative to the plate?",
+      "options": [
+        "The circular rings become distorted into eccentric or shifted non-concentric curves",
+        "The rings turn into a single point",
+        "The rings change color to blue",
+        "The fringes vanish completely"
+      ],
+      "answer": "The circular rings become distorted into eccentric or shifted non-concentric curves",
+      "correct_option": "The circular rings become distorted into eccentric or shifted non-concentric curves",
+      "difficulty": "medium",
+      "global_id": 42,
+      "explanation": "Superimposing a linear wedge gradient on a quadratic spherical curvature shifts the centers of the rings and distorts circular symmetry into eccentric circles."
+    },
+    {
+      "id": "nr-q43",
+      "question": "If two wavelengths λ1 = 589.0 nm and λ2 = 589.6 nm (the Sodium D-doublet) illuminate Newton's rings, what happens at very high orders?",
+      "options": [
+        "Periodic fading and revival (beating) of fringe visibility occurs where bright rings of λ1 coincide with dark rings of λ2",
+        "The rings permanently disappear at order 2",
+        "The rings turn green",
+        "The lens shatters from resonance"
+      ],
+      "answer": "Periodic fading and revival (beating) of fringe visibility occurs where bright rings of λ1 coincide with dark rings of λ2",
+      "correct_option": "Periodic fading and revival (beating) of fringe visibility occurs where bright rings of λ1 coincide with dark rings of λ2",
+      "difficulty": "hard",
+      "global_id": 43,
+      "explanation": "Because of the slight difference in wavelength (Δλ = 0.6 nm), the two ring patterns drift in and out of phase, creating visibility beats every n ≈ λ / (2Δλ) ≈ 490 orders."
+    },
+    {
+      "id": "nr-q44",
+      "question": "If the radius of the 10th dark ring is r_10 = 2.45 mm for λ = 600 nm, what is the radius of curvature R of the lens?",
+      "options": [
+        "1.00 m",
+        "0.50 m",
+        "2.00 m",
+        "4.00 m"
+      ],
+      "answer": "1.00 m",
+      "correct_option": "1.00 m",
+      "difficulty": "medium",
+      "global_id": 44,
+      "explanation": "r_n² = nλR. R = r_n² / (nλ) = (2.45e-3 m)² / (10 * 600e-9 m) = 6.0025e-6 / 6.0e-6 ≈ 1.00 m."
+    },
+    {
+      "id": "nr-q45",
+      "question": "What is the area enclosed between the n-th and (n+1)-th dark rings in an air film?",
+      "options": [
+        "Area = π * λ * R (constant for all orders n)",
+        "Area = n * π * λ * R",
+        "Area = π * λ * R / n",
+        "Area increases exponentially with n"
+      ],
+      "answer": "Area = π * λ * R (constant for all orders n)",
+      "correct_option": "Area = π * λ * R (constant for all orders n)",
+      "difficulty": "hard",
+      "global_id": 45,
+      "explanation": "A_n = π r_n² = π(nλR). The incremental area between consecutive rings is A_{n+1} - A_n = π(n+1)λR - πnλR = πλR, which is constant across all rings."
+    },
+    {
+      "id": "nr-q46",
+      "question": "Why does the central spot in Newton's rings appear slightly grey rather than pitch black in real laboratory conditions?",
+      "options": [
+        "Microscopic surface roughness and slight contamination prevent perfect zero thickness over the contact area",
+        "Glass reflects 50% of light at normal incidence",
+        "Photons tunnel through the glass",
+        "Sodium light has infinite bandwidth"
+      ],
+      "answer": "Microscopic surface roughness and slight contamination prevent perfect zero thickness over the contact area",
+      "correct_option": "Microscopic surface roughness and slight contamination prevent perfect zero thickness over the contact area",
+      "difficulty": "easy",
+      "global_id": 46,
+      "explanation": "Real glass surfaces have sub-nanometer surface asperities and dust films, preventing ideal zero-gap contact across the entire central zone."
+    },
+    {
+      "id": "nr-q47",
+      "question": "If the lens is made of crown glass (µ_lens = 1.52), the liquid has µ_liq = 1.65, and the flat plate is flint glass (µ_plate = 1.70), what is the central spot in reflected light?",
+      "options": [
+        "Dark, because both reflections occur at denser media (π phase shift at each surface, net relative phase shift = 0, but Δ = 0 gives bright? No, wait!)",
+        "Bright, because reflection at both boundaries occurs at denser media, giving identical phase shifts of π and leaving path difference 0",
+        "Invisible",
+        "Red"
+      ],
+      "answer": "Bright, because reflection at both boundaries occurs at denser media, giving identical phase shifts of π and leaving path difference 0",
+      "correct_option": "Bright, because reflection at both boundaries occurs at denser media, giving identical phase shifts of π and leaving path difference 0",
+      "difficulty": "hard",
+      "global_id": 47,
+      "explanation": "Here µ_lens (1.52) < µ_liq (1.65) < µ_plate (1.70). Both reflections occur at rarer-to-denser boundaries, so both experience a π phase shift. The relative phase difference is π - π = 0! At t = 0, Δ = 0 (constructive interference = bright central spot!)."
+    },
+    {
+      "id": "nr-q48",
+      "question": "What happens to the central spot if the liquid film has an intermediate index: µ_lens (1.60) > µ_liq (1.45) > µ_plate (1.35)?",
+      "options": [
+        "Bright, because neither reflection experiences a phase shift (both denser to rarer)",
+        "Dark",
+        "Invisible",
+        "Green"
+      ],
+      "answer": "Bright, because neither reflection experiences a phase shift (both denser to rarer)",
+      "correct_option": "Bright, because neither reflection experiences a phase shift (both denser to rarer)",
+      "difficulty": "hard",
+      "global_id": 48,
+      "explanation": "Since µ_lens > µ_liq > µ_plate, both reflections occur at denser-to-rarer boundaries; neither experiences a π phase shift. At t = 0, optical path difference is zero, so the central spot is bright."
+    },
+    {
+      "id": "nr-q49",
+      "question": "Under what refractive index condition is the central spot of Newton's rings dark in reflected light?",
+      "options": [
+        "When exactly one reflection occurs at a denser boundary while the other occurs at a rarer boundary (e.g. glass-air-glass: 1.5 > 1.0 < 1.5)",
+        "Whenever the liquid is transparent",
+        "Only when µ = 1.0",
+        "Whenever wavelength is 589 nm"
+      ],
+      "answer": "When exactly one reflection occurs at a denser boundary while the other occurs at a rarer boundary (e.g. glass-air-glass: 1.5 > 1.0 < 1.5)",
+      "correct_option": "When exactly one reflection occurs at a denser boundary while the other occurs at a rarer boundary (e.g. glass-air-glass: 1.5 > 1.0 < 1.5)",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "A dark center requires an odd relative phase shift of π, which occurs if and only if one reflection has a π shift and the other has 0 (i.e. µ1 > µ_film < µ2)."
+    },
+    {
+      "id": "nr-q50",
+      "question": "If a student measures the diameters of 20 rings on both left and right sides of the center, why is D_n calculated as |x_right - x_left|?",
+      "options": [
+        "It directly measures the diameter across the center without needing to know the exact coordinate of the central spot",
+        "It doubles the magnification of the microscope",
+        "It eliminates chromatic aberration",
+        "It converts radius into circumference"
+      ],
+      "answer": "It directly measures the diameter across the center without needing to know the exact coordinate of the central spot",
+      "correct_option": "It directly measures the diameter across the center without needing to know the exact coordinate of the central spot",
+      "difficulty": "easy",
+      "global_id": 50,
+      "explanation": "Measuring from the left edge x_L to the right edge x_R directly yields diameter D = x_R - x_L, avoiding the uncertainty of locating the exact geometric center."
+    }
+  ]
+}

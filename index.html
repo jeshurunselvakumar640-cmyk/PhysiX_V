@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous" />
@@ -18,6 +18,11 @@
   <link rel="stylesheet" href="/src/diode-vi.css" />
   <link rel="stylesheet" href="/src/planck.css" />
   <link rel="stylesheet" href="/src/wedge-film.css" />
+  <link rel="stylesheet" href="/src/newtons-rings.css" />
+  <link rel="stylesheet" href="/src/rtd-sensor.css" />
+  <link rel="stylesheet" href="/src/custom-cursor.css" />
+  <link rel="stylesheet" href="/src/card-animation.css" />
+  <link rel="stylesheet" href="/src/gallery-horizontal.css" />
   <link rel="stylesheet" href="/src/update-notification.css" />
   <link id="light-mode-stylesheet" rel="stylesheet" href="/src/light-mode.css" disabled />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -1118,88 +1123,61 @@
         </div>
       </div>
 
-      <!-- Integrated Dashboard Layout: Chapters Sidebar (Left) + Experiment List (Right) -->
-      <div class="exp-dashboard-layout">
-        <!-- Left Dock: CHAPTERS (Category Filters) -->
-        <aside class="exp-chapters-sidebar" aria-label="Experiment Chapters Filter">
-          <div class="chapters-capsule-header">
-            <div class="chapters-badge">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="chapters-icon">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              <span>CHAPTERS</span>
+
+      <!-- Cinematic Pinned Horizontal-Scrolling Gallery Section (Originals Architecture) -->
+      <section id="exp-gallery-section" class="exp-gallery-section" aria-label="Pinned Interactive Physics Experiments Gallery">
+        <div id="exp-gallery-wrap" class="exp-gallery-wrap">
+          <!-- Pinned Viewport Container (Sticky 100vh) -->
+          <div id="exp-gallery-viewport" class="exp-gallery-viewport">
+            
+            <!-- Ambient Cosmic Blue Radial Glow -->
+            <div class="exp-gallery-ambient-bg" aria-hidden="true"></div>
+
+            <!-- Top HUD Status Bar -->
+            <div class="exp-gallery-top-controls">
+              <div class="exp-gallery-status-pill">
+                <span class="status-pulse-dot"></span>
+                <span>Real-Time Physics Solvers Ready</span>
+              </div>
             </div>
-            <span class="chapters-count-pill">5 Chapters</span>
-          </div>
 
-          <div class="exp-cat-pills chapters-pills-list" id="exp-page-cat-pills">
-            <button type="button" class="exp-cat-pill active" data-category="all">
-              <span class="pill-indicator"></span>
-              <span class="pill-title">All Labs</span>
-              <span class="pill-badge">14</span>
-            </button>
-            <button type="button" class="exp-cat-pill" data-category="optics">
-              <span class="pill-indicator"></span>
-              <span class="pill-title">Fiber Optics &amp; Lasers</span>
-            </button>
-            <button type="button" class="exp-cat-pill" data-category="wave">
-              <span class="pill-indicator"></span>
-              <span class="pill-title">Wave Optics &amp; Interference</span>
-            </button>
-            <button type="button" class="exp-cat-pill" data-category="quantum">
-              <span class="pill-indicator"></span>
-              <span class="pill-title">Quantum &amp; Solid State</span>
-            </button>
-            <button type="button" class="exp-cat-pill" data-category="sensors">
-              <span class="pill-indicator"></span>
-              <span class="pill-title">Sensors, Devices &amp; Nano</span>
-            </button>
-          </div>
+            <!-- Horizontally Translated Experiment Track -->
+            <div id="exp-gallery-track" class="exp-gallery-track originals-track" data-cursor="drag">
+              <!-- Section Intro Card -->
+              <div class="exp-gallery-intro-panel originals-intro">
+                <p class="exp-intro-eyebrow intro-kicker">
+                  <span class="exp-intro-eyebrow-line kicker-line"></span>
+                  <span>PHYSIX &middot; 2026</span>
+                </p>
+                <h2 class="exp-intro-heading intro-title">
+                  PHYSIX
+                </h2>
+                <p class="exp-intro-desc intro-desc">
+                  Explore the world of physics with interactive simulators
+                </p>
+                <p class="exp-intro-hint intro-scroll-hint">
+                  <span>SCROLL TO BROWSE &rarr;</span>
+                </p>
+              </div>
 
-          <!-- Physical Connector Bridge to Experiment List (Matching Reference Architecture) -->
-          <div class="exp-sidebar-bridge" aria-hidden="true">
-            <svg class="bridge-svg" viewBox="0 0 44 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="bridgeBgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="#11192e" />
-                  <stop offset="50%" stop-color="#0e1526" />
-                  <stop offset="100%" stop-color="#0a0f1d" />
-                </linearGradient>
-              </defs>
-              <!-- Seamless bridge body filled with matching panel background -->
-              <path
-                d="M 0 0 A 14 14 0 0 0 14 14 L 30 14 A 14 14 0 0 0 44 0 L 44 104 A 14 14 0 0 0 30 90 L 14 90 A 14 14 0 0 0 0 104 Z"
-                fill="url(#bridgeBgGrad)" />
-              <!-- Top continuous stroke with concave fillet curves -->
-              <path d="M 0 0 A 14 14 0 0 0 14 14 L 30 14 A 14 14 0 0 0 44 0" stroke="rgba(56, 189, 248, 0.25)"
-                stroke-width="1.2" stroke-linecap="round" fill="none" />
-              <!-- Bottom continuous stroke with concave fillet curves -->
-              <path d="M 44 104 A 14 14 0 0 0 30 90 L 14 90 A 14 14 0 0 0 0 104" stroke="rgba(56, 189, 248, 0.25)"
-                stroke-width="1.2" stroke-linecap="round" fill="none" />
-            </svg>
-          </div>
-        </aside>
-
-        <!-- Right Main Canvas: EXPERIMENT LIST Container -->
-        <div class="exp-list-card-container">
-          <div class="exp-list-header-bar">
-            <div class="exp-list-header-left">
-              <span class="exp-list-badge">EXPERIMENT LIST</span>
-              <h2 class="exp-list-heading">Interactive Laboratories</h2>
+              <!-- Container where cards are rendered by JavaScript -->
+              <div id="exp-page-labs-grid" class="exp-gallery-cards-track cards-render-container labs-grid">
+                <!-- Populated automatically with 3D experiment cards -->
+              </div>
             </div>
-            <div class="exp-list-status">
-              <span class="status-live-dot"></span>
-              <span>Real-Time Solvers Ready</span>
-            </div>
-          </div>
 
-          <!-- Laboratory Cards Grid -->
-          <div id="exp-page-labs-grid" class="labs-grid exp-page-grid">
-            <!-- Populated automatically and synchronized with explorer cards -->
+            <!-- Bottom Progress Tracker -->
+            <div class="exp-gallery-progress-bar-wrap originals-progress-bar-wrap">
+              <span class="exp-gallery-progress-label progress-label">PHYSIX</span>
+              <div class="exp-gallery-progress-rail progress-track">
+                <div id="exp-gallery-progress-fill" class="exp-gallery-progress-fill progress-fill"></div>
+              </div>
+              <span id="exp-gallery-counter" class="exp-gallery-counter">14 LABORATORIES</span>
+            </div>
+
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- Bottom Navigation Footer -->
       <footer class="standalone-page-footer">
@@ -1256,7 +1234,7 @@
 
         <!-- Prominent Primary Action Button -->
         <div class="exp-detail-cta-bar">
-          <button type="button" id="btn-start-simulator" class="btn-start-simulator" aria-label="Start Simulator">
+          <button type="button" id="btn-start-simulator" class="btn-start-simulator" data-cursor="play" aria-label="Start Simulator">
             <span class="btn-play-icon">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -1366,7 +1344,7 @@
           <p>Launch the interactive 2D simulation to test the theoretical concepts with real-time physics computing.</p>
         </div>
         <div class="bottom-cta-actions">
-          <button type="button" class="btn-start-simulator btn-start-simulator-bottom" aria-label="Start Simulator">
+          <button type="button" class="btn-start-simulator btn-start-simulator-bottom" data-cursor="play" aria-label="Start Simulator">
             <span class="btn-play-icon">
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -1750,7 +1728,7 @@
 
         <!-- 6. Action Buttons -->
         <div class="buttons">
-          <button id="launch" class="launch-btn">
+          <button id="launch" class="launch-btn" data-cursor="play">
             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z">
               </path>
@@ -7292,8 +7270,519 @@
     </div>
   </div><!-- /#exp-wedge-film-section -->
 
+  <!-- ==========================================
+       EXPERIMENT 12: NEWTON'S RINGS INTERFERENCE LABORATORY
+       ========================================== -->
+  <div id="exp-newtons-rings-section" class="exp-section-wrapper hidden">
+    <div class="nr-lab-shell">
+      <!-- HEADER BAR -->
+      <div class="nr-lab-header">
+        <div>
+          <span class="nr-eyebrow">WAVE OPTICS &amp; INTERFERENCE • EXP 12</span>
+          <h1>Newton's Rings Interference Laboratory</h1>
+          <p>Investigate circular interference fringes formed by a thin air film, micrometer vernier crosshair measurements, and linear regression determination of wavelength and lens curvature.</p>
+        </div>
+        <div class="nr-badge-group">
+          <div class="nr-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            Wave Optics Engine
+          </div>
+          <div class="nr-badge" style="background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.3); color: #38bdf8;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"></path></svg>
+            Micrometer Vernier (LC 0.01 mm)
+          </div>
+        </div>
+      </div>
 
+      <!-- MASTER WORKSPACE (DUAL PANEL) -->
+      <div class="nr-workspace">
+        <!-- Left Panel: Travelling Microscope Eyepiece & Reticle -->
+        <div class="nr-panel">
+          <div class="nr-panel-heading">
+            <h2>Travelling Microscope Eyepiece &amp; Reticle</h2>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="nr-badge" id="nr-hud-ring" style="font-size: 0.7rem; padding: 0.25rem 0.6rem;">Center Ring</span>
+            </div>
+          </div>
 
+          <!-- Microscope Reticle Viewport -->
+          <div class="nr-microscope-viewport">
+            <div class="nr-eyepiece-ring">
+              <canvas id="nr-rings-canvas" width="480" height="480"></canvas>
+            </div>
+
+            <!-- Vernier Drum & Micrometer HUD -->
+            <div class="nr-micrometer-hud">
+              <div class="nr-hud-stat">
+                <span>Crosshair Pos</span>
+                <strong id="nr-hud-pos" class="highlight">0.00 mm</strong>
+              </div>
+              <div class="nr-hud-stat">
+                <span>Main Scale</span>
+                <strong id="nr-hud-main">0.0 mm</strong>
+              </div>
+              <div class="nr-hud-stat">
+                <span>Vernier Drum</span>
+                <strong id="nr-hud-vernier">0 div (0.00 mm)</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Traveling Microscope Controls -->
+          <div class="nr-stepper-bar">
+            <div class="nr-stepper-slider-wrap">
+              <label>
+                <span>Microscope Carriage Position (x)</span>
+                <strong id="nr-pos-slider-val">0.00 mm</strong>
+              </label>
+              <input type="range" id="nr-pos-slider" class="nr-slider" min="-15" max="15" step="0.01" value="0" />
+            </div>
+
+            <!-- Stepper Buttons Cluster -->
+            <div class="nr-btn-cluster">
+              <button type="button" class="nr-control-btn" id="nr-btn-step-dec-big" title="Step -1.0 mm">-1.0mm</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-step-dec-med" title="Step -0.1 mm">-0.1mm</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-step-dec-fine" title="Step -0.01 mm">-0.01mm</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-zero" title="Center Alignment (0.00 mm)" style="color: #fde047; font-weight: 700;">Center</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-step-inc-fine" title="Step +0.01 mm">+0.01mm</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-step-inc-med" title="Step +0.1 mm">+0.1mm</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-step-inc-big" title="Step +1.0 mm">+1.0mm</button>
+            </div>
+
+            <!-- Fast Ring Snap Presets -->
+            <div style="display: flex; gap: 0.4rem; justify-content: center; flex-wrap: wrap;">
+              <span style="font-size: 0.72rem; color: #64748b; align-self: center; font-family: monospace;">Quick Snap:</span>
+              <button type="button" class="nr-control-btn" id="nr-btn-snap-l10" style="padding: 0.3rem 0.55rem;">Ring 10 Left</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-snap-l5" style="padding: 0.3rem 0.55rem;">Ring 5 Left</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-snap-r5" style="padding: 0.3rem 0.55rem;">Ring 5 Right</button>
+              <button type="button" class="nr-control-btn" id="nr-btn-snap-r10" style="padding: 0.3rem 0.55rem;">Ring 10 Right</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Apparatus Setup & Controls -->
+        <div class="nr-panel">
+          <div class="nr-panel-heading">
+            <h2>Apparatus Setup &amp; Controls</h2>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <div id="nr-led-lamp" class="nr-chip-dot active" style="background: #eab308; box-shadow: 0 0 8px #eab308;"></div>
+              <button type="button" class="nr-control-btn active" id="nr-btn-power-lamp" style="padding: 0.35rem 0.75rem;">Light ON</button>
+            </div>
+          </div>
+
+          <!-- Side-View Optical Bench Elevation Canvas -->
+          <div class="nr-apparatus-card">
+            <canvas id="nr-bench-canvas" width="500" height="180"></canvas>
+          </div>
+
+          <!-- Controls Stack -->
+          <div class="nr-controls-stack">
+            <!-- Monochromatic Spectral Source Selector -->
+            <div class="nr-field-group">
+              <label>
+                <span>Monochromatic Spectral Source</span>
+                <small>Standard Laboratory Lines</small>
+              </label>
+              <div class="nr-chips-grid">
+                <button type="button" class="nr-chip nr-spectral-chip active" data-source="sodium-yellow">
+                  <span class="nr-chip-dot" style="background: #eab308;"></span>
+                  <span>Sodium (Na)</span>
+                  <small style="color: #94a3b8;">589.3 nm</small>
+                </button>
+                <button type="button" class="nr-chip nr-spectral-chip" data-source="green-laser">
+                  <span class="nr-chip-dot" style="background: #22c55e;"></span>
+                  <span>Green Laser</span>
+                  <small style="color: #94a3b8;">532.0 nm</small>
+                </button>
+                <button type="button" class="nr-chip nr-spectral-chip" data-source="red-he-ne">
+                  <span class="nr-chip-dot" style="background: #ef4444;"></span>
+                  <span>He-Ne Red</span>
+                  <small style="color: #94a3b8;">632.8 nm</small>
+                </button>
+                <button type="button" class="nr-chip nr-spectral-chip" data-source="blue-argon">
+                  <span class="nr-chip-dot" style="background: #38bdf8;"></span>
+                  <span>Blue Argon</span>
+                  <small style="color: #94a3b8;">488.0 nm</small>
+                </button>
+                <button type="button" class="nr-chip nr-spectral-chip" data-source="violet-diode">
+                  <span class="nr-chip-dot" style="background: #a855f7;"></span>
+                  <span>Violet Diode</span>
+                  <small style="color: #94a3b8;">405.0 nm</small>
+                </button>
+              </div>
+            </div>
+
+            <!-- Fine Wavelength Slider -->
+            <div class="nr-field-group">
+              <label>
+                <span>Monochromatic Wavelength (λ)</span>
+                <strong id="nr-wl-slider-val" style="color: #fde047; font-family: monospace;">589.3 nm</strong>
+              </label>
+              <input type="range" id="nr-wl-slider" class="nr-slider" min="400" max="700" step="0.1" value="589.3" />
+            </div>
+
+            <!-- Plano-Convex Lens Radius of Curvature (R) -->
+            <div class="nr-field-group">
+              <label>
+                <span>Plano-Convex Lens Curvature Radius (R)</span>
+                <strong id="nr-radius-slider-val" style="color: #38bdf8; font-family: monospace;">100 cm (1.00 m)</strong>
+              </label>
+              <input type="range" id="nr-radius-slider" class="nr-slider" min="50" max="200" step="1" value="100" />
+            </div>
+
+            <!-- Film Medium Selector -->
+            <div class="nr-field-group">
+              <label>
+                <span>Enclosed Film Medium (Refractive Index μ)</span>
+                <small>Liquid Film Refractometry</small>
+              </label>
+              <select id="nr-medium-select" class="nr-select">
+                <option value="air" selected>Air Film (μ = 1.000)</option>
+                <option value="water">Water Film (μ = 1.333)</option>
+                <option value="glycerin">Glycerin Film (μ = 1.473)</option>
+                <option value="mystery">Mystery Liquid Specimen (Unknown μ)</option>
+              </select>
+            </div>
+
+            <!-- Record Button -->
+            <div style="margin-top: 0.5rem;">
+              <button type="button" class="btn-record-gradient" id="nr-btn-record">
+                <svg class="svg-icon svg-icon-xs" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+                Record Dark Ring Reading
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Telemetry KPI Dashboard Strip -->
+      <div class="nr-kpi-grid">
+        <div class="nr-kpi-card">
+          <span>Nominal λ</span>
+          <strong id="nr-kpi-wl" style="color: #fde047;">589.3 nm</strong>
+          <small>Monochromatic Source</small>
+        </div>
+        <div class="nr-kpi-card">
+          <span>Lens Radius (R)</span>
+          <strong id="nr-kpi-radius" style="color: #38bdf8;">1.00 m (100 cm)</strong>
+          <small>Plano-Convex Lens</small>
+        </div>
+        <div class="nr-kpi-card">
+          <span>Medium Index (μ)</span>
+          <strong id="nr-kpi-mu">1.000</strong>
+          <small>Film Optical Density</small>
+        </div>
+        <div class="nr-kpi-card">
+          <span>Extracted λ</span>
+          <strong id="nr-kpi-calc-wl" style="color: #22c55e;">—</strong>
+          <small>From Linear Fit Slope</small>
+        </div>
+        <div class="nr-kpi-card">
+          <span>Extracted μ</span>
+          <strong id="nr-kpi-calc-mu" style="color: #a855f7;">—</strong>
+          <small>Refractometry Result</small>
+        </div>
+        <div class="nr-kpi-card">
+          <span>Relative Error</span>
+          <strong id="nr-kpi-error">—</strong>
+          <small>Theoretical Deviation</small>
+        </div>
+        <div class="nr-kpi-card">
+          <span>Total Logged</span>
+          <strong id="nr-kpi-obs-count">0 Records</strong>
+          <small>Ring Observations</small>
+        </div>
+      </div>
+
+      <!-- Dual Analysis & Challenges Grid -->
+      <div class="nr-analysis-grid">
+        <!-- Linear Regression Graph Card -->
+        <div class="nr-panel">
+          <div class="nr-panel-heading">
+            <h2>Linear Regression: Dn² vs Ring Order n</h2>
+            <span class="nr-badge" style="font-size: 0.7rem;">Slope = 4λR / μ</span>
+          </div>
+          <div class="nr-graph-card">
+            <canvas id="nr-graph-canvas" width="500" height="320"></canvas>
+          </div>
+        </div>
+
+        <!-- Missions & Laboratory Challenges -->
+        <div class="nr-panel">
+          <div class="nr-panel-heading">
+            <h2>Laboratory Missions &amp; Challenges</h2>
+            <span class="nr-badge" style="background: rgba(34, 197, 94, 0.12); border-color: rgba(34, 197, 94, 0.3); color: #4ade80;">Active</span>
+          </div>
+          <div class="nr-missions-list" id="nr-missions-list">
+            <!-- Injected by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Lab Logbook & Observation Table -->
+      <div class="nr-panel">
+        <div class="nr-panel-heading">
+          <div>
+            <h2>Observation Logbook &amp; Ring Diameters</h2>
+            <span id="nr-obs-count-badge" class="nr-badge" style="margin-top: 0.25rem;">0 Trials</span>
+          </div>
+          <div class="nr-actions-bar">
+            <button type="button" class="nr-btn-secondary" id="nr-btn-export-csv">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Export CSV
+            </button>
+            <button type="button" class="nr-btn-primary" id="nr-btn-export-pdf">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 4px; vertical-align: middle;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              Generate PDF Report
+            </button>
+            <button type="button" class="nr-btn-secondary" id="nr-btn-clear-obs" style="color: #f87171; border-color: rgba(248, 113, 113, 0.3);">
+              Clear Logbook
+            </button>
+          </div>
+        </div>
+
+        <div class="nr-table-wrap">
+          <table class="nr-table">
+            <thead>
+              <tr>
+                <th>Trial #</th>
+                <th>Ring Order (n)</th>
+                <th>Left Reading xL (mm)</th>
+                <th>Right Reading xR (mm)</th>
+                <th>Diameter Dn (mm)</th>
+                <th>Dn² (mm²)</th>
+                <th>Film Medium</th>
+              </tr>
+            </thead>
+            <tbody id="nr-obs-table-body">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+          <div id="nr-obs-empty-state" class="nr-empty-state">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5" style="margin-bottom: 0.5rem;"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            <p style="margin: 0;">No observations recorded yet. Align the reticle to dark rings and click <strong>Record Dark Ring Reading</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /#exp-newtons-rings-section -->
+
+  <!-- ==========================================
+       EXPERIMENT 13: RTD SENSORS
+       ========================================== -->
+  <div id="exp-rtd-sensor-section" class="exp-section-wrapper hidden">
+    <div class="rtd-lab-shell">
+      <!-- HEADER BAR -->
+      <div class="rtd-lab-header">
+        <div>
+          <span class="rtd-eyebrow">SENSORS &amp; THERMOMETRY • EXP 13</span>
+          <h1>Resistance Temperature Detector (RTD) Laboratory</h1>
+          <p>Investigate the temperature-resistance characteristics of platinum RTD sensors (Pt100 and Pt1000) using the Callendar–Van Dusen relation, examine 2-wire, 3-wire, and 4-wire lead compensation, and extract the temperature coefficient of resistance (α).</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+          <span class="rtd-live-reading" style="padding: 0.35rem 0.65rem; border-radius: 9999px;">
+            <span style="font-size: 0.65rem;">Standard</span>
+            <strong style="font-size: 0.78rem; margin: 0; color: #14b8a6;">DIN EN 60751</strong>
+          </span>
+          <span class="rtd-live-reading" style="padding: 0.35rem 0.65rem; border-radius: 9999px;">
+            <span style="font-size: 0.65rem;">Engine</span>
+            <strong style="font-size: 0.78rem; margin: 0; color: #38bdf8;">Callendar–Van Dusen</strong>
+          </span>
+        </div>
+      </div>
+
+      <!-- MASTER WORKSPACE (DUAL PANEL) -->
+      <div class="rtd-workspace">
+        <!-- Left Panel: Immersion Apparatus Viewport -->
+        <div class="rtd-panel">
+          <div class="rtd-panel-heading">
+            <h2>Temperature Bath &amp; RTD Probe Chamber</h2>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span class="rtd-live-reading" style="padding: 0.25rem 0.55rem; font-size: 0.7rem;">Live Apparatus</span>
+            </div>
+          </div>
+
+          <!-- Apparatus Canvas Viewport -->
+          <div class="rtd-apparatus-frame">
+            <canvas id="rtd-apparatus-canvas" width="640" height="270"></canvas>
+          </div>
+
+          <!-- Live In-Situ Telemetry Readings -->
+          <div class="rtd-live-readings">
+            <div class="rtd-live-reading">
+              <span>Bath Temp (T)</span>
+              <strong id="rtd-current-temp">25.0 °C</strong>
+            </div>
+            <div class="rtd-live-reading">
+              <span>Measured (R_raw)</span>
+              <strong id="rtd-current-resistance">109.73 Ω</strong>
+            </div>
+            <div class="rtd-live-reading">
+              <span>Lead Offset (R_lead)</span>
+              <strong id="rtd-current-lead">0.000 Ω</strong>
+            </div>
+            <div class="rtd-live-reading">
+              <span>Self-Heating (ΔT)</span>
+              <strong id="rtd-self-heating">0.055 °C</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Instrumentation Controls -->
+        <div class="rtd-panel">
+          <div class="rtd-panel-heading">
+            <h2>Instrumentation &amp; Bath Controls</h2>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <button type="button" id="rtd-btn-power" class="rtd-action-btn active" style="min-height: 1.8rem; padding: 0.2rem 0.6rem; font-size: 0.72rem;">Supply ON</button>
+              <span id="rtd-power-led" class="rtd-power-indicator active" style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #14b8a6; box-shadow: 0 0 8px #14b8a6;"></span>
+            </div>
+          </div>
+
+          <div class="rtd-control-stack">
+            <!-- Sensor Selection -->
+            <div class="rtd-field">
+              <label for="rtd-sensor-select">
+                <span>Active Sensor Model</span>
+                <strong>Pt100 / Pt1000</strong>
+              </label>
+              <select id="rtd-sensor-select">
+                <option value="pt100" selected>Pt100 (R₀ = 100 Ω, α = 0.00385 °C⁻¹)</option>
+                <option value="pt1000">Pt1000 (R₀ = 1000 Ω, α = 0.00385 °C⁻¹)</option>
+              </select>
+            </div>
+
+            <!-- Bath Temperature Slider -->
+            <div class="rtd-field">
+              <label for="rtd-temp-slider">
+                <span>Bath Temperature</span>
+                <strong id="rtd-temp-slider-val">25.0 °C</strong>
+              </label>
+              <input type="range" id="rtd-temp-slider" min="-50" max="250" step="0.5" value="25" class="rtd-slider" />
+            </div>
+
+            <!-- Excitation Current Slider -->
+            <div class="rtd-field">
+              <label for="rtd-current-slider">
+                <span>Excitation Current (I_ex)</span>
+                <strong id="rtd-current-slider-val">1.0 mA</strong>
+              </label>
+              <input type="range" id="rtd-current-slider" min="0.5" max="5.0" step="0.1" value="1.0" class="rtd-slider" />
+            </div>
+
+            <!-- Lead Wire Configuration -->
+            <div class="rtd-field">
+              <label for="rtd-wiring-select">
+                <span>Wiring Configuration</span>
+                <strong>Lead Compensation</strong>
+              </label>
+              <select id="rtd-wiring-select">
+                <option value="4-wire" selected>4-Wire (Kelvin / Full Compensation - 0.000 Ω)</option>
+                <option value="3-wire">3-Wire (Industrial Bridge / Symmetrical - 0.015 Ω)</option>
+                <option value="2-wire">2-Wire (Uncompensated / Series Lead - +0.700 Ω)</option>
+              </select>
+            </div>
+
+            <!-- Control Actions -->
+            <div class="rtd-actions" style="margin-top: 0.4rem;">
+              <button type="button" id="rtd-btn-record" class="rtd-action-btn active" data-cursor="play" style="flex: 1;">
+                Record Reading
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI METRICS STRIP -->
+      <div class="rtd-kpi-grid">
+        <div class="rtd-kpi">
+          <span>Active Sensor</span>
+          <strong id="rtd-kpi-sensor">Pt100</strong>
+        </div>
+        <div class="rtd-kpi">
+          <span>Bath Temp</span>
+          <strong id="rtd-kpi-temp">25.0 °C</strong>
+        </div>
+        <div class="rtd-kpi">
+          <span>Measured R</span>
+          <strong id="rtd-kpi-resistance">109.73 Ω</strong>
+        </div>
+        <div class="rtd-kpi">
+          <span>Fitted TCR (α)</span>
+          <strong id="rtd-kpi-tcr" style="color: #2dd4bf;">—</strong>
+        </div>
+        <div class="rtd-kpi">
+          <span>Relative Error</span>
+          <strong id="rtd-kpi-error" style="color: #38bdf8;">—</strong>
+        </div>
+        <div class="rtd-kpi">
+          <span>Total Trials</span>
+          <strong id="rtd-kpi-count">0 readings</strong>
+        </div>
+      </div>
+
+      <!-- DUAL ANALYSIS & CHALLENGES GRID -->
+      <div class="rtd-analysis-grid">
+        <!-- Left: Graph Card -->
+        <div class="rtd-panel">
+          <div class="rtd-panel-heading">
+            <h2>Callendar–Van Dusen Calibration &amp; Linear Fit</h2>
+            <span style="font: 600 0.72rem 'JetBrains Mono', monospace; color: #5eead4;">R(T) vs Temperature</span>
+          </div>
+          <div class="rtd-graph-frame">
+            <canvas id="rtd-graph-canvas" width="600" height="320"></canvas>
+          </div>
+        </div>
+
+        <!-- Right: Laboratory Missions -->
+        <div class="rtd-panel">
+          <div class="rtd-panel-heading">
+            <h2>Laboratory Challenges &amp; Accreditations</h2>
+            <span style="font: 600 0.72rem 'JetBrains Mono', monospace; color: #4ade80;">Active</span>
+          </div>
+          <div class="rtd-missions" id="rtd-missions-list">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- OBSERVATION TABLE & LOGBOOK -->
+      <div class="rtd-panel">
+        <div class="rtd-panel-heading">
+          <div>
+            <h2>Observation Logbook &amp; Telemetry Data</h2>
+            <span id="rtd-obs-count-badge" style="display: inline-block; margin-top: 0.25rem; font: 600 0.72rem 'JetBrains Mono', monospace; color: #5eead4;">0 readings</span>
+          </div>
+          <div class="rtd-actions">
+            <button type="button" class="rtd-action-btn" id="rtd-btn-export-csv">Export CSV</button>
+            <button type="button" class="rtd-action-btn" id="rtd-btn-export-pdf">Generate PDF</button>
+            <button type="button" class="rtd-action-btn" id="rtd-btn-clear" style="color: #f87171; border-color: rgba(248, 113, 113, 0.3);">Clear Logbook</button>
+          </div>
+        </div>
+
+        <div class="rtd-table-wrap">
+          <table class="rtd-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Sensor</th>
+                <th>Bath Temp (°C)</th>
+                <th>Measured R (Ω)</th>
+                <th>Corrected R (Ω)</th>
+                <th>Estimated Temp (°C)</th>
+                <th>Wiring</th>
+              </tr>
+            </thead>
+            <tbody id="rtd-obs-table-body">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+          <div id="rtd-obs-empty" class="rtd-empty" style="text-align: center; padding: 1.5rem; color: #94a3b8;">
+            No readings recorded yet. Set the bath temperature and click <strong>Record Reading</strong>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /#exp-rtd-sensor-section -->
 
   <!-- =====================================
        EXPLORE LABS HUB MODAL
@@ -7332,7 +7821,7 @@
       <!-- Laboratory Cards Grid -->
       <div class="labs-grid">
         <!-- 1. PROJECTILE (ACTIVE) -->
-        <div class="lab-card active-lab" data-category="all" data-exp-target="projectile"
+        <div class="lab-card active-lab" data-cursor="view" data-category="all" data-exp-target="projectile"
           data-name="2D Projectile Motion">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7386,7 +7875,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform 2D Projectile Motion experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform 2D Projectile Motion experiment">
               Perform
             </button>
           </div>
@@ -7397,7 +7886,7 @@
         </div>
 
         <!-- 2. OPTICAL FIBRE NA (ACTIVE EXP 2) -->
-        <div class="lab-card active-lab" data-category="optics" data-exp-target="optical"
+        <div class="lab-card active-lab" data-cursor="view" data-category="optics" data-exp-target="optical"
           data-name="Determination of Numerical Aperture of an Optical Fibre">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7448,7 +7937,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Optical Fibre experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Optical Fibre experiment">
               Perform
             </button>
           </div>
@@ -7459,7 +7948,7 @@
         </div>
 
         <!-- 4. COLOUR SENSOR (ACTIVE) -->
-        <div class="lab-card active-lab" data-category="sensors" data-exp-target="colour-sensor"
+        <div class="lab-card active-lab" data-cursor="view" data-category="sensors" data-exp-target="colour-sensor"
           data-name="Study of Colour Sensor">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7518,7 +8007,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Colour Sensor experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Colour Sensor experiment">
               Perform
             </button>
           </div>
@@ -7530,13 +8019,13 @@
 
 
         <!-- 6. NEWTON'S RINGS (EXP 3) -->
-        <div class="lab-card coming-lab" data-category="wave"
-          data-name="Determination of Radius of Curvature of a Lens using Newton’s Ring Setup">
+        <div class="lab-card active-lab" data-cursor="view" data-category="all optics wave" data-exp-target="newtons-rings"
+          data-name="Newton's Rings">
           <div class="card-header-bar">
             <div class="card-icon-badge">
               <svg class="badge-ring" viewBox="0 0 44 44">
                 <circle cx="22" cy="22" r="19" class="ring-bg"></circle>
-                <circle cx="22" cy="22" r="19" class="ring-fill" style="stroke: #06b6d4; stroke-dashoffset: 65;">
+                <circle cx="22" cy="22" r="19" class="ring-fill" style="stroke: #06b6d4; stroke-dashoffset: 40;">
                 </circle>
               </svg>
               <div class="badge-icon">
@@ -7544,6 +8033,7 @@
                   <circle cx="12" cy="12" r="10"></circle>
                   <circle cx="12" cy="12" r="7"></circle>
                   <circle cx="12" cy="12" r="4"></circle>
+                  <circle cx="12" cy="12" r="1" fill="currentColor"></circle>
                 </svg>
               </div>
             </div>
@@ -7557,14 +8047,19 @@
 
           <div class="card-preview-art">
             <svg viewBox="0 0 280 110" class="preview-svg">
-              <circle cx="140" cy="55" r="44" fill="none" stroke="rgba(6, 182, 212, 0.25)" stroke-width="2.5"></circle>
-              <circle cx="140" cy="55" r="34" fill="none" stroke="rgba(6, 182, 212, 0.45)" stroke-width="2"></circle>
-              <circle cx="140" cy="55" r="24" fill="none" stroke="rgba(6, 182, 212, 0.65)" stroke-width="2"></circle>
-              <circle cx="140" cy="55" r="14" fill="none" stroke="#06b6d4" stroke-width="2.5"
-                filter="drop-shadow(0 0 5px #06b6d4)"></circle>
-              <circle cx="140" cy="55" r="4" fill="#06b6d4"></circle>
-              <text x="140" y="104" fill="rgba(148,163,184,0.6)" font-family="monospace" font-size="8"
-                text-anchor="middle">R = (D_m² - D_n²) / 4(m-n)λ</text>
+              <!-- Concentric Newton's Rings with r proportional to sqrt(m) -->
+              <circle cx="140" cy="55" r="48" fill="none" stroke="rgba(6, 182, 212, 0.2)" stroke-width="1.8"></circle>
+              <circle cx="140" cy="55" r="41.5" fill="none" stroke="rgba(6, 182, 212, 0.35)" stroke-width="2.0"></circle>
+              <circle cx="140" cy="55" r="34" fill="none" stroke="rgba(6, 182, 212, 0.5)" stroke-width="2.2"></circle>
+              <circle cx="140" cy="55" r="24" fill="none" stroke="#06b6d4" stroke-width="2.5"
+                filter="drop-shadow(0 0 4px #06b6d4)"></circle>
+              <!-- Central dark spot -->
+              <circle cx="140" cy="55" r="5" fill="#020617" stroke="#06b6d4" stroke-width="1.5"></circle>
+              <!-- Reticle crosshair indicator -->
+              <line x1="90" y1="55" x2="190" y2="55" stroke="rgba(244, 63, 94, 0.6)" stroke-width="1" stroke-dasharray="2,2"></line>
+              <line x1="140" y1="12" x2="140" y2="98" stroke="rgba(244, 63, 94, 0.6)" stroke-width="1" stroke-dasharray="2,2"></line>
+              <text x="140" y="104" fill="rgba(148,163,184,0.85)" font-family="monospace" font-size="8.5"
+                text-anchor="middle">D_m² = 4mλR</text>
             </svg>
           </div>
 
@@ -7573,12 +8068,11 @@
               <span class="title-grad">Newton's</span>
               <span class="title-main">Rings</span>
             </h3>
-            <p class="card-desc">Interference fringes produced by a thin air film between a plano-convex lens and
-              optical flat</p>
+            <p class="card-desc">Explore circular interference fringes formed by a thin air film and investigate the relationship between ring diameter, wavelength, and the radius of curvature of a lens.</p>
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Newton's Rings experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Newton's Rings experiment">
               Perform
             </button>
           </div>
@@ -7589,7 +8083,7 @@
         </div>
 
         <!-- WEDGE-SHAPED FILM (EXP 11) -->
-        <div class="lab-card active-lab" data-category="all optics wave" data-exp-target="wedge-film"
+        <div class="lab-card active-lab" data-cursor="view" data-category="all optics wave" data-exp-target="wedge-film"
           data-name="Wedge-Shaped Film">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7645,7 +8139,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Wedge Film experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Wedge Film experiment">
               Perform
             </button>
           </div>
@@ -7656,7 +8150,7 @@
         </div>
 
         <!-- 4. HALL EFFECT (ACTIVE EXP 4) -->
-        <div class="lab-card active-lab" data-category="quantum" data-exp-target="hall-effect"
+        <div class="lab-card active-lab" data-cursor="view" data-category="quantum" data-exp-target="hall-effect"
           data-name="Hall Effect Experiment">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7703,7 +8197,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Hall Effect experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Hall Effect experiment">
               Perform
             </button>
           </div>
@@ -7714,7 +8208,7 @@
         </div>
 
         <!-- 5. DIFFRACTION GRATING (ACTIVE EXP 5) -->
-        <div class="lab-card active-lab" data-category="optics" data-exp-target="diffraction"
+        <div class="lab-card active-lab" data-cursor="view" data-category="optics" data-exp-target="diffraction"
           data-name="Diffraction Grating">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7766,7 +8260,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Diffraction Grating experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Diffraction Grating experiment">
               Perform
             </button>
           </div>
@@ -7777,7 +8271,7 @@
         </div>
 
         <!-- 6. PHYSICS SANDBOX (ACTIVE EXP 6) -->
-        <div class="lab-card active-lab" data-category="all" data-exp-target="sandbox"
+        <div class="lab-card active-lab" data-cursor="view" data-category="all" data-exp-target="sandbox"
           data-name="Physics Sandbox Playground">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7830,7 +8324,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Launch Physics Sandbox">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Launch Physics Sandbox">
               Perform
             </button>
           </div>
@@ -7841,7 +8335,7 @@
         </div>
 
         <!-- 10. PLANCK'S CONSTANT (ACTIVE EXP 8) -->
-        <div class="lab-card active-lab" data-category="all quantum" data-exp-target="planck"
+        <div class="lab-card active-lab" data-cursor="view" data-category="all quantum" data-exp-target="planck"
           data-name="Determination of Planck’s Constant using Photocell">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7891,7 +8385,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Planck's Constant experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Planck's Constant experiment">
               Perform
             </button>
           </div>
@@ -7903,7 +8397,7 @@
 
 
         <!-- 13. OPTICAL ATTENUATION (EXP 11) -->
-        <div class="lab-card active-lab" data-category="all optics" data-exp-target="pof-attenuation"
+        <div class="lab-card active-lab" data-cursor="view" data-category="all optics" data-exp-target="pof-attenuation"
           data-name="Measuring Optical Power Attenuation in Plastic Optical Fiber">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -7947,7 +8441,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Optical Attenuation experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Optical Attenuation experiment">
               Perform
             </button>
           </div>
@@ -7958,7 +8452,7 @@
         </div>
 
         <!-- 14. I-V CHARACTERISTICS (EXP 12) -->
-        <div class="lab-card active-lab" data-category="all" data-exp-target="diode"
+        <div class="lab-card active-lab" data-cursor="view" data-category="all" data-exp-target="diode"
           data-name="Diode V-I Characteristics">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -8004,7 +8498,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Diode I-V experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Diode I-V experiment">
               Perform
             </button>
           </div>
@@ -8015,7 +8509,7 @@
         </div>
 
         <!-- LASER DIVERGENCE (EXP 9) -->
-        <div class="lab-card active-lab" data-category="all optics" data-exp-target="laser-divergence"
+        <div class="lab-card active-lab" data-cursor="view" data-category="all optics" data-exp-target="laser-divergence"
           data-name="Determination of Divergence of a Laser Beam">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -8073,7 +8567,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Laser Divergence experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Laser Divergence experiment">
               Perform
             </button>
           </div>
@@ -8084,7 +8578,7 @@
         </div>
 
         <!-- ULTRASONIC SENSOR (UDM) (EXP 10) -->
-        <div class="lab-card active-lab" data-category="all sensors" data-exp-target="ultrasonic-sensor"
+        <div class="lab-card active-lab" data-cursor="view" data-category="all sensors" data-exp-target="ultrasonic-sensor"
           data-name="Ultrasonic Sensor (UDM)">
           <div class="card-header-bar">
             <div class="card-icon-badge">
@@ -8144,7 +8638,7 @@
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform Ultrasonic Sensor experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform Ultrasonic Sensor experiment">
               Perform
             </button>
           </div>
@@ -8155,8 +8649,8 @@
         </div>
 
         <!-- 15. RTD / OPTICAL SENSORS (EXP 13) -->
-        <div class="lab-card coming-lab" data-category="sensors"
-          data-name="Study of the Characteristics of Resistance Temperature Detector (RTD) / Optical Sensors">
+        <div class="lab-card active-lab" data-cursor="view" data-category="all sensors" data-exp-target="rtd-sensor"
+          data-name="RTD Sensors">
           <div class="card-header-bar">
             <div class="card-icon-badge">
               <svg class="badge-ring" viewBox="0 0 44 44">
@@ -8197,12 +8691,11 @@
               <span class="title-grad">RTD</span>
               <span class="title-main">Sensors</span>
             </h3>
-            <p class="card-desc">Study temperature coefficient of resistance α of Pt100 RTD sensor and optoelectronic
-              detectors</p>
+            <p class="card-desc">Investigate Callendar–Van Dusen Pt100/Pt1000 temperature-resistance characteristics and 2, 3, and 4-wire lead compensation.</p>
           </div>
 
           <div class="card-action-bar">
-            <button type="button" class="lab-card-btn btn-perform" aria-label="Perform RTD Sensors experiment">
+            <button type="button" class="lab-card-btn btn-perform" data-cursor="play" aria-label="Perform RTD Sensors experiment">
               Perform
             </button>
           </div>
@@ -10160,6 +10653,158 @@
             </div>
           </div>
         </div>
+
+        <!-- HELP & VIVA VOCE PANE: NEWTON'S RINGS -->
+        <div class="help-pane hidden" id="help-pane-exp-newtons-rings">
+          <!-- 1. Aim Hero Card -->
+          <div class="help-hero-card" style="border-left: 4px solid #06b6d4;">
+            <div class="help-hero-icon-box" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.35);">
+              <svg class="svg-icon svg-icon-md" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="7"></circle>
+                <circle cx="12" cy="12" r="4"></circle>
+                <circle cx="12" cy="12" r="1" fill="#06b6d4"></circle>
+              </svg>
+            </div>
+            <div class="help-hero-body">
+              <h3>1. Aim of the Experiment</h3>
+              <p>To study the formation of Newton's rings due to interference of light reflected from a thin air film and investigate the relationship between ring diameter, wavelength, and the radius of curvature of a plano-convex lens.</p>
+            </div>
+          </div>
+
+          <!-- 2. Operating Procedure Card -->
+          <div class="help-section-card" style="margin-top: 16px;">
+            <h3 class="help-section-title">
+              <svg class="svg-icon svg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              2. Simulator Controls &amp; Operating Procedure
+            </h3>
+            <div class="help-steps-grid">
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">1</span>
+                <div><strong>Light Source:</strong> Toggle <strong>Source: ON/OFF</strong>. Select Sodium Yellow ($589.3\text{ nm}$) or He-Ne Red ($632.8\text{ nm}$).</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">2</span>
+                <div><strong>Lens Curvature:</strong> Adjust the lens radius of curvature $R$ ($50\text{ cm}$ to $200\text{ cm}$, default $100\text{ cm}$).</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">3</span>
+                <div><strong>Film Medium:</strong> Select air film ($\mu = 1.000$) or liquid medium such as water ($\mu = 1.333$).</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">4</span>
+                <div><strong>Observe Interference:</strong> Inspect concentric circular interference fringes in the microscope field of view.</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">5</span>
+                <div><strong>Traverse to Ring on Left:</strong> Use the vernier drum slider or stepper buttons to set crosshair tangential to ring $n$ on the left side ($x_L$).</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">6</span>
+                <div><strong>Record Left Reading:</strong> Click <strong>Record Left ($x_L$)</strong> to save microscope coordinate on the left side.</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">7</span>
+                <div><strong>Traverse to Ring on Right:</strong> Move microscope crosshairs through center across to the same ring $n$ on the right side ($x_R$).</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">8</span>
+                <div><strong>Record Right Reading:</strong> Click <strong>Record Right ($x_R$)</strong>. Ring diameter $D_n = |x_R - x_L|$ and $D_n^2$ are computed.</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">9</span>
+                <div><strong>Repeat Across Orders:</strong> Measure consecutive rings ($n = 1, 2, 3, \dots, 10$) to build the observation table.</div>
+              </div>
+              <div class="help-step-item">
+                <span class="help-step-badge" style="background: #06b6d4;">10</span>
+                <div><strong>Linear Regression Analysis:</strong> Examine the $D_n^2$ vs $n$ regression plot. The slope $S = \frac{4\lambda R}{\mu}$ determines $R = \frac{S\cdot\mu}{4\lambda}$.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="help-section">
+            <h3 class="help-sec-title">3. Important Theory &amp; Equations</h3>
+            <div class="formula-block" style="margin-bottom: 14px;">
+              <h4>A. Destructive Interference (Dark Ring Diameter)</h4>
+              <p class="help-text" style="margin-bottom: 8px;">
+                For near-normal monochromatic reflected illumination, the optical path difference is $\Delta = 2\mu t + \frac{\lambda}{2}$. Destructive interference occurs when $\Delta = (2m + 1)\frac{\lambda}{2} \implies 2\mu t = m\lambda$. Using the lens geometry $t \approx \frac{r^2}{2R} = \frac{D_m^2}{8R}$, the diameter of the $m$-th dark ring is:
+              </p>
+              <div class="formula-latex" style="font-size: 15px; margin: 10px 0;">
+                $$D_m^2 = \frac{4m\lambda R}{\mu} \quad (m = 0, 1, 2, \dots)$$
+              </div>
+              <div class="formula-grid">
+                <div class="formula-item">
+                  <span class="f-name">Dark Ring Diameter ($D_m$):</span>
+                  <div class="f-desc">Diameter of the $m$-th concentric dark circular fringe [mm]</div>
+                </div>
+                <div class="formula-item">
+                  <span class="f-name">Ring Order ($m$):</span>
+                  <div class="f-desc">Fringe index, with $m = 0$ at the central dark contact spot</div>
+                </div>
+                <div class="formula-item">
+                  <span class="f-name">Radius of Curvature ($R$):</span>
+                  <div class="f-desc">Curvature radius of the plano-convex lens convex surface [m or cm]</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="formula-block" style="margin-bottom: 14px;">
+              <h4>B. Successive Rings &amp; Elimination of Central Contact Error</h4>
+              <p class="help-text" style="margin-bottom: 8px;">
+                Because dust or elastic deformation can introduce a slight residual thickness $t_0$ at the center, taking the difference between rings of orders $m+p$ and $m$ cancels the central error:
+              </p>
+              <div class="formula-latex" style="font-size: 15px; margin: 10px 0;">
+                $$D_{m+p}^2 - D_m^2 = \frac{4p\lambda R}{\mu} \quad \implies \quad R = \frac{\mu(D_{m+p}^2 - D_m^2)}{4p\lambda}$$
+              </div>
+              <div class="formula-grid">
+                <div class="formula-item">
+                  <span class="f-name">Order Difference ($p$):</span>
+                  <div class="f-desc">Separation between compared ring orders ($p \ge 1$)</div>
+                </div>
+                <div class="formula-item">
+                  <span class="f-name">Linear Regression Slope ($S$):</span>
+                  <div class="f-desc">Slope of the $D_n^2$ versus $n$ graph: $S = \frac{d(D_n^2)}{dn} = \frac{4\lambda R}{\mu}$</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="formula-block">
+              <h4>C. Central Dark Spot Origin</h4>
+              <p class="help-text" style="margin-bottom: 8px;">
+                At the point of contact between the lens and flat glass plate ($r = 0$, $t = 0$), the geometric path difference is zero. However, light reflected from the upper surface of the optically denser glass plate suffers an abrupt $\pi$ phase shift ($\lambda/2$ path shift). Hence the central spot is always a minimum of intensity (dark) in reflected light.
+              </p>
+            </div>
+          </div>
+
+          <div class="help-section">
+            <h3 class="help-sec-title">4. Precautions</h3>
+            <ul class="help-precautions-list">
+              <li>Always rotate the traveling microscope micrometer drum in one continuous direction across the pattern to avoid backlash error in the lead screw.</li>
+              <li>Ensure the glass plate beam splitter is angled at exactly 45 degrees so that incident light strikes the air film normally.</li>
+              <li>Keep optical surfaces meticulously clean to maintain uniform circular fringe contours.</li>
+            </ul>
+          </div>
+
+          <div class="help-section">
+            <h3 class="help-sec-title">5. Viva Voce Questions</h3>
+            <div class="help-viva-item">
+              <div class="help-viva-q">Q1. Why are Newton's rings circular in shape?</div>
+              <div class="help-viva-a"><strong>Ans:</strong> The air film thickness is symmetrical about the point of contact between the spherical lens surface and flat plate, forming loci of constant thickness that are concentric circles ($t = r^2 / 2R$).</div>
+            </div>
+            <div class="help-viva-item">
+              <div class="help-viva-q">Q2. Why is the central spot dark in reflected light?</div>
+              <div class="help-viva-a"><strong>Ans:</strong> Reflection at the lower glass plate (rare-to-dense boundary) causes an abrupt $\pi$ phase change ($\lambda/2$ path difference). At the contact apex where $t = 0$, net path difference is $\lambda/2$, fulfilling the condition for destructive interference.</div>
+            </div>
+            <div class="help-viva-item">
+              <div class="help-viva-q">Q3. Why do the rings get closer together at higher orders?</div>
+              <div class="help-viva-a"><strong>Ans:</strong> Since ring radius is proportional to $\sqrt{m}$, the fringe separation $\Delta r \approx \frac{\sqrt{\lambda R}}{2\sqrt{m}}$ is inversely proportional to $\sqrt{m}$, meaning fringes crowd closer together outward.</div>
+            </div>
+            <div class="help-viva-item">
+              <div class="help-viva-q">Q4. What happens when a liquid of refractive index $\mu$ is introduced?</div>
+              <div class="help-viva-a"><strong>Ans:</strong> The path difference becomes $2\mu t + \lambda/2$. The ring diameter decreases according to $D_m \propto 1/\sqrt{\mu}$, causing the interference rings to contract inward.</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -10377,35 +11022,35 @@
             <div class="formula-grid">
               <div class="formula-item">
                 <span class="f-name">Hall Voltage Formula:</span>
-                <code>V_H = (R_H · I · B) / t</code>
+                <code>V_H = \frac{R_H \cdot I \cdot B}{t}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Hall Coefficient:</span>
-                <code>R_H = (V_H · t) / (I · B) = 1 / (n · q)</code>
+                <code>R_H = \frac{V_H \cdot t}{I \cdot B} = \frac{1}{n \cdot q}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Carrier Concentration (Density):</span>
-                <code>n = 1 / (|R_H| · e)</code>
+                <code>n = \frac{1}{|R_H| \cdot e}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Hall Carrier Mobility:</span>
-                <code>μ_H = |R_H| · σ = |R_H| / ρ</code>
+                <code>\mu_H = |R_H| \cdot \sigma = \frac{|R_H|}{\rho}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Hall Angle:</span>
-                <code>tan(θ_H) = E_H / E_x = μ_H · B</code>
+                <code>\tan\theta_H = \frac{E_H}{E_x} = \mu_H \cdot B</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Carrier Drift Velocity:</span>
-                <code>v_d = I / (n · e · w · t) = J / (n · e)</code>
+                <code>v_d = \frac{I}{n \cdot e \cdot w \cdot t} = \frac{J}{n \cdot e}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Zero-Offset Cancellation:</span>
-                <code>V_H = [(V₁ - V₂) + (V₃ - V₄)] / 4</code>
+                <code>V_H = \frac{(V_1 - V_2) + (V_3 - V_4)}{4}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Electrical Conductivity:</span>
-                <code>σ = n · e · μ = 1 / ρ</code>
+                <code>\sigma = n \cdot e \cdot \mu = \frac{1}{\rho}</code>
               </div>
             </div>
           </div>
@@ -10477,35 +11122,35 @@
             <div class="formula-grid">
               <div class="formula-item">
                 <span class="f-name">Grating Equation (Normal Incidence):</span>
-                <code>d · sin(θ) = m · λ</code>
+                <code>d \sin\theta = m\lambda</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Grating Pitch (Slit Spacing):</span>
-                <code>d = (a + b) = 1 / N = 10⁻³ / (lines/mm) m</code>
+                <code>d = a + b = \frac{1}{N} = \frac{10^{-3}}{\text{lines/mm}}\text{ m}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Fringe Angular Displacement:</span>
-                <code>tan(θ) = y / L ⟹ sin(θ) = y / √(L² + y²)</code>
+                <code>\tan\theta = \frac{y}{L} \implies \sin\theta = \frac{y}{\sqrt{L^2 + y^2}}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Wavelength Determination:</span>
-                <code>λ = (d · sin θ_m) / m = (d · y_m) / (m · √(L² + y_m²))</code>
+                <code>\lambda = \frac{d \sin\theta_m}{m} = \frac{d \cdot y_m}{m \sqrt{L^2 + y_m^2}}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Angular Dispersion:</span>
-                <code>D = dθ / dλ = m / (d · cos θ)</code>
+                <code>D = \frac{d\theta}{d\lambda} = \frac{m}{d \cos\theta}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Chromatic Resolving Power:</span>
-                <code>R = λ / Δλ = m · N_total</code>
+                <code>R = \frac{\lambda}{\Delta\lambda} = m \cdot N_{\text{total}}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Maximum Observable Order:</span>
-                <code>m_max = ⌊d / λ⌋ (since sin θ ≤ 1)</code>
+                <code>m_{\max} = \left\lfloor \frac{d}{\lambda} \right\rfloor \quad (\sin\theta \le 1)</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Absent Spectra (Missing Orders):</span>
-                <code>d / a = m / p ⟹ (a + b) / a = m / p</code>
+                <code>\frac{d}{a} = \frac{m}{p} \implies \frac{a + b}{a} = \frac{m}{p}</code>
               </div>
             </div>
           </div>
@@ -10576,35 +11221,35 @@
             <div class="formula-grid">
               <div class="formula-item">
                 <span class="f-name">Newton's Second Law:</span>
-                <code>F_net = m · a = dp / dt</code>
+                <code>F_{\text{net}} = m \cdot a = \frac{dp}{dt}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Impulse-Momentum Theorem:</span>
-                <code>J = ∫ F dt = Δp = m(v_f - v_i)</code>
+                <code>J = \int F \, dt = \Delta p = m(v_f - v_i)</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Conservation of Linear Momentum:</span>
-                <code>∑ m_i · v_i = ∑ m_i · v_f</code>
+                <code>\sum m_i v_i = \sum m_i v_f</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Coefficient of Restitution:</span>
-                <code>e = -(v₂f - v₁f) / (v₂i - v₁i)</code>
+                <code>e = \frac{v_{2f} - v_{1f}}{v_{1i} - v_{2i}} = \sqrt{\frac{h_{\text{rebound}}}{h_{\text{drop}}}}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Kinetic Energy:</span>
-                <code>KE = (1/2)m v² = p² / (2m)</code>
+                <code>KE = \frac{1}{2}m v^2 = \frac{p^2}{2m}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Gravitational Potential Energy:</span>
-                <code>PE = m · g · h</code>
+                <code>PE = m g h</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Coulomb Kinetic Friction:</span>
-                <code>f_k = μ_k · N = μ_k · m · g</code>
+                <code>f_k = \mu_k N = \mu_k m g</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Inelastic Collision KE Loss:</span>
-                <code>ΔKE = (1/2) · [m₁m₂/(m₁+m₂)] · (1 - e²) · (v₁ - v₂)²</code>
+                <code>\Delta KE = \frac{1}{2}\left(\frac{m_1 m_2}{m_1 + m_2}\right)(1 - e^2)(v_1 - v_2)^2</code>
               </div>
             </div>
           </div>
@@ -10655,23 +11300,23 @@
             <div class="formula-grid">
               <div class="formula-item">
                 <span class="f-name">Shockley Diode Equation:</span>
-                <code>I = I_s &middot; [exp(qV / &eta;k_B T) - 1]</code>
+                <code>I = I_s \left( e^{\frac{qV}{\eta k_B T}} - 1 \right)</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Thermal Voltage (at 300 K):</span>
-                <code>V_T = k_B T / q &approx; 25.85 mV</code>
+                <code>V_T = \frac{k_B T}{q} \approx 25.85\text{ mV}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Dynamic Forward Resistance:</span>
-                <code>r_f = &Delta;V_f / &Delta;I_f = (&eta; V_T) / I_f</code>
+                <code>r_f = \frac{\Delta V_f}{\Delta I_f} = \frac{\eta V_T}{I_f}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Dynamic Reverse Resistance:</span>
-                <code>r_r = &Delta;V_r / &Delta;I_r</code>
+                <code>r_r = \frac{\Delta V_r}{\Delta I_r}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Reverse Saturation Current:</span>
-                <code>I &approx; -I_s  (for V_r &gt;&gt; V_T)</code>
+                <code>I \approx -I_s \quad (V_r \gg V_T)</code>
               </div>
             </div>
           </div>
@@ -10703,27 +11348,27 @@
             <div class="formula-grid">
               <div class="formula-item">
                 <span class="f-name">Total Attenuation (dB):</span>
-                <code>A_dB = 10 &middot; log10(P_in / P_out)</code>
+                <code>A_{\text{dB}} = 10 \log_{10}\left(\frac{P_{\text{in}}}{P_{\text{out}}}\right)</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Attenuation Coefficient per km:</span>
-                <code>&alpha; = (1000 / L_m) &middot; 10 &middot; log10(P_in / P_out)</code>
+                <code>\alpha = \left(\frac{1000}{L_{\text{m}}}\right) \cdot 10 \log_{10}\left(\frac{P_{\text{in}}}{P_{\text{out}}}\right)</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Exponential Power Decay:</span>
-                <code>P_out = P_in &middot; 10^(-&alpha; &middot; L / 10)</code>
+                <code>P_{\text{out}} = P_{\text{in}} \cdot 10^{-\frac{\alpha L}{10}}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Decibel-Milliwatt Conversion:</span>
-                <code>P_dBm = 10 &middot; log10(P_mW / 1 mW)</code>
+                <code>P_{\text{dBm}} = 10 \log_{10}\left(\frac{P_{\text{mW}}}{1\text{ mW}}\right)</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Total Link Budget:</span>
-                <code>A_total = &alpha; &middot; L + Loss_coupling + Loss_bending</code>
+                <code>A_{\text{total}} = \alpha L + \text{Loss}_{\text{coupling}} + \text{Loss}_{\text{bending}}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Coupling Efficiency (&eta;):</span>
-                <code>&eta; = exp[ -(&Delta;r / &omega;)&sup2; ]</code>
+                <code>\eta = \exp\left[ -\left(\frac{\Delta r}{\omega}\right)^2 \right]</code>
               </div>
             </div>
           </div>
@@ -10749,27 +11394,27 @@
             <div class="formula-grid">
               <div class="formula-item">
                 <span class="f-name">Einstein Photoelectric Law:</span>
-                <code>e &middot; V_s = h &middot; &nu; - &Phi;</code>
+                <code>e V_s = h\nu - \Phi = \frac{hc}{\lambda} - \Phi</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Linear Regression Slope:</span>
-                <code>m = &Delta;V_s / &Delta;&nu; = h / e</code>
+                <code>m = \frac{\Delta V_s}{\Delta\nu} = \frac{h}{e}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Planck's Constant:</span>
-                <code>h = m &middot; e = 6.626 &times; 10⁻³⁴ J&middot;s</code>
+                <code>h = m \cdot e = 6.626 \times 10^{-34}\text{ J}\cdot\text{s}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Photon Energy Relation:</span>
-                <code>E = h &middot; &nu; = h &middot; c / &lambda;</code>
+                <code>E = h\nu = \frac{hc}{\lambda}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">Threshold Wavelength:</span>
-                <code>&lambda;_0 = h &middot; c / &Phi;</code>
+                <code>\lambda_0 = \frac{hc}{\Phi}</code>
               </div>
               <div class="formula-item">
                 <span class="f-name">LED Bandgap Formulation:</span>
-                <code>h = e &middot; V_0 &middot; &lambda; / c</code>
+                <code>h = \frac{e V_0 \lambda}{c}</code>
               </div>
             </div>
           </div>
@@ -11020,6 +11665,84 @@
               <div class="formula-item">
                 <span class="f-name">Wedge Angle ($\alpha$):</span>
                 <div class="f-desc">Inclination angle between the glass plates: $\alpha \approx \frac{d}{L}$ [rad]</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCIENTIFIC THEORY & DERIVATIONS PANE: NEWTON'S RINGS -->
+        <div class="theory-pane hidden" id="theory-pane-exp-newtons-rings">
+          <!-- CARD 1: THIN-FILM INTERFERENCE & PHASE REVERSAL -->
+          <div class="formula-block">
+            <h4>1. Division of Amplitude &amp; Reflection Phase Reversal</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              When monochromatic light of wavelength $\lambda$ illuminates an air film formed between a convex spherical surface and a flat glass plate, incident wavefronts are divided by partial reflection at the curved lower surface of the lens and the flat upper surface of the bottom plate. Reflection at the lower, optically denser glass plate boundary introduces an abrupt $\pi$ phase change (equivalent to an optical path increment of $\lambda/2$).
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:12px 0;">
+              $$\Delta = 2\mu t \cos(r) + \frac{\lambda}{2} \approx 2\mu t + \frac{\lambda}{2} \quad (\text{at near-normal incidence})$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Effective Path Difference ($\Delta$):</span>
+                <div class="f-desc">Total optical path difference accounting for Stokes' phase reversal [nm or µm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Film Thickness ($t$):</span>
+                <div class="f-desc">Air/liquid gap between spherical lens and flat plate: $t(r) \approx \frac{r^2}{2R}$ [µm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Refractive Index ($\mu$):</span>
+                <div class="f-desc">Film medium refractive index ($\mu = 1.000$ for air, $\mu = 1.333$ for water)</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 2: CONCENTRIC DARK RINGS & LENS GEOMETRY -->
+          <div class="formula-block" style="margin-top:16px;">
+            <h4>2. Destructive Interference &amp; Dark Ring Diameter Equation</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              Destructive interference occurs when the net path difference satisfies $\Delta = (2m + 1)\frac{\lambda}{2}$, which simplifies to $2\mu t = m\lambda$. From the sagitta geometry of a sphere of radius $R$, the film thickness at radial distance $r = D_m/2$ satisfies $2t = \frac{r^2}{R} = \frac{D_m^2}{4R}$. Substituting this relation gives the squared diameter of the $m$-th dark fringe:
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:12px 0;">
+              $$D_m^2 = \frac{4m\lambda R}{\mu} \quad (m = 0, 1, 2, \dots)$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Dark Ring Diameter ($D_m$):</span>
+                <div class="f-desc">Physical diameter of the $m$-th concentric dark circular ring [mm]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Ring Order ($m$):</span>
+                <div class="f-desc">Fringe index, with order $m = 0$ designating the central destructive contact spot</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Radius of Curvature ($R$):</span>
+                <div class="f-desc">Radius of curvature of the convex lens surface ($R \gg t$) [m or cm]</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: SUCCESSIVE RINGS & EXPERIMENTAL CURVATURE DETERMINATION -->
+          <div class="formula-block" style="margin-top:16px;">
+            <h4>3. Successive Ring Differences &amp; Determination of $R$ or $\lambda$</h4>
+            <p style="color:#cbd5e1; font-size:13px; line-height:1.6; margin-bottom:12px;">
+              To eliminate experimental errors arising from any central dust particle or imperfect contact thickness $t_0$, ring diameters of orders $m+p$ and $m$ are subtracted: $D_{m+p}^2 - D_m^2 = \frac{4p\lambda R}{\mu}$. In the linear regression plot of $D_n^2$ versus $n$, the empirical slope $S = \frac{d(D_n^2)}{dn} = \frac{4\lambda R}{\mu}$ yields high-precision metrology of the radius of curvature $R$ or source wavelength $\lambda$:
+            </p>
+            <div class="formula-latex" style="font-size:16px; margin:12px 0;">
+              $$R = \frac{\mu(D_{m+p}^2 - D_m^2)}{4p\lambda} = \frac{S\cdot\mu}{4\lambda} \qquad \text{or} \qquad \lambda = \frac{\mu(D_{m+p}^2 - D_m^2)}{4pR}$$
+            </div>
+            <div class="formula-grid" style="margin-top:12px;">
+              <div class="formula-item">
+                <span class="f-name">Order Difference ($p$):</span>
+                <div class="f-desc">Integer ring step count between measured fringes ($p \ge 1$)</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Least-Squares Slope ($S$):</span>
+                <div class="f-desc">Regression slope $S = \frac{4\lambda R}{\mu}$ evaluated from the $D_n^2$ vs $n$ plot [mm²]</div>
+              </div>
+              <div class="formula-item">
+                <span class="f-name">Contact Apex ($m = 0$):</span>
+                <div class="f-desc">At $t = 0$, $\Delta = \lambda/2$, always producing a central dark spot in reflected light</div>
               </div>
             </div>
           </div>
@@ -12814,6 +13537,38 @@
     </span>
     <span class="fab-label">Ask Vectra AI</span>
   </button>
+
+  <!-- ======================================================== -->
+  <!-- PROJECT DETAIL MODAL DIALOG (ORIGINALS REFERENCE UX)     -->
+  <!-- ======================================================== -->
+  <div id="project-modal" class="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modal-close-btn" data-cursor="close" aria-label="Close modal">✕</button>
+      <div class="modal-billboard" id="modal-billboard"></div>
+      <div class="modal-body">
+        <div class="modal-header-meta">
+          <span class="modal-category" id="modal-category"></span>
+          <span class="modal-year" id="modal-year"></span>
+        </div>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-logline" id="modal-logline"></p>
+        
+        <!-- Metrics Row -->
+        <div class="modal-metrics" id="modal-metrics"></div>
+
+        <!-- Features Checklist -->
+        <h4 class="modal-section-title">Engine Features</h4>
+        <ul class="modal-features-list" id="modal-features"></ul>
+
+        <!-- Action Buttons -->
+        <div class="modal-actions">
+          <a id="modal-launch-btn" href="#" class="btn-primary" data-cursor="play">▶ Launch Sim</a>
+          <a id="modal-theory-btn" href="#" target="_blank" class="btn-secondary" data-cursor="link">Theory Documentation ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Toast Notification Container -->
   <div id="toast" class="toast hidden"></div>

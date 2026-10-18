@@ -1,0 +1,760 @@
+{
+  "experiment": "Diode V-I Characteristics - Question Bank",
+  "experimentId": "diode",
+  "quizId": "diode-vi-mastery-quiz",
+  "experimentName": "Diode V-I Characteristics",
+  "description": "Comprehensive 50-Question Physics Question Bank for Diode V-I Characteristics",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": "diode-q1",
+      "question": "What is the typical barrier potential (knee/cut-in voltage) of a silicon p-n junction diode at room temperature (300 K)?",
+      "options": [
+        "Approximately 0.7 V",
+        "Approximately 0.3 V",
+        "Approximately 1.5 V",
+        "Zero volts"
+      ],
+      "answer": "Approximately 0.7 V",
+      "correct_option": "Approximately 0.7 V",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "Silicon p-n junctions have a built-in potential barrier of approximately 0.6 V to 0.7 V at 300 K."
+    },
+    {
+      "id": "diode-q2",
+      "question": "What is the typical knee (threshold) voltage of a germanium p-n junction diode at room temperature?",
+      "options": [
+        "Approximately 0.3 V",
+        "Approximately 0.7 V",
+        "Approximately 1.1 V",
+        "Approximately 2.0 V"
+      ],
+      "answer": "Approximately 0.3 V",
+      "correct_option": "Approximately 0.3 V",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "Germanium diodes have a smaller bandgap (~0.66 eV), resulting in a lower built-in barrier of approximately 0.2 V to 0.3 V."
+    },
+    {
+      "id": "diode-q3",
+      "question": "What happens to the depletion region width when a p-n junction diode is forward biased?",
+      "options": [
+        "The depletion region narrows, lowering the potential barrier",
+        "The depletion region widens",
+        "The depletion region remains constant",
+        "The depletion region disappears permanently"
+      ],
+      "answer": "The depletion region narrows, lowering the potential barrier",
+      "correct_option": "The depletion region narrows, lowering the potential barrier",
+      "difficulty": "easy",
+      "global_id": 3,
+      "explanation": "Forward bias applies positive voltage to the p-side and negative to the n-side, opposing the built-in electric field and narrowing the space-charge layer."
+    },
+    {
+      "id": "diode-q4",
+      "question": "What happens to the depletion region width when a p-n junction diode is reverse biased?",
+      "options": [
+        "The depletion region widens, increasing the potential barrier",
+        "The depletion region narrows",
+        "The depletion region collapses to zero",
+        "Mobile charge carriers flood the junction"
+      ],
+      "answer": "The depletion region widens, increasing the potential barrier",
+      "correct_option": "The depletion region widens, increasing the potential barrier",
+      "difficulty": "easy",
+      "global_id": 4,
+      "explanation": "Reverse bias reinforces the internal built-in field, pulling majority carriers away from the metallurgical junction and widening the depletion zone."
+    },
+    {
+      "id": "diode-q5",
+      "question": "What is the mathematical equation governing the current-voltage relationship of an ideal p-n junction diode (Shockley Diode Equation)?",
+      "options": [
+        "I = I_s * [exp(qV / (η * k * T)) - 1]",
+        "I = V / R",
+        "I = I_s * exp(-qV / kT)",
+        "I = I_s * [1 - exp(qV / kT)]"
+      ],
+      "answer": "I = I_s * [exp(qV / (η * k * T)) - 1]",
+      "correct_option": "I = I_s * [exp(qV / (η * k * T)) - 1]",
+      "difficulty": "medium",
+      "global_id": 5,
+      "explanation": "The Shockley equation describes diode diffusion current: I = I_s [exp(V / (η V_T)) - 1], where V_T = kT/q is the thermal voltage."
+    },
+    {
+      "id": "diode-q6",
+      "question": "What is the approximate value of the thermal voltage V_T = (k * T) / q at room temperature (T = 300 K)?",
+      "options": [
+        "Approximately 25.9 mV (≈ 26 mV)",
+        "Approximately 0.7 V",
+        "Approximately 1.5 mV",
+        "Approximately 1.0 V"
+      ],
+      "answer": "Approximately 25.9 mV (≈ 26 mV)",
+      "correct_option": "Approximately 25.9 mV (≈ 26 mV)",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "V_T = (1.38e-23 J/K * 300 K) / (1.602e-19 C) ≈ 0.02585 V ≈ 25.86 mV."
+    },
+    {
+      "id": "diode-q7",
+      "question": "What is the ideality factor (emission coefficient) η for an ideal germanium diode and a silicon diode at moderate forward bias?",
+      "options": [
+        "η ≈ 1 for Ge, and η ≈ 1 to 2 for Si",
+        "η = 0 for both",
+        "η = 10 for both",
+        "η = 0.5 for Ge, 0.1 for Si"
+      ],
+      "answer": "η ≈ 1 for Ge, and η ≈ 1 to 2 for Si",
+      "correct_option": "η ≈ 1 for Ge, and η ≈ 1 to 2 for Si",
+      "difficulty": "medium",
+      "global_id": 7,
+      "explanation": "Germanium current is dominated by diffusion (η ≈ 1), while silicon exhibits both diffusion and recombination currents, making η between 1 and 2."
+    },
+    {
+      "id": "diode-q8",
+      "question": "What is the dynamic (ac) resistance r_d of a forward-biased diode mathematically defined as?",
+      "options": [
+        "r_d = dV / dI = (η * V_T) / I_D",
+        "r_d = V_D / I_D",
+        "r_d = I_D / V_D",
+        "r_d = V_D * I_D"
+      ],
+      "answer": "r_d = dV / dI = (η * V_T) / I_D",
+      "correct_option": "r_d = dV / dI = (η * V_T) / I_D",
+      "difficulty": "medium",
+      "global_id": 8,
+      "explanation": "Dynamic resistance is the reciprocal of the slope of the forward V-I characteristic: r_d = dV/dI ≈ η V_T / I_D."
+    },
+    {
+      "id": "diode-q9",
+      "question": "If a forward-biased silicon diode (η = 1) carries a DC current of I_D = 2.6 mA at room temperature, what is its dynamic AC resistance?",
+      "options": [
+        "10 Ω",
+        "100 Ω",
+        "1.0 Ω",
+        "50 Ω"
+      ],
+      "answer": "10 Ω",
+      "correct_option": "10 Ω",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "r_d = V_T / I_D = 26 mV / 2.6 mA = 10 Ω."
+    },
+    {
+      "id": "diode-q10",
+      "question": "How does the static (DC) resistance R_DC = V_D / I_D compare to the dynamic (AC) resistance r_d in the forward conduction region?",
+      "options": [
+        "R_DC is significantly larger than r_d (R_DC > r_d)",
+        "R_DC is much smaller than r_d",
+        "R_DC and r_d are always strictly equal",
+        "r_d is infinite while R_DC is zero"
+      ],
+      "answer": "R_DC is significantly larger than r_d (R_DC > r_d)",
+      "correct_option": "R_DC is significantly larger than r_d (R_DC > r_d)",
+      "difficulty": "medium",
+      "global_id": 10,
+      "explanation": "Because the forward current increases exponentially, the tangent slope (dI/dV) is much steeper than the secant slope (I/V), meaning r_d < R_DC."
+    },
+    {
+      "id": "diode-q11",
+      "question": "What carriers constitute the tiny reverse saturation current I_s in a reverse-biased p-n junction?",
+      "options": [
+        "Thermally generated minority carriers (electrons in p-region and holes in n-region)",
+        "Injected majority carrier holes",
+        "Free electrons in the copper connecting wires",
+        "Photons absorbed by the resistor"
+      ],
+      "answer": "Thermally generated minority carriers (electrons in p-region and holes in n-region)",
+      "correct_option": "Thermally generated minority carriers (electrons in p-region and holes in n-region)",
+      "difficulty": "easy",
+      "global_id": 11,
+      "explanation": "Reverse bias sweeps minority carriers that diffuse to the edge of the depletion zone across the junction, creating the reverse saturation current I_s."
+    },
+    {
+      "id": "diode-q12",
+      "question": "How does the reverse saturation current I_s of a silicon diode change with increasing temperature?",
+      "options": [
+        "I_s approximately doubles for every 10°C rise in temperature",
+        "I_s decreases by half for every 10°C",
+        "I_s remains completely constant",
+        "I_s drops to zero at 100°C"
+      ],
+      "answer": "I_s approximately doubles for every 10°C rise in temperature",
+      "correct_option": "I_s approximately doubles for every 10°C rise in temperature",
+      "difficulty": "medium",
+      "global_id": 12,
+      "explanation": "Thermal generation of electron-hole pairs increases exponentially with temperature: I_s(T2) ≈ I_s(T1) * 2^((T2-T1)/10)."
+    },
+    {
+      "id": "diode-q13",
+      "question": "How does the forward barrier voltage (cut-in voltage) of a silicon diode shift with temperature?",
+      "options": [
+        "It decreases by approximately 2 mV per °C rise (-2 mV/°C)",
+        "It increases by 2 mV per °C rise (+2 mV/°C)",
+        "It increases by 1 V per °C",
+        "It is temperature independent"
+      ],
+      "answer": "It decreases by approximately 2 mV per °C rise (-2 mV/°C)",
+      "correct_option": "It decreases by approximately 2 mV per °C rise (-2 mV/°C)",
+      "difficulty": "medium",
+      "global_id": 13,
+      "explanation": "dV/dT ≈ -2.0 to -2.5 mV/°C for silicon. As temperature rises, higher intrinsic carrier density allows forward current conduction at lower applied voltages."
+    },
+    {
+      "id": "diode-q14",
+      "question": "What is Zener breakdown in a heavily doped p-n junction diode?",
+      "options": [
+        "Direct quantum mechanical tunneling of valence electrons into the conduction band under a very strong electric field (> 10⁶ V/cm)",
+        "Collisional impact ionization of lattice atoms",
+        "Thermal destruction of the packaging",
+        "Electromigration of contacts"
+      ],
+      "answer": "Direct quantum mechanical tunneling of valence electrons into the conduction band under a very strong electric field (> 10⁶ V/cm)",
+      "correct_option": "Direct quantum mechanical tunneling of valence electrons into the conduction band under a very strong electric field (> 10⁶ V/cm)",
+      "difficulty": "hard",
+      "global_id": 14,
+      "explanation": "In heavily doped junctions with narrow depletion width (< 10 nm), reverse voltage creates an intense field (> 10⁶ V/m) that enables direct quantum tunneling (Zener effect)."
+    },
+    {
+      "id": "diode-q15",
+      "question": "How does Avalanche breakdown differ physically from Zener breakdown?",
+      "options": [
+        "Avalanche breakdown is caused by impact ionization (accelerated carriers knocking valence electrons free), occurring at higher reverse voltages (> 5-6 V)",
+        "Avalanche breakdown occurs only at 0 V",
+        "Avalanche breakdown occurs in forward bias",
+        "Avalanche breakdown is caused by quantum tunneling"
+      ],
+      "answer": "Avalanche breakdown is caused by impact ionization (accelerated carriers knocking valence electrons free), occurring at higher reverse voltages (> 5-6 V)",
+      "correct_option": "Avalanche breakdown is caused by impact ionization (accelerated carriers knocking valence electrons free), occurring at higher reverse voltages (> 5-6 V)",
+      "difficulty": "medium",
+      "global_id": 15,
+      "explanation": "In moderately/lightly doped diodes with wider depletion regions, minority carriers accelerate to high kinetic energies, colliding with lattice atoms to liberate secondary electron-hole pairs."
+    },
+    {
+      "id": "diode-q16",
+      "question": "What is the temperature coefficient of breakdown voltage for a Zener breakdown mechanism (< 5 V) vs an Avalanche breakdown mechanism (> 6 V)?",
+      "options": [
+        "Zener has a negative temperature coefficient; Avalanche has a positive temperature coefficient",
+        "Zener is positive; Avalanche is negative",
+        "Both are strictly positive",
+        "Both are zero"
+      ],
+      "answer": "Zener has a negative temperature coefficient; Avalanche has a positive temperature coefficient",
+      "correct_option": "Zener has a negative temperature coefficient; Avalanche has a positive temperature coefficient",
+      "difficulty": "hard",
+      "global_id": 16,
+      "explanation": "Zener tunneling increases with temperature (narrowing bandgap), so V_Z drops (negative tempco). In avalanche, increased lattice vibrations impede carrier acceleration, requiring higher voltage (positive tempco)."
+    },
+    {
+      "id": "diode-q17",
+      "question": "At approximately what breakdown voltage does a Zener diode exhibit near-zero temperature coefficient?",
+      "options": [
+        "Around 5.1 V to 5.6 V",
+        "0.7 V",
+        "100 V",
+        "0.3 V"
+      ],
+      "answer": "Around 5.1 V to 5.6 V",
+      "correct_option": "Around 5.1 V to 5.6 V",
+      "difficulty": "medium",
+      "global_id": 17,
+      "explanation": "Around 5.1 V to 5.6 V, the negative tempco of Zener tunneling and the positive tempco of avalanche multiplication precisely cancel each other, providing temperature-stable voltage references."
+    },
+    {
+      "id": "diode-q18",
+      "question": "What is the primary electronic application of a Zener diode operated in its reverse breakdown region?",
+      "options": [
+        "Voltage regulation and voltage reference stabilization",
+        "Current amplification",
+        "Radio wave frequency modulation",
+        "Electrical energy storage"
+      ],
+      "answer": "Voltage regulation and voltage reference stabilization",
+      "correct_option": "Voltage regulation and voltage reference stabilization",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "Because voltage remains virtually constant over a wide range of reverse breakdown current, Zener diodes maintain stable DC reference voltages."
+    },
+    {
+      "id": "diode-q19",
+      "question": "Why must a current-limiting resistor always be placed in series with a diode during forward V-I characterization?",
+      "options": [
+        "To prevent excessive forward current that would cause catastrophic thermal burnout once knee voltage is exceeded",
+        "To reduce the input voltage to zero",
+        "To convert alternating current into radio waves",
+        "To measure the diode capacitance"
+      ],
+      "answer": "To prevent excessive forward current that would cause catastrophic thermal burnout once knee voltage is exceeded",
+      "correct_option": "To prevent excessive forward current that would cause catastrophic thermal burnout once knee voltage is exceeded",
+      "difficulty": "easy",
+      "global_id": 19,
+      "explanation": "Above the knee voltage, dynamic resistance drops to a few ohms; without a series ballast resistor, current would spike uncontrollably and destroy the junction."
+    },
+    {
+      "id": "diode-q20",
+      "question": "What is the transition (depletion-layer) capacitance C_T of a reverse-biased p-n junction diode?",
+      "options": [
+        "C_T = ε * A / W (acts like a parallel-plate capacitor whose plate separation W widens with reverse voltage)",
+        "C_T is zero in reverse bias",
+        "C_T increases linearly with reverse voltage",
+        "C_T = I / V"
+      ],
+      "answer": "C_T = ε * A / W (acts like a parallel-plate capacitor whose plate separation W widens with reverse voltage)",
+      "correct_option": "C_T = ε * A / W (acts like a parallel-plate capacitor whose plate separation W widens with reverse voltage)",
+      "difficulty": "medium",
+      "global_id": 20,
+      "explanation": "The unneutralized immobile ion sheets act as capacitor plates separated by the dielectric depletion region W: C_T ∝ 1 / √(V_bi + V_R)."
+    },
+    {
+      "id": "diode-q21",
+      "question": "What specialized diode utilizes the voltage-variable transition capacitance of a reverse-biased junction for electronic radio frequency tuning?",
+      "options": [
+        "Varactor (Varicap) diode",
+        "Schottky diode",
+        "Tunnel diode",
+        "Gunn diode"
+      ],
+      "answer": "Varactor (Varicap) diode",
+      "correct_option": "Varactor (Varicap) diode",
+      "difficulty": "easy",
+      "global_id": 21,
+      "explanation": "Varactor diodes are fabricated to maximize transition capacitance variation with reverse voltage, serving as voltage-controlled capacitors in RF VCOs and phase-locked loops."
+    },
+    {
+      "id": "diode-q22",
+      "question": "What is diffusion capacitance C_D in a p-n junction diode?",
+      "options": [
+        "Capacitance caused by the time-delay storage of excess minority carrier charge in the neutral regions under forward bias",
+        "Capacitance of the depletion layer in reverse bias",
+        "Capacitance between external metal leads",
+        "Capacitance caused by thermal expansion"
+      ],
+      "answer": "Capacitance caused by the time-delay storage of excess minority carrier charge in the neutral regions under forward bias",
+      "correct_option": "Capacitance caused by the time-delay storage of excess minority carrier charge in the neutral regions under forward bias",
+      "difficulty": "hard",
+      "global_id": 22,
+      "explanation": "Under forward bias, minority carriers are injected across the junction and stored before recombining: C_D = (τ * I_D) / (η * V_T), scaling linearly with forward current."
+    },
+    {
+      "id": "diode-q23",
+      "question": "What is the reverse recovery time (t_rr) of a p-n junction diode?",
+      "options": [
+        "The time required for stored minority carriers to be removed when switching rapidly from forward conduction to reverse bias",
+        "The time taken for a diode to cool down",
+        "The time to reach breakdown voltage",
+        "The time for current to reach 100 A"
+      ],
+      "answer": "The time required for stored minority carriers to be removed when switching rapidly from forward conduction to reverse bias",
+      "correct_option": "The time required for stored minority carriers to be removed when switching rapidly from forward conduction to reverse bias",
+      "difficulty": "medium",
+      "global_id": 23,
+      "explanation": "When switched from forward to reverse, stored excess minority carriers must recombine or be swept out before the diode can block reverse current, causing a transient reverse current spike."
+    },
+    {
+      "id": "diode-q24",
+      "question": "Why are Schottky diodes capable of switching much faster than conventional silicon p-n junction diodes?",
+      "options": [
+        "They are metal-semiconductor majority carrier devices with zero minority carrier storage and near-zero reverse recovery time (t_rr ≈ 0)",
+        "They have a wider depletion zone",
+        "They operate at cryogenic temperatures",
+        "They contain liquid metal"
+      ],
+      "answer": "They are metal-semiconductor majority carrier devices with zero minority carrier storage and near-zero reverse recovery time (t_rr ≈ 0)",
+      "correct_option": "They are metal-semiconductor majority carrier devices with zero minority carrier storage and near-zero reverse recovery time (t_rr ≈ 0)",
+      "difficulty": "medium",
+      "global_id": 24,
+      "explanation": "Schottky diodes use a metal-semiconductor barrier where conduction is carried solely by majority carriers, eliminating minority carrier storage delay."
+    },
+    {
+      "id": "diode-q25",
+      "question": "What is the typical forward voltage drop of a Schottky barrier diode?",
+      "options": [
+        "Approximately 0.2 V to 0.4 V",
+        "Approximately 0.7 V to 0.9 V",
+        "Approximately 1.5 V to 2.0 V",
+        "Zero volts"
+      ],
+      "answer": "Approximately 0.2 V to 0.4 V",
+      "correct_option": "Approximately 0.2 V to 0.4 V",
+      "difficulty": "easy",
+      "global_id": 25,
+      "explanation": "Metal-semiconductor barriers have a lower barrier height than silicon p-n junctions, providing a lower forward drop (~0.3 V) that minimizes power dissipation."
+    },
+    {
+      "id": "diode-q26",
+      "question": "In a Light Emitting Diode (LED), what physical process generates photon emission?",
+      "options": [
+        "Radiative recombination of injected electrons and holes across the direct bandgap",
+        "Thermal blackbody radiation from wire heating",
+        "Nuclear fission in the substrate",
+        "Piezoelectric deformation"
+      ],
+      "answer": "Radiative recombination of injected electrons and holes across the direct bandgap",
+      "correct_option": "Radiative recombination of injected electrons and holes across the direct bandgap",
+      "difficulty": "easy",
+      "global_id": 26,
+      "explanation": "Under forward bias, electrons and holes recombine radiatively across the direct energy gap, releasing energy as a photon of wavelength λ = hc / E_g."
+    },
+    {
+      "id": "diode-q27",
+      "question": "Why are direct bandgap semiconductors (such as GaAs, GaN, InP) used for LEDs rather than indirect bandgap semiconductors like Silicon?",
+      "options": [
+        "In direct bandgap materials, electrons and holes can recombine directly without requiring phonon (lattice vibration) momentum conservation",
+        "Silicon absorbs all visible light completely",
+        "Silicon cannot conduct electricity",
+        "Direct bandgap materials have zero resistance"
+      ],
+      "answer": "In direct bandgap materials, electrons and holes can recombine directly without requiring phonon (lattice vibration) momentum conservation",
+      "correct_option": "In direct bandgap materials, electrons and holes can recombine directly without requiring phonon (lattice vibration) momentum conservation",
+      "difficulty": "medium",
+      "global_id": 27,
+      "explanation": "In direct bandgap semiconductors, the conduction band minimum aligns with the valence band maximum in k-space, permitting high-probability radiative transitions without phonon assistance."
+    },
+    {
+      "id": "diode-q28",
+      "question": "What is the relationship between the peak emitted wavelength λ of an LED and its semiconductor bandgap energy E_g?",
+      "options": [
+        "λ ≈ (h * c) / E_g = 1240 / E_g (where E_g is in eV and λ in nm)",
+        "λ = E_g / (h * c)",
+        "λ = h * E_g",
+        "λ = E_g² / c"
+      ],
+      "answer": "λ ≈ (h * c) / E_g = 1240 / E_g (where E_g is in eV and λ in nm)",
+      "correct_option": "λ ≈ (h * c) / E_g = 1240 / E_g (where E_g is in eV and λ in nm)",
+      "difficulty": "medium",
+      "global_id": 28,
+      "explanation": "E = hν = hc/λ. Expressing E_g in electron-volts and λ in nanometers gives the convenient relation λ(nm) ≈ 1240 / E_g(eV)."
+    },
+    {
+      "id": "diode-q29",
+      "question": "A red LED emits light at a peak wavelength of λ = 650 nm. What is the approximate energy bandgap E_g of its semiconductor material?",
+      "options": [
+        "1.91 eV",
+        "1.12 eV",
+        "3.40 eV",
+        "0.66 eV"
+      ],
+      "answer": "1.91 eV",
+      "correct_option": "1.91 eV",
+      "difficulty": "medium",
+      "global_id": 29,
+      "explanation": "E_g = hc / λ = 1240 / 650 nm ≈ 1.908 eV ≈ 1.91 eV."
+    },
+    {
+      "id": "diode-q30",
+      "question": "A blue LED based on Gallium Nitride (GaN) emits light at 450 nm. What is its approximate cut-in / knee voltage?",
+      "options": [
+        "2.7 V to 3.0 V",
+        "0.7 V",
+        "0.3 V",
+        "1.2 V"
+      ],
+      "answer": "2.7 V to 3.0 V",
+      "correct_option": "2.7 V to 3.0 V",
+      "difficulty": "medium",
+      "global_id": 30,
+      "explanation": "Knee voltage scales with bandgap: V_knee ≈ E_g / q = 1240 / 450 nm ≈ 2.76 V."
+    },
+    {
+      "id": "diode-q31",
+      "question": "In which quadrant of the V-I coordinate plane does a solar cell operate when generating electrical power?",
+      "options": [
+        "Fourth quadrant (positive voltage, negative current: delivering power to external load)",
+        "First quadrant",
+        "Second quadrant",
+        "Third quadrant"
+      ],
+      "answer": "Fourth quadrant (positive voltage, negative current: delivering power to external load)",
+      "correct_option": "Fourth quadrant (positive voltage, negative current: delivering power to external load)",
+      "difficulty": "hard",
+      "global_id": 31,
+      "explanation": "A solar cell produces photo-generated current opposite to forward bias: with V > 0 and I < 0, the P = V * I product is negative, indicating power output."
+    },
+    {
+      "id": "diode-q32",
+      "question": "In which bias mode is a photodiode normally operated to achieve high speed and linear light-to-current response?",
+      "options": [
+        "Reverse bias mode (photoconductive mode)",
+        "Forward bias mode",
+        "Zero voltage unbiased only",
+        "High forward voltage breakdown mode"
+      ],
+      "answer": "Reverse bias mode (photoconductive mode)",
+      "correct_option": "Reverse bias mode (photoconductive mode)",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "Reverse bias expands the depletion width (decreasing junction capacitance for high bandwidth) and produces a reverse photocurrent that is strictly linear with incident light intensity."
+    },
+    {
+      "id": "diode-q33",
+      "question": "What is a Tunnel (Esaki) diode characterized by in its forward V-I curve?",
+      "options": [
+        "A distinct Negative Differential Resistance (NDR) region where current decreases as voltage increases",
+        "Zero reverse leakage current",
+        "A perfectly linear Ohm's law curve",
+        "Infinite reverse breakdown voltage"
+      ],
+      "answer": "A distinct Negative Differential Resistance (NDR) region where current decreases as voltage increases",
+      "correct_option": "A distinct Negative Differential Resistance (NDR) region where current decreases as voltage increases",
+      "difficulty": "hard",
+      "global_id": 33,
+      "explanation": "Degenerately doped p and n regions allow quantum tunneling at low forward voltages; as voltage increases, band overlap decreases, causing current to drop (negative resistance dI/dV < 0)."
+    },
+    {
+      "id": "diode-q34",
+      "question": "What is the peak-to-valley current ratio (PVCR) in a Tunnel diode?",
+      "options": [
+        "The ratio of the maximum forward tunneling peak current (I_P) to the minimum valley current (I_V)",
+        "The ratio of reverse to forward current",
+        "The ratio of breakdown voltage to knee voltage",
+        "The ratio of AC to DC resistance"
+      ],
+      "answer": "The ratio of the maximum forward tunneling peak current (I_P) to the minimum valley current (I_V)",
+      "correct_option": "The ratio of the maximum forward tunneling peak current (I_P) to the minimum valley current (I_V)",
+      "difficulty": "medium",
+      "global_id": 34,
+      "explanation": "PVCR = I_P / I_V is a key figure of merit for tunnel diodes used in high-frequency microwave oscillators and fast pulse generators."
+    },
+    {
+      "id": "diode-q35",
+      "question": "What is the primary function of a freewheeling (flyback) diode connected in parallel with an inductive load (such as a relay coil)?",
+      "options": [
+        "To suppress inductive high-voltage spikes (L * di/dt) when current is switched off by circulating current safely",
+        "To increase coil current during operation",
+        "To illuminate when the relay turns on",
+        "To step up DC voltage to AC"
+      ],
+      "answer": "To suppress inductive high-voltage spikes (L * di/dt) when current is switched off by circulating current safely",
+      "correct_option": "To suppress inductive high-voltage spikes (L * di/dt) when current is switched off by circulating current safely",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "When coil current is abruptly interrupted, V = -L(di/dt) can generate hundreds of volts; a reverse-parallel freewheeling diode clamps the spike to ~0.7 V, protecting switching transistors."
+    },
+    {
+      "id": "diode-q36",
+      "question": "What is the Ripple Factor of an ideal half-wave rectifier without a filter capacitor?",
+      "options": [
+        "1.21",
+        "0.482",
+        "0.00",
+        "2.00"
+      ],
+      "answer": "1.21",
+      "correct_option": "1.21",
+      "difficulty": "hard",
+      "global_id": 36,
+      "explanation": "Ripple factor γ = √( (V_rms / V_dc)² - 1 ). For half-wave rectification (V_rms = V_m/2, V_dc = V_m/π), γ = √( (π/2)² - 1 ) = √(2.467 - 1) = 1.211."
+    },
+    {
+      "id": "diode-q37",
+      "question": "What is the Ripple Factor of a full-wave bridge rectifier without a filter capacitor?",
+      "options": [
+        "0.482",
+        "1.21",
+        "0.10",
+        "1.00"
+      ],
+      "answer": "0.482",
+      "correct_option": "0.482",
+      "difficulty": "hard",
+      "global_id": 37,
+      "explanation": "For full-wave rectification, V_rms = V_m / √2, V_dc = 2V_m / π. Ripple factor γ = √( (π / (2√2))² - 1 ) = √(1.2337 - 1) ≈ 0.482."
+    },
+    {
+      "id": "diode-q38",
+      "question": "What is the Peak Inverse Voltage (PIV) rating required for the diodes in a full-wave bridge rectifier?",
+      "options": [
+        "PIV = V_m (peak secondary voltage)",
+        "PIV = 2 * V_m",
+        "PIV = V_m / 2",
+        "PIV = 4 * V_m"
+      ],
+      "answer": "PIV = V_m (peak secondary voltage)",
+      "correct_option": "PIV = V_m (peak secondary voltage)",
+      "difficulty": "medium",
+      "global_id": 38,
+      "explanation": "In a bridge rectifier, the two non-conducting diodes in series share the reverse voltage, so each diode experiences a maximum reverse voltage equal to V_m."
+    },
+    {
+      "id": "diode-q39",
+      "question": "In a center-tapped full-wave rectifier, what is the Peak Inverse Voltage (PIV) across each non-conducting diode?",
+      "options": [
+        "PIV = 2 * V_m",
+        "PIV = V_m",
+        "PIV = V_m / 2",
+        "PIV = 4 * V_m"
+      ],
+      "answer": "PIV = 2 * V_m",
+      "correct_option": "PIV = 2 * V_m",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "When one diode conducts, the non-conducting diode experiences the full secondary end-to-end voltage: PIV = 2 * V_m."
+    },
+    {
+      "id": "diode-q40",
+      "question": "Why does a silicon diode conduct negligible current below its knee voltage (~0.6 V)?",
+      "options": [
+        "The built-in electric field at the junction opposes majority carrier diffusion until external voltage overcomes it",
+        "Silicon atoms have no free electrons at room temperature",
+        "The series resistance is infinite at low voltage",
+        "Light emission absorbs all incoming energy"
+      ],
+      "answer": "The built-in electric field at the junction opposes majority carrier diffusion until external voltage overcomes it",
+      "correct_option": "The built-in electric field at the junction opposes majority carrier diffusion until external voltage overcomes it",
+      "difficulty": "easy",
+      "global_id": 40,
+      "explanation": "The internal contact potential creates an electrostatic energy barrier; only carriers with thermal energy exceeding q(V_0 - V) can cross, which is negligible until V approaches V_0."
+    },
+    {
+      "id": "diode-q41",
+      "question": "What instrument is used in the laboratory to simultaneously plot the complete dynamic forward and reverse V-I curve of a diode on an oscilloscope?",
+      "options": [
+        "A Curve Tracer (or dual-channel oscilloscope with XY Lissajous mode)",
+        "A digital multimeter set to resistance",
+        "A wheatstone bridge",
+        "A spectrum analyzer"
+      ],
+      "answer": "A Curve Tracer (or dual-channel oscilloscope with XY Lissajous mode)",
+      "correct_option": "A Curve Tracer (or dual-channel oscilloscope with XY Lissajous mode)",
+      "difficulty": "easy",
+      "global_id": 41,
+      "explanation": "A curve tracer or an XY oscilloscope setup applies an AC sweep voltage across the diode while measuring voltage across the diode (X) and current across a sense resistor (Y)."
+    },
+    {
+      "id": "diode-q42",
+      "question": "In an experimental circuit measuring diode forward V-I characteristics, why is the voltmeter connected directly across the diode rather than across the power supply?",
+      "options": [
+        "To avoid including the voltage drop across the current-measuring ammeter and series resistor",
+        "To prevent blowing the voltmeter fuse",
+        "Because power supplies cannot be measured",
+        "To cancel reverse saturation current"
+      ],
+      "answer": "To avoid including the voltage drop across the current-measuring ammeter and series resistor",
+      "correct_option": "To avoid including the voltage drop across the current-measuring ammeter and series resistor",
+      "difficulty": "medium",
+      "global_id": 42,
+      "explanation": "Connecting the voltmeter directly across the diode terminals ensures it measures true junction potential V_D without parasitic drops from the ammeter internal shunt resistance."
+    },
+    {
+      "id": "diode-q43",
+      "question": "If a diode forward current increases from 10 mA to 30 mA while voltage increases from 0.70 V to 0.73 V, what is the experimental dynamic resistance r_d?",
+      "options": [
+        "1.5 Ω",
+        "15 Ω",
+        "0.15 Ω",
+        "3.0 Ω"
+      ],
+      "answer": "1.5 Ω",
+      "correct_option": "1.5 Ω",
+      "difficulty": "medium",
+      "global_id": 43,
+      "explanation": "r_d = ΔV / ΔI = (0.73 V - 0.70 V) / (30 mA - 10 mA) = 0.030 V / 0.020 A = 1.5 Ω."
+    },
+    {
+      "id": "diode-q44",
+      "question": "What is the maximum theoretical efficiency of an ideal full-wave rectifier with resistive load and no capacitor?",
+      "options": [
+        "81.2%",
+        "40.6%",
+        "50.0%",
+        "100.0%"
+      ],
+      "answer": "81.2%",
+      "correct_option": "81.2%",
+      "difficulty": "medium",
+      "global_id": 44,
+      "explanation": "Maximum efficiency η_max = P_dc / P_ac = (8 / π²) ≈ 81.16% for full-wave rectification (twice that of half-wave at 40.6%)."
+    },
+    {
+      "id": "diode-q45",
+      "question": "What is thermal runaway in a power diode?",
+      "options": [
+        "A positive feedback loop where temperature rise increases reverse leakage current, causing higher power dissipation and further heating until destruction",
+        "The diode generating infinite cold",
+        "The diode melting due to electrostatic charge",
+        "The diode emitting ultraviolet light"
+      ],
+      "answer": "A positive feedback loop where temperature rise increases reverse leakage current, causing higher power dissipation and further heating until destruction",
+      "correct_option": "A positive feedback loop where temperature rise increases reverse leakage current, causing higher power dissipation and further heating until destruction",
+      "difficulty": "hard",
+      "global_id": 45,
+      "explanation": "Because I_s doubles every 10°C, leakage power dissipation P = V_R * I_s heats the junction. If heat cannot dissipate fast enough, temperature climbs uncontrollably until thermal breakdown."
+    },
+    {
+      "id": "diode-q46",
+      "question": "What is the bandgap of standard monocrystalline silicon at 300 K?",
+      "options": [
+        "1.12 eV",
+        "0.66 eV",
+        "1.42 eV",
+        "3.39 eV"
+      ],
+      "answer": "1.12 eV",
+      "correct_option": "1.12 eV",
+      "difficulty": "easy",
+      "global_id": 46,
+      "explanation": "Silicon has an indirect energy bandgap of E_g ≈ 1.12 eV at 300 K."
+    },
+    {
+      "id": "diode-q47",
+      "question": "What is the bandgap of germanium at room temperature (300 K)?",
+      "options": [
+        "0.66 eV",
+        "1.12 eV",
+        "1.42 eV",
+        "2.26 eV"
+      ],
+      "answer": "0.66 eV",
+      "correct_option": "0.66 eV",
+      "difficulty": "easy",
+      "global_id": 47,
+      "explanation": "Germanium has an indirect energy bandgap of approximately 0.66 eV at 300 K."
+    },
+    {
+      "id": "diode-q48",
+      "question": "What happens to the built-in potential barrier V_0 if the donor doping concentration N_D and acceptor doping concentration N_A are increased?",
+      "options": [
+        "V_0 increases logarithmically according to V_0 = V_T * ln(N_A * N_D / n_i²)",
+        "V_0 decreases linearly",
+        "V_0 drops to zero",
+        "V_0 is independent of doping"
+      ],
+      "answer": "V_0 increases logarithmically according to V_0 = V_T * ln(N_A * N_D / n_i²)",
+      "correct_option": "V_0 increases logarithmically according to V_0 = V_T * ln(N_A * N_D / n_i²)",
+      "difficulty": "hard",
+      "global_id": 48,
+      "explanation": "Higher doping pushes the Fermi levels closer to the band edges in both p and n regions, increasing built-in potential V_0 = (kT/q) ln(N_A N_D / n_i²)."
+    },
+    {
+      "id": "diode-q49",
+      "question": "What is a PIN diode and what is its primary high-frequency application?",
+      "options": [
+        "A diode with an intrinsic (undoped) layer between p and n regions, functioning as an RF variable resistor or fast optical detector",
+        "A diode with three p-type terminals",
+        "A diode that conducts only when pinned to ground",
+        "A diode that replaces vacuum tubes in audio"
+      ],
+      "answer": "A diode with an intrinsic (undoped) layer between p and n regions, functioning as an RF variable resistor or fast optical detector",
+      "correct_option": "A diode with an intrinsic (undoped) layer between p and n regions, functioning as an RF variable resistor or fast optical detector",
+      "difficulty": "medium",
+      "global_id": 49,
+      "explanation": "The thick intrinsic (I) layer yields low junction capacitance and long carrier lifetime, allowing the PIN diode to behave as an RF attenuator/switch whose resistance is tuned by DC bias."
+    },
+    {
+      "id": "diode-q50",
+      "question": "Why does an LED require a series resistor when connected to a DC supply voltage V_cc > V_knee?",
+      "options": [
+        "Because its steep exponential V-I slope would allow destructive current overcurrent without external resistance",
+        "To step down the frequency of light",
+        "To make the LED shine in both directions",
+        "To prevent electromagnetic interference"
+      ],
+      "answer": "Because its steep exponential V-I slope would allow destructive current overcurrent without external resistance",
+      "correct_option": "Because its steep exponential V-I slope would allow destructive current overcurrent without external resistance",
+      "difficulty": "easy",
+      "global_id": 50,
+      "explanation": "Once the applied voltage exceeds the LED forward knee voltage, resistance drops near zero; the series resistor sets safe forward current: R = (V_cc - V_LED) / I_desired."
+    }
+  ]
+}

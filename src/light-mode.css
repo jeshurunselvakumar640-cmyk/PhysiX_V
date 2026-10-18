@@ -799,6 +799,36 @@ body.light-mode .btn-obs-export-pdf,
   font-weight: 700 !important;
 }
 
+body.light-mode #hall-btn-zero-offset,
+[data-theme="light"] #hall-btn-zero-offset {
+  background: linear-gradient(135deg, #f3e8ff, #ede9fe) !important;
+  border: 1.5px solid #d8b4fe !important;
+  color: #7e22ce !important;
+  font-weight: 700 !important;
+}
+
+body.light-mode #hall-btn-zero-offset:hover,
+[data-theme="light"] #hall-btn-zero-offset:hover {
+  background: #e9d5ff !important;
+  border-color: #c084fc !important;
+  color: #6b21a8 !important;
+}
+
+body.light-mode .cs-mystery-guess-btn,
+[data-theme="light"] .cs-mystery-guess-btn {
+  background: linear-gradient(135deg, #f0f9ff, #e0f2fe) !important;
+  border: 1.5px solid #bae6fd !important;
+  color: #0369a1 !important;
+  font-weight: 700 !important;
+}
+
+body.light-mode .cs-mystery-guess-btn:hover,
+[data-theme="light"] .cs-mystery-guess-btn:hover {
+  background: #bae6fd !important;
+  border-color: #38bdf8 !important;
+  color: #0284c7 !important;
+}
+
 body.light-mode .obs-count-pill,
 [data-theme="light"] .obs-count-pill {
   background: #e0f2fe !important;

@@ -1,0 +1,760 @@
+{
+  "experiment": "Hall Effect Experiment - Question Bank",
+  "experimentId": "hall-effect",
+  "quizId": "hall-effect-mastery-quiz",
+  "experimentName": "Hall Effect Experiment",
+  "description": "Comprehensive 50-Question Physics Question Bank for Hall Effect Experiment",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "Who discovered the Hall Effect and in which year?",
+      "options": [
+        "Edwin Herbert Hall in 1879",
+        "Heinrich Hertz in 1888",
+        "Michael Faraday in 1831",
+        "James Clerk Maxwell in 1865"
+      ],
+      "answer": "Edwin Herbert Hall in 1879",
+      "correct_option": "Edwin Herbert Hall in 1879",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "Edwin Herbert Hall discovered the Hall effect in 1879 while working on his doctoral thesis under Henry Rowland at Johns Hopkins University."
+    },
+    {
+      "id": 2,
+      "question": "What is the primary phenomenon observed in the Hall Effect?",
+      "options": [
+        "Development of a transverse voltage across a current-carrying conductor in a perpendicular magnetic field",
+        "Emission of electrons when light illuminates a metallic surface",
+        "Change in electrical resistance when exposed to temperature changes",
+        "Generation of electromotive force by mechanical pressure on a crystal"
+      ],
+      "answer": "Development of a transverse voltage across a current-carrying conductor in a perpendicular magnetic field",
+      "correct_option": "Development of a transverse voltage across a current-carrying conductor in a perpendicular magnetic field",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "The Hall Effect is the creation of a transverse potential difference across an electrical conductor or semiconductor when placed in a magnetic field perpendicular to the current."
+    },
+    {
+      "id": 3,
+      "question": "Which force is primarily responsible for deflecting charge carriers in the Hall Effect?",
+      "options": [
+        "Magnetic Lorentz force F = q(v × B)",
+        "Gravitational force F = mg",
+        "Nuclear strong force",
+        "Coulomb electrostatic force only"
+      ],
+      "answer": "Magnetic Lorentz force F = q(v × B)",
+      "correct_option": "Magnetic Lorentz force F = q(v × B)",
+      "difficulty": "easy",
+      "global_id": 3,
+      "explanation": "Moving mobile charge carriers with drift velocity v experience a magnetic Lorentz force F = q(v × B) that deflects them laterally."
+    },
+    {
+      "id": 4,
+      "question": "What is the mathematical expression for the Hall Voltage V_H?",
+      "options": [
+        "V_H = (R_H · I · B) / t",
+        "V_H = (R_H · I · t) / B",
+        "V_H = (R_H · B · t) / I",
+        "V_H = (I · B · t) / R_H"
+      ],
+      "answer": "V_H = (R_H · I · B) / t",
+      "correct_option": "V_H = (R_H · I · B) / t",
+      "difficulty": "easy",
+      "global_id": 4,
+      "explanation": "The transverse Hall voltage V_H is directly proportional to Hall coefficient R_H, current I, and magnetic field B, and inversely proportional to specimen thickness t."
+    },
+    {
+      "id": 5,
+      "question": "How is the Hall Coefficient R_H defined in terms of charge carrier density n?",
+      "options": [
+        "R_H = 1 / (n · q)",
+        "R_H = n · q",
+        "R_H = n / q",
+        "R_H = q / n"
+      ],
+      "answer": "R_H = 1 / (n · q)",
+      "correct_option": "R_H = 1 / (n · q)",
+      "difficulty": "easy",
+      "global_id": 5,
+      "explanation": "For a single dominant carrier type, the Hall coefficient is R_H = 1 / (n · q), where q is carrier charge (-e for electrons, +e for holes)."
+    },
+    {
+      "id": 6,
+      "question": "What is the sign of the Hall Coefficient in an n-type semiconductor?",
+      "options": [
+        "Negative (R_H < 0)",
+        "Positive (R_H > 0)",
+        "Always exactly zero",
+        "Fluctuates unpredictably"
+      ],
+      "answer": "Negative (R_H < 0)",
+      "correct_option": "Negative (R_H < 0)",
+      "difficulty": "easy",
+      "global_id": 6,
+      "explanation": "In n-type semiconductors, majority carriers are electrons (q = -e), resulting in a negative Hall coefficient R_H = -1 / (n · e) < 0."
+    },
+    {
+      "id": 7,
+      "question": "What is the sign of the Hall Coefficient in a p-type semiconductor?",
+      "options": [
+        "Positive (R_H > 0)",
+        "Negative (R_H < 0)",
+        "Zero",
+        "Imaginary"
+      ],
+      "answer": "Positive (R_H > 0)",
+      "correct_option": "Positive (R_H > 0)",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "In p-type semiconductors, majority carriers are holes (q = +e), yielding a positive Hall coefficient R_H = +1 / (p · e) > 0."
+    },
+    {
+      "id": 8,
+      "question": "Why do semiconductors produce significantly larger Hall voltages than metals under identical conditions?",
+      "options": [
+        "Semiconductors have a vastly smaller carrier concentration n, making R_H much larger",
+        "Metals completely block external magnetic fields",
+        "Semiconductors have infinite electrical resistance",
+        "Electrons in metals cannot experience Lorentz force"
+      ],
+      "answer": "Semiconductors have a vastly smaller carrier concentration n, making R_H much larger",
+      "correct_option": "Semiconductors have a vastly smaller carrier concentration n, making R_H much larger",
+      "difficulty": "medium",
+      "global_id": 8,
+      "explanation": "Since R_H = 1 / (n · q), and metals possess huge carrier concentrations (~10^28 m^-3) compared to semiconductors (~10^20 m^-3), the Hall coefficient is thousands of times higher in semiconductors."
+    },
+    {
+      "id": 9,
+      "question": "What is the SI unit of the Hall Coefficient R_H?",
+      "options": [
+        "m³ / C (cubic meters per coulomb)",
+        "V / m (volts per meter)",
+        "Tesla (T)",
+        "Ohm-meter (Ω·m)"
+      ],
+      "answer": "m³ / C (cubic meters per coulomb)",
+      "correct_option": "m³ / C (cubic meters per coulomb)",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "R_H = V_H · t / (I · B) has units of (V · m) / (A · T) = m³ / C."
+    },
+    {
+      "id": 10,
+      "question": "How does the Hall Voltage V_H vary with the thickness t of the specimen?",
+      "options": [
+        "Inversely proportional (V_H ∝ 1/t)",
+        "Directly proportional (V_H ∝ t)",
+        "Proportional to t²",
+        "Independent of thickness"
+      ],
+      "answer": "Inversely proportional (V_H ∝ 1/t)",
+      "correct_option": "Inversely proportional (V_H ∝ 1/t)",
+      "difficulty": "easy",
+      "global_id": 10,
+      "explanation": "Because drift velocity is inversely related to cross-sectional area (A = w · t), thinner specimens produce greater Hall potentials."
+    },
+    {
+      "id": 11,
+      "question": "Under dynamic equilibrium in the Hall Effect, which two forces balance each other?",
+      "options": [
+        "Transverse electrostatic force (q · E_H) and magnetic Lorentz force (q · v_d · B)",
+        "Gravitational force and buoyant force",
+        "Frictional force and normal reaction force",
+        "Centripetal force and centrifugal force"
+      ],
+      "answer": "Transverse electrostatic force (q · E_H) and magnetic Lorentz force (q · v_d · B)",
+      "correct_option": "Transverse electrostatic force (q · E_H) and magnetic Lorentz force (q · v_d · B)",
+      "difficulty": "medium",
+      "global_id": 11,
+      "explanation": "At steady state, the accumulation of lateral charge creates a transverse Hall electric field E_H that exactly cancels the magnetic Lorentz deflection."
+    },
+    {
+      "id": 12,
+      "question": "How can the majority carrier density n be computed from experimental Hall measurements?",
+      "options": [
+        "n = 1 / (|R_H| · e)",
+        "n = |R_H| · e",
+        "n = |R_H| / e",
+        "n = e² / |R_H|"
+      ],
+      "answer": "n = 1 / (|R_H| · e)",
+      "correct_option": "n = 1 / (|R_H| · e)",
+      "difficulty": "easy",
+      "global_id": 12,
+      "explanation": "Carrier concentration is calculated as n = 1 / (|R_H| · e), where e = 1.602 × 10^-19 C."
+    },
+    {
+      "id": 13,
+      "question": "What is the relationship between carrier mobility μ_H, Hall coefficient R_H, and electrical conductivity σ?",
+      "options": [
+        "μ_H = |R_H| · σ",
+        "μ_H = |R_H| / σ",
+        "μ_H = σ / |R_H|",
+        "μ_H = |R_H| · σ²"
+      ],
+      "answer": "μ_H = |R_H| · σ",
+      "correct_option": "μ_H = |R_H| · σ",
+      "difficulty": "medium",
+      "global_id": 13,
+      "explanation": "Since conductivity is σ = n · e · μ, substituting n · e = 1 / |R_H| gives mobility μ_H = |R_H| · σ = |R_H| / ρ."
+    },
+    {
+      "id": 14,
+      "question": "What is the tangent of the Hall Angle (tan θ_H) equal to?",
+      "options": [
+        "μ_H · B",
+        "μ_H / B",
+        "B / μ_H",
+        "R_H · I"
+      ],
+      "answer": "μ_H · B",
+      "correct_option": "μ_H · B",
+      "difficulty": "medium",
+      "global_id": 14,
+      "explanation": "The Hall angle θ_H represents the tilt of the total electric field relative to current flow, given by tan(θ_H) = E_H / E_x = μ_H · B."
+    },
+    {
+      "id": 15,
+      "question": "What happens to the measured Hall Voltage if the direction of the magnetic field B is inverted?",
+      "options": [
+        "It reverses polarity (sign inverts)",
+        "It doubles in magnitude without changing sign",
+        "It drops to zero and stays zero",
+        "It remains completely unaffected"
+      ],
+      "answer": "It reverses polarity (sign inverts)",
+      "correct_option": "It reverses polarity (sign inverts)",
+      "difficulty": "easy",
+      "global_id": 15,
+      "explanation": "Since V_H = (R_H · I · B) / t, changing B to -B reverses the direction of the Lorentz force and inverts the sign of V_H."
+    },
+    {
+      "id": 16,
+      "question": "What happens to the measured Hall Voltage if both the current I and magnetic field B are reversed simultaneously?",
+      "options": [
+        "It retains its original sign and polarity",
+        "It reverses sign",
+        "It becomes zero",
+        "It fluctuates wildly"
+      ],
+      "answer": "It retains its original sign and polarity",
+      "correct_option": "It retains its original sign and polarity",
+      "difficulty": "medium",
+      "global_id": 16,
+      "explanation": "Because V_H ∝ I · B, reversing both factors gives (-I) · (-B) = + (I · B), leaving the polarity unchanged."
+    },
+    {
+      "id": 17,
+      "question": "What is the primary cause of zero-field misalignment offset voltage (V_0) in a Hall probe?",
+      "options": [
+        "Transverse voltage contacts are not positioned on the exact same equipotential line",
+        "Earth's gravitational curvature",
+        "Fluctuations in ambient atmospheric pressure",
+        "Cosmic background radiation"
+      ],
+      "answer": "Transverse voltage contacts are not positioned on the exact same equipotential line",
+      "correct_option": "Transverse voltage contacts are not positioned on the exact same equipotential line",
+      "difficulty": "medium",
+      "global_id": 17,
+      "explanation": "If the two transverse voltage electrodes are slightly offset longitudinally along the sample, an IR drop appears across them even when B = 0."
+    },
+    {
+      "id": 18,
+      "question": "How can misalignment and thermoelectric offset voltages be eliminated experimentally?",
+      "options": [
+        "Four-quadrant averaging by reversing both current and magnetic field directions",
+        "Covering the probe with aluminum foil",
+        "Increasing room temperature to 100°C",
+        "Using alternating current at radio frequency"
+      ],
+      "answer": "Four-quadrant averaging by reversing both current and magnetic field directions",
+      "correct_option": "Four-quadrant averaging by reversing both current and magnetic field directions",
+      "difficulty": "medium",
+      "global_id": 18,
+      "explanation": "Taking readings across (+I, +B), (+I, -B), (-I, +B), and (-I, -B) cancels out offset voltages and thermomagnetic asymmetries."
+    },
+    {
+      "id": 19,
+      "question": "What is the Ettingshausen Effect?",
+      "options": [
+        "A transverse temperature difference produced by longitudinal current in a perpendicular magnetic field",
+        "The emission of light by a heated conductor",
+        "The change of capacitance with voltage",
+        "The alignment of nuclear spins in a constant field"
+      ],
+      "answer": "A transverse temperature difference produced by longitudinal current in a perpendicular magnetic field",
+      "correct_option": "A transverse temperature difference produced by longitudinal current in a perpendicular magnetic field",
+      "difficulty": "hard",
+      "global_id": 19,
+      "explanation": "The Ettingshausen effect is the thermal analog of the Hall effect: faster electrons are deflected differently than slower electrons, establishing a lateral temperature gradient."
+    },
+    {
+      "id": 20,
+      "question": "What is the Nernst Effect?",
+      "options": [
+        "A transverse electric field generated when a temperature gradient is applied across a magnetic field",
+        "The change in resistance of a wire under mechanical stress",
+        "The production of sound by oscillating electric currents",
+        "The emission of alpha particles from heavy nuclei"
+      ],
+      "answer": "A transverse electric field generated when a temperature gradient is applied across a magnetic field",
+      "correct_option": "A transverse electric field generated when a temperature gradient is applied across a magnetic field",
+      "difficulty": "hard",
+      "global_id": 20,
+      "explanation": "The Nernst effect occurs when a heat current (temperature gradient) and a perpendicular magnetic field induce a transverse voltage."
+    },
+    {
+      "id": 21,
+      "question": "In which year and by whom was the Integer Quantum Hall Effect discovered?",
+      "options": [
+        "Klaus von Klitzing in 1980",
+        "Albert Einstein in 1905",
+        "Niels Bohr in 1913",
+        "Richard Feynman in 1965"
+      ],
+      "answer": "Klaus von Klitzing in 1980",
+      "correct_option": "Klaus von Klitzing in 1980",
+      "difficulty": "medium",
+      "global_id": 21,
+      "explanation": "Klaus von Klitzing discovered the Integer Quantum Hall Effect in 1980 using 2D electron gas systems in silicon MOSFETs at cryogenic temperatures and high magnetic fields (Nobel Prize in 1985)."
+    },
+    {
+      "id": 22,
+      "question": "What is the fundamental quantized Hall resistance formula in the Quantum Hall Effect?",
+      "options": [
+        "R_H = h / (ν · e²)",
+        "R_H = ν · h · e²",
+        "R_H = (ν · e) / h",
+        "R_H = h² / (ν · e)"
+      ],
+      "answer": "R_H = h / (ν · e²)",
+      "correct_option": "R_H = h / (ν · e²)",
+      "difficulty": "hard",
+      "global_id": 22,
+      "explanation": "In the Integer Quantum Hall Effect, Hall resistance exhibits exact plateaus at R_H = h / (ν · e²), where ν is an integer and h / e² is the von Klitzing constant."
+    },
+    {
+      "id": 23,
+      "question": "What is the approximate value of the von Klitzing constant R_K = h / e²?",
+      "options": [
+        "25,812.807 Ω",
+        "1,000.000 Ω",
+        "377.000 Ω",
+        "50.000 Ω"
+      ],
+      "answer": "25,812.807 Ω",
+      "correct_option": "25,812.807 Ω",
+      "difficulty": "hard",
+      "global_id": 23,
+      "explanation": "The von Klitzing constant R_K = h / e² is approximately 25,812.807 ohms, utilized internationally as a universal quantum standard of electrical resistance."
+    },
+    {
+      "id": 24,
+      "question": "Which physical system is required to observe the Quantum Hall Effect?",
+      "options": [
+        "A two-dimensional electron gas (2DEG) at cryogenic temperatures under strong magnetic fields",
+        "A piece of copper wire at room temperature",
+        "An incandescent light bulb filament",
+        "A liquid mercury thermometer"
+      ],
+      "answer": "A two-dimensional electron gas (2DEG) at cryogenic temperatures under strong magnetic fields",
+      "correct_option": "A two-dimensional electron gas (2DEG) at cryogenic temperatures under strong magnetic fields",
+      "difficulty": "medium",
+      "global_id": 24,
+      "explanation": "The Quantum Hall effect requires electrons confined strictly to 2D motion (e.g., GaAs/AlGaAs heterostructures or graphene) under high magnetic fields and low temperatures."
+    },
+    {
+      "id": 25,
+      "question": "Which compound semiconductor is known for extremely high electron mobility and widely used in commercial Hall sensors?",
+      "options": [
+        "Indium Arsenide (InAs) / Indium Antimonide (InSb)",
+        "Silicon Dioxide (SiO₂)",
+        "Lead (Pb)",
+        "Sodium Chloride (NaCl)"
+      ],
+      "answer": "Indium Arsenide (InAs) / Indium Antimonide (InSb)",
+      "correct_option": "Indium Arsenide (InAs) / Indium Antimonide (InSb)",
+      "difficulty": "medium",
+      "global_id": 25,
+      "explanation": "InAs and InSb have narrow bandgaps and exceptionally high electron mobilities (>20,000 cm²/(V·s)), making them ideal for high-sensitivity Hall probes."
+    },
+    {
+      "id": 26,
+      "question": "How are Hall effect sensors utilized in brushless DC (BLDC) electric motors?",
+      "options": [
+        "To sense the rotor magnetic pole position and control phase electronic commutation",
+        "To measure mechanical friction inside ball bearings",
+        "To regulate cooling fan airflow by acoustic vibration",
+        "To generate auxiliary electrical power for headlights"
+      ],
+      "answer": "To sense the rotor magnetic pole position and control phase electronic commutation",
+      "correct_option": "To sense the rotor magnetic pole position and control phase electronic commutation",
+      "difficulty": "easy",
+      "global_id": 26,
+      "explanation": "BLDC motors use three Hall sensors placed around the stator to detect rotor magnet pole positions and switch transistor phase inverter gates."
+    },
+    {
+      "id": 27,
+      "question": "How do automotive Anti-lock Braking Systems (ABS) utilize Hall effect sensors?",
+      "options": [
+        "To detect the rotational speed of wheels by sensing passing reluctor ring teeth",
+        "To measure brake fluid temperature directly",
+        "To verify vehicle paint reflectivity",
+        "To adjust cabin air conditioning airflow"
+      ],
+      "answer": "To detect the rotational speed of wheels by sensing passing reluctor ring teeth",
+      "correct_option": "To detect the rotational speed of wheels by sensing passing reluctor ring teeth",
+      "difficulty": "easy",
+      "global_id": 27,
+      "explanation": "Hall sensors monitor toothed reluctor wheels on each axle to measure instantaneous angular velocity and detect impending wheel lockup."
+    },
+    {
+      "id": 28,
+      "question": "What is an advantage of Hall effect current sensors over shunt resistors in power electronics?",
+      "options": [
+        "Galvanic electrical isolation and zero insertion resistance loss",
+        "Requires no DC operating power whatsoever",
+        "Works only in vacuum environments",
+        "Operates only at absolute zero"
+      ],
+      "answer": "Galvanic electrical isolation and zero insertion resistance loss",
+      "correct_option": "Galvanic electrical isolation and zero insertion resistance loss",
+      "difficulty": "medium",
+      "global_id": 28,
+      "explanation": "Hall current sensors measure the magnetic field surrounding a conductor without making electrical contact, providing full galvanic isolation between high-voltage circuits and logic."
+    },
+    {
+      "id": 29,
+      "question": "What instrument utilizes a calibrated Hall probe to measure magnetic flux density?",
+      "options": [
+        "Digital Gaussmeter / Tesla meter",
+        "Galvanic Spectrometer",
+        "Optical Interferometer",
+        "Seismograph"
+      ],
+      "answer": "Digital Gaussmeter / Tesla meter",
+      "correct_option": "Digital Gaussmeter / Tesla meter",
+      "difficulty": "easy",
+      "global_id": 29,
+      "explanation": "Gaussmeters use a small calibrated semiconductor Hall sensor element whose output voltage linearly corresponds to magnetic flux density B."
+    },
+    {
+      "id": 30,
+      "question": "For intrinsic semiconductors where both electrons and holes contribute to transport, what is the expression for R_H?",
+      "options": [
+        "R_H = (p·μ_h² - n·μ_e²) / [e · (p·μ_h + n·μ_e)²]",
+        "R_H = (p·μ_h + n·μ_e) / [e · (p·μ_h - n·μ_e)]",
+        "R_H = 1 / [e · (n + p)]",
+        "R_H = (μ_e · μ_h) / [e · (n - p)]"
+      ],
+      "answer": "R_H = (p·μ_h² - n·μ_e²) / [e · (p·μ_h + n·μ_e)²]",
+      "correct_option": "R_H = (p·μ_h² - n·μ_e²) / [e · (p·μ_h + n·μ_e)²]",
+      "difficulty": "hard",
+      "global_id": 30,
+      "explanation": "When both carrier types participate, the Hall voltages of electrons and holes compete with quadratic weighting by their respective mobilities."
+    },
+    {
+      "id": 31,
+      "question": "Why does intrinsic Germanium (Ge) exhibit a negative Hall coefficient despite having equal electron and hole concentrations (n = p = n_i)?",
+      "options": [
+        "Electron mobility is significantly greater than hole mobility (μ_e > μ_h)",
+        "Electrons have higher mass than holes",
+        "Holes do not experience magnetic fields",
+        "Germanium crystal atoms carry net negative electric charge"
+      ],
+      "answer": "Electron mobility is significantly greater than hole mobility (μ_e > μ_h)",
+      "correct_option": "Electron mobility is significantly greater than hole mobility (μ_e > μ_h)",
+      "difficulty": "medium",
+      "global_id": 31,
+      "explanation": "In Ge, μ_e ≈ 3900 cm²/(V·s) while μ_h ≈ 1900 cm²/(V·s). Because R_H ∝ (p·μ_h² - n·μ_e²), the electron term dominates, making R_H negative."
+    },
+    {
+      "id": 32,
+      "question": "If specimen current I = 20 mA, magnetic field B = 0.5 T, thickness t = 0.5 mm, and V_H = -15.2 mV, what is the Hall coefficient R_H?",
+      "options": [
+        "-3.80 × 10⁻² m³ / C",
+        "-1.52 × 10⁻⁴ m³ / C",
+        "+7.60 × 10⁻² m³ / C",
+        "-3.80 × 10² m³ / C"
+      ],
+      "answer": "-3.80 × 10⁻² m³ / C",
+      "correct_option": "-3.80 × 10⁻² m³ / C",
+      "difficulty": "hard",
+      "global_id": 32,
+      "explanation": "R_H = (V_H · t) / (I · B) = (-0.0152 V · 0.0005 m) / (0.020 A · 0.5 T) = -7.6 × 10^-6 / 0.010 = -3.80 × 10^-2 m³/C."
+    },
+    {
+      "id": 33,
+      "question": "Given R_H = -3.80 × 10⁻² m³ / C, what is the carrier density n?",
+      "options": [
+        "1.64 × 10²⁰ m⁻³",
+        "3.80 × 10²⁰ m⁻³",
+        "6.24 × 10¹⁸ m⁻³",
+        "1.64 × 10²⁸ m⁻³"
+      ],
+      "answer": "1.64 × 10²⁰ m⁻³",
+      "correct_option": "1.64 × 10²⁰ m⁻³",
+      "difficulty": "hard",
+      "global_id": 33,
+      "explanation": "n = 1 / (|R_H| · e) = 1 / (3.80 × 10^-2 · 1.602 × 10^-19) ≈ 1.64 × 10^20 m^-3."
+    },
+    {
+      "id": 34,
+      "question": "If electrical resistivity ρ = 0.098 Ω·m and R_H = -3.80 × 10⁻² m³/C, what is the carrier mobility μ_H?",
+      "options": [
+        "0.388 m² / (V·s)",
+        "0.0037 m² / (V·s)",
+        "3.88 m² / (V·s)",
+        "25.8 m² / (V·s)"
+      ],
+      "answer": "0.388 m² / (V·s)",
+      "correct_option": "0.388 m² / (V·s)",
+      "difficulty": "hard",
+      "global_id": 34,
+      "explanation": "μ_H = |R_H| / ρ = 0.0380 / 0.098 ≈ 0.388 m²/(V·s) = 3880 cm²/(V·s)."
+    },
+    {
+      "id": 35,
+      "question": "What is the typical order of magnitude of Hall voltage generated in a metallic copper plate of thickness 0.1 mm with I = 10 A and B = 1 T?",
+      "options": [
+        "Microvolts (~0.5 μV)",
+        "Millivolts (~50 mV)",
+        "Volts (~5 V)",
+        "Kilovolts (~1 kV)"
+      ],
+      "answer": "Microvolts (~0.5 μV)",
+      "correct_option": "Microvolts (~0.5 μV)",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "In copper, R_H ≈ -5.5 × 10^-11 m³/C. For 10 A and 1 T with t = 10^-4 m: V_H = (5.5 × 10^-11 · 10 · 1) / 10^-4 ≈ 5.5 × 10^-6 V = 5.5 μV."
+    },
+    {
+      "id": 36,
+      "question": "Which of the following metals exhibits an anomalous positive Hall coefficient at room temperature?",
+      "options": [
+        "Zinc (Zn) and Cadmium (Cd)",
+        "Copper (Cu)",
+        "Silver (Ag)",
+        "Gold (Au)"
+      ],
+      "answer": "Zinc (Zn) and Cadmium (Cd)",
+      "correct_option": "Zinc (Zn) and Cadmium (Cd)",
+      "difficulty": "hard",
+      "global_id": 36,
+      "explanation": "Due to complex Fermi surface geometry and hole-like pockets in the second Brillouin zone, metals like Zinc and Cadmium exhibit a positive Hall coefficient."
+    },
+    {
+      "id": 37,
+      "question": "What happens to the carrier concentration n of a doped extrinsic semiconductor as temperature increases into the intrinsic regime?",
+      "options": [
+        "It increases exponentially due to thermal generation of electron-hole pairs",
+        "It drops to zero immediately",
+        "It remains strictly constant at all temperatures",
+        "It becomes negative"
+      ],
+      "answer": "It increases exponentially due to thermal generation of electron-hole pairs",
+      "correct_option": "It increases exponentially due to thermal generation of electron-hole pairs",
+      "difficulty": "medium",
+      "global_id": 37,
+      "explanation": "At elevated temperatures, thermal excitation across the bandgap produces intrinsic electron-hole pairs exponentially, causing n to surge and R_H to decline."
+    },
+    {
+      "id": 38,
+      "question": "In the absence of a magnetic field (B = 0), what should the ideal Hall voltage be across perfect symmetric contacts?",
+      "options": [
+        "Exactly 0.0 mV",
+        "Equal to the power supply voltage",
+        "Infinite",
+        "Undefined"
+      ],
+      "answer": "Exactly 0.0 mV",
+      "correct_option": "Exactly 0.0 mV",
+      "difficulty": "easy",
+      "global_id": 38,
+      "explanation": "Without a magnetic field, the Lorentz force is zero (F_L = 0), no lateral charge accumulation occurs, and transverse potential is zero."
+    },
+    {
+      "id": 39,
+      "question": "How does the drift velocity v_d of charge carriers relate to the sample current I?",
+      "options": [
+        "v_d = I / (n · q · w · t)",
+        "v_d = I · n · q · w · t",
+        "v_d = (n · q) / (I · w · t)",
+        "v_d = (w · t) / (I · n · q)"
+      ],
+      "answer": "v_d = I / (n · q · w · t)",
+      "correct_option": "v_d = I / (n · q · w · t)",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "Current density J = I / (w · t) = n · q · v_d, giving drift velocity v_d = I / (n · q · w · t)."
+    },
+    {
+      "id": 40,
+      "question": "If the magnetic field B is doubled while maintaining constant current I, what happens to the Hall voltage V_H?",
+      "options": [
+        "It doubles (2 × V_H)",
+        "It quadruples (4 × V_H)",
+        "It halves (0.5 × V_H)",
+        "It remains unchanged"
+      ],
+      "answer": "It doubles (2 × V_H)",
+      "correct_option": "It doubles (2 × V_H)",
+      "difficulty": "easy",
+      "global_id": 40,
+      "explanation": "Hall voltage is directly proportional to magnetic field B: V_H ∝ B. Doubling B doubles V_H."
+    },
+    {
+      "id": 41,
+      "question": "What is the physical interpretation of the Hall coefficient's sign?",
+      "options": [
+        "It reveals the electrical charge sign of majority mobile carriers",
+        "It reveals whether the specimen is radioactive",
+        "It indicates the magnetic permeability of vacuum",
+        "It indicates the speed of light in the material"
+      ],
+      "answer": "It reveals the electrical charge sign of majority mobile carriers",
+      "correct_option": "It reveals the electrical charge sign of majority mobile carriers",
+      "difficulty": "easy",
+      "global_id": 41,
+      "explanation": "Because R_H = 1 / (n · q), the sign of R_H matches the sign of q: positive for holes, negative for electrons."
+    },
+    {
+      "id": 42,
+      "question": "What type of contacts must be made to semiconductor specimens for accurate Hall measurements?",
+      "options": [
+        "Ohmic, non-rectifying contacts with minimal contact resistance",
+        "Schottky barrier diode rectifying contacts",
+        "Capacitive insulated air-gap contacts",
+        "Loose mechanical touch pins with high oxide resistance"
+      ],
+      "answer": "Ohmic, non-rectifying contacts with minimal contact resistance",
+      "correct_option": "Ohmic, non-rectifying contacts with minimal contact resistance",
+      "difficulty": "medium",
+      "global_id": 42,
+      "explanation": "Non-ohmic rectifying contacts would create nonlinear voltage drops and asymmetric rectification, corrupting Hall voltage readouts."
+    },
+    {
+      "id": 43,
+      "question": "In the van der Pauw method of Hall measurement, what sample geometry is required?",
+      "options": [
+        "Arbitrarily shaped flat thin sample of uniform thickness with four small peripheral perimeter contacts",
+        "A long cylindrical rod with axial contacts",
+        "A solid metal sphere with concentric core contacts",
+        "A hollow wire loop"
+      ],
+      "answer": "Arbitrarily shaped flat thin sample of uniform thickness with four small peripheral perimeter contacts",
+      "correct_option": "Arbitrarily shaped flat thin sample of uniform thickness with four small peripheral perimeter contacts",
+      "difficulty": "hard",
+      "global_id": 43,
+      "explanation": "The van der Pauw method permits exact measurement of resistivity and Hall coefficient on arbitrary flat 2D geometries of uniform thickness."
+    },
+    {
+      "id": 44,
+      "question": "What is the typical thickness t of commercial semiconductor Hall sensor elements?",
+      "options": [
+        "Thin wafers or epitaxial films between 1 μm and 0.5 mm",
+        "Thick blocks of 10 cm to 20 cm",
+        "Massive ingots of 1 meter",
+        "Atomic radius of 0.1 nanometers"
+      ],
+      "answer": "Thin wafers or epitaxial films between 1 μm and 0.5 mm",
+      "correct_option": "Thin wafers or epitaxial films between 1 μm and 0.5 mm",
+      "difficulty": "medium",
+      "global_id": 44,
+      "explanation": "Thin films maximize the Hall voltage output because V_H is inversely proportional to thickness t (V_H ∝ 1/t)."
+    },
+    {
+      "id": 45,
+      "question": "When current flows in the +x direction and magnetic field points in the +z direction, in which direction do electrons drift?",
+      "options": [
+        "-x direction (opposite to conventional current)",
+        "+x direction",
+        "+y direction",
+        "+z direction"
+      ],
+      "answer": "-x direction (opposite to conventional current)",
+      "correct_option": "-x direction (opposite to conventional current)",
+      "difficulty": "medium",
+      "global_id": 45,
+      "explanation": "Negatively charged electrons drift in the direction opposite to conventional electric current density (+x), hence in the -x direction."
+    },
+    {
+      "id": 46,
+      "question": "For electrons moving in the -x direction in a magnetic field in the +z direction, which way is the magnetic Lorentz force directed?",
+      "options": [
+        "-y direction: F = (-e) · [(-v_x i) × (B_z k)] = (-e) · (v_x B_z j) = -y",
+        "+y direction",
+        "+x direction",
+        "+z direction"
+      ],
+      "answer": "-y direction: F = (-e) · [(-v_x i) × (B_z k)] = (-e) · (v_x B_z j) = -y",
+      "correct_option": "-y direction: F = (-e) · [(-v_x i) × (B_z k)] = (-e) · (v_x B_z j) = -y",
+      "difficulty": "hard",
+      "global_id": 46,
+      "explanation": "Using vector cross product: (-i) × k = +j. Multiplied by negative electron charge (-e), the force points in the -y direction."
+    },
+    {
+      "id": 47,
+      "question": "For holes moving in the +x direction in a magnetic field in the +z direction, which way is the magnetic Lorentz force directed?",
+      "options": [
+        "-y direction: F = (+e) · [(+v_x i) × (B_z k)] = (+e) · (-v_x B_z j) = -y",
+        "+y direction",
+        "+x direction",
+        "+z direction"
+      ],
+      "answer": "-y direction: F = (+e) · [(+v_x i) × (B_z k)] = (+e) · (-v_x B_z j) = -y",
+      "correct_option": "-y direction: F = (+e) · [(+v_x i) × (B_z k)] = (+e) · (-v_x B_z j) = -y",
+      "difficulty": "hard",
+      "global_id": 47,
+      "explanation": "Using vector cross product: (+i) × k = -j. Multiplied by positive hole charge (+e), the force also points in the -y direction! Both carriers deflect to the same edge."
+    },
+    {
+      "id": 48,
+      "question": "Why do n-type and p-type semiconductors develop opposite Hall voltages if both electrons and holes deflect toward the same physical edge?",
+      "options": [
+        "Because electrons carry negative charge while holes carry positive charge, giving opposite accumulated edge charge polarities",
+        "Because holes move faster than the speed of light",
+        "Because electrons lose their charge inside semiconductors",
+        "Because magnetic field direction changes inside p-type materials"
+      ],
+      "answer": "Because electrons carry negative charge while holes carry positive charge, giving opposite accumulated edge charge polarities",
+      "correct_option": "Because electrons carry negative charge while holes carry positive charge, giving opposite accumulated edge charge polarities",
+      "difficulty": "medium",
+      "global_id": 48,
+      "explanation": "Even though both deflect to the same lateral edge, the accumulated charge is negative for electrons and positive for holes, inverting the direction of the Hall electric field."
+    },
+    {
+      "id": 49,
+      "question": "Which of the following describes the Spin Hall Effect?",
+      "options": [
+        "Accumulation of opposite electron spin orientations on lateral sample boundaries due to spin-orbit coupling",
+        "Rotation of a specimen on a mechanical turntable",
+        "Electromagnetic wave polarization in plasma",
+        "Spinning of magnetic domains in ferromagnets"
+      ],
+      "answer": "Accumulation of opposite electron spin orientations on lateral sample boundaries due to spin-orbit coupling",
+      "correct_option": "Accumulation of opposite electron spin orientations on lateral sample boundaries due to spin-orbit coupling",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "The Spin Hall Effect (SHE) consists of spin-up and spin-down electrons deflecting to opposite edges in materials with strong spin-orbit coupling without external magnetic fields."
+    },
+    {
+      "id": 50,
+      "question": "Which statement best summarizes the practical significance of the Hall Effect experiment in solid-state physics?",
+      "options": [
+        "It provides a direct experimental method to determine carrier type, carrier concentration, and mobility in semiconductors",
+        "It proves that light has wave-particle duality",
+        "It confirms the universal gravitational constant G",
+        "It measures the speed of sound in crystalline solids"
+      ],
+      "answer": "It provides a direct experimental method to determine carrier type, carrier concentration, and mobility in semiconductors",
+      "correct_option": "It provides a direct experimental method to determine carrier type, carrier concentration, and mobility in semiconductors",
+      "difficulty": "easy",
+      "global_id": 50,
+      "explanation": "The Hall Effect is the foundational experiment in solid-state electronics for determining whether a semiconductor is n-type or p-type and measuring its fundamental transport parameters."
+    }
+  ]
+}

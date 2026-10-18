@@ -42,10 +42,10 @@ accentColor: "#38bdf8",
         <p>A projectile is any object projected into space with an initial velocity and subsequently subject solely to the force of gravity and (optionally) air resistance. According to Galilean invariance and Newtonian mechanics, two-dimensional projectile motion can be resolved into two mutually independent, orthogonal component motions:</p>
         <ul class="manual-list">
           <li><strong>Horizontal Motion (x-axis):</strong> In the absence of aerodynamic drag, no horizontal force acts on the projectile (F<sub>x</sub> = 0). Thus, horizontal acceleration a<sub>x</sub> = 0, and the horizontal velocity remains strictly uniform throughout flight:
-            <div class="math-callout">v_x(t) = v_0 \cos(\theta) = \text{constant}</div>
+            <div class="math-callout">v_x(t) = v_0 \\cos(\\theta) = \\text{constant}</div>
           </li>
           <li><strong>Vertical Motion (y-axis):</strong> The projectile experiences a continuous, downward gravitational acceleration (a<sub>y</sub> = −g). The vertical velocity decreases uniformly until reaching zero at the peak apex, reversing direction as it descends:
-            <div class="math-callout">v_y(t) = v_0 \sin(\theta) - gt</div>
+            <div class="math-callout">v_y(t) = v_0 \\sin(\\theta) - gt</div>
           </li>
         </ul>
       </div>
@@ -53,18 +53,18 @@ accentColor: "#38bdf8",
       <div class="theory-block">
         <h3>2. Derivation of Parabolic Trajectory Equation</h3>
         <p>Let the projectile be launched from an initial coordinate (d₀, h₀) with speed v₀ at angle θ to the horizontal plane. The parametric displacement equations as a function of elapsed time t are:</p>
-        <div class="math-callout">x(t) = d_0 + (v_0 \cos\theta)t \implies t = \frac{x - d_0}{v_0 \cos\theta}</div>
-        <div class="math-callout">y(t) = h_0 + (v_0 \sin\theta)t - \frac{1}{2}gt^2</div>
+        <div class="math-callout">x(t) = d_0 + (v_0 \\cos\\theta)t \\implies t = \\frac{x - d_0}{v_0 \\cos\\theta}</div>
+        <div class="math-callout">y(t) = h_0 + (v_0 \\sin\\theta)t - \\frac{1}{2}gt^2</div>
         <p>Substituting t into the vertical displacement equation yields the Cartesian trajectory equation:</p>
-        <div class="math-callout formula-highlight">y(x) = h_0 + (x - d_0)\tan(\theta) - \frac{g(x - d_0)^2}{2v_0^2 \cos^2(\theta)}</div>
-        <p>Because this equation is quadratic in x with a negative second-degree coefficient (−g / [2v₀² cos²θ]), the geometric path traced by the projectile is an exact downward-opening <strong>parabola</strong>.</p>
+        <div class="math-callout formula-highlight">y(x) = h_0 + (x - d_0)\\tan(\\theta) - \\frac{g(x - d_0)^2}{2v_0^2 \\cos^2(\\theta)}</div>
+        <p>Because this equation is quadratic in x with a negative second-degree coefficient ($-\\frac{g}{2v_0^2 \\cos^2\\theta}$), the geometric path traced by the projectile is an exact downward-opening <strong>parabola</strong>.</p>
       </div>
 
       <div class="theory-block">
         <h3>3. Condition for Maximum Range</h3>
-        <p>For a level terrain launch (h₀ = 0), setting y = 0 yields the horizontal range R = (v₀² · sin 2θ) / g. Differentiating R with respect to θ and setting dR/dθ = 0 gives:</p>
-        <div class="math-callout">\frac{d}{d\theta} [\sin(2\theta)] = 2 \cos(2\theta) = 0 \implies 2\theta = 90^\circ \implies \theta = 45^\circ</div>
-        <p>When launching from an elevated cliff or platform (h₀ &gt; 0), the optimal angle for maximum range decreases below 45° according to θ<sub>opt</sub> = arcsin( 1 / √(2 + 2gh₀ / v₀²) ).</p>
+        <p>For a level terrain launch (h₀ = 0), setting y = 0 yields the horizontal range $R = \\frac{v_0^2 \\sin(2\\theta)}{g}$. Differentiating R with respect to θ and setting dR/dθ = 0 gives:</p>
+        <div class="math-callout">\\frac{d}{d\\theta} [\\sin(2\\theta)] = 2 \\cos(2\\theta) = 0 \\implies 2\\theta = 90^\\circ \\implies \\theta = 45^\\circ</div>
+        <p>When launching from an elevated cliff or platform (h₀ &gt; 0), the optimal angle for maximum range decreases below 45° according to $\\theta_{\\text{opt}} = \\arcsin\\left( \\frac{1}{\\sqrt{2 + \\frac{2gh_0}{v_0^2}}} \\right)$.</p>
       </div>
     `,
     howToPerform: `
@@ -132,8 +132,8 @@ accentColor: "#38bdf8",
             <span class="f-title">Total Time of Flight (T)</span>
             <span class="f-unit">Seconds [s]</span>
           </div>
-          <div class="f-eq">T = \frac{v_0 \sin(\theta) + \sqrt{v_0^2 \sin^2\theta + 2gh_0}}{g}</div>
-          <p class="f-desc">When launch height h₀ = 0, simplifies to T = (2 · v₀ · sin θ) / g. Represents the duration from cannon departure to ground contact.</p>
+          <div class="f-eq">T = \\frac{v_0 \\sin(\\theta) + \\sqrt{v_0^2 \\sin^2\\theta + 2gh_0}}{g}</div>
+          <p class="f-desc">When launch height h₀ = 0, simplifies to $T = \\frac{2v_0 \\sin\\theta}{g}$. Represents the duration from cannon departure to ground contact.</p>
         </div>
 
         <div class="manual-formula-card">
@@ -141,7 +141,7 @@ accentColor: "#38bdf8",
             <span class="f-title">Maximum Apex Height (H<sub>max</sub>)</span>
             <span class="f-unit">Meters [m]</span>
           </div>
-          <div class="f-eq">H_{\text{max}} = h_0 + \frac{v_0^2 \sin^2\theta}{2g}</div>
+          <div class="f-eq">H_{\\text{max}} = h_0 + \\frac{v_0^2 \\sin^2\\theta}{2g}</div>
           <p class="f-desc">The maximum vertical altitude achieved when vertical velocity v<sub>y</sub> = 0. Independent of horizontal velocity component.</p>
         </div>
 
@@ -150,8 +150,8 @@ accentColor: "#38bdf8",
             <span class="f-title">Horizontal Range (R)</span>
             <span class="f-unit">Meters [m]</span>
           </div>
-          <div class="f-eq">R = d_0 + (v_0 \cos\theta) \cdot T</div>
-          <p class="f-desc">For level ground (h₀ = 0), R = (v₀² · sin 2θ) / g. Yields the total horizontal displacement traversed.</p>
+          <div class="f-eq">R = d_0 + (v_0 \\cos\\theta) \\cdot T</div>
+          <p class="f-desc">For level ground (h₀ = 0), $R = \\frac{v_0^2 \\sin(2\\theta)}{g}$. Yields the total horizontal displacement traversed.</p>
         </div>
 
         <div class="manual-formula-card">
@@ -159,8 +159,8 @@ accentColor: "#38bdf8",
             <span class="f-title">Impact Touchdown Velocity (v<sub>f</sub>)</span>
             <span class="f-unit">Meters / Second [m/s]</span>
           </div>
-          <div class="f-eq">v_f = \sqrt{v_0^2 + 2gh_0}</div>
-          <p class="f-desc">Derived from conservation of mechanical energy (E<sub>i</sub> = E<sub>f</sub>). Demonstrates that impact speed is independent of launch angle when air resistance is neglected.</p>
+          <div class="f-eq">v_f = \\sqrt{v_0^2 + 2gh_0}</div>
+          <p class="f-desc">Derived from conservation of mechanical energy ($E_i = E_f$). Demonstrates that impact speed is independent of launch angle when air resistance is neglected.</p>
         </div>
       </div>
     `,
@@ -284,26 +284,26 @@ accentColor: "#00f0ff",
         <h3>1. Waveguide Architecture & Total Internal Reflection (TIR)</h3>
         <p>An optical fibre is a cylindrical dielectric waveguide consisting of an inner <strong>core</strong> with refractive index n₁ surrounded by an outer <strong>cladding</strong> with refractive index n₂, such that n₁ &gt; n₂. Optical transmission through the fibre is governed by the phenomenon of <strong>Total Internal Reflection (TIR)</strong> occurring at the core-cladding boundary.</p>
         <p>When light enters the core from the external medium (air, n₀ ≈ 1.0), it refracts at the entrance facet and strikes the core-cladding interface at an angle φ. If φ equals or exceeds the critical angle φ<sub>c</sub> given by:</p>
-        <div class="math-callout">sin(φ<sub>c</sub>) = n₂ / n₁</div>
+        <div class="math-callout">\\sin(\\phi_c) = \\frac{n_2}{n_1}</div>
         <p>the ray undergoes repeated total internal reflections, remaining trapped inside the core and propagating down the length of the cable.</p>
       </div>
 
       <div class="theory-block">
         <h3>2. Acceptance Angle & Numerical Aperture Derivation</h3>
         <p>Applying Snell's Law at the input air-core interface for a ray entering at the maximum acceptance angle θ<sub>a</sub>:</p>
-        <div class="math-callout">n_0 \sin(\theta_a) = n_1 \sin(r) = n_1 \sin(90^\circ - \phi_c) = n_1 \cos(\phi_c) = n_1 \sqrt{1 - \sin^2\phi_c}</div>
-        <p>Substituting sin(φ<sub>c</sub>) = n₂ / n₁:</p>
-        <div class="math-callout formula-highlight">n_0 \sin(\theta_a) = n_1 \sqrt{1 - \frac{n_2^2}{n_1^2}} = \sqrt{n_1^2 - n_2^2}</div>
+        <div class="math-callout">n_0 \\sin(\\theta_a) = n_1 \\sin(r) = n_1 \\sin(90^\\circ - \\phi_c) = n_1 \\cos(\\phi_c) = n_1 \\sqrt{1 - \\sin^2\\phi_c}</div>
+        <p>Substituting $\\sin(\\phi_c) = \\frac{n_2}{n_1}$:</p>
+        <div class="math-callout formula-highlight">n_0 \\sin(\\theta_a) = n_1 \\sqrt{1 - \\frac{n_2^2}{n_1^2}} = \\sqrt{n_1^2 - n_2^2}</div>
         <p>For an external medium of air (n₀ = 1.0), the light-gathering capacity of the fibre is defined as the <strong>Numerical Aperture (NA)</strong>:</p>
-        <div class="math-callout formula-highlight">NA = \sin(\theta_a) = \sqrt{n_1^2 - n_2^2}</div>
+        <div class="math-callout formula-highlight">NA = \\sin(\\theta_a) = \\sqrt{n_1^2 - n_2^2}</div>
       </div>
 
       <div class="theory-block">
         <h3>3. Spot Divergence Measurement Principle</h3>
         <p>Because the optical path is reversible, light emerging from the fiber output tip diverges into a solid cone whose semi-angle is equal to the acceptance angle θ<sub>a</sub>. When projected onto a perpendicular target screen at distance L, the spot diameter W relates trigonometrically to L and θ<sub>a</sub>:</p>
-        <div class="math-callout">\tan(\theta_a) = \frac{W/2}{L} = \frac{W}{2L}</div>
-        <p>Expressing sin(θ<sub>a</sub>) in terms of tan(θ<sub>a</sub>):</p>
-        <div class="math-callout formula-highlight">NA = \sin(\theta_a) = \frac{W/2L}{\sqrt{1 + (W/2L)^2}} = \frac{W}{\sqrt{4L^2 + W^2}}</div>
+        <div class="math-callout">\\tan(\\theta_a) = \\frac{W}{2L}</div>
+        <p>Expressing $\\sin(\\theta_a)$ in terms of $\\tan(\\theta_a)$:</p>
+        <div class="math-callout formula-highlight">NA = \\sin(\\theta_a) = \\frac{W}{\\sqrt{4L^2 + W^2}}</div>
       </div>
     `,
     howToPerform: `
@@ -359,8 +359,8 @@ accentColor: "#00f0ff",
         <li><strong>Initial Positioning:</strong> Set the distance between the fibre tip and target screen to L = 10.0 mm using the precision lead-screw micrometer scale.</li>
         <li><strong>Spot Diameter Measurement:</strong> Turn on the laser source. Measure the diameter W of the red circular illumination spot where intensity drops to the concentric reference boundary.</li>
         <li><strong>Stepwise Distance Increments:</strong> Increase distance L in steps of 5.0 mm (L = 15.0, 20.0, 25.0, 30.0 mm). For each distance, measure the corresponding spot diameter W.</li>
-        <li><strong>Computation:</strong> For each measurement pair (L, W), calculate the Numerical Aperture using NA = W / √(4L² + W²) and the acceptance angle using θ<sub>a</sub> = arcsin(NA).</li>
-        <li><strong>Graphical Method:</strong> Plot a graph of Spot Diameter (W) on the y-axis against Distance (L) on the x-axis. Find the linear slope m = ΔW / ΔL, and compute NA = m / √(4 + m²).</li>
+        <li><strong>Computation:</strong> For each measurement pair (L, W), calculate the Numerical Aperture using $NA = \\frac{W}{\\sqrt{4L^2 + W^2}}$ and the acceptance angle using $\\theta_a = \\arcsin(NA)$.</li>
+        <li><strong>Graphical Method:</strong> Plot a graph of Spot Diameter (W) on the y-axis against Distance (L) on the x-axis. Find the linear slope $m = \\frac{\\Delta W}{\\Delta L}$, and compute $NA = \\frac{m}{\\sqrt{4 + m^2}}$.</li>
       </ol>
     `,
     formulas: `
@@ -370,7 +370,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Experimental NA Formula</span>
             <span class="f-unit">Dimensionless</span>
           </div>
-          <div class="f-eq">NA = \frac{W}{\sqrt{4L^2 + W^2}}</div>
+          <div class="f-eq">NA = \\frac{W}{\\sqrt{4L^2 + W^2}}</div>
           <p class="f-desc">Where W is the light spot diameter (mm) and L is the distance from the fibre tip to the target screen (mm).</p>
         </div>
 
@@ -379,7 +379,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Acceptance Angle (θ<sub>a</sub>)</span>
             <span class="f-unit">Degrees [°]</span>
           </div>
-          <div class="f-eq">\theta_a = \arcsin(NA) = \arctan\left(\frac{W}{2L}\right)</div>
+          <div class="f-eq">\\theta_a = \\arcsin(NA) = \\arctan\\left(\\frac{W}{2L}\\right)</div>
           <p class="f-desc">The half-angle of the cone within which light rays are accepted and guided through total internal reflection.</p>
         </div>
 
@@ -388,8 +388,8 @@ accentColor: "#00f0ff",
             <span class="f-title">Theoretical Refractive NA</span>
             <span class="f-unit">Dimensionless</span>
           </div>
-          <div class="f-eq">NA = \sqrt{n_1^2 - n_2^2} = n_1 \sqrt{2\Delta}</div>
-          <p class="f-desc">Where n₁ is core index, n₂ is cladding index, and Δ = (n₁ − n₂) / n₁ is the fractional index difference.</p>
+          <div class="f-eq">NA = \\sqrt{n_1^2 - n_2^2} = n_1 \\sqrt{2\\Delta}</div>
+          <p class="f-desc">Where n₁ is core index, n₂ is cladding index, and $\\Delta = \\frac{n_1 - n_2}{n_1}$ is the fractional index difference.</p>
         </div>
 
         <div class="manual-formula-card">
@@ -397,7 +397,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Solid Acceptance Angle (Ω)</span>
             <span class="f-unit">Steradians [sr]</span>
           </div>
-          <div class="f-eq">\Omega = \pi \sin^2(\theta_a) = \pi (NA)^2</div>
+          <div class="f-eq">\\Omega = \\pi \\sin^2(\\theta_a) = \\pi (NA)^2</div>
           <p class="f-desc">Quantifies the total solid angle of the light-gathering acceptance cone in three-dimensional space.</p>
         </div>
       </div>
@@ -532,9 +532,9 @@ accentColor: "#00f0ff",
       <div class="theory-block">
         <h3>2. Light-to-Frequency Conversion Principle</h3>
         <p>When photons with energy hν strike the photodiode depletion region, electron-hole pairs are generated via the internal photoelectric effect. The resulting photocurrent I<sub>ph</sub> is directly proportional to incident optical irradiance P<sub>opt</sub> and wavelength λ:</p>
-        <div class="math-callout">I_{\text{ph}} = R(\lambda) \cdot P_{\text{opt}} = \left(\frac{\eta q \lambda}{h c}\right) P_{\text{opt}}</div>
+        <div class="math-callout">I_{\\text{ph}} = R(\\lambda) \\cdot P_{\\text{opt}} = \\left(\\frac{\\eta q \\lambda}{h c}\\right) P_{\\text{opt}}</div>
         <p>The internal current-to-frequency oscillator converts this photocurrent into a 50% duty-cycle square wave whose frequency f<sub>out</sub> is linearly proportional to the detected optical irradiance:</p>
-        <div class="math-callout formula-highlight">f_{\text{out}} = k \cdot I_{\text{ph}} \propto P_{\text{opt}}</div>
+        <div class="math-callout formula-highlight">f_{\\text{out}} = k \\cdot I_{\\text{ph}} \\propto P_{\\text{opt}}</div>
       </div>
 
       <div class="theory-block">
@@ -551,9 +551,9 @@ accentColor: "#00f0ff",
       <div class="theory-block">
         <h3>4. Color Coordinate Normalization & Inverse-Square Law</h3>
         <p>By measuring the frequency across the three primary channels (f<sub>R</sub>, f<sub>G</sub>, f<sub>B</sub>), normalized chromaticity coordinates are computed:</p>
-        <div class="math-callout formula-highlight">r = \frac{f_R}{f_R + f_G + f_B}, \quad g = \frac{f_G}{f_R + f_G + f_B}, \quad b = \frac{f_B}{f_R + f_G + f_B}</div>
+        <div class="math-callout formula-highlight">r = \\frac{f_R}{f_R + f_G + f_B}, \\quad g = \\frac{f_G}{f_R + f_G + f_B}, \\quad b = \\frac{f_B}{f_R + f_G + f_B}</div>
         <p>Furthermore, reflected radiant intensity E decreases quadratically with distance d according to the Inverse-Square Law:</p>
-        <div class="math-callout">E(d) \propto \frac{1}{d^2} \implies f_{\text{out}}(d) \propto \frac{1}{d^2}</div>
+        <div class="math-callout">E(d) \\propto \\frac{1}{d^2} \\implies f_{\\text{out}}(d) \\propto \\frac{1}{d^2}</div>
       </div>
     `,
     howToPerform: `
@@ -611,7 +611,7 @@ accentColor: "#00f0ff",
         <li>Measure and record the output frequency for Red (f<sub>R</sub>), Green (f<sub>G</sub>), Blue (f<sub>B</sub>), and Clear (f<sub>clear</sub>) channels.</li>
         <li>Repeat the multi-channel frequency measurements for Green, Blue, Yellow, and Cyan sample swatches.</li>
         <li><strong>Distance Response Test:</strong> Fix the Red swatch and keep the Red channel active (S2=0, S3=0).</li>
-        <li>Vary distance d from 10.0 mm to 50.0 mm in 10.0 mm steps. Record output frequency f<sub>out</sub> at each distance and plot f<sub>out</sub> versus 1/d².</li>
+        <li>Vary distance d from 10.0 mm to 50.0 mm in 10.0 mm steps. Record output frequency $f_{\\text{out}}$ at each distance and plot $f_{\\text{out}}$ versus $\\frac{1}{d^2}$.</li>
       </ol>
     `,
     formulas: `
@@ -621,7 +621,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Optoelectronic Current (I<sub>ph</sub>)</span>
             <span class="f-unit">Microamperes [μA]</span>
           </div>
-          <div class="f-eq">I_{\text{ph}} = \left(\frac{\eta q \lambda}{h c}\right) P_{\text{opt}}</div>
+          <div class="f-eq">I_{\\text{ph}} = \\left(\\frac{\\eta q \\lambda}{h c}\\right) P_{\\text{opt}}</div>
           <p class="f-desc">Where η is quantum efficiency, q is electronic charge, h is Planck's constant, and P<sub>opt</sub> is incident optical power.</p>
         </div>
 
@@ -630,7 +630,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Frequency Output (f<sub>out</sub>)</span>
             <span class="f-unit">Kilohertz [kHz]</span>
           </div>
-          <div class="f-eq">f_{\text{out}} = k_s \left(\frac{I_{\text{ph}}}{C_{\text{int}}}\right)</div>
+          <div class="f-eq">f_{\\text{out}} = k_s \\left(\\frac{I_{\\text{ph}}}{C_{\\text{int}}}\\right)</div>
           <p class="f-desc">Direct linear current-to-frequency relationship modulated by frequency scaling factor k<sub>s</sub> (2%, 20%, 100%).</p>
         </div>
 
@@ -639,7 +639,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Normalized Chromaticity Coordinate (r, g, b)</span>
             <span class="f-unit">Dimensionless [0 - 1]</span>
           </div>
-          <div class="f-eq">r = \frac{f_R}{f_R + f_G + f_B}, \quad g = \frac{f_G}{f_R + f_G + f_B}</div>
+          <div class="f-eq">r = \\frac{f_R}{f_R + f_G + f_B}, \\quad g = \\frac{f_G}{f_R + f_G + f_B}</div>
           <p class="f-desc">Normalizes color component ratios, eliminating dependence on ambient illumination variations.</p>
         </div>
 
@@ -648,7 +648,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Inverse-Square Law (E)</span>
             <span class="f-unit">Watts / Meter² [W/m²]</span>
           </div>
-          <div class="f-eq">E(d) = \frac{I_0}{d^2} \implies f_{\text{out}}(d) \propto \frac{1}{d^2}</div>
+          <div class="f-eq">E(d) = \\frac{I_0}{d^2} \\implies f_{\\text{out}}(d) \\propto \\frac{1}{d^2}</div>
           <p class="f-desc">Quantifies the decay of detected optical irradiance as distance from the reflective target increases.</p>
         </div>
       </div>
@@ -784,7 +784,7 @@ accentColor: "#00f0ff",
       <div class="theory-block">
         <h3>3. Coefficient of Restitution (e) & Collision Kinematics</h3>
         <p>The elasticity of a collision along the line of impact is characterized by the <strong>Coefficient of Restitution (e)</strong>, defined as the ratio of relative separation speed to relative approach speed:</p>
-        <div class="math-callout formula-highlight">e = \frac{v_{1n} - v_{2n}}{u_{2n} - u_{1n}}</div>
+        <div class="math-callout formula-highlight">e = \\frac{v_{2n} - v_{1n}}{u_{1n} - u_{2n}}</div>
         <ul class="manual-list">
           <li><strong>e = 1.0 (Perfectly Elastic):</strong> Total mechanical kinetic energy is conserved (∑ KE<sub>i</sub> = ∑ KE<sub>f</sub>).</li>
           <li><strong>0 &lt; e &lt; 1.0 (Inelastic):</strong> Kinetic energy is partially dissipated into thermal and vibrational modes.</li>
@@ -795,7 +795,7 @@ accentColor: "#00f0ff",
       <div class="theory-block">
         <h3>4. Mechanical Energy Conservation</h3>
         <p>In a conservative gravitational field with zero non-conservative dissipative forces:</p>
-        <div class="math-callout formula-highlight">E_{\text{total}} = KE + PE = \frac{1}{2} m v^2 + m g y = \text{constant}</div>
+        <div class="math-callout formula-highlight">E_{\\text{total}} = KE + PE = \\frac{1}{2} m v^2 + m g y = \\text{constant}</div>
       </div>
     `,
     howToPerform: `
@@ -863,7 +863,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Linear Momentum (p)</span>
             <span class="f-unit">Kilogram Meter / Second [kg·m/s]</span>
           </div>
-          <div class="f-eq">p = m \cdot v</div>
+          <div class="f-eq">p = m \\cdot v</div>
           <p class="f-desc">Vector quantity representing the quantity of motion in an object.</p>
         </div>
 
@@ -872,7 +872,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Restitution (e)</span>
             <span class="f-unit">Dimensionless [0 - 1]</span>
           </div>
-          <div class="f-eq">e = \frac{v_1 - v_2}{u_2 - u_1} = \sqrt{\frac{h_{\text{rebound}}}{h_{\text{drop}}}}</div>
+          <div class="f-eq">e = \\frac{v_2 - v_1}{u_1 - u_2} = \\sqrt{\\frac{h_{\\text{rebound}}}{h_{\\text{drop}}}}</div>
           <p class="f-desc">Quantifies energy elasticity in normal impacts between colliding bodies.</p>
         </div>
 
@@ -881,7 +881,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Kinetic Energy (KE)</span>
             <span class="f-unit">Joules [J]</span>
           </div>
-          <div class="f-eq">KE = \frac{1}{2} m v^2 + \frac{1}{2} I \omega^2</div>
+          <div class="f-eq">KE = \\frac{1}{2} m v^2 + \\frac{1}{2} I \\omega^2</div>
           <p class="f-desc">Includes translational kinetic energy and rotational kinetic energy.</p>
         </div>
 
@@ -890,7 +890,7 @@ accentColor: "#00f0ff",
             <span class="f-title">Collision Impulse (J)</span>
             <span class="f-unit">Newton Seconds [N·s]</span>
           </div>
-          <div class="f-eq">J = \int F dt = \Delta p = m(v - u)</div>
+          <div class="f-eq">J = \\int F dt = \\Delta p = m(v - u)</div>
           <p class="f-desc">The instantaneous force-time integral acting during contact impact.</p>
         </div>
       </div>
@@ -1067,7 +1067,7 @@ accentColor: "#00f0ff",
           <div class="step-badge">6</div>
           <div class="step-info">
             <h4>Commit Data & Verify Grating Equation</h4>
-            <p>Click <strong>Record Observation</strong> to log the trial. Verify that the calculated wavelength λ_calc = (d · sin θ) / m matches the nominal laser wavelength within experimental accuracy.</p>
+            <p>Click <strong>Record Observation</strong> to log the trial. Verify that the calculated wavelength $\\lambda_{\\text{calc}} = \\frac{d \\sin\\theta}{m}$ matches the nominal laser wavelength within experimental accuracy.</p>
           </div>
         </div>
       </div>
@@ -1116,7 +1116,7 @@ accentColor: "#00f0ff",
         <li><strong>Optical Alignment:</strong> Mount the monochromatic laser source and transmission diffraction grating normally on the optical rail. Position the observation screen at distance L = 1.00 m.</li>
         <li><strong>Zero Order Verification:</strong> Turn ON the laser. Verify that the central undeviated maximum (m = 0) strikes the center mark (y = 0 cm) of the screen at angle θ = 0.0°.</li>
         <li><strong>First-Order Measurements:</strong> Set grating density N = 600 lines/mm and wavelength λ = 632.8 nm (He-Ne red). Measure the angular deflection θ₁ and screen displacement y₁ of the first-order principal maxima (m = +1 and m = -1).</li>
-        <li><strong>Second-Order Measurements:</strong> Identify the second-order maxima (m = ±2), verify that the angle satisfies sin θ₂ = 2λ / d, and check for spatial symmetry.</li>
+        <li><strong>Second-Order Measurements:</strong> Identify the second-order maxima (m = ±2), verify that the angle satisfies $\\sin\\theta_2 = \\frac{2\\lambda}{d}$, and check for spatial symmetry.</li>
         <li><strong>Wavelength Dependence:</strong> Keep grating density N constant. Vary the laser wavelength to 532 nm (Green) and 450 nm (Blue). Observe how shorter wavelengths result in smaller diffraction angles.</li>
         <li><strong>Grating Density Dependence:</strong> Keep wavelength λ = 550 nm constant. Increase grating density from 300 to 1000 lines/mm and record the dramatic expansion in angular dispersion.</li>
         <li><strong>Log Trials:</strong> Record at least 4 observation trials across multiple orders to compute mean wavelength and percentage deviation.</li>
@@ -1299,7 +1299,7 @@ accentColor: "#00f0ff",
           <div class="step-badge">6</div>
           <div class="step-info">
             <h4>Commit Data & Verify Grating Equation</h4>
-            <p>Click <strong>Record Observation</strong> to log the trial. Verify that the calculated wavelength λ_calc = (d · sin θ) / m matches the nominal laser wavelength within experimental accuracy.</p>
+            <p>Click <strong>Record Observation</strong> to log the trial. Verify that the calculated wavelength $\\lambda_{\\text{calc}} = \\frac{d \\sin\\theta}{m}$ matches the nominal laser wavelength within experimental accuracy.</p>
           </div>
         </div>
       </div>
@@ -1348,7 +1348,7 @@ accentColor: "#00f0ff",
         <li><strong>Optical Alignment:</strong> Mount the monochromatic laser source and transmission diffraction grating normally on the optical rail. Position the observation screen at distance L = 1.00 m.</li>
         <li><strong>Zero Order Verification:</strong> Turn ON the laser. Verify that the central undeviated maximum (m = 0) strikes the center mark (y = 0 cm) of the screen at angle θ = 0.0°.</li>
         <li><strong>First-Order Measurements:</strong> Set grating density N = 600 lines/mm and wavelength λ = 632.8 nm (He-Ne red). Measure the angular deflection θ₁ and screen displacement y₁ of the first-order principal maxima (m = +1 and m = -1).</li>
-        <li><strong>Second-Order Measurements:</strong> Identify the second-order maxima (m = ±2), verify that the angle satisfies sin θ₂ = 2λ / d, and check for spatial symmetry.</li>
+        <li><strong>Second-Order Measurements:</strong> Identify the second-order maxima (m = ±2), verify that the angle satisfies $\\sin\\theta_2 = \\frac{2\\lambda}{d}$, and check for spatial symmetry.</li>
         <li><strong>Wavelength Dependence:</strong> Keep grating density N constant. Vary the laser wavelength to 532 nm (Green) and 450 nm (Blue). Observe how shorter wavelengths result in smaller diffraction angles.</li>
         <li><strong>Grating Density Dependence:</strong> Keep wavelength λ = 550 nm constant. Increase grating density from 300 to 1000 lines/mm and record the dramatic expansion in angular dispersion.</li>
         <li><strong>Log Trials:</strong> Record at least 4 observation trials across multiple orders to compute mean wavelength and percentage deviation.</li>
@@ -1473,56 +1473,56 @@ accentColor: "#00f0ff",
         description: "Explore the virtual-laboratory portal for related experimental physics material."
       }
     ],
-    aim: `<p class="manual-aim-text">To investigate the Hall Effect in semiconductor and metallic specimens placed in a uniform perpendicular magnetic field, to determine the sign of the charge carriers, to measure the transverse Hall voltage (V<sub>H</sub>) as a function of specimen current (I) and magnetic flux density (B), and to calculate the Hall coefficient (R<sub>H</sub>), carrier concentration (n), and carrier mobility (μ<sub>H</sub>).</p>`,
+    aim: `<p class="manual-aim-text">To investigate the Hall Effect in semiconductor and metallic specimens placed in a uniform perpendicular magnetic field, to determine the sign of the charge carriers, to measure the transverse Hall voltage ($V_H$) as a function of specimen current ($I$) and magnetic flux density ($B$), and to calculate the Hall coefficient ($R_H$), carrier concentration ($n$), and carrier mobility ($\\mu_H$).</p>`,
     theory: `
       <div class="theory-block">
         <h3>1. The Classical Lorentz Force Principle</h3>
         <p>When an electrical current carrying conductor or semiconductor wafer of thickness t and width w is placed in a transverse magnetic field B perpendicular to the direction of current density J, the moving charge carriers experience a transverse magnetic Lorentz force:</p>
-        <div class="math-callout formula-highlight">F<sub>L</sub> = q · (v<sub>d</sub> × B)</div>
-        <p>where q is the elementary charge of the carrier, v<sub>d</sub> is the average drift velocity, and B is the magnetic flux density. This force deflects charge carriers toward one lateral boundary of the material, causing an excess accumulation of charge along that edge and a depletion along the opposing edge.</p>
+        <div class="math-callout formula-highlight">$$F_L = q (\\vec{v}_d \\times \\vec{B})$$</div>
+        <p>where q is the elementary charge of the carrier, $v_d$ is the average drift velocity, and B is the magnetic flux density. This force deflects charge carriers toward one lateral boundary of the material, causing an excess accumulation of charge along that edge and a depletion along the opposing edge.</p>
       </div>
 
       <div class="theory-block">
         <h3>2. Transverse Electric Field Equilibrium & Hall Voltage</h3>
-        <p>The asymmetric accumulation of charge creates a transverse electrostatic field E<sub>H</sub> (the Hall electric field) oriented perpendicular to both current and magnetic field. This transverse field exerts an opposing electrostatic force on moving carriers:</p>
-        <div class="math-callout">F<sub>E</sub> = q · E<sub>H</sub></div>
+        <p>The asymmetric accumulation of charge creates a transverse electrostatic field $E_H$ (the Hall electric field) oriented perpendicular to both current and magnetic field. This transverse field exerts an opposing electrostatic force on moving carriers:</p>
+        <div class="math-callout">$$F_E = q E_H$$</div>
         <p>In steady-state dynamic equilibrium, the electrostatic force precisely counterbalances the magnetic Lorentz force:</p>
-        <div class="math-callout">q · E<sub>H</sub> = q · v<sub>d</sub> · B &nbsp;⟹&nbsp; E<sub>H</sub> = v<sub>d</sub> · B</div>
-        <p>The resulting transverse potential difference measured across width w is the <strong>Hall Voltage (V<sub>H</sub>)</strong>:</p>
-        <div class="math-callout formula-highlight">V<sub>H</sub> = E<sub>H</sub> · w = v<sub>d</sub> · B · w</div>
+        <div class="math-callout">$$q E_H = q v_d B \\implies E_H = v_d B$$</div>
+        <p>The resulting transverse potential difference measured across width w is the <strong>Hall Voltage ($V_H$)</strong>:</p>
+        <div class="math-callout formula-highlight">$$V_H = E_H \\cdot w = v_d B w$$</div>
       </div>
 
       <div class="theory-block">
         <h3>3. Derivation of the Hall Coefficient & Carrier Density</h3>
-        <p>The longitudinal current I flowing through the cross-sectional area A = w · t is related to carrier concentration n by:</p>
-        <div class="math-callout">I = n · q · A · v<sub>d</sub> = n · q · w · t · v<sub>d</sub> &nbsp;⟹&nbsp; v<sub>d</sub> = I / (n · q · w · t)</div>
-        <p>Substituting v<sub>d</sub> into the expression for V<sub>H</sub> gives:</p>
-        <div class="math-callout formula-highlight">V<sub>H</sub> = (I · B) / (n · q · t) = (R<sub>H</sub> · I · B) / t</div>
-        <p>where <strong>R<sub>H</sub></strong> is the <strong>Hall Coefficient</strong> defined as:</p>
-        <div class="math-callout formula-highlight">R<sub>H</sub> = 1 / (n · q)</div>
+        <p>The longitudinal current I flowing through the cross-sectional area $A = w \\cdot t$ is related to carrier concentration n by:</p>
+        <div class="math-callout">$$I = n q A v_d = n q w t v_d \\implies v_d = \\frac{I}{n q w t}$$</div>
+        <p>Substituting $v_d$ into the expression for $V_H$ gives:</p>
+        <div class="math-callout formula-highlight">$$V_H = \\frac{I B}{n q t} = \\frac{R_H I B}{t}$$</div>
+        <p>where <strong>$R_H$</strong> is the <strong>Hall Coefficient</strong> defined as:</p>
+        <div class="math-callout formula-highlight">$$R_H = \\frac{1}{n q}$$</div>
         <p>Rearranging in terms of experimental observables yields:</p>
-        <div class="math-callout formula-highlight">R<sub>H</sub> = (V<sub>H</sub> · t) / (I · B)</div>
+        <div class="math-callout formula-highlight">$$R_H = \\frac{V_H t}{I B}$$</div>
         <p>The majority charge carrier density is then determined from:</p>
-        <div class="math-callout formula-highlight">n = 1 / (|R<sub>H</sub>| · e)</div>
-        <p>where e = 1.602 × 10⁻¹⁹ C is the electronic charge quantum.</p>
+        <div class="math-callout formula-highlight">$$n = \\frac{1}{|R_H| e}$$</div>
+        <p>where $e = 1.602 \\times 10^{-19}\\text{ C}$ is the electronic charge quantum.</p>
       </div>
 
       <div class="theory-block">
         <h3>4. Sign Convention & Majority Carrier Identification</h3>
-        <p>The polarity of V<sub>H</sub> reveals the sign of the dominant mobile charge carriers:</p>
+        <p>The polarity of $V_H$ reveals the sign of the dominant mobile charge carriers:</p>
         <ul class="manual-list">
-          <li><strong>n-type Semiconductors:</strong> Majority carriers are negative conduction electrons (q = −e). Consequently, R<sub>H</sub> &lt; 0 and the measured Hall voltage is negative under standard probe orientation.</li>
-          <li><strong>p-type Semiconductors:</strong> Majority carriers are positive valence-band holes (q = +e). Consequently, R<sub>H</sub> &gt; 0 and the measured Hall voltage is positive.</li>
-          <li><strong>Metals (e.g. Copper):</strong> The carrier density n is exceptionally high (~10²⁸ m⁻³), resulting in tiny microvolt-scale Hall potentials (~0.1 to 2 μV), whereas doped semiconductors (~10²⁰ m⁻³) yield easily observable millivolts (1 to 60 mV).</li>
+          <li><strong>n-type Semiconductors:</strong> Majority carriers are negative conduction electrons ($q = -e$). Consequently, $R_H < 0$ and the measured Hall voltage is negative under standard probe orientation.</li>
+          <li><strong>p-type Semiconductors:</strong> Majority carriers are positive valence-band holes ($q = +e$). Consequently, $R_H > 0$ and the measured Hall voltage is positive.</li>
+          <li><strong>Metals (e.g. Copper):</strong> The carrier density n is exceptionally high (~$10^{28}\\text{ m}^{-3}$), resulting in tiny microvolt-scale Hall potentials (~0.1 to $2\\;\\mu\\text{V}$), whereas doped semiconductors (~$10^{20}\\text{ m}^{-3}$) yield easily observable millivolts (1 to $60\\text{ mV}$).</li>
         </ul>
       </div>
 
       <div class="theory-block">
         <h3>5. Carrier Mobility & Hall Angle</h3>
-        <p>Combining the Hall coefficient with the electrical conductivity σ = 1 / ρ = n · e · μ yields the <strong>Hall Mobility (μ<sub>H</sub>)</strong>:</p>
-        <div class="math-callout formula-highlight">μ<sub>H</sub> = |R<sub>H</sub>| · σ = |R<sub>H</sub>| / ρ</div>
-        <p>The deflection angle of total current flow with respect to the applied electric field is the <strong>Hall Angle (θ<sub>H</sub>)</strong>:</p>
-        <div class="math-callout">tan(θ<sub>H</sub>) = E<sub>H</sub> / E<sub>x</sub> = μ<sub>H</sub> · B</div>
+        <p>Combining the Hall coefficient with the electrical conductivity $\\sigma = \\frac{1}{\\rho} = n e \\mu$ yields the <strong>Hall Mobility ($\\mu_H$)</strong>:</p>
+        <div class="math-callout formula-highlight">$$\\mu_H = |R_H| \\sigma = \\frac{|R_H|}{\\rho}$$</div>
+        <p>The deflection angle of total current flow with respect to the applied electric field is the <strong>Hall Angle ($\\theta_H$)</strong>:</p>
+        <div class="math-callout">$$\\tan\\theta_H = \\frac{E_H}{E_x} = \\mu_H B$$</div>
       </div>
     `,
     howToPerform: `
@@ -1575,57 +1575,57 @@ accentColor: "#00f0ff",
       <ol class="manual-ordered-list">
         <li><strong>Apparatus Setup:</strong> Place the calibrated semiconductor probe between the pole pieces of the electromagnet. Ensure probe faces are strictly perpendicular to the magnetic axis.</li>
         <li><strong>Zero-Offset Elimination:</strong> Set magnetic field to B = 0.0 T. If any residual misalignment voltage appears on the microvoltmeter, adjust the balance potentiometer to zero.</li>
-        <li><strong>Varying Magnetic Field at Constant Current:</strong> Fix specimen current I = 20.0 mA. Increase magnetic flux density B in steps from 0.10 T to 0.80 T. Record the measured Hall voltage V<sub>H</sub> at each step.</li>
-        <li><strong>Varying Specimen Current at Constant Field:</strong> Fix magnetic flux density B = 0.50 T. Increase specimen current I from 5.0 mA to 45.0 mA in equal steps. Record V<sub>H</sub>.</li>
-        <li><strong>Reversing Field & Current Polarity:</strong> Reverse the magnetic field direction (-B) and repeat observations to eliminate thermo-galvanic spurious voltages via four-quadrant averaging: V<sub>H</sub> = [(V₁ − V₂) + (V₃ − V₄)] / 4.</li>
-        <li><strong>Specimen Comparison:</strong> Switch to the p-type Germanium wafer and note the sign inversion of V<sub>H</sub>. Switch to the Copper foil to observe microvolt metallic response.</li>
-        <li><strong>Data Analysis:</strong> Plot V<sub>H</sub> versus B and V<sub>H</sub> versus I. Evaluate slope, calculate Hall coefficient R<sub>H</sub>, carrier density n, and carrier mobility μ<sub>H</sub>.</li>
+        <li><strong>Varying Magnetic Field at Constant Current:</strong> Fix specimen current I = 20.0 mA. Increase magnetic flux density B in steps from 0.10 T to 0.80 T. Record the measured Hall voltage $V_H$ at each step.</li>
+        <li><strong>Varying Specimen Current at Constant Field:</strong> Fix magnetic flux density B = 0.50 T. Increase specimen current I from 5.0 mA to 45.0 mA in equal steps. Record $V_H$.</li>
+        <li><strong>Reversing Field & Current Polarity:</strong> Reverse the magnetic field direction (-B) and repeat observations to eliminate thermo-galvanic spurious voltages via four-quadrant averaging: $V_H = \\frac{(V_1 - V_2) + (V_3 - V_4)}{4}$.</li>
+        <li><strong>Specimen Comparison:</strong> Switch to the p-type Germanium wafer and note the sign inversion of $V_H$. Switch to the Copper foil to observe microvolt metallic response.</li>
+        <li><strong>Data Analysis:</strong> Plot $V_H$ versus B and $V_H$ versus I. Evaluate slope, calculate Hall coefficient $R_H$, carrier density n, and carrier mobility $\\mu_H$.</li>
       </ol>
     `,
     formulas: `
       <div class="manual-formula-grid">
         <div class="manual-formula-card">
           <div class="f-header">
-            <span class="f-title">Hall Voltage (V<sub>H</sub>)</span>
+            <span class="f-title">Hall Voltage ($V_H$)</span>
             <span class="f-unit">Millivolts [mV]</span>
           </div>
-          <div class="f-eq">V<sub>H</sub> = (R<sub>H</sub> · I · B) / t</div>
-          <p class="f-desc">Where R<sub>H</sub> is Hall coefficient, I is specimen current, B is magnetic flux density, and t is specimen thickness.</p>
+          <div class="f-eq">V_H = \\frac{R_H \\cdot I \\cdot B}{t}</div>
+          <p class="f-desc">Where $R_H$ is Hall coefficient, $I$ is specimen current, $B$ is magnetic flux density, and $t$ is specimen thickness.</p>
         </div>
 
         <div class="manual-formula-card">
           <div class="f-header">
-            <span class="f-title">Hall Coefficient (R<sub>H</sub>)</span>
-            <span class="f-unit">m³ / C</span>
+            <span class="f-title">Hall Coefficient ($R_H$)</span>
+            <span class="f-unit">$\\text{m}^3 / \\text{C}$</span>
           </div>
-          <div class="f-eq">R<sub>H</sub> = (V<sub>H</sub> · t) / (I · B) = 1 / (n · q)</div>
+          <div class="f-eq">R_H = \\frac{V_H \\cdot t}{I \\cdot B} = \\frac{1}{n \\cdot q}</div>
           <p class="f-desc">Intrinsic material constant indicating carrier type (negative for electrons, positive for holes).</p>
         </div>
 
         <div class="manual-formula-card">
           <div class="f-header">
-            <span class="f-title">Carrier Concentration (n)</span>
-            <span class="f-unit">Carriers per m³ [m⁻³]</span>
+            <span class="f-title">Carrier Concentration ($n$)</span>
+            <span class="f-unit">Carriers per $\\text{m}^3$ [$\\text{m}^{-3}$]</span>
           </div>
-          <div class="f-eq">n = 1 / (|R<sub>H</sub>| · e)</div>
-          <p class="f-desc">Volumetric density of majority mobile charge carriers, where e = 1.602 × 10⁻¹⁹ C.</p>
+          <div class="f-eq">n = \\frac{1}{|R_H| \\cdot e}</div>
+          <p class="f-desc">Volumetric density of majority mobile charge carriers, where $e = 1.602 \\times 10^{-19}\\text{ C}$.</p>
         </div>
 
         <div class="manual-formula-card">
           <div class="f-header">
-            <span class="f-title">Carrier Mobility (μ<sub>H</sub>)</span>
-            <span class="f-unit">m² / (V · s)</span>
+            <span class="f-title">Carrier Mobility ($\\mu_H$)</span>
+            <span class="f-unit">$\\text{m}^2 / (\\text{V} \\cdot \\text{s})$</span>
           </div>
-          <div class="f-eq">μ<sub>H</sub> = |R<sub>H</sub>| · σ = |R<sub>H</sub>| / ρ</div>
+          <div class="f-eq">\\mu_H = |R_H| \\cdot \\sigma = \\frac{|R_H|}{\\rho}</div>
           <p class="f-desc">Quantifies the drift velocity of charge carriers per unit applied electric field in the crystal lattice.</p>
         </div>
 
         <div class="manual-formula-card">
           <div class="f-header">
-            <span class="f-title">Hall Deflection Angle (θ<sub>H</sub>)</span>
+            <span class="f-title">Hall Deflection Angle ($\\theta_H$)</span>
             <span class="f-unit">Degrees [°]</span>
           </div>
-          <div class="f-eq">tan(θ<sub>H</sub>) = μ<sub>H</sub> · B</div>
+          <div class="f-eq">\\tan\\theta_H = \\mu_H \\cdot B</div>
           <p class="f-desc">The geometric angle between the total electric field vector and the current density vector.</p>
         </div>
       </div>
@@ -2534,7 +2534,7 @@ accentColor: "#00f0ff",
         <div class="formula-card">
           <h4>2. Attenuation Coefficient per Kilometre</h4>
           <div class="math-callout formula-highlight">\\alpha_{\\text{dB/km}} = \\frac{A_{\\text{dB}}}{L_{\\text{km}}} = \\left(\\frac{1000}{L_{\\text{m}}}\\right) \\times 10 \\log_{10}\\left(\\frac{P_{\\text{in}}}{P_{\\text{out}}}\\right)</div>
-          <p class="formula-desc">Where $L_{\\text{m}}$ is fiber length in metres and $L_{\\text{km}} = L_{\\text{m}} / 1000$ is fiber length in kilometres.</p>
+          <p class="formula-desc">Where $L_{\\text{m}}$ is fiber length in metres and $L_{\\text{km}} = \\frac{L_{\\text{m}}}{1000}$ is fiber length in kilometres.</p>
         </div>
 
         <div class="formula-card">
@@ -2658,6 +2658,28 @@ accentColor: "#00f0ff",
       </div>
     `,
 
+    formulas: `
+      <div class="manual-theory-block">
+        <h4>Key Analytical Relationships</h4>
+        <div class="formula-card">
+          <p><strong>Einstein Photoelectric Equation:</strong></p>
+          $$e V_s = h\\nu - \\Phi = \\frac{hc}{\\lambda} - \\Phi$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Linear Regression Slope:</strong></p>
+          $$m = \\frac{\\Delta V_s}{\\Delta \\nu} = \\frac{h}{e} \\implies h = m \\cdot e$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Threshold Frequency & Work Function:</strong></p>
+          $$\\nu_0 = \\frac{\\Phi}{h}, \\quad \\lambda_0 = \\frac{hc}{\\Phi}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>LED Energy Bandgap & Planck Formulation:</strong></p>
+          $$h = \\frac{e V_0 \\lambda}{c}$$
+        </div>
+      </div>
+    `,
+
     formula: `
       <div class="manual-theory-block">
         <h4>Key Analytical Relationships</h4>
@@ -2699,7 +2721,7 @@ accentColor: "#00f0ff",
           <li>Toggle the laboratory mode selector to <strong>LED Recombination Method</strong>.</li>
           <li>Select an LED specimen (e.g., Green $525\\text{ nm}$, Blue $470\\text{ nm}$, UV $395\\text{ nm}$, Yellow $585\\text{ nm}$, Red $635\\text{ nm}$).</li>
           <li>Vary the forward bias voltage from $0.00\\text{ V}$ upwards and record the knee threshold point where conduction begins and optical photon emission initiates.</li>
-          <li>Compute $h = e V_0 \\lambda / c$ and record the observation in the logbook.</li>
+          <li>Compute $h = \\frac{e V_0 \\lambda}{c}$ and record the observation in the logbook.</li>
         </ol>
       </div>
     `,
@@ -2903,6 +2925,32 @@ accentColor: "#00f0ff",
       </div>
     `,
 
+    formulas: `
+      <div class="manual-theory-block">
+        <h4>Key Analytical Relationships</h4>
+        <div class="formula-card">
+          <p><strong>Gaussian Beam Radius Profile:</strong></p>
+          $$w(z) = w_0 \\sqrt{1 + \\left(\\frac{z}{z_R}\\right)^2}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Rayleigh Range (Collimation Length):</strong></p>
+          $$z_R = \\frac{\\pi w_0^2}{\\lambda}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Far-Field Divergence Half-Angle (Theoretical):</strong></p>
+          $$\\theta = \\frac{\\lambda}{\\pi w_0} \\quad \\text{[radians]}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Total Full Divergence Cone Angle:</strong></p>
+          $$\\Theta = 2\\theta = \\frac{2\\lambda}{\\pi w_0}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Empirical Two-Point Divergence Formula:</strong></p>
+          $$\\theta \\approx \\frac{w_2 - w_1}{z_2 - z_1} = \\frac{W_2 - W_1}{2(z_2 - z_1)}$$
+        </div>
+      </div>
+    `,
+
     formula: `
       <div class="manual-theory-block">
         <h4>Key Analytical Relationships</h4>
@@ -2985,15 +3033,15 @@ accentColor: "#00f0ff",
       },
       {
         question: "Why does a laser beam diverge even though it is highly collimated?",
-        answer: "Due to fundamental wave diffraction (Heisenberg uncertainty for photons). An aperture of finite lateral size necessarily introduces an angular diffraction spread of approximately lambda / d."
+        answer: "Due to fundamental wave diffraction (Heisenberg uncertainty for photons). An aperture of finite lateral size necessarily introduces an angular diffraction spread of approximately $\\frac{\\lambda}{d}$."
       },
       {
         question: "What is Rayleigh range (zR)?",
-        answer: "The axial distance along the propagation direction from the beam waist where the beam cross-sectional area doubles and beam radius increases by a factor of sqrt(2) (zR = pi * w0^2 / lambda)."
+        answer: "The axial distance along the propagation direction from the beam waist where the beam cross-sectional area doubles and beam radius increases by a factor of $\\sqrt{2}$ ($z_R = \\frac{\\pi w_0^2}{\\lambda}$)."
       },
       {
         question: "How does laser wavelength affect divergence?",
-        answer: "Divergence is directly proportional to wavelength (theta = lambda / (pi * w0)). Shorter wavelengths (e.g. violet 402 nm or green 532 nm) produce smaller divergence than longer wavelengths (e.g. He-Ne red 632.8 nm) for the same beam waist."
+        answer: "Divergence is directly proportional to wavelength ($\\theta = \\frac{\\lambda}{\\pi w_0}$). Shorter wavelengths (e.g. violet 402 nm or green 532 nm) produce smaller divergence than longer wavelengths (e.g. He-Ne red 632.8 nm) for the same beam waist."
       }
     ]
   },
@@ -3131,6 +3179,32 @@ accentColor: "#00f0ff",
       </div>
     `,
 
+    formulas: `
+      <div class="manual-theory-block">
+        <h4>Key Governing Equations</h4>
+        <div class="formula-card">
+          <p><strong>Pulse-Echo Distance Equation:</strong></p>
+          $$d = \\frac{v \\times t}{2}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Temperature-Dependent Speed of Sound in Air:</strong></p>
+          $$v(T) = 331.3 \\sqrt{1 + \\frac{T}{273.15}} \\approx 331.3 + 0.606 \\times T \\quad [\\text{m/s}]$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Time-of-Flight Duration:</strong></p>
+          $$t = \\frac{2 \\times d}{v}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Linear Calibration Model:</strong></p>
+          $$d_{\\text{meas}} = a \\times d_{\\text{ref}} + b$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Percentage Measurement Error:</strong></p>
+          $$\\%\\text{Error} = \\left| \\frac{d_{\\text{meas}} - d_{\\text{ref}}}{d_{\\text{ref}}} \\right| \\times 100\\%$$
+        </div>
+      </div>
+    `,
+
     formula: `
       <div class="manual-theory-block">
         <h4>Key Governing Equations</h4>
@@ -3211,7 +3285,7 @@ accentColor: "#00f0ff",
     vivaQuestions: [
       {
         question: "What is the fundamental formula used in ultrasonic distance measurement?",
-        answer: "d = (v * t) / 2, where v is the speed of sound in the medium and t is the total round-trip echo time-of-flight."
+        answer: "$d = \\frac{v \\cdot t}{2}$, where v is the speed of sound in the medium and t is the total round-trip echo time-of-flight."
       },
       {
         question: "Why is the echo transit time divided by 2?",
@@ -3399,6 +3473,36 @@ accentColor: "#00f0ff",
       </div>
     `,
 
+    formulas: `
+      <div class="manual-theory-block">
+        <h4>Key Governing Equations</h4>
+        <div class="formula-card">
+          <p><strong>Fringe Width (Spacing) in Reflected Monochromatic Light:</strong></p>
+          $$\\beta = \\frac{\\lambda}{2\\alpha} = \\frac{\\lambda L}{2d}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Wedge Angle of Air Film (Small Angle Approximation):</strong></p>
+          $$\\alpha \\approx \\frac{d}{L} \\quad [\\text{radians}]$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Dark Fringe (Destructive Interference) Condition:</strong></p>
+          $$2t = m\\lambda \\implies x_m = \\frac{m\\lambda L}{2d} = m\\beta \\quad (m = 0, 1, 2, \\dots)$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Microscopic Wire Spacer Diameter / Foil Thickness:</strong></p>
+          $$d = \\frac{\\lambda L}{2\\beta}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Linear Regression Fringe Width:</strong></p>
+          $$\\beta = \\frac{dx}{dm} = \\frac{N\\sum(m x_m) - \\sum m \\sum x_m}{N\\sum m^2 - (\\sum m)^2}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Percentage Metrology Error:</strong></p>
+          $$\\%\\text{Error} = \\left| \\frac{d_{\\text{calc}} - d_{\\text{ref}}}{d_{\\text{ref}}} \\right| \\times 100\\%$$
+        </div>
+      </div>
+    `,
+
     formula: `
       <div class="manual-theory-block">
         <h4>Key Governing Equations</h4>
@@ -3493,11 +3597,11 @@ accentColor: "#00f0ff",
       },
       {
         question: "What is the formula to calculate the spacer wire diameter d?",
-        answer: "d = (λ * L) / (2 * β), where λ is wavelength of monochromatic light, L is distance between contact line and spacer, and β is fringe width."
+        answer: "$d = \\frac{\\lambda L}{2\\beta}$, where $\\lambda$ is wavelength of monochromatic light, $L$ is distance between contact line and spacer, and $\\beta$ is fringe width."
       },
       {
         question: "How does fringe width change if a thicker wire is used?",
-        answer: "Since β = (λ * L) / (2 * d), fringe width is inversely proportional to wire diameter d. A thicker wire increases wedge angle α, causing fringes to crowd closer together (smaller fringe width)."
+        answer: "Since $\\beta = \\frac{\\lambda L}{2d}$, fringe width is inversely proportional to wire diameter $d$. A thicker wire increases wedge angle $\\alpha$, causing fringes to crowd closer together (smaller fringe width)."
       },
       {
         question: "Why is an extended monochromatic light source used rather than a point source?",
@@ -3509,7 +3613,7 @@ accentColor: "#00f0ff",
       },
       {
         question: "What is the effect of introducing a liquid film (refractive index μ) instead of air?",
-        answer: "Path difference becomes 2μt + λ/2, so fringe width decreases to β' = λ / (2μα) = β / μ. The fringes become more closely spaced by a factor of μ."
+        answer: "Path difference becomes $2\\mu t + \\frac{\\lambda}{2}$, so fringe width decreases to $\\beta' = \\frac{\\lambda}{2\\mu\\alpha} = \\frac{\\beta}{\\mu}$. The fringes become more closely spaced by a factor of $\\mu$."
       },
       {
         question: "Why must the travelling microscope be moved in one continuous direction?",
@@ -3517,11 +3621,533 @@ accentColor: "#00f0ff",
       },
       {
         question: "What is the condition for constructive interference (bright fringe) in reflected light?",
-        answer: "2t = (m - 1/2)λ, where m = 1, 2, 3, ... because the Stokes phase change adds λ/2 to the optical path difference."
+        answer: "$2t = \\left(m - \\frac{1}{2}\\right)\\lambda$, where $m = 1, 2, 3, \\dots$ because the Stokes phase change adds $\\frac{\\lambda}{2}$ to the optical path difference."
       },
       {
         question: "How is the wedge angle α related to fringe width β and wavelength λ?",
-        answer: "α = λ / (2 * β) in radians. For small angles, α ≈ d / L, which leads directly to β = (λ * L) / (2 * d)."
+        answer: "$\\alpha = \\frac{\\lambda}{2\\beta}$ in radians. For small angles, $\\alpha \\approx \\frac{d}{L}$, which leads directly to $\\beta = \\frac{\\lambda L}{2d}$."
+      }
+    ]
+  },
+
+  "newtons-rings": {
+    id: "newtons-rings",
+    title: "Newton's Rings",
+    category: "Wave Optics & Interference",
+    shortDescription: "Explore circular interference fringes formed by a thin air film and investigate the relationship between ring diameter, wavelength, and the radius of curvature of a lens.",
+    difficulty: "Undergraduate Wave Optics Practical",
+    duration: "45 Minutes",
+    engine: "Deterministic Wave Interference & Vernier Reticle Engine",
+    accentColor: "#eab308",
+
+    referenceBooks: [
+      {
+        title: "Thin-Film Interference and Newton's Rings",
+        source: "OpenStax University Physics Vol 3",
+        url: "https://openstax.org/books/university-physics-volume-3/pages/3-4-interference-in-thin-films",
+        description: "Study thin-film interference principles, Stokes phase reversal upon reflection, and circular fringe formation."
+      },
+      {
+        title: "Optics - Interference of Light",
+        source: "Optics - Eugene Hecht (4th Edition)",
+        url: "https://en.wikipedia.org/wiki/Newton%27s_rings",
+        description: "Comprehensive derivation of Newton's rings geometry, sagitta relationship, and fringes of equal thickness."
+      },
+      {
+        title: "Engineering Physics Practical Manual: Newton's Rings",
+        source: "SIES GST Physics Department",
+        url: "#",
+        description: "Standard practical guide for determination of light wavelength and lens curvature using Newton's rings."
+      }
+    ],
+
+    aim: `<p class="manual-aim-text">To study the formation of Newton's rings due to interference of light reflected from a thin air film and investigate the relationship between ring diameter, wavelength, and the radius of curvature of a plano-convex lens.</p>`,
+
+    apparatus: `<p class="manual-aim-text">Plano-convex lens of large radius of curvature ($R = 100\\text{ cm}$), optically flat glass plate, monochromatic light sources (Sodium yellow $589.3\\text{ nm}$, DPSS Green $532.0\\text{ nm}$, He-Ne Red $632.8\\text{ nm}$, Argon Blue $488.0\\text{ nm}$, Violet $405.0\\text{ nm}$), 45-degree beam splitter plate, condensing lens, travelling microscope with micrometer vernier crosshairs ($LC = 0.01\\text{ mm}$), and optical bench.</p>`,
+
+    theory: `
+      <div class="theory-block">
+        <h3>1. Thin-Film Interference &amp; Division of Amplitude</h3>
+        <p>Newton's rings are circular interference fringes of equal thickness (Fizeau fringes) formed when an air film of enclosed variable thickness is enclosed between the spherical convex surface of a plano-convex lens and an optically flat glass plate. Light incident near-normally is divided by <strong>division of amplitude</strong>: one part is reflected from the lower curved surface of the lens (glass-air boundary), and the other part is reflected from the upper surface of the flat glass plate (air-glass boundary). Because both reflected waves originate from the same primary wavefront, they are mutually coherent and interfere upon superposition.</p>
+      </div>
+
+      <div class="theory-block">
+        <h3>2. Formation of the Air Film &amp; Geometric Sagitta</h3>
+        <p>Let a plano-convex lens of large radius of curvature $R$ rest on an optically flat glass plate. The film thickness $t$ is zero at the central point of contact and increases symmetrically outwards with distance $r$ from the contact center. From the geometry of a circle (sagitta theorem), for a spherical surface of radius $R$:</p>
+        <div class="math-callout">$$r^2 = t(2R - t) \\approx 2Rt \\implies t \\approx \\frac{r^2}{2R} = \\frac{D^2}{8R}$$</div>
+        <p>where $r$ is the ring radius, $D = 2r$ is the ring diameter, and $t^2$ is neglected because $t \\ll R$. Because the system is rotationally symmetric about the optical axis, lines of constant film thickness $t$ are concentric circles centered at the point of contact.</p>
+      </div>
+
+      <div class="theory-block">
+        <h3>3. Reflection, Boundary Phase Changes, and Effective Path Difference</h3>
+        <p>Under near-normal incidence ($i \\approx 0^\\circ$), the geometric path difference between the two interfering reflected rays is $2\\mu t$, where $\\mu$ is the refractive index of the enclosed film ($\\mu = 1$ for air). According to Stokes' relations of reflection:</p>
+        <ul class="manual-list">
+          <li>Ray 1 is reflected at the upper boundary (lens to air, rarer medium), incurring <strong>no phase change</strong>.</li>
+          <li>Ray 2 is reflected at the lower boundary (air to glass plate, denser medium), undergoing an abrupt <strong>phase reversal of $\\pi$ radians</strong>, equivalent to an added optical path difference of $\\frac{\\lambda}{2}$.</li>
+        </ul>
+        <p>Therefore, the net effective optical path difference ($\\Delta$) in reflected light is:</p>
+        <div class="math-callout formula-highlight">$$\\Delta = 2\\mu t + \\frac{\\lambda}{2}$$</div>
+      </div>
+
+      <div class="theory-block">
+        <h3>4. Constructive and Destructive Interference Conditions</h3>
+        <p><strong>Destructive Interference (Dark Rings / Minima):</strong> Destructive interference occurs when the net path difference is an odd multiple of half-wavelengths: $\\Delta = (2m + 1)\\frac{\\lambda}{2}$.</p>
+        <div class="math-callout">$$2\\mu t + \\frac{\\lambda}{2} = (2m + 1)\\frac{\\lambda}{2} \\implies 2\\mu t = m\\lambda \\quad (m = 0, 1, 2, 3, \\dots)$$</div>
+        <p>At the point of contact ($r = 0$), $t = 0$. The path difference is $\\Delta = \\frac{\\lambda}{2}$, resulting in destructive interference. Thus, in reflected light, the <strong>central spot is strictly dark (order $m = 0$)</strong>.</p>
+        <p><strong>Constructive Interference (Bright Rings / Maxima):</strong> Constructive interference occurs when $\\Delta = m\\lambda$:</p>
+        <div class="math-callout">$$2\\mu t + \\frac{\\lambda}{2} = m\\lambda \\implies 2\\mu t = \\left(m - \\frac{1}{2}\\right)\\lambda \\quad (m = 1, 2, 3, \\dots)$$</div>
+      </div>
+
+      <div class="theory-block">
+        <h3>5. Diameters of Dark Rings</h3>
+        <p>Substituting the film thickness geometry $2t = \\frac{D^2}{4R}$ into the dark ring condition $2\\mu t = m\\lambda$ yields:</p>
+        <div class="math-callout formula-highlight">$$D_m^2 = \\frac{4m\\lambda R}{\\mu} \\quad (m = 0, 1, 2, 3, \\dots)$$</div>
+        <p>For an air film ($\\mu = 1$), the diameter of the $m$-th dark ring is given by the conventional reflected-light equation:</p>
+        <div class="math-callout formula-highlight">$$D_m^2 = 4m\\lambda R \\implies D_m = 2\\sqrt{m\\lambda R} \\propto \\sqrt{m}$$</div>
+        <p>Thus, the diameters of successive dark rings are proportional to the square roots of consecutive integers ($0, \\sqrt{1}, \\sqrt{2}, \\sqrt{3}, \\dots$), which explains why the rings crowd closer together as their order $m$ increases.</p>
+      </div>
+
+      <div class="theory-block">
+        <h3>6. Relationship for Successive Rings &amp; Wavelength Determination</h3>
+        <p>For two dark rings of orders $m$ and $m+p$ (where $p$ is the difference in ring order):</p>
+        <div class="math-callout">$$D_{m+p}^2 = \\frac{4(m+p)\\lambda R}{\\mu}, \\quad D_m^2 = \\frac{4m\\lambda R}{\\mu}$$</div>
+        <p>Subtracting the two equations eliminates any uncertainty in the exact position of the central contact point:</p>
+        <div class="math-callout formula-highlight">$$D_{m+p}^2 - D_m^2 = \\frac{4p\\lambda R}{\\mu}$$</div>
+        <p>For an air film ($\\mu = 1$):</p>
+        <div class="math-callout formula-highlight">$$D_{m+p}^2 - D_m^2 = 4p\\lambda R$$</div>
+        <p>This allows exact evaluation of either the wavelength $\\lambda$ or the radius of curvature $R$:</p>
+        <div class="math-callout">$$\\lambda = \\frac{\\mu(D_{m+p}^2 - D_m^2)}{4pR}, \\qquad R = \\frac{\\mu(D_{m+p}^2 - D_m^2)}{4p\\lambda}$$</div>
+      </div>
+
+      <div class="theory-block">
+        <h3>7. Linear Regression ($D_n^2$ vs $n$) and Liquid Refractometry</h3>
+        <p>By plotting $D_n^2$ along the vertical axis against ring order $n$ along the horizontal axis, the data points lie on a straight line passing through the origin. The slope of this line is:</p>
+        <div class="math-callout">$$\\text{Slope} = \\frac{d(D_n^2)}{dn} = \\frac{4\\lambda R}{\\mu} \\implies \\lambda = \\frac{\\mu \\cdot \\text{Slope}}{4R}$$</div>
+        <p>When a liquid specimen of unknown refractive index $\\mu$ is introduced between the lens and flat plate, the rings contract because $D_m \\propto \\frac{1}{\\sqrt{\\mu}}$. By comparing the regression slopes in air and in liquid:</p>
+        <div class="math-callout formula-highlight">$$\\mu = \\frac{\\text{Slope}_{\\text{air}}}{\\text{Slope}_{\\text{liquid}}} = \\frac{(D_{m+p}^2 - D_m^2)_{\\text{air}}}{(D_{m+p}^2 - D_m^2)_{\\text{liquid}}}$$</div>
+      </div>
+    `,
+
+    howToPerform: `
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <div class="step-info">
+            <h4>Launch Newton's Rings Workstation</h4>
+            <p>Click <strong>Start Simulator</strong> to open the virtual travelling microscope eyepiece, micrometer vernier drum, and optical bench apparatus.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <div class="step-info">
+            <h4>Select Monochromatic Source Line</h4>
+            <p>Toggle <strong>Light ON</strong>. Choose a calibrated spectral line: <strong>Sodium Yellow (589.3 nm)</strong>, <strong>Green Laser (532.0 nm)</strong>, <strong>He-Ne Red (632.8 nm)</strong>, or fine-tune with the wavelength slider.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <div class="step-info">
+            <h4>Set Lens Curvature &amp; Film Medium</h4>
+            <p>Adjust the plano-convex lens radius of curvature $R$ (default $100\\text{ cm}$). Choose <strong>Air Film (μ = 1.000)</strong>, or select a liquid medium to observe fringe contraction.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <div class="step-info">
+            <h4>Traverse Fringes with Micrometer Carriage</h4>
+            <p>Drag the microscope carriage slider or use the precision stepper buttons ($-1.0\\text{ mm}$, $-0.1\\text{ mm}$, $-0.01\\text{ mm}$) to traverse rings to the left or right of the dark center.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">5</div>
+          <div class="step-info">
+            <h4>Align Crosshairs &amp; Record Dark Rings</h4>
+            <p>Align the vertical reticle crosshair with a dark ring (or use quick snap buttons like <strong>Ring 5 Left</strong> / <strong>Ring 5 Right</strong>). Click <strong>Record Dark Ring Reading</strong> to log diameter and $D_n^2$.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">6</div>
+          <div class="step-info">
+            <h4>Analyze Regression Graph &amp; Export Report</h4>
+            <p>Inspect the live $D_n^2$ vs $n$ linear regression graph. Verify that the slope matches $\\frac{4\\lambda R}{\\mu}$. Export academic laboratory findings as CSV or a publication-grade PDF report.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    procedure: `
+      <div class="procedure-block">
+        <h4>Methodical Laboratory Procedure</h4>
+        <ol class="manual-ordered-list">
+          <li><strong>Open the Newton's Rings Experiment:</strong> Launch the simulation from Explore Simulations and review the apparatus layout.</li>
+          <li><strong>Review Theory and Identify Available Controls:</strong> Note the travelling microscope eyepiece, micrometer vernier drum, optical bench elevation, wavelength selector, lens curvature slider, and film medium dropdown.</li>
+          <li><strong>Set Wavelength and Radius of Curvature:</strong> Set the nominal wavelength to Sodium yellow $\\lambda = 589.3\\text{ nm}$ and lens radius of curvature to $R = 100\\text{ cm}$ ($1.00\\text{ m}$).</li>
+          <li><strong>Start the Simulation:</strong> Ensure the monochromatic source is turned on (<strong>Light ON</strong>).</li>
+          <li><strong>Observe the Interference Rings:</strong> Notice the circular concentric bright and dark rings with a central dark spot ($m = 0$) resulting from destructive interference and $\\pi$ phase reversal.</li>
+          <li><strong>Adjust Parameters and Observe Pattern Changes:</strong>
+            <ul class="manual-list">
+              <li>Increase wavelength $\\lambda$ and observe that the rings expand outwards ($D_m \\propto \\sqrt{\\lambda}$).</li>
+              <li>Increase lens radius of curvature $R$ and observe that the rings expand ($D_m \\propto \\sqrt{R}$).</li>
+              <li>Select a liquid medium (Water or Glycerin) and observe that the rings contract inwards ($D_m \\propto \\frac{1}{\\sqrt{\\mu}}$).</li>
+            </ul>
+          </li>
+          <li><strong>Measure Ring Diameters with Travelling Microscope:</strong>
+            <ul class="manual-list">
+              <li>Move the microscope carriage to the left to align the vertical crosshair with a dark ring of known order (e.g. Ring 10 left) and record position $x_L$.</li>
+              <li>Traverse across the central dark spot to the corresponding ring on the right (Ring 10 right) and record position $x_R$.</li>
+              <li>Compute the ring diameter: $D_n = x_R - x_L$.</li>
+            </ul>
+          </li>
+          <li><strong>Compare Results with Theoretical Equations:</strong> Compute $D_n^2$ and verify the linear relationship $D_n^2 = \\frac{4n\\lambda R}{\\mu}$.</li>
+          <li><strong>Record Observations:</strong> Log multiple ring orders ($n = 2, 4, 6, 8, 10, 12$) in the observation logbook.</li>
+          <li><strong>Draw Conclusions &amp; Linear Regression:</strong> Plot $D_n^2$ versus $n$. Deducing the regression slope yields $\\text{Slope} = \\frac{4\\lambda R}{\\mu}$, from which the unknown wavelength, curvature, or liquid refractive index is extracted with sub-percent accuracy.</li>
+        </ol>
+      </div>
+    `,
+
+    formulas: `
+      <div class="manual-theory-block">
+        <h4>Key Governing Equations</h4>
+        <div class="formula-card">
+          <p><strong>Diameter of $m$-th Dark Ring (Reflected Light, Normal Incidence):</strong></p>
+          $$D_m^2 = \\frac{4m\\lambda R}{\\mu} \\quad (m = 0, 1, 2, \\dots)$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Diameter of $m$-th Dark Ring in Air Film ($\\mu = 1$):</strong></p>
+          $$D_m^2 = 4m\\lambda R \\implies D_m = 2\\sqrt{m\\lambda R}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Difference of Squares for Successive Dark Rings:</strong></p>
+          $$D_{m+p}^2 - D_m^2 = \\frac{4p\\lambda R}{\\mu}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Determination of Monochromatic Light Wavelength ($\\lambda$):</strong></p>
+          $$\\lambda = \\frac{\\mu(D_{m+p}^2 - D_m^2)}{4pR} = \\frac{\\mu \\cdot \\text{Slope}}{4R}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Determination of Lens Curvature Radius ($R$):</strong></p>
+          $$R = \\frac{\\mu(D_{m+p}^2 - D_m^2)}{4p\\lambda} = \\frac{\\mu \\cdot \\text{Slope}}{4\\lambda}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Refractive Index of Liquid Film Specimen ($\\mu$):</strong></p>
+          $$\\mu = \\frac{(D_{m+p}^2 - D_m^2)_{\\text{air}}}{(D_{m+p}^2 - D_m^2)_{\\text{liquid}}} = \\frac{\\text{Slope}_{\\text{air}}}{\\text{Slope}_{\\text{liquid}}}$$
+        </div>
+      </div>
+    `,
+    formula: `
+      <div class="manual-theory-block">
+        <h4>Key Governing Equations</h4>
+        <div class="formula-card">
+          <p><strong>Diameter of $m$-th Dark Ring in Air Film ($\\mu = 1$):</strong></p>
+          $$D_m^2 = 4m\\lambda R \\implies D_m = 2\\sqrt{m\\lambda R}$$
+        </div>
+        <div class="formula-card">
+          <p><strong>Difference of Squares of Successive Dark Rings:</strong></p>
+          $$D_{m+p}^2 - D_m^2 = 4p\\lambda R$$
+        </div>
+      </div>
+    `,
+
+    observations: `
+      <div class="observation-block">
+        <h4>Sample Laboratory Observations (Sodium Yellow Light: $\\lambda = 589.3\\text{ nm}$, Lens Radius $R = 100\\text{ cm}$, Air Film $\\mu = 1.000$)</h4>
+        <table class="manual-table">
+          <thead>
+            <tr>
+              <th>Trial #</th>
+              <th>Ring Order ($n$)</th>
+              <th>Left Reading $x_L$ (mm)</th>
+              <th>Right Reading $x_R$ (mm)</th>
+              <th>Diameter $D_n$ (mm)</th>
+              <th>$D_n^2$ (mm²)</th>
+              <th>$D_{n+p}^2 - D_n^2$ ($p=4$)</th>
+              <th>Calc. $\\lambda$ (nm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>2</td><td>-1.085</td><td>+1.085</td><td>2.171</td><td>4.714</td><td>--</td><td>--</td></tr>
+            <tr><td>2</td><td>4</td><td>-1.535</td><td>+1.535</td><td>3.070</td><td>9.429</td><td>--</td><td>--</td></tr>
+            <tr><td>3</td><td>6</td><td>-1.880</td><td>+1.880</td><td>3.760</td><td>14.143</td><td>9.429</td><td>589.3</td></tr>
+            <tr><td>4</td><td>8</td><td>-2.171</td><td>+2.171</td><td>4.342</td><td>18.857</td><td>9.428</td><td>589.3</td></tr>
+            <tr><td>5</td><td>10</td><td>-2.428</td><td>+2.428</td><td>4.855</td><td>23.572</td><td>9.429</td><td>589.3</td></tr>
+            <tr><td>6</td><td>12</td><td>-2.659</td><td>+2.659</td><td>5.318</td><td>28.286</td><td>9.429</td><td>589.3</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `,
+    observation: `
+      <div class="observation-block">
+        <h4>Sample Laboratory Observations (Sodium Yellow Light: $\\lambda = 589.3\\text{ nm}$, Lens Radius $R = 100\\text{ cm}$, Air Film $\\mu = 1.000$)</h4>
+        <table class="manual-table">
+          <thead>
+            <tr>
+              <th>Trial #</th>
+              <th>Ring Order ($n$)</th>
+              <th>Left Reading $x_L$ (mm)</th>
+              <th>Right Reading $x_R$ (mm)</th>
+              <th>Diameter $D_n$ (mm)</th>
+              <th>$D_n^2$ (mm²)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>2</td><td>-1.085</td><td>+1.085</td><td>2.171</td><td>4.714</td></tr>
+            <tr><td>2</td><td>4</td><td>-1.535</td><td>+1.535</td><td>3.070</td><td>9.429</td></tr>
+            <tr><td>3</td><td>6</td><td>-1.880</td><td>+1.880</td><td>3.760</td><td>14.143</td></tr>
+            <tr><td>4</td><td>8</td><td>-2.171</td><td>+2.171</td><td>4.342</td><td>18.857</td></tr>
+            <tr><td>5</td><td>10</td><td>-2.428</td><td>+2.428</td><td>4.855</td><td>23.572</td></tr>
+          </tbody>
+        </table>
+      </div>
+    `,
+
+    result: `
+      <div class="result-block">
+        <h4>Experimental Conclusions &amp; Findings</h4>
+        <ul class="manual-list">
+          <li>Concentric circular interference fringes of equal thickness (Newton's Rings) were observed with a strictly dark central spot due to the $\\pi$ phase reversal upon reflection at the denser glass plate boundary.</li>
+          <li>The squared diameter of the dark rings was verified to be strictly proportional to ring order: $D_m^2 \\propto m$, confirming the theoretical relation $D_m^2 = \\frac{4m\\lambda R}{\\mu}$.</li>
+          <li>The wavelength of the monochromatic Sodium source was experimentally determined from the regression slope as $\\lambda = 589.3\\text{ nm}$ with high precision ($< 0.5\\%$ relative error).</li>
+          <li>Introduction of liquid media caused predictable contraction of the rings, demonstrating the applicability of Newton's rings to optical refractometry.</li>
+        </ul>
+      </div>
+    `,
+
+    vivaQuestions: [
+      {
+        question: "Why is the central spot in Newton's rings dark in reflected light?",
+        answer: "At the point of contact, film thickness $t = 0$. However, reflection at the lower air-glass boundary introduces an abrupt phase shift of $\\pi$ radians ($\\frac{\\lambda}{2}$ path difference), satisfying the condition for destructive interference."
+      },
+      {
+        question: "Why are Newton's rings circular?",
+        answer: "Because the air film is enclosed between a spherical lens surface and a plane glass plate. The locus of points having equal film thickness forms concentric circles centered around the point of contact."
+      },
+      {
+        question: "Why do Newton's rings get closer together as their order increases?",
+        answer: "The ring diameter scales as $D_m \\propto \\sqrt{m}$. The difference between successive square roots (e.g. $\\sqrt{10} - \\sqrt{9} < \\sqrt{2} - \\sqrt{1}$) decreases with increasing $m$, causing outer rings to crowd closer together."
+      },
+      {
+        question: "What happens if a lens of smaller radius of curvature is used?",
+        answer: "The film thickness increases much more rapidly with radius, causing the rings to become extremely small and crowded, making precise micrometer crosshair measurements difficult."
+      },
+      {
+        question: "What would happen to the rings if a liquid of refractive index μ > 1 is introduced between the lens and plate?",
+        answer: "The rings contract inwards because $D_m \\propto \\frac{1}{\\sqrt{\\mu}}$. The optical path difference $2\\mu t$ increases for a given geometric thickness, causing interference conditions to occur at smaller radii."
+      }
+    ]
+  },
+
+  "rtd-sensor": {
+    id: "rtd-sensor",
+    title: "RTD Sensors",
+    category: "Sensors, Transducers & Optoelectronic Devices",
+    shortDescription: "Study the Callendar–Van Dusen temperature-resistance relationship of platinum RTD sensors (Pt100 and Pt1000) and compare 2-wire, 3-wire, and 4-wire lead resistance compensation.",
+    difficulty: "Undergraduate / Applied Physics",
+    duration: "45 Minutes",
+    engine: "Callendar–Van Dusen Thermometry Engine",
+    accentColor: "#14b8a6",
+
+    referenceBooks: [
+      {
+        title: "Industrial Platinum Resistance Thermometers and Platinum Temperature Sensors",
+        source: "DIN EN 60751 / IEC 60751 Standard",
+        url: "https://en.wikipedia.org/wiki/Resistance_thermometer",
+        description: "Official industrial thermometry specifications, Callendar–Van Dusen coefficients, and tolerance classes."
+      },
+      {
+        title: "Principles of Electronic Instrumentation and Measurements",
+        source: "Sensors & Signal Conditioning",
+        url: "#",
+        description: "Covers 2-wire, 3-wire, and 4-wire Kelvin lead compensation, Wheatstone bridges, and RTD self-heating."
+      },
+      {
+        title: "Engineering Physics Practical Manual: RTD Characteristics",
+        source: "SIES GST Physics Department",
+        url: "#",
+        description: "Laboratory manual for temperature coefficient of resistance (TCR) determination and sensor calibration."
+      }
+    ],
+
+    aim: `<p class="manual-aim-text">To study the working principle of a Resistance Temperature Detector (RTD), investigate how electrical resistance varies with temperature in platinum sensors (Pt100 and Pt1000), examine 2-wire, 3-wire, and 4-wire lead resistance compensation, and determine the temperature coefficient of resistance (α).</p>`,
+
+    apparatus: `<p class="manual-aim-text">Platinum RTD sensors (Pt100 with $R_0 = 100\\ \\Omega$ and Pt1000 with $R_0 = 1000\\ \\Omega$), regulated temperature-controlled calibration bath ($-50^\\circ\\text{C}$ to $250^\\circ\\text{C}$), precision constant current excitation source ($0.5\\text{ mA}$ to $5.0\\text{ mA}$), 4-wire Kelvin digital bridge/ohmmeter, and 2-wire/3-wire lead resistance simulation harness.</p>`,
+
+    theory: `
+      <div class="theory-block">
+        <h3>1. Principle of Resistance Temperature Detection</h3>
+        <p>A Resistance Temperature Detector (RTD) is a passive transducer that exploits the predictable increase in electrical resistance exhibited by pure metallic conductors when subjected to elevated temperatures. Unlike semiconductors that exhibit negative temperature coefficients (NTC thermistors), pure metals such as platinum possess a <strong>positive temperature coefficient of resistance (PTCR)</strong> because thermal agitation of the lattice ions increases electron scattering frequency, thereby impeding drift velocity.</p>
+      </div>
+
+      <div class="theory-block">
+        <h3>2. The Callendar–Van Dusen Mathematical Model</h3>
+        <p>The resistance-temperature relationship of standardized platinum RTDs across industrial temperature ranges is governed by the <strong>Callendar–Van Dusen equation</strong> (DIN EN 60751 / IEC 60751):</p>
+        <p>For temperatures above the ice point ($T \\ge 0^\\circ\\text{C}$):</p>
+        <div class="math-callout formula-highlight">$$R(T) = R_0 \\left(1 + A T + B T^2\\right)$$</div>
+        <p>For cryogenic and sub-zero temperatures ($T < 0^\\circ\\text{C}$):</p>
+        <div class="math-callout formula-highlight">$$R(T) = R_0 \\left[1 + A T + B T^2 + C (T - 100) T^3\\right]$$</div>
+        <p>where $R_0$ is the nominal resistance at $0^\\circ\\text{C}$ ($100\\ \\Omega$ for Pt100, $1000\\ \\Omega$ for Pt1000), $T$ is the temperature in degrees Celsius ($^\\circ\\text{C}$), and the standardized Callendar–Van Dusen constants are:</p>
+        <ul class="manual-list">
+          <li>$A = 3.9083 \\times 10^{-3}\\ ^\\circ\\text{C}^{-1}$</li>
+          <li>$B = -5.7750 \\times 10^{-7}\\ ^\\circ\\text{C}^{-2}$</li>
+          <li>$C = -4.1830 \\times 10^{-12}\\ ^\\circ\\text{C}^{-4}$</li>
+        </ul>
+      </div>
+
+      <div class="theory-block">
+        <h3>3. Temperature Coefficient of Resistance (TCR, α)</h3>
+        <p>The nominal temperature coefficient of resistance $\\alpha$ represents the fractional change in resistance between $0^\\circ\\text{C}$ and $100^\\circ\\text{C}$:</p>
+        <div class="math-callout formula-highlight">$$\\alpha = \\frac{R_{100} - R_0}{100 \\cdot R_0}$$</div>
+        <p>For standard industrial platinum conforming to IEC 60751, the nominal temperature coefficient is $\\alpha = 0.003850\\ ^\\circ\\text{C}^{-1}$. Over the $0$ to $100^\\circ\\text{C}$ interval, the linear approximation $R(T) \\approx R_0(1 + \\alpha T)$ provides an excellent fit with less than $0.4\\%$ curvature deviation.</p>
+      </div>
+
+      <div class="theory-block">
+        <h3>4. Lead Wire Resistance &amp; Wiring Topologies</h3>
+        <p>Because RTDs are often installed remotely from the measurement electronics, the resistance of connecting lead wires ($R_L$) can introduce substantial measurement errors:</p>
+        <ul class="manual-list">
+          <li><strong>2-Wire Wiring:</strong> Both lead resistances are in series with the RTD element: $R_{\\text{meas}} = R(T) + 2R_L$. With copper extension leads contributing $+0.70\\ \\Omega$, a Pt100 sensor suffers an offset error of nearly $+1.8^\\circ\\text{C}$.</li>
+          <li><strong>3-Wire Wiring:</strong> Uses an additional third compensation lead in a balanced bridge circuit. Under matched lead conditions, one lead appears in the sensing arm while the other appears in the adjacent reference arm, canceling out the majority of lead resistance ($R_{\\text{offset}} \\approx 0.015\\ \\Omega$).</li>
+          <li><strong>4-Wire (Kelvin Connection):</strong> Two leads carry the constant excitation current ($I+, I-$), while two dedicated high-impedance sense leads ($V+, V-$) measure the voltage drop directly across the platinum element. Because virtually zero current flows through the measurement leads ($I_{\\text{sense}} \\approx 0$), lead resistance is <strong>100% eliminated</strong> ($R_{\\text{offset}} = 0.000\\ \\Omega$).</li>
+        </ul>
+      </div>
+
+      <div class="theory-block">
+        <h3>5. Sensor Self-Heating Effect</h3>
+        <p>When an excitation current $I_{\\text{ex}}$ flows through the RTD, electrical power is dissipated as Joule heat ($P = I_{\\text{ex}}^2 R$). This raises the temperature of the sensing element slightly above the ambient bath temperature by an amount:</p>
+        <div class="math-callout">$$\\Delta T_{\\text{self}} = I_{\\text{ex}}^2 \\cdot R(T) \\cdot \\theta_{\\text{th}}$$</div>
+        <p>where $\\theta_{\\text{th}}$ is the thermal resistance dissipation constant (typically $500^\\circ\\text{C/W}$ in quiet liquid baths). Keeping excitation current at or below $1\\text{ mA}$ minimizes self-heating while ensuring strong signal-to-noise ratio.</p>
+      </div>
+    `,
+
+    howToPerform: `
+      <div class="steps-container">
+        <div class="step-card">
+          <div class="step-badge">1</div>
+          <div class="step-info">
+            <h4>Launch RTD Calibration Workstation</h4>
+            <p>Click <strong>Start Simulator</strong> to open the virtual temperature bath apparatus, digital bridge instrumentation, and real-time regression telemetry display.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">2</div>
+          <div class="step-info">
+            <h4>Select Sensor &amp; Wiring Topology</h4>
+            <p>Choose <strong>Pt100 ($R_0 = 100\\ \\Omega$)</strong> or <strong>Pt1000 ($R_0 = 1000\\ \\Omega$)</strong>. Start with <strong>4-Wire (Kelvin)</strong> for full lead compensation.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">3</div>
+          <div class="step-info">
+            <h4>Perform Temperature Calibration Sweep</h4>
+            <p>Adjust the bath temperature slider across $-50^\\circ\\text{C}$ to $250^\\circ\\text{C}$. Click <strong>Record Reading</strong> at multiple points (e.g., $0^\\circ\\text{C}, 25^\\circ\\text{C}, 50^\\circ\\text{C}, 75^\\circ\\text{C}, 100^\\circ\\text{C}$) to build the calibration curve.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-badge">4</div>
+          <div class="step-info">
+            <h4>Compare Lead Resistance &amp; Self-Heating</h4>
+            <p>Switch between <strong>2-Wire</strong> and <strong>4-Wire</strong> at the same temperature to observe lead wire error, and vary excitation current from $1.0\\text{ mA}$ to $5.0\\text{ mA}$ to observe Joule self-heating.</p>
+          </div>
+        </div>
+      </div>
+    `,
+
+    procedure: `
+      <div class="procedure-block">
+        <h3>Step-by-Step Laboratory Procedure</h3>
+        <ol class="manual-numbered-list">
+          <li>Ensure the instrumentation power supply is switched <strong>ON</strong>.</li>
+          <li>Select the <strong>Pt100</strong> sensor and set the wiring configuration to <strong>4-Wire (Kelvin)</strong>.</li>
+          <li>Set the excitation current to standard $1.0\\text{ mA}$ to minimize self-heating effects.</li>
+          <li>Set the bath temperature to $0.0^\\circ\\text{C}$ and log the ice point resistance ($R_0 \\approx 100.00\\ \\Omega$) by clicking <strong>Record Reading</strong>.</li>
+          <li>Increment the bath temperature in steps of approximately $20^\\circ\\text{C}$ up to $100.0^\\circ\\text{C}$, recording observations at each steady-state plateau.</li>
+          <li>Inspect the fitted regression slope and intercept on the graph: $\\alpha = \\frac{\\text{Slope}}{\\text{Intercept}}$, and verify deviation from nominal $0.003850\\ ^\\circ\\text{C}^{-1}$ is under $2\\%$.</li>
+          <li>Fix the bath temperature at $25.0^\\circ\\text{C}$ and record readings in <strong>4-Wire</strong>, <strong>3-Wire</strong>, and <strong>2-Wire</strong> modes to demonstrate lead wire compensation.</li>
+          <li>Export the completed observation logbook using <strong>Export CSV</strong> or <strong>Generate PDF</strong>.</li>
+        </ol>
+      </div>
+    `,
+
+    formulas: `
+      <div class="formula-card">
+        <h4>Callendar–Van Dusen Equation ($T \\ge 0^\\circ\\text{C}$)</h4>
+        <div class="math-callout formula-highlight">$$R(T) = R_0 (1 + A T + B T^2)$$</div>
+        <p class="formula-note">Where $A = 3.9083 \\times 10^{-3}\\ ^\\circ\\text{C}^{-1}$, $B = -5.775 \\times 10^{-7}\\ ^\\circ\\text{C}^{-2}$.</p>
+      </div>
+      <div class="formula-card">
+        <h4>Temperature Coefficient of Resistance (TCR, α)</h4>
+        <div class="math-callout formula-highlight">$$\\alpha = \\frac{R_{100} - R_0}{100 \\cdot R_0} \\approx \\frac{\\text{Slope}}{\\text{Intercept}} = 0.003850\\ ^\\circ\\text{C}^{-1}$$</div>
+      </div>
+      <div class="formula-card">
+        <h4>Lead Resistance Error</h4>
+        <div class="math-callout">$$R_{\\text{meas}} = R(T) + 2R_{\\text{lead}} \\quad (\\text{2-Wire})$$</div>
+        <div class="math-callout">$$R_{\\text{meas}} = R(T) \\quad (\\text{4-Wire Kelvin})$$</div>
+      </div>
+      <div class="formula-card">
+        <h4>Self-Heating Dissipation</h4>
+        <div class="math-callout">$$\\Delta T = I_{\\text{ex}}^2 \\cdot R(T) \\cdot \\theta_{\\text{th}}$$</div>
+      </div>
+    `,
+
+    observations: `
+      <div class="obs-card">
+        <h4>Observation Table Schema</h4>
+        <div class="table-responsive">
+          <table class="manual-obs-table">
+            <thead>
+              <tr>
+                <th>Trial #</th>
+                <th>Sensor</th>
+                <th>Bath Temp $T$ ($^\\circ\\text{C}$)</th>
+                <th>Measured $R_{\\text{raw}}$ ($\\Omega$)</th>
+                <th>Corrected $R_{\\text{corr}}$ ($\\Omega$)</th>
+                <th>Inverted Temp $T_{\\text{est}}$ ($^\\circ\\text{C}$)</th>
+                <th>Wiring Topology</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Pt100</td><td>0.0</td><td>100.00</td><td>100.00</td><td>0.00</td><td>4-Wire</td></tr>
+              <tr><td>2</td><td>Pt100</td><td>25.0</td><td>109.73</td><td>109.73</td><td>25.00</td><td>4-Wire</td></tr>
+              <tr><td>3</td><td>Pt100</td><td>50.0</td><td>119.40</td><td>119.40</td><td>50.00</td><td>4-Wire</td></tr>
+              <tr><td>4</td><td>Pt100</td><td>75.0</td><td>128.99</td><td>128.99</td><td>75.00</td><td>4-Wire</td></tr>
+              <tr><td>5</td><td>Pt100</td><td>100.0</td><td>138.51</td><td>138.51</td><td>100.00</td><td>4-Wire</td></tr>
+              <tr><td>6</td><td>Pt100</td><td>25.0</td><td>110.43</td><td>109.73</td><td>26.80</td><td>2-Wire (+0.70 Ω)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    `,
+
+    result: `
+      <div class="result-block">
+        <h4>Experimental Conclusions &amp; Findings</h4>
+        <ul class="manual-list">
+          <li>The electrical resistance of the platinum RTD was verified to increase monotonically with temperature, following the standardized Callendar–Van Dusen formulation.</li>
+          <li>The temperature coefficient of resistance was experimentally determined from linear regression over $0$ to $100^\\circ\\text{C}$ as $\\alpha \\approx 0.003850\\ ^\\circ\\text{C}^{-1}$, in close agreement with DIN EN 60751 ($< 1\\%$ relative error).</li>
+          <li>The 4-wire Kelvin connection successfully eliminated lead wire resistance error ($0.000\\ \\Omega$ offset), whereas 2-wire connection produced a $+0.700\\ \\Omega$ offset causing an apparent temperature overestimation of $\\approx 1.8^\\circ\\text{C}$.</li>
+          <li>Elevated excitation currents demonstrated noticeable Joule self-heating ($\\Delta T \\propto I^2$), confirming the importance of low excitation current ($1\\text{ mA}$) in precision thermometry.</li>
+        </ul>
+      </div>
+    `,
+
+    vivaQuestions: [
+      {
+        question: "What is an RTD and what is its working principle?",
+        answer: "A Resistance Temperature Detector (RTD) is a sensor whose electrical resistance increases predictably with temperature due to increased lattice vibration and electron scattering in pure metals (positive temperature coefficient)."
+      },
+      {
+        question: "Why is platinum the most widely used material for RTDs?",
+        answer: "Platinum offers exceptional chemical inertness, high resistance to oxidation and corrosion, a wide operating range (-200°C to 850°C), a highly repeatable resistance-temperature relationship, and high linearity."
+      },
+      {
+        question: "What does Pt100 designate?",
+        answer: "Pt designates platinum as the sensor metal, and 100 indicates that its nominal electrical resistance is exactly 100.00 Ω at the ice point (0°C)."
+      },
+      {
+        question: "What is the Callendar–Van Dusen equation?",
+        answer: "It is the standard polynomial describing platinum RTD resistance: R(T) = R₀(1 + AT + BT² - 100CT³ + CT⁴). For temperatures above 0°C, the C coefficient is zero, reducing to a second-order quadratic."
+      },
+      {
+        question: "Why is a 4-wire configuration superior to a 2-wire configuration?",
+        answer: "In a 4-wire Kelvin connection, current is supplied through two dedicated leads while voltage is sensed through two separate high-impedance leads carrying zero current. This completely eliminates lead resistance from the measurement."
       }
     ]
   }
@@ -3542,6 +4168,16 @@ EXPERIMENT_DETAILS["ultrasonic-distance"] = EXPERIMENT_DETAILS["ultrasonic-senso
 EXPERIMENT_DETAILS["wedge"] = EXPERIMENT_DETAILS["wedge-film"];
 EXPERIMENT_DETAILS["wedge-shaped-film"] = EXPERIMENT_DETAILS["wedge-film"];
 EXPERIMENT_DETAILS["thin-film-wedge"] = EXPERIMENT_DETAILS["wedge-film"];
+EXPERIMENT_DETAILS["newtons-rings"] = EXPERIMENT_DETAILS["newtons-rings"];
+EXPERIMENT_DETAILS["newton"] = EXPERIMENT_DETAILS["newtons-rings"];
+EXPERIMENT_DETAILS["newtons-ring"] = EXPERIMENT_DETAILS["newtons-rings"];
+EXPERIMENT_DETAILS["newton-rings"] = EXPERIMENT_DETAILS["newtons-rings"];
+EXPERIMENT_DETAILS["rtd"] = EXPERIMENT_DETAILS["rtd-sensor"];
+EXPERIMENT_DETAILS["rtd-sensors"] = EXPERIMENT_DETAILS["rtd-sensor"];
+EXPERIMENT_DETAILS["pt100"] = EXPERIMENT_DETAILS["rtd-sensor"];
 
-
-
+export function getExperimentDetails(id) {
+  if (!id) return null;
+  const key = String(id).toLowerCase().trim();
+  return EXPERIMENT_DETAILS[key] || null;
+}

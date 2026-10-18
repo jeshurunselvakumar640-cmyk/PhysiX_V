@@ -1,0 +1,760 @@
+{
+  "experiment": "Planck's Constant Photocell - Question Bank",
+  "experimentId": "planck",
+  "quizId": "planck-constant-mastery-quiz",
+  "experimentName": "Planck's Constant Photocell",
+  "description": "Comprehensive 50-Question Physics Question Bank for Planck's Constant Photocell",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": "planck-q1",
+      "question": "What is the universally accepted value of Planck's constant h in SI units?",
+      "options": [
+        "6.626 x 10⁻³⁴ J·s",
+        "3.00 x 10⁸ m/s",
+        "1.602 x 10⁻¹⁹ C",
+        "9.109 x 10⁻³¹ kg"
+      ],
+      "answer": "6.626 x 10⁻³⁴ J·s",
+      "correct_option": "6.626 x 10⁻³⁴ J·s",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "Planck's constant h = 6.62607015 x 10⁻³⁴ J·s (or J/Hz), an exact fundamental SI constant defined in 2019."
+    },
+    {
+      "id": "planck-q2",
+      "question": "What is Einstein's photoelectric equation relating incident photon energy hν to electron kinetic energy?",
+      "options": [
+        "h * ν = Φ + K_max = Φ + e * V_s",
+        "h * ν = Φ - K_max",
+        "K_max = h * ν * Φ",
+        "h * ν = m * c² + e * V_s"
+      ],
+      "answer": "h * ν = Φ + K_max = Φ + e * V_s",
+      "correct_option": "h * ν = Φ + K_max = Φ + e * V_s",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "Einstein proposed that one photon transfers its entire energy hν to one electron: hν = Φ + (1/2)m v_max² = Φ + e V_s."
+    },
+    {
+      "id": "planck-q3",
+      "question": "What is the stopping potential (retarding potential) V_s in a photoelectric experiment?",
+      "options": [
+        "The minimum negative anode voltage required to reduce the photocurrent to exactly zero",
+        "The voltage at which the photocell emits light",
+        "The breakdown voltage of the glass envelope",
+        "The battery voltage needed to heat the filament"
+      ],
+      "answer": "The minimum negative anode voltage required to reduce the photocurrent to exactly zero",
+      "correct_option": "The minimum negative anode voltage required to reduce the photocurrent to exactly zero",
+      "difficulty": "easy",
+      "global_id": 3,
+      "explanation": "Stopping potential V_s provides an electrostatic potential energy barrier e V_s that just stops the most energetic photoelectrons: e V_s = K_max."
+    },
+    {
+      "id": "planck-q4",
+      "question": "What does the slope of the graph of Stopping Potential V_s (y-axis) vs Incident Light Frequency ν (x-axis) represent?",
+      "options": [
+        "Slope = h / e (Planck's constant divided by elementary charge)",
+        "Slope = h * e",
+        "Slope = Φ / e (work function)",
+        "Slope = c (speed of light)"
+      ],
+      "answer": "Slope = h / e (Planck's constant divided by elementary charge)",
+      "correct_option": "Slope = h / e (Planck's constant divided by elementary charge)",
+      "difficulty": "medium",
+      "global_id": 4,
+      "explanation": "Rearranging Einstein's equation gives V_s = (h/e) * ν - (Φ/e). The linear plot has slope m = h/e, which is universal for all metals."
+    },
+    {
+      "id": "planck-q5",
+      "question": "What does the x-intercept of the Stopping Potential V_s vs Frequency ν graph represent?",
+      "options": [
+        "The threshold frequency ν0 of the photocathode material",
+        "The maximum frequency of light",
+        "The speed of sound",
+        "Zero frequency"
+      ],
+      "answer": "The threshold frequency ν0 of the photocathode material",
+      "correct_option": "The threshold frequency ν0 of the photocathode material",
+      "difficulty": "medium",
+      "global_id": 5,
+      "explanation": "Setting V_s = 0 gives ν = Φ/h = ν0, which is the threshold frequency below which no photoemission can occur regardless of intensity."
+    },
+    {
+      "id": "planck-q6",
+      "question": "What does the magnitude of the negative y-intercept of the V_s vs ν graph represent?",
+      "options": [
+        "The work function divided by electron charge (Φ / e)",
+        "Planck's constant h",
+        "The threshold wavelength λ0",
+        "The saturation current"
+      ],
+      "answer": "The work function divided by electron charge (Φ / e)",
+      "correct_option": "The work function divided by electron charge (Φ / e)",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "Extrapolating the linear curve to ν = 0 yields the y-intercept = -Φ/e, directly giving the metal's work function in electron-volts."
+    },
+    {
+      "id": "planck-q7",
+      "question": "How does increasing the intensity of incident monochromatic light affect the stopping potential V_s?",
+      "options": [
+        "Stopping potential V_s remains completely unchanged",
+        "Stopping potential V_s increases proportionally",
+        "Stopping potential V_s decreases to zero",
+        "Stopping potential V_s doubles"
+      ],
+      "answer": "Stopping potential V_s remains completely unchanged",
+      "correct_option": "Stopping potential V_s remains completely unchanged",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "Stopping potential depends solely on photon energy (frequency ν); increasing intensity merely increases the number of photons per second, not individual photon energy."
+    },
+    {
+      "id": "planck-q8",
+      "question": "How does increasing the intensity of incident monochromatic light (with ν > ν0) affect the saturation photocurrent I_sat?",
+      "options": [
+        "Photocurrent increases in direct linear proportion to light intensity",
+        "Photocurrent remains constant",
+        "Photocurrent decreases",
+        "Photocurrent oscillates sinusoidally"
+      ],
+      "answer": "Photocurrent increases in direct linear proportion to light intensity",
+      "correct_option": "Photocurrent increases in direct linear proportion to light intensity",
+      "difficulty": "easy",
+      "global_id": 8,
+      "explanation": "Higher light intensity delivers more photons per second, ejecting a proportionally higher number of photoelectrons per second (I ∝ Intensity)."
+    },
+    {
+      "id": "planck-q9",
+      "question": "What is the threshold wavelength λ0 of a metal mathematically defined as?",
+      "options": [
+        "λ0 = (h * c) / Φ",
+        "λ0 = Φ / (h * c)",
+        "λ0 = (h * Φ) / c",
+        "λ0 = c / (h * Φ)"
+      ],
+      "answer": "λ0 = (h * c) / Φ",
+      "correct_option": "λ0 = (h * c) / Φ",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "Threshold wavelength is the maximum wavelength that can eject an electron: E = hc/λ0 = Φ, hence λ0 = hc / Φ."
+    },
+    {
+      "id": "planck-q10",
+      "question": "What happens if light with frequency ν < ν0 (wavelength λ > λ0) strikes the photocathode?",
+      "options": [
+        "No photoelectrons are emitted, no matter how intense the light beam is",
+        "A huge photocurrent flows immediately",
+        "The photocell explodes",
+        "Electrons emit after 1 hour delay"
+      ],
+      "answer": "No photoelectrons are emitted, no matter how intense the light beam is",
+      "correct_option": "No photoelectrons are emitted, no matter how intense the light beam is",
+      "difficulty": "easy",
+      "global_id": 10,
+      "explanation": "Since individual photon energy hν is less than the work function Φ, no single photon has enough energy to liberate an electron, confirming photon theory over wave theory."
+    },
+    {
+      "id": "planck-q11",
+      "question": "How quickly does photoemission occur after light illuminates the photocathode (time lag)?",
+      "options": [
+        "Almost instantaneously (time delay < 10⁻⁹ seconds / 1 nanosecond)",
+        "After several minutes of thermal accumulation",
+        "After exactly 1 hour",
+        "After 1 second"
+      ],
+      "answer": "Almost instantaneously (time delay < 10⁻⁹ seconds / 1 nanosecond)",
+      "correct_option": "Almost instantaneously (time delay < 10⁻⁹ seconds / 1 nanosecond)",
+      "difficulty": "medium",
+      "global_id": 11,
+      "explanation": "Classical wave theory predicted hours of energy accumulation over the wavefront area; quantum mechanics proves instantaneous (< 10⁻⁹ s) photon-electron collisions."
+    },
+    {
+      "id": "planck-q12",
+      "question": "If a photocell has a work function of Φ = 2.0 eV, what is its threshold frequency ν0?",
+      "options": [
+        "4.83 x 10¹⁴ Hz",
+        "3.00 x 10⁸ Hz",
+        "1.24 x 10¹⁵ Hz",
+        "6.63 x 10¹⁴ Hz"
+      ],
+      "answer": "4.83 x 10¹⁴ Hz",
+      "correct_option": "4.83 x 10¹⁴ Hz",
+      "difficulty": "medium",
+      "global_id": 12,
+      "explanation": "ν0 = Φ / h = (2.0 * 1.602e-19 J) / (6.626e-34 J·s) = 3.204e-19 / 6.626e-34 ≈ 4.835 x 10¹⁴ Hz."
+    },
+    {
+      "id": "planck-q13",
+      "question": "For a photocathode with work function Φ = 2.0 eV, what is the threshold wavelength λ0 in nanometers?",
+      "options": [
+        "620 nm",
+        "310 nm",
+        "400 nm",
+        "750 nm"
+      ],
+      "answer": "620 nm",
+      "correct_option": "620 nm",
+      "difficulty": "medium",
+      "global_id": 13,
+      "explanation": "λ0 = hc / Φ = 1240 eV·nm / 2.0 eV = 620 nm (yellow-orange light)."
+    },
+    {
+      "id": "planck-q14",
+      "question": "Light of wavelength λ = 400 nm (frequency ν = 7.5 x 10¹⁴ Hz) illuminates a photocathode with Φ = 2.2 eV. What is the stopping potential V_s?",
+      "options": [
+        "0.90 V",
+        "3.10 V",
+        "2.20 V",
+        "1.55 V"
+      ],
+      "answer": "0.90 V",
+      "correct_option": "0.90 V",
+      "difficulty": "hard",
+      "global_id": 14,
+      "explanation": "Photon energy E = 1240 / 400 nm = 3.10 eV. eV_s = E - Φ = 3.10 eV - 2.20 eV = 0.90 eV. Thus V_s = 0.90 V."
+    },
+    {
+      "id": "planck-q15",
+      "question": "If the frequency of incident light is doubled from ν to 2ν, what happens to the maximum kinetic energy K_max of the emitted photoelectrons?",
+      "options": [
+        "It more than doubles (K_max,new = 2*K_max + Φ > 2*K_max)",
+        "It exactly doubles",
+        "It remains constant",
+        "It quadruples"
+      ],
+      "answer": "It more than doubles (K_max,new = 2*K_max + Φ > 2*K_max)",
+      "correct_option": "It more than doubles (K_max,new = 2*K_max + Φ > 2*K_max)",
+      "difficulty": "hard",
+      "global_id": 15,
+      "explanation": "K_max = hν - Φ. For 2ν, K_new = 2hν - Φ = 2(K_max + Φ) - Φ = 2 K_max + Φ, which is strictly greater than double."
+    },
+    {
+      "id": "planck-q16",
+      "question": "In the LED method for determining Planck's constant, how is h estimated from the knee/turn-on voltage V_knee and emitted wavelength λ?",
+      "options": [
+        "h ≈ (e * V_knee * λ) / c",
+        "h = (e * V_knee) / (c * λ)",
+        "h = (c * λ) / (e * V_knee)",
+        "h = e * V_knee * c"
+      ],
+      "answer": "h ≈ (e * V_knee * λ) / c",
+      "correct_option": "h ≈ (e * V_knee * λ) / c",
+      "difficulty": "medium",
+      "global_id": 16,
+      "explanation": "Assuming the electrical energy e V_knee approximately equals photon bandgap energy hν = hc/λ, solving for h gives h = e V_knee λ / c."
+    },
+    {
+      "id": "planck-q17",
+      "question": "In the LED method, if an LED with λ = 650 nm has an experimental knee voltage of V_knee = 1.90 V, what is the calculated value of h?",
+      "options": [
+        "6.58 x 10⁻³⁴ J·s",
+        "7.50 x 10⁻³⁴ J·s",
+        "5.20 x 10⁻³⁴ J·s",
+        "6.63 x 10⁻²⁷ J·s"
+      ],
+      "answer": "6.58 x 10⁻³⁴ J·s",
+      "correct_option": "6.58 x 10⁻³⁴ J·s",
+      "difficulty": "hard",
+      "global_id": 17,
+      "explanation": "h = (1.602e-19 C * 1.90 V * 650e-9 m) / (3.0e8 m/s) = 1.978e-25 / 3.0e8 ≈ 6.59 x 10⁻³⁴ J·s."
+    },
+    {
+      "id": "planck-q18",
+      "question": "Why is the photocell tube evacuated to high vacuum?",
+      "options": [
+        "To prevent emitted photoelectrons from colliding with air molecules and losing kinetic energy before reaching the anode",
+        "To keep the glass envelope cold",
+        "To prevent light from escaping",
+        "To reduce atmospheric pressure on the battery"
+      ],
+      "answer": "To prevent emitted photoelectrons from colliding with air molecules and losing kinetic energy before reaching the anode",
+      "correct_option": "To prevent emitted photoelectrons from colliding with air molecules and losing kinetic energy before reaching the anode",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "Air molecules would scatter photoelectrons through inelastic collisions, altering their kinetic energy and extinguishing the measurable current."
+    },
+    {
+      "id": "planck-q19",
+      "question": "Why is potassium or caesium commonly used as the photocathode material in educational photoelectric effect apparatus?",
+      "options": [
+        "Alkali metals have very low work functions (~1.9 eV to 2.3 eV), allowing photoemission with visible light",
+        "Alkali metals are transparent to UV light",
+        "Alkali metals do not conduct electricity",
+        "Alkali metals have high melting points"
+      ],
+      "answer": "Alkali metals have very low work functions (~1.9 eV to 2.3 eV), allowing photoemission with visible light",
+      "correct_option": "Alkali metals have very low work functions (~1.9 eV to 2.3 eV), allowing photoemission with visible light",
+      "difficulty": "easy",
+      "global_id": 19,
+      "explanation": "Alkali metals have a single loosely bound valence electron, yielding low work functions (Cs ≈ 1.9 eV, K ≈ 2.2 eV) that respond to standard visible light filters."
+    },
+    {
+      "id": "planck-q20",
+      "question": "What optical filters are typically used in a photoelectric experiment to isolate specific spectral wavelengths from a mercury vapor lamp?",
+      "options": [
+        "Narrowband transmission optical interference filters (e.g. 365 nm, 405 nm, 436 nm, 546 nm, 577 nm)",
+        "Neutral density filters",
+        "Infrared absorption filters only",
+        "Polarizing sheets"
+      ],
+      "answer": "Narrowband transmission optical interference filters (e.g. 365 nm, 405 nm, 436 nm, 546 nm, 577 nm)",
+      "correct_option": "Narrowband transmission optical interference filters (e.g. 365 nm, 405 nm, 436 nm, 546 nm, 577 nm)",
+      "difficulty": "medium",
+      "global_id": 20,
+      "explanation": "Mercury vapor lamps emit discrete, intense spectral lines; colored interference filters isolate individual monochromatic wavelengths to measure V_s(λ)."
+    },
+    {
+      "id": "planck-q21",
+      "question": "Why does the measured photocurrent in a photocell not drop abruptly to zero at V = 0, but continues to flow even under slight negative retarding voltages?",
+      "options": [
+        "Photoelectrons are ejected with significant initial kinetic energy and can overcome small opposing retarding fields",
+        "The battery voltage leaks into the tube",
+        "Thermal ions carry the current",
+        "Glass becomes conductive at zero voltage"
+      ],
+      "answer": "Photoelectrons are ejected with significant initial kinetic energy and can overcome small opposing retarding fields",
+      "correct_option": "Photoelectrons are ejected with significant initial kinetic energy and can overcome small opposing retarding fields",
+      "difficulty": "medium",
+      "global_id": 21,
+      "explanation": "Electrons possess initial kinetic energies up to K_max = hν - Φ; they can fly across the vacuum gap against a retarding electric field until potential reaches -V_s."
+    },
+    {
+      "id": "planck-q22",
+      "question": "What is the contact potential difference (V_cpd) between the photocathode and anode, and how does it affect experimental stopping potential measurements?",
+      "options": [
+        "V_cpd = (Φ_anode - Φ_cathode) / e; it adds a systematic voltage offset that shifts the measured stopping potential",
+        "It multiplies the speed of light by two",
+        "It cancels Planck's constant",
+        "It is always strictly zero"
+      ],
+      "answer": "V_cpd = (Φ_anode - Φ_cathode) / e; it adds a systematic voltage offset that shifts the measured stopping potential",
+      "correct_option": "V_cpd = (Φ_anode - Φ_cathode) / e; it adds a systematic voltage offset that shifts the measured stopping potential",
+      "difficulty": "hard",
+      "global_id": 22,
+      "explanation": "When two dissimilar metals are connected in a circuit, their work function difference creates a contact potential V_cpd. However, since V_cpd is constant, it does not alter the slope (h/e) of V_s vs ν."
+    },
+    {
+      "id": "planck-q23",
+      "question": "Why is the slope of the V_s vs ν line identical regardless of what metal is used for the photocathode?",
+      "options": [
+        "The slope is fundamental (h / e), depending only on universal constants h and e, not material properties",
+        "All metals have the same work function",
+        "Light frequency changes inside metal",
+        "Cathodes are made of copper"
+      ],
+      "answer": "The slope is fundamental (h / e), depending only on universal constants h and e, not material properties",
+      "correct_option": "The slope is fundamental (h / e), depending only on universal constants h and e, not material properties",
+      "difficulty": "easy",
+      "global_id": 23,
+      "explanation": "Einstein's equation V_s = (h/e)ν - Φ/e shows that the slope h/e is a universal constant of nature; only the intercept -Φ/e varies with cathode material."
+    },
+    {
+      "id": "planck-q24",
+      "question": "What instrument is required to measure the minute photocurrents (picoamperes to nanoamperes) in a photoelectric experiment?",
+      "options": [
+        "A high-sensitivity electrometer or picoammeter (input impedance > 10¹² Ω)",
+        "A moving-iron AC ammeter",
+        "A standard analog galvanometer",
+        "A clamp meter"
+      ],
+      "answer": "A high-sensitivity electrometer or picoammeter (input impedance > 10¹² Ω)",
+      "correct_option": "A high-sensitivity electrometer or picoammeter (input impedance > 10¹² Ω)",
+      "difficulty": "medium",
+      "global_id": 24,
+      "explanation": "Typical photoelectric currents are on the order of 10⁻¹¹ A to 10⁻⁸ A, requiring high-input-impedance electrometers to detect the zero-current null point accurately."
+    },
+    {
+      "id": "planck-q25",
+      "question": "If light of frequency 1.0 x 10¹⁵ Hz falls on a metal and produces a stopping potential of 1.65 V, what is the experimental value of Planck's constant if the work function is 2.48 eV?",
+      "options": [
+        "6.61 x 10⁻³⁴ J·s",
+        "5.50 x 10⁻³⁴ J·s",
+        "7.20 x 10⁻³⁴ J·s",
+        "6.63 x 10⁻²⁷ J·s"
+      ],
+      "answer": "6.61 x 10⁻³⁴ J·s",
+      "correct_option": "6.61 x 10⁻³⁴ J·s",
+      "difficulty": "hard",
+      "global_id": 25,
+      "explanation": "hν = eV_s + Φ = (1.65 eV + 2.48 eV) = 4.13 eV = 4.13 * 1.602e-19 J = 6.616e-19 J. h = 6.616e-19 / 1.0e15 = 6.616 x 10⁻³⁴ J·s."
+    },
+    {
+      "id": "planck-q26",
+      "question": "Why did classical electromagnetic wave theory fail to explain the existence of a threshold frequency in the photoelectric effect?",
+      "options": [
+        "Wave theory predicted that any frequency of light could eject electrons if given sufficient intensity or exposure time",
+        "Wave theory denied that light had energy",
+        "Wave theory predicted that light could not travel through vacuum",
+        "Wave theory required electrons to have zero charge"
+      ],
+      "answer": "Wave theory predicted that any frequency of light could eject electrons if given sufficient intensity or exposure time",
+      "correct_option": "Wave theory predicted that any frequency of light could eject electrons if given sufficient intensity or exposure time",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "Classical theory viewed light as continuous waves spreading energy over time; high intensity of any frequency should have accumulated enough energy to liberate electrons, contradicting experimental fact."
+    },
+    {
+      "id": "planck-q27",
+      "question": "Why did classical wave theory fail to explain why electron kinetic energy depends on light frequency rather than light intensity?",
+      "options": [
+        "Wave theory predicted that higher light intensity (larger electric field amplitude E) should impart greater kinetic energy to ejected electrons",
+        "Wave theory predicted that light frequency was constant",
+        "Wave theory could not define kinetic energy",
+        "Wave theory assumed electrons were stationary"
+      ],
+      "answer": "Wave theory predicted that higher light intensity (larger electric field amplitude E) should impart greater kinetic energy to ejected electrons",
+      "correct_option": "Wave theory predicted that higher light intensity (larger electric field amplitude E) should impart greater kinetic energy to ejected electrons",
+      "difficulty": "medium",
+      "global_id": 27,
+      "explanation": "In classical physics, wave energy flux is proportional to E² (intensity); higher intensity should have produced faster electrons. Experiment showed that intensity only increases electron count, while frequency determines speed."
+    },
+    {
+      "id": "planck-q28",
+      "question": "What is a photon?",
+      "options": [
+        "A discrete quantum (packet) of electromagnetic energy carrying energy E = hν and momentum p = h / λ",
+        "A positively charged nucleus particle",
+        "A wave with infinite wavelength",
+        "A subatomic particle with rest mass of 1 kg"
+      ],
+      "answer": "A discrete quantum (packet) of electromagnetic energy carrying energy E = hν and momentum p = h / λ",
+      "correct_option": "A discrete quantum (packet) of electromagnetic energy carrying energy E = hν and momentum p = h / λ",
+      "difficulty": "easy",
+      "global_id": 28,
+      "explanation": "Einstein postulated that light propagates and interacts as localized quanta called photons, each carrying energy hν and zero rest mass."
+    },
+    {
+      "id": "planck-q29",
+      "question": "What is the momentum p of a photon of wavelength λ?",
+      "options": [
+        "p = h / λ",
+        "p = h * λ",
+        "p = λ / h",
+        "p = h * c / λ"
+      ],
+      "answer": "p = h / λ",
+      "correct_option": "p = h / λ",
+      "difficulty": "medium",
+      "global_id": 29,
+      "explanation": "By the de Broglie relation and relativistic energy-momentum (E = pc), a photon carries momentum p = E/c = hν/c = h/λ."
+    },
+    {
+      "id": "planck-q30",
+      "question": "What major scientific prize was Albert Einstein awarded in 1921 for his discovery of the law of the photoelectric effect?",
+      "options": [
+        "The Nobel Prize in Physics",
+        "The Fields Medal",
+        "The Copley Medal",
+        "The Planck Medal"
+      ],
+      "answer": "The Nobel Prize in Physics",
+      "correct_option": "The Nobel Prize in Physics",
+      "difficulty": "easy",
+      "global_id": 30,
+      "explanation": "Einstein was awarded the 1921 Nobel Prize in Physics specifically 'for his services to Theoretical Physics, and especially for his discovery of the law of the photoelectric effect'."
+    },
+    {
+      "id": "planck-q31",
+      "question": "In a photoelectric experiment, what causes reverse current when the anode voltage is driven to large negative values?",
+      "options": [
+        "Photoemission from the anode itself if scattered light strikes the anode surface",
+        "Battery leakage current",
+        "Dielectric breakdown of vacuum",
+        "Thermal electron emission from the meter"
+      ],
+      "answer": "Photoemission from the anode itself if scattered light strikes the anode surface",
+      "correct_option": "Photoemission from the anode itself if scattered light strikes the anode surface",
+      "difficulty": "hard",
+      "global_id": 31,
+      "explanation": "If stray incident light strikes the collector/anode, it ejects photoelectrons back toward the cathode under the strong negative anode bias, creating a reverse current offset."
+    },
+    {
+      "id": "planck-q32",
+      "question": "How is reverse anode photoemission experimentally minimized in precision photocell housings?",
+      "options": [
+        "By using an anode made of a thin wire ring or loop that presents minimal surface area to stray light, often coated with high-work-function metal",
+        "By painting the cathode black",
+        "By running the experiment in dark rooms only",
+        "By cooling the anode to 0 Kelvin"
+      ],
+      "answer": "By using an anode made of a thin wire ring or loop that presents minimal surface area to stray light, often coated with high-work-function metal",
+      "correct_option": "By using an anode made of a thin wire ring or loop that presents minimal surface area to stray light, often coated with high-work-function metal",
+      "difficulty": "hard",
+      "global_id": 32,
+      "explanation": "A thin wire loop anode intercepts minimal light while collecting electrons efficiently; high work function further suppresses photoemission from the anode."
+    },
+    {
+      "id": "planck-q33",
+      "question": "What is the De Broglie wavelength λ_dB of an electron accelerated through a potential difference V?",
+      "options": [
+        "λ_dB = h / √(2 * m * e * V) ≈ 1.227 / √V nm",
+        "λ_dB = h * √(V)",
+        "λ_dB = e * V / h",
+        "λ_dB = √(V) / 1.227 nm"
+      ],
+      "answer": "λ_dB = h / √(2 * m * e * V) ≈ 1.227 / √V nm",
+      "correct_option": "λ_dB = h / √(2 * m * e * V) ≈ 1.227 / √V nm",
+      "difficulty": "hard",
+      "global_id": 33,
+      "explanation": "Since p = √(2mE) = √(2m e V), the de Broglie wavelength is λ = h/p = h / √(2me V) ≈ 1.227 / √V nm."
+    },
+    {
+      "id": "planck-q34",
+      "question": "What is the energy of a photon of green light (λ = 532 nm) in electron-volts?",
+      "options": [
+        "2.33 eV",
+        "1.50 eV",
+        "3.40 eV",
+        "4.12 eV"
+      ],
+      "answer": "2.33 eV",
+      "correct_option": "2.33 eV",
+      "difficulty": "medium",
+      "global_id": 34,
+      "explanation": "E = hc / λ = 1240 / 532 nm ≈ 2.33 eV."
+    },
+    {
+      "id": "planck-q35",
+      "question": "What is the energy of an ultraviolet photon with wavelength λ = 254 nm (from a mercury discharge)?",
+      "options": [
+        "4.88 eV",
+        "2.10 eV",
+        "1.24 eV",
+        "6.63 eV"
+      ],
+      "answer": "4.88 eV",
+      "correct_option": "4.88 eV",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "E = 1240 / 254 nm ≈ 4.88 eV."
+    },
+    {
+      "id": "planck-q36",
+      "question": "If the work function of platinum is 5.65 eV, can visible light (400 nm to 700 nm) cause photoemission from platinum?",
+      "options": [
+        "No, because visible photon energy (1.77 eV to 3.10 eV) is much less than the 5.65 eV work function",
+        "Yes, if the light is very intense",
+        "Yes, red light can do it",
+        "Yes, green light can do it"
+      ],
+      "answer": "No, because visible photon energy (1.77 eV to 3.10 eV) is much less than the 5.65 eV work function",
+      "correct_option": "No, because visible photon energy (1.77 eV to 3.10 eV) is much less than the 5.65 eV work function",
+      "difficulty": "easy",
+      "global_id": 36,
+      "explanation": "Maximum visible photon energy at 400 nm is 3.1 eV, which is far below 5.65 eV; photoemission from platinum requires deep UV light (λ < 220 nm)."
+    },
+    {
+      "id": "planck-q37",
+      "question": "What is the relation between Planck's constant h and the reduced Planck's constant ℏ ('h-bar')?",
+      "options": [
+        "ℏ = h / (2 * π)",
+        "ℏ = 2 * π * h",
+        "ℏ = h / π",
+        "ℏ = h²"
+      ],
+      "answer": "ℏ = h / (2 * π)",
+      "correct_option": "ℏ = h / (2 * π)",
+      "difficulty": "easy",
+      "global_id": 37,
+      "explanation": "The reduced Planck constant (Dirac constant) is defined as ℏ = h / (2π) ≈ 1.05457 x 10⁻³⁴ J·s."
+    },
+    {
+      "id": "planck-q38",
+      "question": "In the Compton effect, what happens to the wavelength of an X-ray photon after scattering off a stationary electron?",
+      "options": [
+        "Wavelength increases (λ' > λ) because the photon transfers energy and momentum to the recoil electron",
+        "Wavelength decreases",
+        "Wavelength remains exactly unchanged",
+        "The photon turns into an electron"
+      ],
+      "answer": "Wavelength increases (λ' > λ) because the photon transfers energy and momentum to the recoil electron",
+      "correct_option": "Wavelength increases (λ' > λ) because the photon transfers energy and momentum to the recoil electron",
+      "difficulty": "medium",
+      "global_id": 38,
+      "explanation": "Compton scattering confirms particle kinematics: Δλ = λ' - λ = (h / (m_e * c)) * (1 - cos θ), where h/(m_e c) ≈ 2.426 pm is the Compton wavelength."
+    },
+    {
+      "id": "planck-q39",
+      "question": "What is the Compton wavelength of an electron λ_c = h / (m_e * c)?",
+      "options": [
+        "2.426 x 10⁻¹² m (2.426 pm)",
+        "0.529 x 10⁻¹⁰ m",
+        "1.227 nm",
+        "6.626 x 10⁻³⁴ m"
+      ],
+      "answer": "2.426 x 10⁻¹² m (2.426 pm)",
+      "correct_option": "2.426 x 10⁻¹² m (2.426 pm)",
+      "difficulty": "hard",
+      "global_id": 39,
+      "explanation": "λ_c = (6.626e-34) / (9.109e-31 * 3.0e8) = 6.626e-34 / 2.733e-22 ≈ 2.426 x 10⁻¹² m = 2.426 pm."
+    },
+    {
+      "id": "planck-q40",
+      "question": "What happens to the photocurrent when the anode voltage is made increasingly positive (accelerating potential)?",
+      "options": [
+        "It increases initially and then saturates at a constant maximum value I_sat",
+        "It increases infinitely without bound",
+        "It immediately drops to zero",
+        "It oscillates between positive and negative"
+      ],
+      "answer": "It increases initially and then saturates at a constant maximum value I_sat",
+      "correct_option": "It increases initially and then saturates at a constant maximum value I_sat",
+      "difficulty": "medium",
+      "global_id": 40,
+      "explanation": "At moderate positive voltage, all photoelectrons emitted per second are collected by the anode; further increasing voltage cannot increase current beyond this saturation limit."
+    },
+    {
+      "id": "planck-q41",
+      "question": "What does the slope of the linear I-V curve in the retarding region near stopping potential indicate?",
+      "options": [
+        "The thermal velocity distribution and energy spread of emitted electrons",
+        "The capacitance of the cable",
+        "The resistance of the voltmeter",
+        "The temperature of the sun"
+      ],
+      "answer": "The thermal velocity distribution and energy spread of emitted electrons",
+      "correct_option": "The thermal velocity distribution and energy spread of emitted electrons",
+      "difficulty": "hard",
+      "global_id": 41,
+      "explanation": "Photoelectrons are ejected with a distribution of velocities from 0 up to v_max; the rounded foot of the I-V curve near V_s reflects this distribution."
+    },
+    {
+      "id": "planck-q42",
+      "question": "In Max Planck's original 1900 hypothesis, how did he explain blackbody radiation?",
+      "options": [
+        "He assumed that atomic oscillators in the cavity walls can absorb or emit energy only in discrete packets of E = n * h * ν",
+        "He assumed that light travels in circles",
+        "He assumed that temperature cannot exceed 1000 K",
+        "He assumed that atoms have zero mass"
+      ],
+      "answer": "He assumed that atomic oscillators in the cavity walls can absorb or emit energy only in discrete packets of E = n * h * ν",
+      "correct_option": "He assumed that atomic oscillators in the cavity walls can absorb or emit energy only in discrete packets of E = n * h * ν",
+      "difficulty": "easy",
+      "global_id": 42,
+      "explanation": "Planck resolved the 'ultraviolet catastrophe' by quantizing oscillator energies: E = n h ν (n = 0, 1, 2, ...), marking the birth of quantum theory."
+    },
+    {
+      "id": "planck-q43",
+      "question": "If two LEDs emit red (630 nm) and blue (470 nm) light, which LED has the higher turn-on voltage V_knee?",
+      "options": [
+        "The blue LED (shorter wavelength corresponds to higher photon energy hν)",
+        "The red LED",
+        "Both have identical turn-on voltage",
+        "Turn-on voltage depends only on current"
+      ],
+      "answer": "The blue LED (shorter wavelength corresponds to higher photon energy hν)",
+      "correct_option": "The blue LED (shorter wavelength corresponds to higher photon energy hν)",
+      "difficulty": "easy",
+      "global_id": 43,
+      "explanation": "E = hc/λ. Blue light has shorter wavelength, higher frequency, higher bandgap energy, and therefore higher turn-on voltage (~2.8 V vs ~1.8 V for red)."
+    },
+    {
+      "id": "planck-q44",
+      "question": "How many photons per second are emitted by a 5.0 mW laser pointer operating at λ = 633 nm?",
+      "options": [
+        "1.6 x 10¹⁶ photons/second",
+        "3.0 x 10⁸ photons/second",
+        "6.6 x 10³⁴ photons/second",
+        "1.0 x 10¹⁰ photons/second"
+      ],
+      "answer": "1.6 x 10¹⁶ photons/second",
+      "correct_option": "1.6 x 10¹⁶ photons/second",
+      "difficulty": "hard",
+      "global_id": 44,
+      "explanation": "Photon energy E_p = hc/λ = (6.626e-34 * 3.0e8) / 633e-9 ≈ 3.14e-19 J. N = Power / E_p = 5.0e-3 W / 3.14e-19 J ≈ 1.59 x 10¹⁶ photons/s."
+    },
+    {
+      "id": "planck-q45",
+      "question": "What is the quantum efficiency (QE) of a photocathode?",
+      "options": [
+        "The ratio of emitted photoelectrons to incident photons: QE = N_electrons / N_photons",
+        "The ratio of input voltage to output voltage",
+        "The ratio of work function to bandgap",
+        "The total power dissipated"
+      ],
+      "answer": "The ratio of emitted photoelectrons to incident photons: QE = N_electrons / N_photons",
+      "correct_option": "The ratio of emitted photoelectrons to incident photons: QE = N_electrons / N_photons",
+      "difficulty": "medium",
+      "global_id": 45,
+      "explanation": "Quantum efficiency measures the probability that an incident photon successfully ejects a detectable photoelectron (typically 1% to 30% in photocathodes)."
+    },
+    {
+      "id": "planck-q46",
+      "question": "If an experiment measures stopping potentials of V_s1 = 1.48 V at ν1 = 8.2 x 10¹⁴ Hz and V_s2 = 0.65 V at ν2 = 6.2 x 10¹⁴ Hz, what is the calculated value of h?",
+      "options": [
+        "6.65 x 10⁻³⁴ J·s",
+        "5.20 x 10⁻³⁴ J·s",
+        "7.50 x 10⁻³⁴ J·s",
+        "6.02 x 10⁻³⁴ J·s"
+      ],
+      "answer": "6.65 x 10⁻³⁴ J·s",
+      "correct_option": "6.65 x 10⁻³⁴ J·s",
+      "difficulty": "hard",
+      "global_id": 46,
+      "explanation": "Slope = ΔV_s / Δν = (1.48 - 0.65) / (8.2e14 - 6.2e14) = 0.83 V / 2.0e14 Hz = 4.15e-15 V·s. h = e * slope = 1.602e-19 * 4.15e-15 = 6.648 x 10⁻³⁴ J·s."
+    },
+    {
+      "id": "planck-q47",
+      "question": "What is the work function Φ of a metal physically defined as?",
+      "options": [
+        "The minimum thermodynamic energy required to remove an electron from the Fermi level to infinity outside the metal",
+        "The energy required to split the atom",
+        "The thermal energy of the nucleus",
+        "The kinetic energy of free electrons"
+      ],
+      "answer": "The minimum thermodynamic energy required to remove an electron from the Fermi level to infinity outside the metal",
+      "correct_option": "The minimum thermodynamic energy required to remove an electron from the Fermi level to infinity outside the metal",
+      "difficulty": "easy",
+      "global_id": 47,
+      "explanation": "Work function Φ = E_vacuum - E_Fermi is the potential energy barrier binding the highest-energy electrons inside the conduction band of a metal."
+    },
+    {
+      "id": "planck-q48",
+      "question": "Why is a photocell often referred to as a quantum detector rather than a thermal detector?",
+      "options": [
+        "It counts discrete individual photon-electron interaction events directly rather than measuring temperature rise caused by absorbed power",
+        "It operates at absolute zero",
+        "It can detect gravity waves",
+        "It creates quantum entangled photons"
+      ],
+      "answer": "It counts discrete individual photon-electron interaction events directly rather than measuring temperature rise caused by absorbed power",
+      "correct_option": "It counts discrete individual photon-electron interaction events directly rather than measuring temperature rise caused by absorbed power",
+      "difficulty": "medium",
+      "global_id": 48,
+      "explanation": "Quantum detectors rely on the photoelectric effect where each absorbed photon promotes a carrier across an energy gap, yielding wavelength-dependent sensitivity."
+    },
+    {
+      "id": "planck-q49",
+      "question": "If incident light intensity on a photocell is doubled while frequency is kept constant, what happens to the maximum velocity v_max of the emitted photoelectrons?",
+      "options": [
+        "v_max remains completely unchanged",
+        "v_max doubles",
+        "v_max quadruples",
+        "v_max drops to half"
+      ],
+      "answer": "v_max remains completely unchanged",
+      "correct_option": "v_max remains completely unchanged",
+      "difficulty": "easy",
+      "global_id": 49,
+      "explanation": "Since (1/2)m v_max² = hν - Φ, the maximum velocity depends solely on light frequency ν and work function Φ; light intensity has zero effect on v_max."
+    },
+    {
+      "id": "planck-q50",
+      "question": "In a modern computerized physics experiment, how is the stopping potential V_s automatically determined from a digitized I-V curve?",
+      "options": [
+        "By finding the voltage intercept where the forward tangent to the photocurrent curve crosses the baseline dark current level",
+        "By finding the maximum voltage",
+        "By dividing peak current by resistance",
+        "By averaging all recorded voltages"
+      ],
+      "answer": "By finding the voltage intercept where the forward tangent to the photocurrent curve crosses the baseline dark current level",
+      "correct_option": "By finding the voltage intercept where the forward tangent to the photocurrent curve crosses the baseline dark current level",
+      "difficulty": "medium",
+      "global_id": 50,
+      "explanation": "Automated software fits a linear regression to the steep photocurrent ascent and finds its intersection with the horizontal dark leakage current line to determine V_s precisely."
+    }
+  ]
+}

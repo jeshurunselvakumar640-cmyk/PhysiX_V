@@ -1,0 +1,760 @@
+{
+  "experiment": "Wedge-Shaped Film Interference - Question Bank",
+  "experimentId": "wedge-film",
+  "quizId": "wedge-film-mastery-quiz",
+  "experimentName": "Wedge-Shaped Film Interference",
+  "description": "Comprehensive 50-Question Physics Question Bank for Wedge-Shaped Film Interference",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": "wf-q1",
+      "question": "Why is the fringe at the line of contact between the two glass plates dark in reflected monochromatic light?",
+      "options": [
+        "Reflection at the lower optically denser glass surface introduces a Stokes phase shift of π radians (λ/2 path difference)",
+        "The glass absorbs 100% of the light at zero film thickness",
+        "Refraction index of air drops to zero at the line of contact",
+        "Constructive interference cancels all odd harmonics"
+      ],
+      "answer": "Reflection at the lower optically denser glass surface introduces a Stokes phase shift of π radians (λ/2 path difference)",
+      "correct_option": "Reflection at the lower optically denser glass surface introduces a Stokes phase shift of π radians (λ/2 path difference)",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "At the contact edge t = 0. Reflection from the denser glass medium adds a phase jump of π rad (λ/2), causing destructive interference and producing a permanent dark fringe."
+    },
+    {
+      "id": "wf-q2",
+      "question": "Why are the interference fringes formed in a wedge-shaped film straight, parallel, and equidistant?",
+      "options": [
+        "Loci of constant film thickness on optically flat planar plates are straight lines parallel to the contact apex",
+        "The travelling microscope lens produces straight virtual images regardless of plate curvature",
+        "Photons repel each other transversely in the air gap",
+        "Reflection angle is 45 degrees along the entire wedge"
+      ],
+      "answer": "Loci of constant film thickness on optically flat planar plates are straight lines parallel to the contact apex",
+      "correct_option": "Loci of constant film thickness on optically flat planar plates are straight lines parallel to the contact apex",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "Fringes of equal thickness (Fizeau fringes) follow contours of identical gap thickness t. For planar plates with constant wedge angle α, these contours form straight parallel lines."
+    },
+    {
+      "id": "wf-q3",
+      "question": "What is the formula to calculate spacer wire diameter d using fringe width β, wedge length L, and wavelength λ?",
+      "options": [
+        "d = (λ * L) / (2 * β)",
+        "d = (2 * λ * β) / L",
+        "d = (β * L) / (2 * λ)",
+        "d = (λ * β) / (2 * L)"
+      ],
+      "answer": "d = (λ * L) / (2 * β)",
+      "correct_option": "d = (λ * L) / (2 * β)",
+      "difficulty": "easy",
+      "global_id": 3,
+      "explanation": "Since fringe spacing β = (λ * L) / (2 * d), rearranging directly yields spacer diameter d = (λ * L) / (2 * β)."
+    },
+    {
+      "id": "wf-q4",
+      "question": "What happens to the fringe width β if a thicker wire is used as the spacer?",
+      "options": [
+        "Fringe width decreases and fringes crowd closer together because β is inversely proportional to wire diameter d",
+        "Fringe width increases and fringes become wider apart",
+        "Fringe width remains unchanged because it only depends on wavelength",
+        "Fringes turn into concentric circular Newton rings"
+      ],
+      "answer": "Fringe width decreases and fringes crowd closer together because β is inversely proportional to wire diameter d",
+      "correct_option": "Fringe width decreases and fringes crowd closer together because β is inversely proportional to wire diameter d",
+      "difficulty": "medium",
+      "global_id": 4,
+      "explanation": "Because β = (λ * L) / (2 * d), increasing d steepens the wedge angle α = d / L, causing fringe spacing β to shrink."
+    },
+    {
+      "id": "wf-q5",
+      "question": "What is the condition for dark interference fringes (minima) in a thin air wedge observed in reflected light at near-normal incidence?",
+      "options": [
+        "2t = m * λ (m = 0, 1, 2, ...)",
+        "2t = (m - 1/2) * λ (m = 1, 2, ...)",
+        "2t = (2m + 1) * λ",
+        "t = m * λ / 4"
+      ],
+      "answer": "2t = m * λ (m = 0, 1, 2, ...)",
+      "correct_option": "2t = m * λ (m = 0, 1, 2, ...)",
+      "difficulty": "medium",
+      "global_id": 5,
+      "explanation": "Destructive interference occurs when total path difference Δ = 2t + λ/2 = (2m + 1)λ/2, which simplifies to 2t = mλ."
+    },
+    {
+      "id": "wf-q6",
+      "question": "If the air film (μ = 1) is replaced by a transparent liquid film of refractive index μ = 1.33, what happens to the fringe width β'?",
+      "options": [
+        "Fringe width decreases to β' = β / μ",
+        "Fringe width increases to β' = β * μ",
+        "Fringe width is completely unaffected by medium refractive index",
+        "All fringes disappear due to total internal reflection"
+      ],
+      "answer": "Fringe width decreases to β' = β / μ",
+      "correct_option": "Fringe width decreases to β' = β / μ",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "The effective optical path within the film is 2μt, making fringe width β' = λ / (2μα) = β / μ."
+    },
+    {
+      "id": "wf-q7",
+      "question": "What is the small wedge angle α in radians for two plates of length L separated by a spacer wire of diameter d?",
+      "options": [
+        "α ≈ d / L",
+        "α ≈ L / d",
+        "α ≈ 2d / L",
+        "α ≈ d / (2L)"
+      ],
+      "answer": "α ≈ d / L",
+      "correct_option": "α ≈ d / L",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "Using the small angle trigonometric approximation, tan(α) ≈ α ≈ d / L in radians."
+    },
+    {
+      "id": "wf-q8",
+      "question": "Why must the travelling microscope carriage be moved in one continuous direction during measurement?",
+      "options": [
+        "To eliminate mechanical backlash (lost motion) in the lead-screw and vernier nut assembly",
+        "To prevent optical polarization changes in the eyepiece reticle",
+        "Because the microscope can only focus when traveling forward",
+        "To ensure monochromatic light does not undergo Doppler shifts"
+      ],
+      "answer": "To eliminate mechanical backlash (lost motion) in the lead-screw and vernier nut assembly",
+      "correct_option": "To eliminate mechanical backlash (lost motion) in the lead-screw and vernier nut assembly",
+      "difficulty": "medium",
+      "global_id": 8,
+      "explanation": "Reversing lead-screw motion introduces pitch play and deadband backlash error, spoiling precision micrometer vernier readings."
+    },
+    {
+      "id": "wf-q9",
+      "question": "What happens if a polychromatic white light source is used instead of monochromatic light?",
+      "options": [
+        "A few colored fringes are visible near the zero-order dark contact apex, beyond which uniform white illumination appears",
+        "An infinite number of sharp black and white fringes are produced",
+        "Complete darkness results due to destructive interference of all colors",
+        "A continuous rainbow diffraction spectrum forms on the screen"
+      ],
+      "answer": "A few colored fringes are visible near the zero-order dark contact apex, beyond which uniform white illumination appears",
+      "correct_option": "A few colored fringes are visible near the zero-order dark contact apex, beyond which uniform white illumination appears",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "Because different wavelengths have different fringe spacings, only a few overlapping colored fringes appear near t = 0. At larger t, path difference exceeds the short coherence length of white light."
+    },
+    {
+      "id": "wf-q10",
+      "question": "In an experiment using Sodium yellow light (λ = 589.3 nm), wedge length L = 100.0 mm, and spacer diameter d = 40.0 μm, what is the theoretical fringe width β?",
+      "options": [
+        "0.737 mm",
+        "1.474 mm",
+        "0.368 mm",
+        "2.946 mm"
+      ],
+      "answer": "0.737 mm",
+      "correct_option": "0.737 mm",
+      "difficulty": "hard",
+      "global_id": 10,
+      "explanation": "β = (λ * L) / (2 * d) = (589.3e-6 mm * 100 mm) / (2 * 0.040 mm) = 0.05893 / 0.080 = 0.7366 mm ≈ 0.737 mm."
+    },
+    {
+      "id": "wedge-q11",
+      "question": "In a wedge-shaped thin film of angle θ and refractive index µ, what is the formula for the fringe width β of equidistant fringes?",
+      "options": [
+        "β = λ / (2 * µ * θ)",
+        "β = (2 * µ * θ) / λ",
+        "β = λ * µ * θ",
+        "β = λ / (µ * θ)"
+      ],
+      "answer": "β = λ / (2 * µ * θ)",
+      "correct_option": "β = λ / (2 * µ * θ)",
+      "difficulty": "medium",
+      "global_id": 11,
+      "explanation": "For normal incidence, path difference between consecutive fringes changes by λ, corresponding to an advance Δx = β such that 2µ(Δx * θ) = λ, giving β = λ / (2µθ)."
+    },
+    {
+      "id": "wedge-q12",
+      "question": "If an air wedge film (µ = 1) is formed by placing a spacer of thickness t at a distance L from the edge of contact, what is the fringe width β?",
+      "options": [
+        "β = (λ * L) / (2 * t)",
+        "β = (2 * t * L) / λ",
+        "β = (λ * t) / (2 * L)",
+        "β = (2 * λ * L) / t"
+      ],
+      "answer": "β = (λ * L) / (2 * t)",
+      "correct_option": "β = (λ * L) / (2 * t)",
+      "difficulty": "medium",
+      "global_id": 12,
+      "explanation": "Since the wedge angle is θ ≈ t / L, substituting into β = λ / (2θ) gives β = λL / (2t)."
+    },
+    {
+      "id": "wedge-q13",
+      "question": "How does the fringe width β change if the air film between the glass plates is replaced by a liquid of refractive index µ = 1.33?",
+      "options": [
+        "The fringe width decreases by a factor of 1.33 (fringes become closer together)",
+        "The fringe width increases by a factor of 1.33",
+        "The fringes disappear completely",
+        "The fringe width remains unchanged"
+      ],
+      "answer": "The fringe width decreases by a factor of 1.33 (fringes become closer together)",
+      "correct_option": "The fringe width decreases by a factor of 1.33 (fringes become closer together)",
+      "difficulty": "easy",
+      "global_id": 13,
+      "explanation": "Since β = λ / (2µθ), introducing a medium with µ > 1 reduces the optical wavelength to λ/µ, compressing the fringe width: β_liquid = β_air / µ."
+    },
+    {
+      "id": "wedge-q14",
+      "question": "What is the condition for destructive interference (dark fringes) in a wedge-shaped film under normally incident light?",
+      "options": [
+        "2 * µ * t_x = n * λ  (where n = 0, 1, 2, ...)",
+        "2 * µ * t_x = (2n + 1) * λ / 2",
+        "2 * µ * t_x = (n + 1/2) * λ",
+        "µ * t_x = n * λ"
+      ],
+      "answer": "2 * µ * t_x = n * λ  (where n = 0, 1, 2, ...)",
+      "correct_option": "2 * µ * t_x = n * λ  (where n = 0, 1, 2, ...)",
+      "difficulty": "medium",
+      "global_id": 14,
+      "explanation": "Due to reflection at the lower optically denser boundary, an abrupt phase shift of π (equivalent to λ/2 path shift) occurs. Total path difference Δ = 2µt_x + λ/2 = (2n+1)λ/2, which simplifies to 2µt_x = nλ."
+    },
+    {
+      "id": "wedge-q15",
+      "question": "What is the condition for constructive interference (bright fringes) in a wedge-shaped film of refractive index µ under normal illumination?",
+      "options": [
+        "2 * µ * t_x = (2n - 1) * λ / 2  (or (2n + 1)λ/2)",
+        "2 * µ * t_x = n * λ",
+        "µ * t_x = n * λ / 2",
+        "2 * µ * t_x = 2n * λ"
+      ],
+      "answer": "2 * µ * t_x = (2n - 1) * λ / 2  (or (2n + 1)λ/2)",
+      "correct_option": "2 * µ * t_x = (2n - 1) * λ / 2  (or (2n + 1)λ/2)",
+      "difficulty": "medium",
+      "global_id": 15,
+      "explanation": "Setting total path difference 2µt_x + λ/2 = nλ gives 2µt_x = (2n - 1)λ/2 for maximum brightness."
+    },
+    {
+      "id": "wedge-q16",
+      "question": "Why is the line of contact (apex of the wedge where thickness t = 0) dark in reflected light?",
+      "options": [
+        "At t = 0, the path difference is purely the λ/2 phase shift from reflection at the denser medium, causing complete destructive interference",
+        "Light cannot enter the apex because the gap is zero",
+        "Both light rays are completely absorbed by glass",
+        "Total internal reflection traps all light inside the top plate"
+      ],
+      "answer": "At t = 0, the path difference is purely the λ/2 phase shift from reflection at the denser medium, causing complete destructive interference",
+      "correct_option": "At t = 0, the path difference is purely the λ/2 phase shift from reflection at the denser medium, causing complete destructive interference",
+      "difficulty": "easy",
+      "global_id": 16,
+      "explanation": "At the contact line t = 0, optical path difference is Δ = 0 + λ/2 = λ/2 (phase difference π), producing total destructive interference (dark fringe)."
+    },
+    {
+      "id": "wedge-q17",
+      "question": "If the wedge film is viewed in transmitted light rather than reflected light, what is the appearance of the line of contact (t = 0)?",
+      "options": [
+        "Bright, because no relative phase shift occurs between the two transmitted rays",
+        "Dark, exactly the same as reflected light",
+        "Invisible",
+        "Yellow"
+      ],
+      "answer": "Bright, because no relative phase shift occurs between the two transmitted rays",
+      "correct_option": "Bright, because no relative phase shift occurs between the two transmitted rays",
+      "difficulty": "medium",
+      "global_id": 17,
+      "explanation": "In transmission, interfering rays undergo two internal reflections or none; there is no net π phase shift, so path difference at t = 0 is zero (constructive interference = bright)."
+    },
+    {
+      "id": "wedge-q18",
+      "question": "What geometric shape do the interference fringes have in an ideal flat-surfaced wedge-shaped film?",
+      "options": [
+        "Straight, parallel lines running parallel to the line of contact",
+        "Concentric circular rings",
+        "Hyperbolic curves",
+        "Elliptical loops"
+      ],
+      "answer": "Straight, parallel lines running parallel to the line of contact",
+      "correct_option": "Straight, parallel lines running parallel to the line of contact",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "Each locus of constant film thickness t_x is a straight line parallel to the apex of the wedge; hence the fringes of equal thickness are straight and parallel."
+    },
+    {
+      "id": "wedge-q19",
+      "question": "If Sodium light (λ = 589.3 nm) illuminates an air wedge where L = 10 cm and spacer thickness t = 0.05 mm, what is the fringe width β?",
+      "options": [
+        "0.589 mm",
+        "1.178 mm",
+        "0.295 mm",
+        "5.89 mm"
+      ],
+      "answer": "0.589 mm",
+      "correct_option": "0.589 mm",
+      "difficulty": "hard",
+      "global_id": 19,
+      "explanation": "β = λL / (2t) = (589.3e-9 m * 0.10 m) / (2 * 0.05e-3 m) = 5.893e-8 / 1.0e-4 = 5.893e-4 m = 0.589 mm."
+    },
+    {
+      "id": "wedge-q20",
+      "question": "How is a wedge-shaped film setup used to determine the thickness t of a very thin sheet of paper or wire?",
+      "options": [
+        "By counting the number of fringes over a known length L and applying t = (N * λ * L) / (2 * x) or t = λL / (2β)",
+        "By weighing the wire on a microbalance",
+        "By measuring electrical resistance of the glass plates",
+        "By measuring refraction angle with a spectrometer"
+      ],
+      "answer": "By counting the number of fringes over a known length L and applying t = (N * λ * L) / (2 * x) or t = λL / (2β)",
+      "correct_option": "By counting the number of fringes over a known length L and applying t = (N * λ * L) / (2 * x) or t = λL / (2β)",
+      "difficulty": "medium",
+      "global_id": 20,
+      "explanation": "Knowing the distance L from apex to spacer and measuring fringe spacing β with a travelling microscope allows direct calculation: t = λL / (2β)."
+    },
+    {
+      "id": "wedge-q21",
+      "question": "What happens to the fringe width β if the spacer is pushed further away from the edge of contact (increasing L)?",
+      "options": [
+        "Fringe width β increases (fringes spread farther apart)",
+        "Fringe width β decreases",
+        "Fringe width remains unchanged",
+        "Fringes turn into circles"
+      ],
+      "answer": "Fringe width β increases (fringes spread farther apart)",
+      "correct_option": "Fringe width β increases (fringes spread farther apart)",
+      "difficulty": "medium",
+      "global_id": 21,
+      "explanation": "Since β = λL / (2t), increasing L while keeping spacer thickness t constant decreases the wedge angle θ = t/L, which widens the fringe spacing β."
+    },
+    {
+      "id": "wedge-q22",
+      "question": "What happens to the fringes if a thicker wire is inserted as the spacer at the same distance L?",
+      "options": [
+        "The wedge angle increases, causing fringes to crowd closer together (β decreases)",
+        "The fringe spacing widens",
+        "The fringes become curved",
+        "The central fringe shifts to white"
+      ],
+      "answer": "The wedge angle increases, causing fringes to crowd closer together (β decreases)",
+      "correct_option": "The wedge angle increases, causing fringes to crowd closer together (β decreases)",
+      "difficulty": "medium",
+      "global_id": 22,
+      "explanation": "A thicker wire increases wedge angle θ = t/L. Since β = λ / (2θ), the fringes pack more densely together."
+    },
+    {
+      "id": "wedge-q23",
+      "question": "What type of light source must be used to observe clear, high-contrast, multi-order interference fringes in a wedge film?",
+      "options": [
+        "Monochromatic extended light source (such as Sodium vapor lamp with a diffusing glass plate)",
+        "A multi-colored incandescent bulb without filter",
+        "A fluorescent tube directly above the plate",
+        "Ultraviolet blacklight"
+      ],
+      "answer": "Monochromatic extended light source (such as Sodium vapor lamp with a diffusing glass plate)",
+      "correct_option": "Monochromatic extended light source (such as Sodium vapor lamp with a diffusing glass plate)",
+      "difficulty": "medium",
+      "global_id": 23,
+      "explanation": "An extended monochromatic source provides rays over a range of angles that illuminate a wide viewing area with single wavelength coherence."
+    },
+    {
+      "id": "wedge-q24",
+      "question": "Why is a glass plate inclined at 45° to the vertical placed above the wedge film in a travelling microscope setup?",
+      "options": [
+        "To reflect light from the horizontal source down onto the film at normal incidence, while letting reflected light pass upward to the microscope",
+        "To focus the light into a point",
+        "To polarize the light at Brewster's angle",
+        "To filter out yellow wavelengths"
+      ],
+      "answer": "To reflect light from the horizontal source down onto the film at normal incidence, while letting reflected light pass upward to the microscope",
+      "correct_option": "To reflect light from the horizontal source down onto the film at normal incidence, while letting reflected light pass upward to the microscope",
+      "difficulty": "easy",
+      "global_id": 24,
+      "explanation": "A 45° semi-transparent beam distributor directs illumination vertically downward onto the film at 90° normal incidence and transmits the returning pattern up into the microscope objective."
+    },
+    {
+      "id": "wedge-q25",
+      "question": "What happens to the interference fringes if white light is used instead of monochromatic sodium light?",
+      "options": [
+        "Only a few colored fringes are seen near the edge of contact, followed by uniform white illumination",
+        "An infinite series of sharp black-and-white lines appears",
+        "No interference occurs at all",
+        "The entire film turns completely black"
+      ],
+      "answer": "Only a few colored fringes are seen near the edge of contact, followed by uniform white illumination",
+      "correct_option": "Only a few colored fringes are seen near the edge of contact, followed by uniform white illumination",
+      "difficulty": "medium",
+      "global_id": 25,
+      "explanation": "Because each wavelength has a different fringe width β(λ), overlapping colored fringes blur into uniform white light beyond the first few orders."
+    },
+    {
+      "id": "wedge-q26",
+      "question": "In optical workshop metrology, how are wedge fringes used to test the optical flatness of a polished glass surface?",
+      "options": [
+        "If the test surface is perfectly flat, fringes are perfectly straight and parallel; curvature in fringes reveals surface imperfections",
+        "By measuring how much light is absorbed by the surface",
+        "By measuring surface electrical conductivity",
+        "By heating the plate until fringes move"
+      ],
+      "answer": "If the test surface is perfectly flat, fringes are perfectly straight and parallel; curvature in fringes reveals surface imperfections",
+      "correct_option": "If the test surface is perfectly flat, fringes are perfectly straight and parallel; curvature in fringes reveals surface imperfections",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "Fringes act as optical contour elevation maps: a deviation of one fringe width corresponds to a surface height error of exactly λ/2 (≈ 0.3 µm)."
+    },
+    {
+      "id": "wedge-q27",
+      "question": "If the interference fringes observed in an air wedge curve towards the apex of the wedge, what does this indicate about the glass surface?",
+      "options": [
+        "The surface has a convex contour error (bulges outward)",
+        "The surface has a concave depression",
+        "The surface is perfectly flat",
+        "The glass is absorbing sodium light"
+      ],
+      "answer": "The surface has a convex contour error (bulges outward)",
+      "correct_option": "The surface has a convex contour error (bulges outward)",
+      "difficulty": "hard",
+      "global_id": 27,
+      "explanation": "Fringes follow lines of equal thickness. Curving towards the thin apex means the thickness increases earlier due to a convex elevation."
+    },
+    {
+      "id": "wedge-q28",
+      "question": "If an optical flat test reveals fringes that bend towards the thicker side of the wedge, what surface defect is present?",
+      "options": [
+        "A concave hollow or depression in the surface",
+        "A convex bump",
+        "A scratch parallel to the edge",
+        "Dust on the top surface"
+      ],
+      "answer": "A concave hollow or depression in the surface",
+      "correct_option": "A concave hollow or depression in the surface",
+      "difficulty": "hard",
+      "global_id": 28,
+      "explanation": "Bending toward the thicker edge indicates that the required thickness for that fringe occurs farther out, signifying a concave depression."
+    },
+    {
+      "id": "wedge-q29",
+      "question": "Over a distance of 1.2 cm along an air wedge, exactly 20 bright fringes are counted using a sodium lamp (λ = 589 nm). What is the fringe width β?",
+      "options": [
+        "0.60 mm",
+        "0.06 mm",
+        "1.20 mm",
+        "0.30 mm"
+      ],
+      "answer": "0.60 mm",
+      "correct_option": "0.60 mm",
+      "difficulty": "easy",
+      "global_id": 29,
+      "explanation": "β = total distance / number of fringes = 1.2 cm / 20 = 0.06 cm = 0.60 mm."
+    },
+    {
+      "id": "wedge-q30",
+      "question": "Using the measured fringe width β = 0.60 mm, λ = 589 nm, and plate length L = 10 cm, what is the calculated thickness of the spacer wire?",
+      "options": [
+        "0.049 mm (49 µm)",
+        "0.098 mm",
+        "0.025 mm",
+        "0.196 mm"
+      ],
+      "answer": "0.049 mm (49 µm)",
+      "correct_option": "0.049 mm (49 µm)",
+      "difficulty": "hard",
+      "global_id": 30,
+      "explanation": "t = λL / (2β) = (589e-9 m * 0.10 m) / (2 * 0.60e-3 m) = 5.89e-8 / 1.2e-3 = 4.908e-5 m ≈ 49.1 µm = 0.049 mm."
+    },
+    {
+      "id": "wedge-q31",
+      "question": "What optical classification applies to wedge film fringes and Newton's rings?",
+      "options": [
+        "Fringes of equal thickness (Fizeau fringes)",
+        "Fringes of equal inclination (Haidinger fringes)",
+        "Diffraction fringes of Fresnel type",
+        "Fraunhofer spectral lines"
+      ],
+      "answer": "Fringes of equal thickness (Fizeau fringes)",
+      "correct_option": "Fringes of equal thickness (Fizeau fringes)",
+      "difficulty": "medium",
+      "global_id": 31,
+      "explanation": "Fringes produced by a thin film with variable thickness under near-normal illumination are localized Fizeau fringes of equal thickness."
+    },
+    {
+      "id": "wedge-q32",
+      "question": "Where are the interference fringes localized in a wedge-shaped film?",
+      "options": [
+        "Inside or very close to the upper surface of the film itself",
+        "At infinity",
+        "On the light source",
+        "Inside the microscope eyepiece reticle"
+      ],
+      "answer": "Inside or very close to the upper surface of the film itself",
+      "correct_option": "Inside or very close to the upper surface of the film itself",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "Fringes of equal thickness are localized within the film; the microscope objective must be focused directly on the film surface to view them sharply."
+    },
+    {
+      "id": "wedge-q33",
+      "question": "Why do thick glass plates (e.g. 5 mm thick window glass) not show visible interference fringes under room light?",
+      "options": [
+        "The path difference (2µt) far exceeds the coherence length of ambient light, causing fringe overlap into white light",
+        "Thick glass does not reflect any light",
+        "Glass molecules absorb interference photons",
+        "Thick plates bend light rays backwards"
+      ],
+      "answer": "The path difference (2µt) far exceeds the coherence length of ambient light, causing fringe overlap into white light",
+      "correct_option": "The path difference (2µt) far exceeds the coherence length of ambient light, causing fringe overlap into white light",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "Interference requires path differences within the temporal coherence length of the source. For thick plates (2µt >> λ), countless orders overlap, washing out the pattern."
+    },
+    {
+      "id": "wedge-q34",
+      "question": "If an air wedge is subjected to uniform heating such that the spacer expands by Δt while L remains constant, how does the fringe width β change?",
+      "options": [
+        "β decreases because wedge angle θ increases",
+        "β increases",
+        "β remains constant",
+        "Fringes rotate by 90°"
+      ],
+      "answer": "β decreases because wedge angle θ increases",
+      "correct_option": "β decreases because wedge angle θ increases",
+      "difficulty": "medium",
+      "global_id": 34,
+      "explanation": "As the spacer expands (t increases), wedge angle θ = t/L increases. Since β = λ / (2θ), the fringe width decreases."
+    },
+    {
+      "id": "wedge-q35",
+      "question": "What is the phase difference between the two interfering beams at the m-th dark fringe in a reflected wedge film?",
+      "options": [
+        "(2m + 1) * π radians",
+        "2m * π radians",
+        "m * π / 2 radians",
+        "Zero"
+      ],
+      "answer": "(2m + 1) * π radians",
+      "correct_option": "(2m + 1) * π radians",
+      "difficulty": "hard",
+      "global_id": 35,
+      "explanation": "Destructive interference occurs when the total phase difference is an odd multiple of π: δ = (2m + 1)π radians."
+    },
+    {
+      "id": "wedge-q36",
+      "question": "What is the phase difference between the two interfering beams at the m-th bright fringe in a reflected wedge film?",
+      "options": [
+        "2m * π radians (even multiple of π)",
+        "(2m + 1) * π radians",
+        "m * π / 4 radians",
+        "π / 2 radians"
+      ],
+      "answer": "2m * π radians (even multiple of π)",
+      "correct_option": "2m * π radians (even multiple of π)",
+      "difficulty": "hard",
+      "global_id": 36,
+      "explanation": "Constructive interference occurs when the total phase difference between the two waves is an even multiple of π (0, 2π, 4π, ...)."
+    },
+    {
+      "id": "wedge-q37",
+      "question": "If the angle of incidence i of light onto a wedge film is increased from 0° (normal) to an angle i > 0, what is the effective path difference?",
+      "options": [
+        "Δ = 2 * µ * t * cos(r) + λ/2",
+        "Δ = 2 * µ * t * sin(r) + λ/2",
+        "Δ = 2 * µ * t / cos(r)",
+        "Δ = 2 * µ * t * tan(r)"
+      ],
+      "answer": "Δ = 2 * µ * t * cos(r) + λ/2",
+      "correct_option": "Δ = 2 * µ * t * cos(r) + λ/2",
+      "difficulty": "hard",
+      "global_id": 37,
+      "explanation": "For oblique incidence at refraction angle r, the geometric path difference is 2µt cos(r), plus λ/2 from boundary reflection."
+    },
+    {
+      "id": "wedge-q38",
+      "question": "How does increasing the angle of incidence from 0° to an oblique angle affect the fringe width in a wedge film?",
+      "options": [
+        "Fringe width increases because cos(r) < 1 reduces the effective path difference rate",
+        "Fringe width decreases",
+        "Fringes vanish instantly",
+        "Fringes become circular"
+      ],
+      "answer": "Fringe width increases because cos(r) < 1 reduces the effective path difference rate",
+      "correct_option": "Fringe width increases because cos(r) < 1 reduces the effective path difference rate",
+      "difficulty": "hard",
+      "global_id": 38,
+      "explanation": "Since β = λ / (2µθ cos r) and cos(r) < 1, the fringes spread slightly farther apart as incidence angle increases."
+    },
+    {
+      "id": "wedge-q39",
+      "question": "If a drop of water (µ = 1.33) is placed at the edge of an air wedge, capillary action draws it in. How do the fringes behave?",
+      "options": [
+        "The fringes immediately compress closer together (fringe width decreases by 1/1.33 ≈ 0.75)",
+        "The fringes expand by 1.33 times",
+        "The fringes rotate 180°",
+        "The contact line becomes bright in reflection"
+      ],
+      "answer": "The fringes immediately compress closer together (fringe width decreases by 1/1.33 ≈ 0.75)",
+      "correct_option": "The fringes immediately compress closer together (fringe width decreases by 1/1.33 ≈ 0.75)",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "In water, β_water = λ / (2 * 1.33 * θ) = 0.752 * β_air. Fringes become noticeably denser."
+    },
+    {
+      "id": "wedge-q40",
+      "question": "What happens to the apex contact fringe if the two glass plates are pressed tightly together with a clamp?",
+      "options": [
+        "The central dark fringe broadens over the entire contact area where t = 0",
+        "The contact fringe turns into a bright spot",
+        "Fringes turn into concentric circles",
+        "The glass loses transparency"
+      ],
+      "answer": "The central dark fringe broadens over the entire contact area where t = 0",
+      "correct_option": "The central dark fringe broadens over the entire contact area where t = 0",
+      "difficulty": "medium",
+      "global_id": 40,
+      "explanation": "Optical contact over a finite area maintains t = 0 everywhere within that zone, expanding the dark zero-order region across the contact contact patch."
+    },
+    {
+      "id": "wedge-q41",
+      "question": "Can a wedge-shaped film be formed using a soap film held vertically in a wire frame?",
+      "options": [
+        "Yes, gravity pulls liquid downward, creating a vertical thickness gradient that forms horizontal wedge fringes",
+        "No, soap films are always of constant thickness",
+        "No, soap films cannot reflect light",
+        "Only in zero gravity"
+      ],
+      "answer": "Yes, gravity pulls liquid downward, creating a vertical thickness gradient that forms horizontal wedge fringes",
+      "correct_option": "Yes, gravity pulls liquid downward, creating a vertical thickness gradient that forms horizontal wedge fringes",
+      "difficulty": "easy",
+      "global_id": 41,
+      "explanation": "Gravity drains liquid downward while surface tension holds the top, creating a vertical wedge with horizontal interference bands."
+    },
+    {
+      "id": "wedge-q42",
+      "question": "In a vertical soap film, what does the appearance of a black band at the top indicate just before the film pops?",
+      "options": [
+        "The film thickness at the top has become much less than λ/4 (approaching zero thickness)",
+        "The film has absorbed all incident light",
+        "The soap solution has turned into oil",
+        "The refractive index has become infinite"
+      ],
+      "answer": "The film thickness at the top has become much less than λ/4 (approaching zero thickness)",
+      "correct_option": "The film thickness at the top has become much less than λ/4 (approaching zero thickness)",
+      "difficulty": "medium",
+      "global_id": 42,
+      "explanation": "When film thickness t << λ/4, path difference is dominated by the π phase shift, making the film appear completely black just before rupture."
+    },
+    {
+      "id": "wedge-q43",
+      "question": "What is the ratio of fringe widths β1 / β2 for two air wedges of equal length L using spacers of thickness t1 = 20 µm and t2 = 60 µm?",
+      "options": [
+        "β1 / β2 = 3 : 1",
+        "β1 / β2 = 1 : 3",
+        "β1 / β2 = 9 : 1",
+        "β1 / β2 = 1 : 1"
+      ],
+      "answer": "β1 / β2 = 3 : 1",
+      "correct_option": "β1 / β2 = 3 : 1",
+      "difficulty": "medium",
+      "global_id": 43,
+      "explanation": "Since β ∝ 1/t, β1 / β2 = t2 / t1 = 60 µm / 20 µm = 3."
+    },
+    {
+      "id": "wedge-q44",
+      "question": "If light of wavelength λ1 = 400 nm produces 30 fringes in a given wedge distance, how many fringes will λ2 = 600 nm produce over the same distance?",
+      "options": [
+        "20 fringes",
+        "45 fringes",
+        "15 fringes",
+        "60 fringes"
+      ],
+      "answer": "20 fringes",
+      "correct_option": "20 fringes",
+      "difficulty": "medium",
+      "global_id": 44,
+      "explanation": "Total distance = N * β. Since β ∝ λ, N1 * λ1 = N2 * λ2. Thus N2 = N1 * (λ1 / λ2) = 30 * (400 / 600) = 20 fringes."
+    },
+    {
+      "id": "wedge-q45",
+      "question": "Why must the glass plates used to form an experimental air wedge have optically flat surfaces?",
+      "options": [
+        "Any microscopic surface irregularities distort the straight fringes into irregular wavy lines",
+        "Curved glass cannot transmit light",
+        "Non-flat glass breaks when clamped",
+        "Refractive index varies across non-flat glass"
+      ],
+      "answer": "Any microscopic surface irregularities distort the straight fringes into irregular wavy lines",
+      "correct_option": "Any microscopic surface irregularities distort the straight fringes into irregular wavy lines",
+      "difficulty": "easy",
+      "global_id": 45,
+      "explanation": "Fringes map optical film thickness; only optically flat plates guarantee that thickness increases linearly, producing straight, evenly-spaced fringes."
+    },
+    {
+      "id": "wedge-q46",
+      "question": "In an experiment, if 50 fringes occupy a length of 2.5 cm, what is the wedge angle θ in radians (using λ = 500 nm)?",
+      "options": [
+        "0.0005 radians (0.5 mrad)",
+        "0.005 radians",
+        "0.00005 radians",
+        "0.05 radians"
+      ],
+      "answer": "0.0005 radians (0.5 mrad)",
+      "correct_option": "0.0005 radians (0.5 mrad)",
+      "difficulty": "hard",
+      "global_id": 46,
+      "explanation": "β = 2.5 cm / 50 = 0.05 cm = 5.0e-4 m. θ = λ / (2β) = 500e-9 m / (2 * 5.0e-4 m) = 5.0e-7 / 1.0e-3 = 5.0e-4 rad = 0.50 mrad."
+    },
+    {
+      "id": "wedge-q47",
+      "question": "What causes the contrast (visibility) of wedge film fringes to degrade when using a light source with a broad spectral bandwidth Δλ?",
+      "options": [
+        "Fringes for different wavelengths gradually shift out of phase as order n increases, washing out the pattern",
+        "Broadband light travels slower through glass",
+        "The glass plates become polarized",
+        "The wedge angle changes with wavelength"
+      ],
+      "answer": "Fringes for different wavelengths gradually shift out of phase as order n increases, washing out the pattern",
+      "correct_option": "Fringes for different wavelengths gradually shift out of phase as order n increases, washing out the pattern",
+      "difficulty": "medium",
+      "global_id": 47,
+      "explanation": "Fringe visibility V = (I_max - I_min) / (I_max + I_min) decays as path difference approaches the coherence length L_c ≈ λ² / Δλ."
+    },
+    {
+      "id": "wedge-q48",
+      "question": "How can one experimentally distinguish between bright fringes of consecutive order (n and n+1)?",
+      "options": [
+        "Order n+1 corresponds to an increase in film thickness of exactly Δt = λ / (2µ)",
+        "Order n+1 has twice the light intensity",
+        "Order n+1 has a different color in monochromatic light",
+        "Order n+1 is always invisible"
+      ],
+      "answer": "Order n+1 corresponds to an increase in film thickness of exactly Δt = λ / (2µ)",
+      "correct_option": "Order n+1 corresponds to an increase in film thickness of exactly Δt = λ / (2µ)",
+      "difficulty": "medium",
+      "global_id": 48,
+      "explanation": "Moving from one bright fringe to the next corresponds to an increase in film thickness of exactly Δt = λ / (2µ)."
+    },
+    {
+      "id": "wedge-q49",
+      "question": "If an air wedge film has a small wedge angle of 1 minute of arc (1' = 2.909 x 10⁻⁴ rad), what is the fringe width for λ = 589 nm?",
+      "options": [
+        "1.01 mm",
+        "0.50 mm",
+        "2.02 mm",
+        "0.10 mm"
+      ],
+      "answer": "1.01 mm",
+      "correct_option": "1.01 mm",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "β = λ / (2θ) = 589e-9 m / (2 * 2.909e-4 rad) = 5.89e-7 / 5.818e-4 = 1.012e-3 m ≈ 1.01 mm."
+    },
+    {
+      "id": "wedge-q50",
+      "question": "Why does an air wedge film not show interference fringes if the top plate is lifted to create an air gap of several centimeters?",
+      "options": [
+        "The thickness exceeds the temporal coherence length of the light source, so wave packets no longer overlap in time",
+        "Air absorbs light over centimeters",
+        "Light stops reflecting at larger distances",
+        "The glass plates lose mutual capacitance"
+      ],
+      "answer": "The thickness exceeds the temporal coherence length of the light source, so wave packets no longer overlap in time",
+      "correct_option": "The thickness exceeds the temporal coherence length of the light source, so wave packets no longer overlap in time",
+      "difficulty": "medium",
+      "global_id": 50,
+      "explanation": "For path differences 2µt larger than the source coherence length, the two wave trains cannot maintain a fixed phase relationship, eliminating observable interference."
+    }
+  ]
+}

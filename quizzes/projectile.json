@@ -1,0 +1,760 @@
+{
+  "experiment": "2D Projectile Motion - Question Bank",
+  "experimentId": "projectile",
+  "quizId": "projectile-mastery-quiz",
+  "experimentName": "2D Projectile Motion",
+  "description": "Comprehensive 50-Question Physics Question Bank for 2D Projectile Motion",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is projectile motion?",
+      "options": [
+        "Motion of an object under gravity after projection",
+        "Motion only in a circle",
+        "Motion without gravity",
+        "Motion only vertically"
+      ],
+      "answer": "Motion of an object under gravity after projection",
+      "correct_option": "Motion of an object under gravity after projection",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "A projectile is an object upon which the only significant acting force is gravity after launch."
+    },
+    {
+      "id": 2,
+      "question": "What is the horizontal acceleration of an ideal projectile?",
+      "options": [
+        "Zero",
+        "g",
+        "2g",
+        "g/2"
+      ],
+      "answer": "Zero",
+      "correct_option": "Zero",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "Neglecting air resistance, no horizontal forces act on the projectile (ΣFx = 0), so ax = 0."
+    },
+    {
+      "id": 3,
+      "question": "What is the vertical acceleration of an ideal projectile?",
+      "options": [
+        "g downward",
+        "Zero",
+        "g upward",
+        "2g upward"
+      ],
+      "answer": "g downward",
+      "correct_option": "g downward",
+      "difficulty": "easy",
+      "global_id": 3,
+      "explanation": "Gravity exerts a constant downward force (F = mg), producing a downward acceleration of ay = -g."
+    },
+    {
+      "id": 4,
+      "question": "Which force acts on an ideal projectile after release?",
+      "options": [
+        "Gravity",
+        "Friction only",
+        "Magnetic force only",
+        "Electric force only"
+      ],
+      "answer": "Gravity",
+      "correct_option": "Gravity",
+      "difficulty": "easy",
+      "global_id": 4,
+      "explanation": "In classical ideal projectile dynamics, gravity is the sole force acting during flight."
+    },
+    {
+      "id": 5,
+      "question": "The path of an ideal projectile is a:",
+      "options": [
+        "Parabola",
+        "Circle",
+        "Straight line always",
+        "Ellipse always"
+      ],
+      "answer": "Parabola",
+      "correct_option": "Parabola",
+      "difficulty": "easy",
+      "global_id": 5,
+      "explanation": "The equation y = (tanθ)x - (g/(2v₀²cos²θ))x² is quadratic in x, representing a parabolic trajectory."
+    },
+    {
+      "id": 6,
+      "question": "At the highest point of projectile motion, vertical velocity is:",
+      "options": [
+        "Zero",
+        "Maximum",
+        "Equal to g",
+        "Negative maximum"
+      ],
+      "answer": "Zero",
+      "correct_option": "Zero",
+      "difficulty": "easy",
+      "global_id": 6,
+      "explanation": "At the apex peak, the projectile momentarily transitions between upward rise and downward fall (vy = 0)."
+    },
+    {
+      "id": 7,
+      "question": "Horizontal velocity of an ideal projectile is:",
+      "options": [
+        "Constant",
+        "Zero throughout",
+        "Increasing",
+        "Decreasing"
+      ],
+      "answer": "Constant",
+      "correct_option": "Constant",
+      "difficulty": "easy",
+      "global_id": 7,
+      "explanation": "Because ax = 0, horizontal velocity vx = v₀ cosθ remains constant throughout the entire trajectory."
+    },
+    {
+      "id": 8,
+      "question": "The SI unit of acceleration due to gravity is:",
+      "options": [
+        "m/s²",
+        "m/s",
+        "N",
+        "J"
+      ],
+      "answer": "m/s²",
+      "correct_option": "m/s²",
+      "difficulty": "easy",
+      "global_id": 8,
+      "explanation": "Acceleration measures the rate of change of velocity per second, giving units of m/s²."
+    },
+    {
+      "id": 9,
+      "question": "If a projectile is launched horizontally, its initial vertical velocity is:",
+      "options": [
+        "Zero",
+        "Equal to horizontal velocity",
+        "g",
+        "Maximum"
+      ],
+      "answer": "Zero",
+      "correct_option": "Zero",
+      "difficulty": "easy",
+      "global_id": 9,
+      "explanation": "For horizontal launch (θ = 0°), v₀y = v₀ sin(0°) = 0 m/s."
+    },
+    {
+      "id": 10,
+      "question": "For a projectile returning to the same height, time of ascent is:",
+      "options": [
+        "Equal to time of descent",
+        "Twice time of descent",
+        "Half time of descent",
+        "Always zero"
+      ],
+      "answer": "Equal to time of descent",
+      "correct_option": "Equal to time of descent",
+      "difficulty": "easy",
+      "global_id": 10,
+      "explanation": "Symmetry of constant acceleration under gravity ensures tascent = tdescent = (v₀ sinθ)/g."
+    },
+    {
+      "id": 11,
+      "question": "At the highest point, the acceleration of a projectile is:",
+      "options": [
+        "g downward",
+        "Zero",
+        "g upward",
+        "Horizontal"
+      ],
+      "answer": "g downward",
+      "correct_option": "g downward",
+      "difficulty": "easy",
+      "global_id": 11,
+      "explanation": "Gravity does not disappear at the apex; acceleration remains constant at g downward."
+    },
+    {
+      "id": 12,
+      "question": "Range means:",
+      "options": [
+        "Horizontal distance travelled",
+        "Maximum vertical height",
+        "Time taken to rise",
+        "Initial speed"
+      ],
+      "answer": "Horizontal distance travelled",
+      "correct_option": "Horizontal distance travelled",
+      "difficulty": "easy",
+      "global_id": 12,
+      "explanation": "The horizontal range R is the total displacement along the x-axis from launch to landing."
+    },
+    {
+      "id": 13,
+      "question": "Maximum height means:",
+      "options": [
+        "Greatest vertical displacement above launch level",
+        "Horizontal distance",
+        "Total distance",
+        "Time of flight"
+      ],
+      "answer": "Greatest vertical displacement above launch level",
+      "correct_option": "Greatest vertical displacement above launch level",
+      "difficulty": "easy",
+      "global_id": 13,
+      "explanation": "Hmax is the peak vertical coordinate reached along the trajectory."
+    },
+    {
+      "id": 14,
+      "question": "Time of flight is the:",
+      "options": [
+        "Total time projectile remains in air",
+        "Time to reach maximum height only",
+        "Horizontal distance",
+        "Initial velocity"
+      ],
+      "answer": "Total time projectile remains in air",
+      "correct_option": "Total time projectile remains in air",
+      "difficulty": "easy",
+      "global_id": 14,
+      "explanation": "Time of flight T is the total duration between launch and touchdown."
+    },
+    {
+      "id": 15,
+      "question": "The horizontal component of initial velocity is:",
+      "options": [
+        "u cosθ",
+        "u sinθ",
+        "u tanθ",
+        "u/g"
+      ],
+      "answer": "u cosθ",
+      "correct_option": "u cosθ",
+      "difficulty": "easy",
+      "global_id": 15,
+      "explanation": "By trigonometry on the launch velocity vector, ux = u cosθ."
+    },
+    {
+      "id": 16,
+      "question": "The vertical component of initial velocity is:",
+      "options": [
+        "u sinθ",
+        "u cosθ",
+        "u/g",
+        "u tanθ"
+      ],
+      "answer": "u sinθ",
+      "correct_option": "u sinθ",
+      "difficulty": "easy",
+      "global_id": 16,
+      "explanation": "By trigonometry on the launch velocity vector, uy = u sinθ."
+    },
+    {
+      "id": 17,
+      "question": "At a launch angle of 0°, the projectile is launched:",
+      "options": [
+        "Horizontally",
+        "Vertically upward",
+        "Vertically downward",
+        "At 45°"
+      ],
+      "answer": "Horizontally",
+      "correct_option": "Horizontally",
+      "difficulty": "easy",
+      "global_id": 17,
+      "explanation": "0° relative to horizontal represents pure horizontal launch."
+    },
+    {
+      "id": 18,
+      "question": "At a launch angle of 90°, the projectile is launched:",
+      "options": [
+        "Vertically upward",
+        "Horizontally",
+        "At 45°",
+        "Downward horizontally"
+      ],
+      "answer": "Vertically upward",
+      "correct_option": "Vertically upward",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "90° relative to horizontal corresponds to straight vertical projection."
+    },
+    {
+      "id": 19,
+      "question": "Ignoring air resistance, the trajectory depends on:",
+      "options": [
+        "Initial velocity and gravity",
+        "Mass only",
+        "Colour only",
+        "Temperature only"
+      ],
+      "answer": "Initial velocity and gravity",
+      "correct_option": "Initial velocity and gravity",
+      "difficulty": "easy",
+      "global_id": 19,
+      "explanation": "Under ideal Newtonian mechanics, mass cancels out in F = mg = ma, leaving motion governed purely by u, θ, and g."
+    },
+    {
+      "id": 20,
+      "question": "The acceleration due to gravity is approximately:",
+      "options": [
+        "9.8 m/s²",
+        "98 m/s²",
+        "0.98 m/s²",
+        "1 m/s² exactly"
+      ],
+      "answer": "9.8 m/s²",
+      "correct_option": "9.8 m/s²",
+      "difficulty": "easy",
+      "global_id": 20,
+      "explanation": "Standard sea-level Earth gravitational acceleration is g ≈ 9.80665 m/s²."
+    },
+    {
+      "id": 21,
+      "question": "Which equation gives horizontal displacement for a projectile?",
+      "options": [
+        "x = (u cosθ)t",
+        "x = ut²",
+        "x = gt",
+        "x = u sinθ"
+      ],
+      "answer": "x = (u cosθ)t",
+      "correct_option": "x = (u cosθ)t",
+      "difficulty": "medium",
+      "global_id": 21,
+      "explanation": "Since horizontal acceleration is zero, displacement is simply velocity × time: x = (u cosθ)t."
+    },
+    {
+      "id": 22,
+      "question": "Which equation gives vertical displacement from launch level?",
+      "options": [
+        "y = (u sinθ)t − ½gt²",
+        "y = ut",
+        "y = u cosθ",
+        "y = gt²"
+      ],
+      "answer": "y = (u sinθ)t − ½gt²",
+      "correct_option": "y = (u sinθ)t − ½gt²",
+      "difficulty": "medium",
+      "global_id": 22,
+      "explanation": "From kinematic equation s = ut + ½at² with a = -g and uy = u sinθ."
+    },
+    {
+      "id": 23,
+      "question": "For a projectile landing at the same height, time of flight is:",
+      "options": [
+        "2u sinθ/g",
+        "u cosθ/g",
+        "u² sinθ/g",
+        "2u cosθ/g"
+      ],
+      "answer": "2u sinθ/g",
+      "correct_option": "2u sinθ/g",
+      "difficulty": "medium",
+      "global_id": 23,
+      "explanation": "Setting y = 0 gives (u sinθ)t - ½gt² = 0 => t = 2u sinθ / g."
+    },
+    {
+      "id": 24,
+      "question": "For same-level projection, horizontal range is:",
+      "options": [
+        "u² sin2θ/g",
+        "u² cosθ/g",
+        "u sinθ/g",
+        "2u/g"
+      ],
+      "answer": "u² sin2θ/g",
+      "correct_option": "u² sin2θ/g",
+      "difficulty": "medium",
+      "global_id": 24,
+      "explanation": "R = vx × T = (u cosθ)(2u sinθ / g) = (u² / g) (2 sinθ cosθ) = u² sin(2θ) / g."
+    },
+    {
+      "id": 25,
+      "question": "Maximum height for a same-level projectile is:",
+      "options": [
+        "u²sin²θ/(2g)",
+        "u²cos²θ/g",
+        "u sinθ/g",
+        "u²/g²"
+      ],
+      "answer": "u²sin²θ/(2g)",
+      "correct_option": "u²sin²θ/(2g)",
+      "difficulty": "medium",
+      "global_id": 25,
+      "explanation": "From vy² = uy² - 2gH => 0 = (u sinθ)² - 2gH => H = u² sin²θ / (2g)."
+    },
+    {
+      "id": 26,
+      "question": "For a fixed launch speed, maximum range occurs at:",
+      "options": [
+        "45°",
+        "30°",
+        "60°",
+        "90°"
+      ],
+      "answer": "45°",
+      "correct_option": "45°",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "sin(2θ) reaches its maximum value of 1.0 when 2θ = 90°, so θ = 45°."
+    },
+    {
+      "id": 27,
+      "question": "Angles θ and (90°−θ) with the same speed give:",
+      "options": [
+        "Same range",
+        "Same maximum height",
+        "Same time of flight",
+        "Zero range"
+      ],
+      "answer": "Same range",
+      "correct_option": "Same range",
+      "difficulty": "medium",
+      "global_id": 27,
+      "explanation": "Since sin(2(90°-θ)) = sin(180°-2θ) = sin(2θ), complementary angles yield identical range."
+    },
+    {
+      "id": 28,
+      "question": "At the highest point, the projectile's speed equals:",
+      "options": [
+        "Horizontal component of velocity",
+        "Vertical component only",
+        "Zero always",
+        "g"
+      ],
+      "answer": "Horizontal component of velocity",
+      "correct_option": "Horizontal component of velocity",
+      "difficulty": "medium",
+      "global_id": 28,
+      "explanation": "At apex, vy = 0, so vtotal = √(vx² + 0) = vx = u cosθ."
+    },
+    {
+      "id": 29,
+      "question": "If initial speed is doubled at the same angle, ideal range becomes:",
+      "options": [
+        "Four times",
+        "Two times",
+        "Half",
+        "Unchanged"
+      ],
+      "answer": "Four times",
+      "correct_option": "Four times",
+      "difficulty": "medium",
+      "global_id": 29,
+      "explanation": "Range is proportional to the square of initial velocity (R ∝ u²). (2u)² = 4u²."
+    },
+    {
+      "id": 30,
+      "question": "If initial speed is doubled at the same angle, maximum height becomes:",
+      "options": [
+        "Four times",
+        "Two times",
+        "Half",
+        "Unchanged"
+      ],
+      "answer": "Four times",
+      "correct_option": "Four times",
+      "difficulty": "medium",
+      "global_id": 30,
+      "explanation": "Hmax is proportional to u² (H ∝ u²). Doubling speed quadruples peak height."
+    },
+    {
+      "id": 31,
+      "question": "If g increases while u and θ stay fixed, time of flight:",
+      "options": [
+        "Decreases",
+        "Increases",
+        "Stays exactly same",
+        "Becomes infinite"
+      ],
+      "answer": "Decreases",
+      "correct_option": "Decreases",
+      "difficulty": "medium",
+      "global_id": 31,
+      "explanation": "Since T = 2u sinθ / g, time of flight is inversely proportional to g."
+    },
+    {
+      "id": 32,
+      "question": "If g increases while u and θ stay fixed, maximum height:",
+      "options": [
+        "Decreases",
+        "Increases",
+        "Stays same",
+        "Becomes infinite"
+      ],
+      "answer": "Decreases",
+      "correct_option": "Decreases",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "Hmax = u² sin²θ / (2g); stronger gravity decelerates upward velocity faster, reducing peak height."
+    },
+    {
+      "id": 33,
+      "question": "At the same height during ascent and descent, vertical velocity components are:",
+      "options": [
+        "Equal in magnitude and opposite in direction",
+        "Equal and same direction",
+        "Both zero",
+        "Always different in magnitude"
+      ],
+      "answer": "Equal in magnitude and opposite in direction",
+      "correct_option": "Equal in magnitude and opposite in direction",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "Conservation of mechanical energy dictates equal speeds at equal elevations, with opposite signs for vy."
+    },
+    {
+      "id": 34,
+      "question": "The horizontal velocity at landing, neglecting air resistance, is:",
+      "options": [
+        "Same as initial horizontal velocity",
+        "Zero",
+        "Double initial horizontal velocity",
+        "Opposite initial horizontal velocity"
+      ],
+      "answer": "Same as initial horizontal velocity",
+      "correct_option": "Same as initial horizontal velocity",
+      "difficulty": "medium",
+      "global_id": 34,
+      "explanation": "With ax = 0, vx remains unchanged from launch to impact."
+    },
+    {
+      "id": 35,
+      "question": "The velocity of a projectile at any instant has:",
+      "options": [
+        "Horizontal and vertical components",
+        "Only vertical component",
+        "Only horizontal component",
+        "No components"
+      ],
+      "answer": "Horizontal and vertical components",
+      "correct_option": "Horizontal and vertical components",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "2D motion is resolved into two orthogonal 1D components: vx and vy."
+    },
+    {
+      "id": 36,
+      "question": "For θ = 45° and u = 10 m/s, approximate range using g = 10 m/s² is:",
+      "options": [
+        "10 m",
+        "5 m",
+        "20 m",
+        "100 m"
+      ],
+      "answer": "10 m",
+      "correct_option": "10 m",
+      "difficulty": "medium",
+      "global_id": 36,
+      "explanation": "R = (10² × sin(90°)) / 10 = (100 × 1) / 10 = 10 m."
+    },
+    {
+      "id": 37,
+      "question": "For θ = 90° in same-level range formula, range is:",
+      "options": [
+        "Zero",
+        "Maximum",
+        "u²/g",
+        "2u²/g"
+      ],
+      "answer": "Zero",
+      "correct_option": "Zero",
+      "difficulty": "medium",
+      "global_id": 37,
+      "explanation": "R = (u² sin(180°)) / g = 0 m, because the projectile travels straight up and down on the spot."
+    },
+    {
+      "id": 38,
+      "question": "A projectile's vertical velocity changes because of:",
+      "options": [
+        "Gravity",
+        "Horizontal motion",
+        "Its mass only",
+        "Its colour"
+      ],
+      "answer": "Gravity",
+      "correct_option": "Gravity",
+      "difficulty": "medium",
+      "global_id": 38,
+      "explanation": "Gravitational force provides the continuous vertical acceleration."
+    },
+    {
+      "id": 39,
+      "question": "The slope of a projectile trajectory at any point represents:",
+      "options": [
+        "vy/vx",
+        "vx/vy",
+        "g/u",
+        "u/g"
+      ],
+      "answer": "vy/vx",
+      "correct_option": "vy/vx",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "dy/dx = (dy/dt) / (dx/dt) = vy / vx = tan(instantaneous angle)."
+    },
+    {
+      "id": 40,
+      "question": "The equation of trajectory for same-origin projection is:",
+      "options": [
+        "y = x tanθ − gx²/(2u²cos²θ)",
+        "y = x + u",
+        "y = gt²",
+        "y = u²x"
+      ],
+      "answer": "y = x tanθ − gx²/(2u²cos²θ)",
+      "correct_option": "y = x tanθ − gx²/(2u²cos²θ)",
+      "difficulty": "medium",
+      "global_id": 40,
+      "explanation": "Eliminating t = x/(u cosθ) from y = (u sinθ)t - ½gt² yields the standard Cartesian trajectory formula."
+    },
+    {
+      "id": 41,
+      "question": "A projectile has maximum range R. If its launch speed is doubled, the new maximum range is:",
+      "options": [
+        "4R",
+        "2R",
+        "R/2",
+        "R"
+      ],
+      "answer": "4R",
+      "correct_option": "4R",
+      "difficulty": "hard",
+      "global_id": 41,
+      "explanation": "Rmax = u²/g. Doubling u to 2u yields (2u)²/g = 4(u²/g) = 4R."
+    },
+    {
+      "id": 42,
+      "question": "Two complementary angles have the same range because:",
+      "options": [
+        "sin(2θ) is the same",
+        "cosθ is always zero",
+        "Their heights are equal",
+        "Their times are always equal"
+      ],
+      "answer": "sin(2θ) is the same",
+      "correct_option": "sin(2θ) is the same",
+      "difficulty": "hard",
+      "global_id": 42,
+      "explanation": "sin(2(90°-θ)) = sin(180°-2θ) = sin(2θ)."
+    },
+    {
+      "id": 43,
+      "question": "For a projectile launched and landing at the same height, maximum range occurs when:",
+      "options": [
+        "sin2θ = 1",
+        "cosθ = 1",
+        "sinθ = 0",
+        "tanθ = 0"
+      ],
+      "answer": "sin2θ = 1",
+      "correct_option": "sin2θ = 1",
+      "difficulty": "hard",
+      "global_id": 43,
+      "explanation": "Maximum of sin(2θ) is 1, which occurs at 2θ = 90° => θ = 45°."
+    },
+    {
+      "id": 44,
+      "question": "At the highest point of a projectile, which statement is correct?",
+      "options": [
+        "vy = 0 but acceleration is still g downward",
+        "Both velocity and acceleration are zero",
+        "vx = 0 and acceleration is zero",
+        "Acceleration is horizontal"
+      ],
+      "answer": "vy = 0 but acceleration is still g downward",
+      "correct_option": "vy = 0 but acceleration is still g downward",
+      "difficulty": "hard",
+      "global_id": 44,
+      "explanation": "The projectile maintains horizontal velocity vx = u cosθ and experiences constant acceleration g downward."
+    },
+    {
+      "id": 45,
+      "question": "A projectile is launched with u = 20 m/s at 30°, g = 10 m/s². Its time of flight is:",
+      "options": [
+        "2 s",
+        "1 s",
+        "4 s",
+        "√3 s"
+      ],
+      "answer": "2 s",
+      "correct_option": "2 s",
+      "difficulty": "hard",
+      "global_id": 45,
+      "explanation": "T = 2u sinθ / g = (2 × 20 × sin(30°)) / 10 = (40 × 0.5) / 10 = 2.0 s."
+    },
+    {
+      "id": 46,
+      "question": "For u = 20 m/s, θ = 45°, g = 10 m/s², the range is:",
+      "options": [
+        "40 m",
+        "20 m",
+        "10 m",
+        "80 m"
+      ],
+      "answer": "40 m",
+      "correct_option": "40 m",
+      "difficulty": "hard",
+      "global_id": 46,
+      "explanation": "R = (20² × sin(90°)) / 10 = (400 × 1) / 10 = 40 m."
+    },
+    {
+      "id": 47,
+      "question": "For u = 20 m/s, θ = 30°, g = 10 m/s², maximum height is:",
+      "options": [
+        "5 m",
+        "10 m",
+        "20 m",
+        "2.5 m"
+      ],
+      "answer": "5 m",
+      "correct_option": "5 m",
+      "difficulty": "hard",
+      "global_id": 47,
+      "explanation": "H = u² sin²θ / (2g) = (400 × 0.25) / 20 = 100 / 20 = 5 m."
+    },
+    {
+      "id": 48,
+      "question": "If a projectile is launched at θ and its range is maximum, its horizontal and initial vertical velocity components are:",
+      "options": [
+        "Equal",
+        "Opposite",
+        "One is zero",
+        "Both zero"
+      ],
+      "answer": "Equal",
+      "correct_option": "Equal",
+      "difficulty": "hard",
+      "global_id": 48,
+      "explanation": "At θ = 45°, ux = u cos(45°) = u/√2 and uy = u sin(45°) = u/√2, so ux = uy."
+    },
+    {
+      "id": 49,
+      "question": "A projectile is at the same vertical level at t1 and t2. For same-level motion, the times satisfy:",
+      "options": [
+        "t1 + t2 = 2u sinθ/g",
+        "t1t2 = 0",
+        "t1 = t2 always",
+        "t1 − t2 = g"
+      ],
+      "answer": "t1 + t2 = 2u sinθ/g",
+      "correct_option": "t1 + t2 = 2u sinθ/g",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "From y = (u sinθ)t - ½gt², the sum of the roots of ½gt² - (u sinθ)t + y = 0 is t1 + t2 = (u sinθ)/(½g) = 2u sinθ / g (total flight time)."
+    },
+    {
+      "id": 50,
+      "question": "If the range is kept fixed while g is constant, changing u generally requires changing:",
+      "options": [
+        "Launch angle",
+        "Mass",
+        "Colour",
+        "Air pressure only"
+      ],
+      "answer": "Launch angle",
+      "correct_option": "Launch angle",
+      "difficulty": "hard",
+      "global_id": 50,
+      "explanation": "Since R = u² sin(2θ) / g, if u changes, sin(2θ) and hence θ must adjust to maintain constant R."
+    }
+  ]
+}

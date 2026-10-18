@@ -34,6 +34,14 @@ import { createUltrasonicSensorExperiment } from "./ultrasonic-sensor.js";
 import "./ultrasonic-sensor.css";
 import { createWedgeFilmExperiment } from "./wedge-film.js";
 import "./wedge-film.css";
+import { createNewtonsRingsExperiment } from "./newtons-rings.js";
+import "./newtons-rings.css";
+import { createRtdSensorExperiment } from "./rtd-sensor.js";
+import "./rtd-sensor.css";
+import "./custom-cursor.css";
+import "./card-animation.css";
+import { initCardScrollAnimations, refreshContainerCards } from "./card-animation.js";
+import { initHorizontalGallery, initCard3DTilt, renderOriginalsCards, openProjectModal, experimentsData } from "./gallery-horizontal.js";
 import {
   tutorialManager,
   normalizeExpId,
@@ -46,6 +54,7 @@ import { initSplashScreen } from "./splash.js";
 import { initHomepage } from "./homepage/homepage.js";
 import { initPhysixLogoAnimation } from "./logo-animation.js";
 import { generateLabReportPdf } from "./pdf-export.js";
+import { initCustomCursor, applyDefaultCursorAttributes } from "./custom-cursor.js";
 import { initContentProtection } from "./content-protection.js";
 import { EXPERIMENT_DETAILS } from "./experiment-details-data.js";
 import { renderMathInText, renderMathInElement } from "./math-renderer.js";
@@ -62,7 +71,9 @@ import {
   processUserDailyStreak,
   getStoredUserStreak,
   getNextStreakMilestone,
-  getLocalDateString
+  getLocalDateString,
+  normalizeToLocalDateString,
+  getDayDifference
 } from "./streak.js";
 import {
   initPwaSystem,
@@ -2945,9 +2956,14 @@ function loadUserProfile() {
   }
   if (streakActiveStatus) {
     const todayStr = getLocalDateString();
-    if (streakData.lastLoginDate === todayStr) {
+    const lastLogin = streakData.lastLoginDate ? normalizeToLocalDateString(streakData.lastLoginDate) : null;
+    const diff = lastLogin ? getDayDifference(lastLogin, todayStr) : 999;
+    if (diff === 0) {
       streakActiveStatus.textContent = streakData.pendingSync ? "Recorded Offline (Pending Sync) 🔥" : "Active Today 🔥";
       streakActiveStatus.style.background = "";
+    } else if (diff === 1 && currentStreak > 0) {
+      streakActiveStatus.textContent = "Active • Visit Today to Maintain 🔥";
+      streakActiveStatus.style.background = "rgba(245, 158, 11, 0.2)";
     } else {
       streakActiveStatus.textContent = "Streak Inactive";
       streakActiveStatus.style.background = "rgba(148, 163, 184, 0.2)";
@@ -3741,6 +3757,134 @@ const btnRetakeQuiz = document.getElementById("btn-retake-quiz");
 const btnQuizToSim = document.getElementById("btn-quiz-to-sim");
 const quizExpTabBtns = document.querySelectorAll(".quiz-exp-tab-btn");
 
+const EXPERIMENT_QUIZ_META = {
+  "projectile": {
+    badge: "MASTERY EVALUATION • EXP 1",
+    color: "#a855f7",
+    title: "2D Kinematics Knowledge Check (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question 2D Kinematics bank",
+    masterTitle: "Kinematics Master (Outstanding)"
+  },
+  "optical": {
+    badge: "MASTERY EVALUATION • EXP 2",
+    color: "#06b6d4",
+    title: "Optical Fibre Numerical Aperture Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Optical Fibre & TIR bank",
+    masterTitle: "Photonics Virtuoso (Outstanding)"
+  },
+  "colour-sensor": {
+    badge: "MASTERY EVALUATION • EXP 3",
+    color: "#ec4899",
+    title: "Colour Sensor TCS3200 Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Colour Sensor & Photometry bank",
+    masterTitle: "Sensorics Virtuoso (Outstanding)"
+  },
+  "hall-effect": {
+    badge: "MASTERY EVALUATION • EXP 4",
+    color: "#3b82f6",
+    title: "Hall Effect & Semiconductor Physics Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Hall Effect & Electromagnetism bank",
+    masterTitle: "Electromagnetism Virtuoso (Outstanding)"
+  },
+  "diffraction": {
+    badge: "MASTERY EVALUATION • EXP 5",
+    color: "#a855f7",
+    title: "Diffraction Grating Spectrometry Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Diffraction Grating & Multi-Slit Optics bank",
+    masterTitle: "Spectrometry Virtuoso (Outstanding)"
+  },
+  "sandbox": {
+    badge: "MASTERY EVALUATION • EXP 6",
+    color: "#00f0ff",
+    title: "Physics Sandbox Newtonian Dynamics Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Newtonian Rigid-Body Dynamics bank",
+    masterTitle: "Classical Mechanics Master (Outstanding)"
+  },
+  "pof-attenuation": {
+    badge: "MASTERY EVALUATION • EXP 7",
+    color: "#10b981",
+    title: "Plastic Optical Fiber Attenuation Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question POF Attenuation & Optical Power bank",
+    masterTitle: "Fiber Optics Master (Outstanding)"
+  },
+  "laser-divergence": {
+    badge: "MASTERY EVALUATION • EXP 8",
+    color: "#ef4444",
+    title: "Laser Beam Divergence Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Laser Optics & Beam Divergence bank",
+    masterTitle: "Laser Optics Virtuoso (Outstanding)"
+  },
+  "ultrasonic-sensor": {
+    badge: "MASTERY EVALUATION • EXP 9",
+    color: "#06b6d4",
+    title: "Ultrasonic Distance Measurement Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Ultrasonic Wave & Transducer bank",
+    masterTitle: "Acoustics & Sensors Master (Outstanding)"
+  },
+  "wedge-film": {
+    badge: "MASTERY EVALUATION • EXP 10",
+    color: "#8b5cf6",
+    title: "Wedge-Shaped Thin Film Interference Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Thin-Film Interference & Fringe Spacing bank",
+    masterTitle: "Wave Optics Virtuoso (Outstanding)"
+  },
+  "newtons-rings": {
+    badge: "MASTERY EVALUATION • EXP 11",
+    color: "#f59e0b",
+    title: "Newton's Rings Wave Interference Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Newton's Rings & Wave Optics bank",
+    masterTitle: "Interference Master (Outstanding)"
+  },
+  "diode": {
+    badge: "MASTERY EVALUATION • EXP 12",
+    color: "#3b82f6",
+    title: "Diode V-I Characteristics Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Semiconductor Junction & Diode Physics bank",
+    masterTitle: "Solid-State Electronics Master (Outstanding)"
+  },
+  "planck": {
+    badge: "MASTERY EVALUATION • EXP 13",
+    color: "#ec4899",
+    title: "Planck's Constant & Photocell Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Quantum Nature of Light & Photoelectric Effect bank",
+    masterTitle: "Quantum Physics Virtuoso (Outstanding)"
+  },
+  "rtd-sensor": {
+    badge: "MASTERY EVALUATION • EXP 14",
+    color: "#14b8a6",
+    title: "RTD Temperature Sensor (Pt100) Quiz (10Q)",
+    desc: "Randomized 10-question evaluation sampled from 50-question Resistance Thermometry & Callendar-Van Dusen bank",
+    masterTitle: "Instrumentation Virtuoso (Outstanding)"
+  }
+};
+
+function getExperimentQuizMeta(expId, fallbackName) {
+  let key = expId;
+  if (key === "optical-fibre") key = "optical";
+  else if (key === "diffraction-grating") key = "diffraction";
+  else if (key === "physics-sandbox") key = "sandbox";
+  else if (key === "diode-vi" || key === "pn-junction") key = "diode";
+  else if (key === "plancks-constant" || key === "planck-constant") key = "planck";
+  else if (key === "rtd" || key === "rtd-sensors" || key === "pt100") key = "rtd-sensor";
+  else if (key === "newton" || key === "newtons-ring" || key === "newton-rings") key = "newtons-rings";
+  else if (key === "wedge" || key === "wedge-shaped-film" || key === "thin-film-wedge") key = "wedge-film";
+  else if (key === "laser" || key === "laser-beam-divergence") key = "laser-divergence";
+  else if (key === "ultrasonic" || key === "udm" || key === "ultrasonic-distance") key = "ultrasonic-sensor";
+  else if (key === "pof" || key === "optical-attenuation") key = "pof-attenuation";
+
+  if (EXPERIMENT_QUIZ_META[key]) {
+    return EXPERIMENT_QUIZ_META[key];
+  }
+  const name = fallbackName || key || "Physics";
+  return {
+    badge: `MASTERY EVALUATION • ${name.toUpperCase()}`,
+    color: "#a855f7",
+    title: `${name} Quiz (10Q)`,
+    desc: `Randomized 10-question evaluation sampled from 50-question ${name} bank`,
+    masterTitle: `${name} Master (Outstanding)`
+  };
+}
+
 function initQuiz(expId) {
   const chosenExp = (typeof expId === "string" && expId) ? expId : (activeExperimentId || "projectile");
   activeQuizData = generateRandom10QuestionQuiz(chosenExp);
@@ -3760,76 +3904,23 @@ function initQuiz(expId) {
     }
   });
 
-  // Update Header details
+  const meta = getExperimentQuizMeta(chosenExp, activeQuizData?.experimentName);
+
   if (quizBadgeHeader) {
-    if (chosenExp === "projectile") quizBadgeHeader.textContent = "MASTERY EVALUATION • EXP 1";
-    else if (chosenExp === "optical") quizBadgeHeader.textContent = "MASTERY EVALUATION • EXP 2";
-    else if (chosenExp === "colour-sensor") quizBadgeHeader.textContent = "MASTERY EVALUATION • EXP 3";
-    else if (chosenExp === "hall-effect") quizBadgeHeader.textContent = "MASTERY EVALUATION • EXP 4";
-    else if (chosenExp === "diffraction") quizBadgeHeader.textContent = "MASTERY EVALUATION • EXP 5";
-    else if (chosenExp === "sandbox") quizBadgeHeader.textContent = "MASTERY EVALUATION • EXP 6";
+    quizBadgeHeader.textContent = meta.badge;
   }
 
   if (quizModalTitle) {
-    if (chosenExp === "projectile") {
-      quizModalTitle.innerHTML = `
-        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#a855f7;">
-          <circle cx="12" cy="12" r="9"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-        2D Kinematics Knowledge Check (10Q)
-      `;
-    } else if (chosenExp === "optical") {
-      quizModalTitle.innerHTML = `
-        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#06b6d4;">
-          <circle cx="12" cy="12" r="9"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-        Optical Fibre Numerical Aperture Quiz (10Q)
-      `;
-    } else if (chosenExp === "colour-sensor") {
-      quizModalTitle.innerHTML = `
-        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#ec4899;">
-          <circle cx="12" cy="12" r="9"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-        Colour Sensor TCS3200 Quiz (10Q)
-      `;
-    } else if (chosenExp === "hall-effect") {
-      quizModalTitle.innerHTML = `
-        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#3b82f6;">
-          <circle cx="12" cy="12" r="9"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-        Hall Effect & Semiconductor Physics Quiz (10Q)
-      `;
-    } else if (chosenExp === "diffraction") {
-      quizModalTitle.innerHTML = `
-        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#a855f7;">
-          <circle cx="12" cy="12" r="9"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-        Diffraction Grating Spectrometry Quiz (10Q)
-      `;
-    } else if (chosenExp === "sandbox") {
-      quizModalTitle.innerHTML = `
-        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#00f0ff;">
-          <circle cx="12" cy="12" r="9"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line>
-        </svg>
-        Physics Sandbox Newtonian Dynamics Quiz (10Q)
-      `;
-    }
+    quizModalTitle.innerHTML = `
+      <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:${meta.color};">
+        <circle cx="12" cy="12" r="9"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line>
+      </svg>
+      ${meta.title}
+    `;
   }
 
   if (quizModalDesc) {
-    if (chosenExp === "projectile") {
-      quizModalDesc.textContent = "Randomized 10-question evaluation sampled from 50-question 2D Kinematics bank";
-    } else if (chosenExp === "optical") {
-      quizModalDesc.textContent = "Randomized 10-question evaluation sampled from 50-question Optical Fibre & TIR bank";
-    } else if (chosenExp === "colour-sensor") {
-      quizModalDesc.textContent = "Randomized 10-question evaluation sampled from 50-question Colour Sensor & Photometry bank";
-    } else if (chosenExp === "hall-effect") {
-      quizModalDesc.textContent = "Randomized 10-question evaluation sampled from 50-question Hall Effect & Electromagnetism bank";
-    } else if (chosenExp === "diffraction") {
-      quizModalDesc.textContent = "Randomized 10-question evaluation sampled from Diffraction Grating & Multi-Slit Optics bank";
-    } else if (chosenExp === "sandbox") {
-      quizModalDesc.textContent = "Randomized 10-question evaluation sampled from Newtonian Rigid-Body Dynamics bank";
-    }
+    quizModalDesc.textContent = meta.desc;
   }
 
   if (quizTotalNum) quizTotalNum.textContent = activeQuizData.questions.length;
@@ -3967,7 +4058,8 @@ function showQuizResults() {
   // Grade Titles based on experiment
   if (quizGradeBadge) {
     if (pct >= 90) {
-      quizGradeBadge.textContent = activeQuizData.experimentId === "projectile" ? "Kinematics Master (Outstanding)" : (activeQuizData.experimentId === "optical" ? "Photonics Virtuoso (Outstanding)" : "Spectrometry Virtuoso (Outstanding)");
+      const meta = getExperimentQuizMeta(activeQuizData.experimentId, activeQuizData.experimentName);
+      quizGradeBadge.textContent = meta.masterTitle;
       quizGradeBadge.style.color = "#fde68a";
       triggerConfetti();
     } else if (pct >= 70) {
@@ -4233,7 +4325,8 @@ function showTheoryForExperiment(expId) {
     "planck": document.getElementById("theory-pane-exp-planck"),
     "laser-divergence": document.getElementById("theory-pane-exp-laser"),
     "ultrasonic-sensor": document.getElementById("theory-pane-exp-ultrasonic"),
-    "wedge-film": document.getElementById("theory-pane-exp-wedge")
+    "wedge-film": document.getElementById("theory-pane-exp-wedge"),
+    "newtons-rings": document.getElementById("theory-pane-exp-newtons-rings")
   };
 
   const titles = {
@@ -4284,6 +4377,10 @@ function showTheoryForExperiment(expId) {
     "wedge-film": {
       title: "Exp 11: Wedge-Shaped Film — Theory & Formulas",
       desc: "Thin-film interference by division of amplitude, Stokes phase reversal, and microscopic wire diameter metrology"
+    },
+    "newtons-rings": {
+      title: "Exp 12: Newton's Rings — Theory & Formulas",
+      desc: "Circular interference fringes of equal thickness, Stokes phase reversal, ring diameter squared linearity, and liquid refractometry"
     }
   };
 
@@ -4393,7 +4490,11 @@ function openHelpForCurrentExperiment() {
   let titleText = "PhysiX Virtual Laboratory User Guide & Operations Manual";
   let subtitleText = "Complete step-by-step instructions, interactive Control Deck breakdown, machine hardware switches, and telemetry export walkthrough";
 
-  if (currentExp === "wedge-film" || currentExp === "wedge" || currentExp === "wedge-shaped-film" || currentExp === "thin-film-wedge") {
+  if (currentExp === "newtons-rings" || currentExp === "newton" || currentExp === "newtons-ring" || currentExp === "newton-rings") {
+    targetPane = document.getElementById("help-pane-exp-newtons-rings");
+    titleText = "Newton's Rings — Interactive User Guide & Lab Manual";
+    subtitleText = "Step-by-step circular interference fringe alignment, travelling microscope vernier crosshair positioning, Dn² vs n linear regression, and challenges walkthrough";
+  } else if (currentExp === "wedge-film" || currentExp === "wedge" || currentExp === "wedge-shaped-film" || currentExp === "thin-film-wedge") {
     targetPane = document.getElementById("help-pane-exp-wedge");
     titleText = "Wedge-Shaped Film — Interactive User Guide & Lab Manual";
     subtitleText = "Step-by-step optical bench alignment, travelling microscope reticle crosshair positioning, regression slope calculation, and challenges walkthrough";
@@ -4967,11 +5068,15 @@ const expPlanckSection = document.getElementById("exp-planck-section");
 const expLaserSection = document.getElementById("exp-laser-divergence-section");
 const expUltrasonicSection = document.getElementById("exp-ultrasonic-sensor-section");
 const expWedgeSection = document.getElementById("exp-wedge-film-section");
+const expNewtonsRingsSection = document.getElementById("exp-newtons-rings-section");
+const expRtdSection = document.getElementById("exp-rtd-sensor-section");
 let pofExperimentInstance = null;
 let planckExperimentInstance = null;
 let laserExperimentInstance = null;
 let ultrasonicExperimentInstance = null;
 let wedgeExperimentInstance = null;
+let newtonsRingsExperimentInstance = null;
+let rtdSensorExperimentInstance = null;
 
 async function trackExperimentEngagement(expId) {
   if (!canPerformCloudOperation()) return;
@@ -5017,7 +5122,9 @@ async function trackExperimentEngagement(expId) {
 function switchExperiment(expId, updateUrl = true) {
   window.switchExperiment = switchExperiment;
   let normalizedId = expId;
-  if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") normalizedId = "wedge-film";
+  if (expId === "rtd-sensor" || expId === "rtd" || expId === "rtd-sensors" || expId === "pt100") normalizedId = "rtd-sensor";
+  else if (expId === "newtons-rings" || expId === "newton" || expId === "newtons-ring" || expId === "newton-rings") normalizedId = "newtons-rings";
+  else if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") normalizedId = "wedge-film";
   else if (expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof") normalizedId = "pof-attenuation";
   else if (expId === "diode" || expId === "diode-vi" || expId === "pn-junction") normalizedId = "diode";
   else if (expId === "planck" || expId === "plancks-constant" || expId === "planck-constant") normalizedId = "planck";
@@ -5049,22 +5156,22 @@ function switchExperiment(expId, updateUrl = true) {
   expLaserSection?.classList.add("hidden");
   expUltrasonicSection?.classList.add("hidden");
   expWedgeSection?.classList.add("hidden");
+  expNewtonsRingsSection?.classList.add("hidden");
+  expRtdSection?.classList.add("hidden");
 
-  const routeSlug = normalizedId === "wedge-film"
-    ? "wedge-film"
-    : (normalizedId === "planck"
-      ? "plancks-constant"
-      : (normalizedId === "laser-divergence"
-        ? "laser-divergence"
-        : (normalizedId === "ultrasonic-sensor"
-          ? "ultrasonic-sensor"
-          : (normalizedId === "pof-attenuation"
-            ? "pof-attenuation"
-            : (normalizedId === "diode"
-              ? "diode-vi"
-              : (normalizedId === "diffraction"
-                ? "diffraction-grating"
-                : (normalizedId === "optical" ? "optical-fibre" : normalizedId)))))));
+  const routeSlugMap = {
+    "rtd-sensor": "rtd-sensor",
+    "newtons-rings": "newtons-rings",
+    "wedge-film": "wedge-film",
+    "planck": "plancks-constant",
+    "laser-divergence": "laser-divergence",
+    "ultrasonic-sensor": "ultrasonic-sensor",
+    "pof-attenuation": "pof-attenuation",
+    "diode": "diode-vi",
+    "diffraction": "diffraction-grating",
+    "optical": "optical-fibre"
+  };
+  const routeSlug = routeSlugMap[normalizedId] || normalizedId;
 
   if (updateUrl && !document.body.classList.contains("on-homepage")) {
     const targetUrl = `/simulations/${routeSlug}`;
@@ -5500,6 +5607,88 @@ function switchExperiment(expId, updateUrl = true) {
     }
 
     showToast("Switched to Exp 11: Wedge-Shaped Film");
+  } else if (normalizedId === "newtons-rings") {
+    expNewtonsRingsSection?.classList.remove("hidden");
+
+    if (!newtonsRingsExperimentInstance) {
+      newtonsRingsExperimentInstance = createNewtonsRingsExperiment({
+        onXpAwarded: (amount, reason) => addStudentXp(amount, reason),
+        onExperimentRecorded: (id, data) => {
+          if (auth.currentUser && canPerformCloudOperation()) {
+            recordExperimentInFirestore(auth.currentUser.uid, id, data).then(res => {
+              if (res && typeof res.totalXP === "number") {
+                setAuthoritativeUserXp(auth.currentUser.uid, res.totalXP);
+                loadUserProfile();
+              }
+              if (res && res.experimentsPerformed >= 5) {
+                unlockBadge("badge-lab-veteran", "Laboratory Veteran (Explored Labs 5+ Times)");
+              }
+            }).catch(() => {});
+          }
+        },
+        showToast,
+        getActiveUserId,
+        loadUserProfile,
+        getStoredUserProfile,
+        unlockBadge: (badgeId, badgeName) => unlockBadge(badgeId, badgeName),
+        isUserAuthenticated,
+        openLoginModal,
+        onChallengeCompleted: (data) => completeChallengeAuthoritatively(data)
+      });
+      newtonsRingsExperimentInstance.init();
+      window.newtonsRingsExperimentInstance = newtonsRingsExperimentInstance;
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof newtonsRingsExperimentInstance.hydrateChallenges === "function") {
+        newtonsRingsExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+    } else {
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof newtonsRingsExperimentInstance.hydrateChallenges === "function") {
+        newtonsRingsExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+      newtonsRingsExperimentInstance.renderAll();
+    }
+
+    showToast("Switched to Exp 12: Newton's Rings");
+  } else if (normalizedId === "rtd-sensor") {
+    expRtdSection?.classList.remove("hidden");
+
+    if (!rtdSensorExperimentInstance) {
+      rtdSensorExperimentInstance = createRtdSensorExperiment({
+        onXpAwarded: (amount, reason) => addStudentXp(amount, reason),
+        onExperimentRecorded: (id, data) => {
+          if (auth.currentUser && canPerformCloudOperation()) {
+            recordExperimentInFirestore(auth.currentUser.uid, id, data).then(res => {
+              if (res && typeof res.totalXP === "number") {
+                setAuthoritativeUserXp(auth.currentUser.uid, res.totalXP);
+                loadUserProfile();
+              }
+              if (res && res.experimentsPerformed >= 5) {
+                unlockBadge("badge-lab-veteran", "Laboratory Veteran (Explored Labs 5+ Times)");
+              }
+            }).catch(() => {});
+          }
+        },
+        showToast,
+        getActiveUserId,
+        loadUserProfile,
+        getStoredUserProfile,
+        unlockBadge: (badgeId, badgeName) => unlockBadge(badgeId, badgeName),
+        isUserAuthenticated,
+        openLoginModal,
+        onChallengeCompleted: (data) => completeChallengeAuthoritatively(data)
+      });
+      rtdSensorExperimentInstance.init();
+      window.rtdSensorExperimentInstance = rtdSensorExperimentInstance;
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof rtdSensorExperimentInstance.hydrateChallenges === "function") {
+        rtdSensorExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+    } else {
+      if (activeAuthoritativeCompletedChallenges.length > 0 && typeof rtdSensorExperimentInstance.hydrateChallenges === "function") {
+        rtdSensorExperimentInstance.hydrateChallenges(activeAuthoritativeCompletedChallenges);
+      }
+      rtdSensorExperimentInstance.renderAll();
+    }
+
+    showToast("Switched to Exp 13: RTD Sensors");
   } else {
     expProjSection?.classList.remove("hidden");
     updateLauncher(Number(angleSlider?.value || DEFAULT_ANGLE), Number(heightSlider?.value || DEFAULT_HEIGHT));
@@ -5529,7 +5718,9 @@ allExperimentCards.forEach(card => {
     const name = card.getAttribute("data-name") || "";
 
     let expId = null;
-    if (target === "wedge-film" || target === "wedge" || target === "wedge-shaped-film" || target === "thin-film-wedge" || name.toLowerCase().includes("wedge")) expId = "wedge-film";
+    if (target === "rtd-sensor" || target === "rtd" || target === "rtd-sensors" || target === "pt100" || name.toLowerCase().includes("rtd")) expId = "rtd-sensor";
+    else if (target === "newtons-rings" || target === "newton" || target === "newtons-ring" || target === "newton-rings" || name.toLowerCase().includes("newton")) expId = "newtons-rings";
+    else if (target === "wedge-film" || target === "wedge" || target === "wedge-shaped-film" || target === "thin-film-wedge" || name.toLowerCase().includes("wedge")) expId = "wedge-film";
     else if (target === "ultrasonic-sensor" || target === "ultrasonic" || target === "udm" || name.toLowerCase().includes("ultrasonic")) expId = "ultrasonic-sensor";
     else if (target === "laser-divergence" || target === "laser" || name.toLowerCase().includes("laser divergence") || name.toLowerCase().includes("divergence of a laser")) expId = "laser-divergence";
     else if (target === "planck" || target === "plancks-constant" || name.toLowerCase().includes("planck")) expId = "planck";
@@ -5540,7 +5731,7 @@ allExperimentCards.forEach(card => {
     else if (target === "sandbox" || name.toLowerCase().includes("sandbox")) expId = "sandbox";
     else if (target === "colour-sensor" || name.toLowerCase().includes("colour sensor")) expId = "colour-sensor";
     else if (target === "optical" || name.toLowerCase().includes("optical fibre")) expId = "optical";
-    else if (target === "projectile" || card.classList.contains("active-lab") || name.toLowerCase().includes("projectile")) expId = "projectile";
+    else if (target === "projectile" || name.toLowerCase().includes("projectile")) expId = "projectile";
 
     if (expId) {
       explorerModal?.classList.add("hidden");
@@ -5996,14 +6187,24 @@ async function completeVerifiedUserInitialization(user) {
         const localStreak = getStoredUserStreak(user.uid);
         const remoteStreak = Number(cloudUser.streak) || 0;
         const remoteHighest = Number(cloudUser.highestStreak) || remoteStreak;
-        const remoteLogin = cloudUser.lastLoginDate || null;
+        const remoteLogin = cloudUser.lastLoginDate ? normalizeToLocalDateString(cloudUser.lastLoginDate) : null;
 
+        let shouldSync = false;
         if (remoteStreak > localStreak.currentStreak || remoteHighest > localStreak.highestStreak) {
+          shouldSync = true;
+        } else if (remoteLogin && localStreak.lastLoginDate) {
+          const diff = getDayDifference(localStreak.lastLoginDate, remoteLogin);
+          if (diff > 0 && remoteStreak >= localStreak.currentStreak) {
+            shouldSync = true;
+          }
+        }
+
+        if (shouldSync) {
           console.log(`%c[Firestore Realtime] Multi-device streak synchronized: ${localStreak.currentStreak} -> ${remoteStreak} (best: ${remoteHighest})`, "color: #10b981; font-weight: bold;");
           saveStoredUserStreak(user.uid, {
             ...localStreak,
-            currentStreak: remoteStreak,
-            highestStreak: remoteHighest,
+            currentStreak: Math.max(localStreak.currentStreak, remoteStreak),
+            highestStreak: Math.max(localStreak.highestStreak, remoteHighest),
             lastLoginDate: remoteLogin || localStreak.lastLoginDate,
             pendingSync: false
           });
@@ -6144,19 +6345,28 @@ export function renderReferencesHtml(books) {
 
 export function openExperimentDetailsPage(expId) {
   tutorialManager.destroyTour();
-  const normalizedId = (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge")
-    ? "wedge-film"
-    : ((expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance")
-    ? "ultrasonic-sensor"
-    : ((expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence")
-    ? "laser-divergence"
-    : ((expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof")
-    ? "pof-attenuation"
-    : ((expId === "planck" || expId === "plancks-constant" || expId === "planck-constant")
-    ? "planck"
-    : ((expId === "sandbox" || expId === "hall-effect" || expId === "colour-sensor" || expId === "optical" || expId === "projectile" || expId === "diffraction" || expId === "diffraction-grating" || expId === "diode" || expId === "diode-vi")
-    ? (expId === "diffraction-grating" ? "diffraction" : (expId === "diode-vi" ? "diode" : expId))
-    : "projectile")))));
+  let normalizedId = "projectile";
+  if (expId === "rtd-sensor" || expId === "rtd" || expId === "rtd-sensors" || expId === "pt100") {
+    normalizedId = "rtd-sensor";
+  } else if (expId === "newtons-rings" || expId === "newton" || expId === "newtons-ring" || expId === "newton-rings") {
+    normalizedId = "newtons-rings";
+  } else if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") {
+    normalizedId = "wedge-film";
+  } else if (expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance") {
+    normalizedId = "ultrasonic-sensor";
+  } else if (expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence") {
+    normalizedId = "laser-divergence";
+  } else if (expId === "pof-attenuation" || expId === "optical-attenuation" || expId === "pof") {
+    normalizedId = "pof-attenuation";
+  } else if (expId === "planck" || expId === "plancks-constant" || expId === "planck-constant") {
+    normalizedId = "planck";
+  } else if (expId === "diffraction-grating") {
+    normalizedId = "diffraction";
+  } else if (expId === "diode-vi") {
+    normalizedId = "diode";
+  } else if (["sandbox", "hall-effect", "colour-sensor", "optical", "projectile", "diffraction", "diode"].includes(expId)) {
+    normalizedId = expId;
+  }
 
   const data = EXPERIMENT_DETAILS[normalizedId] || EXPERIMENT_DETAILS["projectile"];
   currentActiveDetailExpId = normalizedId;
@@ -6250,9 +6460,10 @@ function initExperimentsPage() {
 
   if (!pageGrid || !modalGrid) return;
 
-  // Populate cards from modal if not yet populated
+  // Populate cards using Originals reference card architecture
   if (pageGrid.children.length === 0) {
-    pageGrid.innerHTML = modalGrid.innerHTML;
+    renderOriginalsCards(pageGrid, experimentsData);
+    applyDefaultCursorAttributes();
   }
 
   // Sync bookmark states with current bookmarkedSet
@@ -6268,7 +6479,15 @@ function initExperimentsPage() {
     }
   });
 
-  if (isExperimentsPageInitialized) return;
+  // Initialize Pinned Horizontal Scrolling Gallery & 3D Tilt (Originals & fx.tsx)
+  const horizontalGallery = initHorizontalGallery();
+  initCard3DTilt(pageGrid);
+
+  if (isExperimentsPageInitialized) {
+    refreshContainerCards(pageGrid);
+    horizontalGallery.recalculate();
+    return;
+  }
   isExperimentsPageInitialized = true;
 
   // Handle clicking on cards in the dedicated page grid
@@ -6304,36 +6523,85 @@ function initExperimentsPage() {
       return;
     }
 
-    // Card or Perform button clicked -> Open dedicated details page!
+    function resolveExperimentKey(target, name) {
+      if (!target && !name) return null;
+      const t = (target || "").toLowerCase();
+      const n = (name || "").toLowerCase();
+      if (t === "rtd-sensor" || t === "rtd" || t === "rtd-sensors" || t === "pt100" || n.includes("rtd")) return "rtd-sensor";
+      if (t === "newtons-rings" || t === "newton" || t === "newtons-ring" || t === "newton-rings" || n.includes("newton")) return "newtons-rings";
+      if (t === "wedge-film" || t === "wedge" || t === "wedge-shaped-film" || t === "thin-film-wedge" || n.includes("wedge")) return "wedge-film";
+      if (t === "ultrasonic-sensor" || t === "ultrasonic" || t === "udm" || n.includes("ultrasonic")) return "ultrasonic-sensor";
+      if (t === "laser-divergence" || t === "laser" || n.includes("laser divergence") || n.includes("divergence of a laser")) return "laser-divergence";
+      if (t === "planck" || t === "plancks-constant" || n.includes("planck")) return "planck";
+      if (t === "pof-attenuation" || t === "pof" || n.includes("attenuation") || n.includes("plastic optical fiber")) return "pof-attenuation";
+      if (t === "diode" || t === "diode-vi" || n.includes("diode") || n.includes("p-n junction")) return "diode";
+      if (t === "diffraction" || t === "diffraction-grating" || n.includes("diffraction")) return "diffraction-grating";
+      if (t === "hall-effect" || n.includes("hall effect")) return "hall-effect";
+      if (t === "sandbox" || n.includes("sandbox")) return "sandbox";
+      if (t === "colour-sensor" || n.includes("colour sensor")) return "colour-sensor";
+      if (t === "optical" || n.includes("optical fibre")) return "optical";
+      if (t === "projectile" || n.includes("projectile")) return "projectile";
+      return target || null;
+    }
+
+    // If Theory button clicked -> Open that aim theory section
+    const theoryBtn = e.target.closest(".btn-theory-link, .btn-secondary, [data-action='theory']");
+    if (theoryBtn) {
+      e.stopPropagation();
+      e.preventDefault();
+      const card = theoryBtn.closest(".lab-card");
+      const target = theoryBtn.getAttribute("data-id") || card?.getAttribute("data-exp-target") || card?.getAttribute("data-id") || "";
+      const name = card?.getAttribute("data-name") || "";
+      const expId = resolveExperimentKey(target, name);
+      if (expId) {
+        navigateTo(`/experiment/${expId}`);
+        setTimeout(() => {
+          const aimSec = document.getElementById("manual-sec-aim") || document.getElementById("manual-sec-theory");
+          if (aimSec) {
+            aimSec.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 150);
+      }
+      return;
+    }
+
+    // If Launch Sim button clicked -> Directly launch the simulator!
+    const performBtn = e.target.closest(".lab-card-btn, .btn-primary, .btn-perform, [data-action='launch']");
+    if (performBtn) {
+      e.stopPropagation();
+      e.preventDefault();
+      const card = performBtn.closest(".lab-card");
+      const target = performBtn.getAttribute("data-id") || card?.getAttribute("data-exp-target") || card?.getAttribute("data-id") || "";
+      const name = card?.getAttribute("data-name") || "";
+      const expId = resolveExperimentKey(target, name);
+      if (expId) {
+        startSimulatorFromDetails(expId);
+      } else {
+        showToast(`${name || "This experiment"} is currently in calibration. Full module coming soon!`);
+      }
+      return;
+    }
+
     const card = e.target.closest(".lab-card");
     if (!card) return;
 
-    const target = card.getAttribute("data-exp-target");
+    const target = card.getAttribute("data-exp-target") || card.getAttribute("data-id");
     const name = card.getAttribute("data-name") || "";
+    const expId = resolveExperimentKey(target, name);
 
-    let expId = null;
-    if (target === "wedge-film" || target === "wedge" || target === "wedge-shaped-film" || target === "thin-film-wedge" || name.toLowerCase().includes("wedge")) expId = "wedge-film";
-    else if (target === "ultrasonic-sensor" || target === "ultrasonic" || target === "udm" || name.toLowerCase().includes("ultrasonic")) expId = "ultrasonic-sensor";
-    else if (target === "laser-divergence" || target === "laser" || name.toLowerCase().includes("laser divergence") || name.toLowerCase().includes("divergence of a laser")) expId = "laser-divergence";
-    else if (target === "planck" || target === "plancks-constant" || name.toLowerCase().includes("planck")) expId = "planck";
-    else if (target === "pof-attenuation" || target === "pof" || name.toLowerCase().includes("attenuation") || name.toLowerCase().includes("plastic optical fiber")) expId = "pof-attenuation";
-    else if (target === "diode" || target === "diode-vi" || name.toLowerCase().includes("diode") || name.toLowerCase().includes("p-n junction")) expId = "diode";
-    else if (target === "diffraction" || target === "diffraction-grating" || name.toLowerCase().includes("diffraction")) expId = "diffraction-grating";
-    else if (target === "hall-effect" || name.toLowerCase().includes("hall effect")) expId = "hall-effect";
-    else if (target === "sandbox" || name.toLowerCase().includes("sandbox")) expId = "sandbox";
-    else if (target === "colour-sensor" || name.toLowerCase().includes("colour sensor")) expId = "colour-sensor";
-    else if (target === "optical" || name.toLowerCase().includes("optical fibre")) expId = "optical";
-    else if (target === "projectile" || card.classList.contains("active-lab") || name.toLowerCase().includes("projectile")) expId = "projectile";
-
-    if (expId) {
+    // Card surface clicked -> Open detailed Project Modal (Reference UX)
+    const project = experimentsData.find(p => p.id === expId || p.id === target || p.title.toLowerCase() === name.toLowerCase());
+    if (project) {
+      openProjectModal(project);
+    } else if (expId) {
       navigateTo(`/experiment/${expId}`);
     } else {
       showToast(`${name || "This experiment"} is currently in calibration. Full module coming soon!`);
     }
   });
 
-  // Filter functionality for category pills
-  let currentCategory = "all";
+  // Filtering functionality for search query (all categories always displayed)
+  const currentCategory = "all";
   let currentSearchQuery = "";
 
   function filterCards() {
@@ -6341,26 +6609,31 @@ function initExperimentsPage() {
     const q = currentSearchQuery.trim().toLowerCase();
 
     cards.forEach(card => {
-      const cardCat = card.getAttribute("data-category") || "all";
       const cardName = (card.getAttribute("data-name") || "").toLowerCase();
       const cardDesc = (card.querySelector(".card-desc")?.textContent || "").toLowerCase();
+      const cardCategory = (card.querySelector(".card-category")?.textContent || "").toLowerCase();
+      const shell = card.closest(".card-perspective-shell");
 
-      const matchesCat = currentCategory === "all" || cardCat === currentCategory;
-      const matchesSearch = !q || cardName.includes(q) || cardDesc.includes(q);
+      const matchesSearch = !q || cardName.includes(q) || cardDesc.includes(q) || cardCategory.includes(q);
 
-      if (matchesCat && matchesSearch) {
+      if (matchesSearch) {
         card.style.display = "";
+        if (shell) shell.style.display = "";
       } else {
         card.style.display = "none";
+        if (shell) shell.style.display = "none";
       }
     });
+
+    // Refresh alternating sideways entrance & stagger for visible cards
+    refreshContainerCards(pageGrid);
+    horizontalGallery.recalculate();
   }
 
   catPills.forEach(pill => {
     pill.addEventListener("click", () => {
       catPills.forEach(p => p.classList.remove("active"));
       pill.classList.add("active");
-      currentCategory = pill.getAttribute("data-category") || "all";
       filterCards();
     });
   });
@@ -6410,7 +6683,9 @@ export function handleRoute(path = window.location.pathname, hash = window.locat
     document.body.classList.remove("on-standalone-page");
     physixHome?.classList.add("hidden");
     let mappedId = expId;
-    if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") mappedId = "wedge-film";
+    if (expId === "rtd-sensor" || expId === "rtd" || expId === "rtd-sensors" || expId === "pt100") mappedId = "rtd-sensor";
+    else if (expId === "newtons-rings" || expId === "newton" || expId === "newtons-ring" || expId === "newton-rings") mappedId = "newtons-rings";
+    else if (expId === "wedge-film" || expId === "wedge" || expId === "wedge-shaped-film" || expId === "thin-film-wedge") mappedId = "wedge-film";
     else if (expId === "ultrasonic-sensor" || expId === "ultrasonic" || expId === "udm" || expId === "ultrasonic-distance") mappedId = "ultrasonic-sensor";
     else if (expId === "laser-divergence" || expId === "laser" || expId === "laser-beam-divergence") mappedId = "laser-divergence";
     else if (expId === "planck" || expId === "plancks-constant" || expId === "planck-constant") mappedId = "planck";
@@ -6441,13 +6716,15 @@ export function handleRoute(path = window.location.pathname, hash = window.locat
     expPage?.classList.remove("hidden");
     initExperimentsPage();
     window.scrollTo({ top: 0, behavior: "instant" });
-  } else if (cleanHash === "#wedge" || cleanHash === "#wedge-film" || cleanHash === "#wedge-shaped-film" || cleanHash === "#ultrasonic" || cleanHash === "#ultrasonic-sensor" || cleanHash === "#udm" || cleanHash === "#laser" || cleanHash === "#laser-divergence" || cleanHash === "#planck" || cleanHash === "#plancks-constant" || cleanHash === "#diffraction" || cleanHash === "#diffraction-grating" || cleanHash === "#hall-effect" || cleanHash === "#sandbox" || cleanHash === "#pof-attenuation" || cleanHash === "#optical" || cleanHash === "#colour-sensor" || cleanHash === "#projectile") {
+  } else if (cleanHash === "#rtd" || cleanHash === "#rtd-sensor" || cleanHash === "#rtd-sensors" || cleanHash === "#newton" || cleanHash === "#newtons-rings" || cleanHash === "#newtons-ring" || cleanHash === "#wedge" || cleanHash === "#wedge-film" || cleanHash === "#wedge-shaped-film" || cleanHash === "#ultrasonic" || cleanHash === "#ultrasonic-sensor" || cleanHash === "#udm" || cleanHash === "#laser" || cleanHash === "#laser-divergence" || cleanHash === "#planck" || cleanHash === "#plancks-constant" || cleanHash === "#diffraction" || cleanHash === "#diffraction-grating" || cleanHash === "#hall-effect" || cleanHash === "#sandbox" || cleanHash === "#pof-attenuation" || cleanHash === "#optical" || cleanHash === "#colour-sensor" || cleanHash === "#projectile") {
     // Direct link to simulation
     document.body.classList.remove("on-homepage");
     document.body.classList.remove("on-standalone-page");
     physixHome?.classList.add("hidden");
     let mapped = cleanHash.replace("#", "");
-    if (mapped === "wedge" || mapped === "wedge-shaped-film" || mapped === "thin-film-wedge") mapped = "wedge-film";
+    if (mapped === "rtd" || mapped === "rtd-sensor" || mapped === "rtd-sensors") mapped = "rtd-sensor";
+    else if (mapped === "newton" || mapped === "newtons-ring" || mapped === "newton-rings") mapped = "newtons-rings";
+    else if (mapped === "wedge" || mapped === "wedge-shaped-film" || mapped === "thin-film-wedge") mapped = "wedge-film";
     else if (mapped === "diode-vi" || mapped === "pn-junction") mapped = "diode";
     else if (mapped === "diffraction-grating") mapped = "diffraction";
     else if (mapped === "plancks-constant" || mapped === "planck-constant") mapped = "planck";
@@ -6659,6 +6936,7 @@ if (initialPath.startsWith("/experiment/") || initialPath.startsWith("/simulatio
 initPhysixLogoAnimation();
 initMathRenderer();
 initTheme();
+initCustomCursor();
 loadUserProfile();
 
 // Asynchronously hydrate profile from Express API if available and local profile is incomplete

@@ -1,0 +1,760 @@
+{
+  "experiment": "Laser Beam Divergence & Gaussian Optics - Question Bank",
+  "experimentId": "laser-divergence",
+  "quizId": "laser-divergence-mastery-quiz",
+  "experimentName": "Laser Beam Divergence",
+  "description": "Comprehensive 50-Question Physics Question Bank for Laser Beam Divergence",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": "ld-q1",
+      "question": "What physical phenomenon fundamentally causes an unguided laser beam to diverge as it propagates?",
+      "options": [
+        "Wave diffraction due to finite lateral optical aperture",
+        "Refraction from ambient air temperature gradients",
+        "Coulomb repulsion between emitted laser photons",
+        "Quantum tunneling through the output mirror"
+      ],
+      "answer": "Wave diffraction due to finite lateral optical aperture",
+      "correct_option": "Wave diffraction due to finite lateral optical aperture",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "Wave diffraction fundamentally dictates that any wave confined to a finite spatial aperture of width d must diffract at an angular rate proportional to lambda / d."
+    },
+    {
+      "id": "ld-q2",
+      "question": "In a fundamental TEM00 Gaussian laser beam, what is the definition of the Rayleigh range (zR)?",
+      "options": [
+        "The propagation distance where cross-sectional area doubles and beam radius expands by sqrt(2)",
+        "The distance at which laser intensity drops to exactly zero",
+        "The focal length of the laser cavity collimator mirror",
+        "The maximum propagation distance before atmospheric absorption halts the beam"
+      ],
+      "answer": "The propagation distance where cross-sectional area doubles and beam radius expands by sqrt(2)",
+      "correct_option": "The propagation distance where cross-sectional area doubles and beam radius expands by sqrt(2)",
+      "difficulty": "medium",
+      "global_id": 2,
+      "explanation": "The Rayleigh range zR = (pi * w0^2) / lambda is the distance where beam radius w(z) grows from w0 to sqrt(2)*w0, doubling the spot area."
+    },
+    {
+      "id": "ld-q3",
+      "question": "How is the far-field theoretical divergence half-angle (theta) related to emission wavelength (lambda) and beam waist (w0)?",
+      "options": [
+        "theta = lambda / (pi * w0)",
+        "theta = (pi * w0) / lambda",
+        "theta = lambda * pi * w0",
+        "theta = sqrt(lambda / w0)"
+      ],
+      "answer": "theta = lambda / (pi * w0)",
+      "correct_option": "theta = lambda / (pi * w0)",
+      "difficulty": "medium",
+      "global_id": 3,
+      "explanation": "In Gaussian optics, the asymptotic far-field divergence half-angle is given by theta = lambda / (pi * w0) in radians."
+    },
+    {
+      "id": "ld-q4",
+      "question": "What is the relationship between the full divergence cone angle (Theta) and the divergence half-angle (theta)?",
+      "options": [
+        "Theta = 2 * theta",
+        "Theta = theta / 2",
+        "Theta = theta^2",
+        "Theta = pi * theta"
+      ],
+      "answer": "Theta = 2 * theta",
+      "correct_option": "Theta = 2 * theta",
+      "difficulty": "easy",
+      "global_id": 4,
+      "explanation": "The full cone angle Theta spans from one envelope boundary across the central optical axis to the opposite boundary, so Theta = 2 * theta."
+    },
+    {
+      "id": "ld-q5",
+      "question": "If laser spot diameters D1 and D2 are measured at distances z1 and z2, what is the two-point empirical half-angle formula?",
+      "options": [
+        "theta ≈ (D2 - D1) / [2 * (z2 - z1)]",
+        "theta ≈ (D2 + D1) / (z2 - z1)",
+        "theta ≈ (D2 - D1) / (z2 - z1)",
+        "theta ≈ [2 * (D2 - D1)] / (z2 - z1)"
+      ],
+      "answer": "theta ≈ (D2 - D1) / [2 * (z2 - z1)]",
+      "correct_option": "theta ≈ (D2 - D1) / [2 * (z2 - z1)]",
+      "difficulty": "medium",
+      "global_id": 5,
+      "explanation": "Because D is diameter (D = 2w), the radial expansion is (D2 - D1)/2, yielding theta ≈ (D2 - D1) / [2 * (z2 - z1)]."
+    },
+    {
+      "id": "ld-q6",
+      "question": "Which laser wavelength will exhibit the smallest divergence half-angle for a fixed beam waist radius?",
+      "options": [
+        "Violet InGaN laser (402 nm)",
+        "Green DPSS laser (532 nm)",
+        "Helium-Neon Red laser (632.8 nm)",
+        "Infrared diode laser (808 nm)"
+      ],
+      "answer": "Violet InGaN laser (402 nm)",
+      "correct_option": "Violet InGaN laser (402 nm)",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "Divergence theta is directly proportional to wavelength (theta = lambda / (pi * w0)). Shorter wavelengths produce less diffraction spread."
+    },
+    {
+      "id": "ld-q7",
+      "question": "Why is the 1/e^2 intensity criterion universally used as the standard boundary for Gaussian laser spots?",
+      "options": [
+        "Because Gaussian profiles have no sharp boundary; 1/e^2 (~13.53% peak) encloses 86.5% of total optical power",
+        "Because human eyes can only perceive light down to 1/e^2 intensity",
+        "Because photographic sensors saturate at 1/e^2 of laser peak intensity",
+        "Because diffraction rings completely cancel out at 1/e^2"
+      ],
+      "answer": "Because Gaussian profiles have no sharp boundary; 1/e^2 (~13.53% peak) encloses 86.5% of total optical power",
+      "correct_option": "Because Gaussian profiles have no sharp boundary; 1/e^2 (~13.53% peak) encloses 86.5% of total optical power",
+      "difficulty": "hard",
+      "global_id": 7,
+      "explanation": "Since Gaussian profiles decay asymptotically without a hard cutoff, the ISO standard 1/e^2 (13.53%) boundary encloses exactly (1 - 1/e^2) = 86.47% of total beam power."
+    },
+    {
+      "id": "ld-q8",
+      "question": "What happens to the divergence of a laser beam if its waist radius (w0) is doubled by an optical beam expander?",
+      "options": [
+        "The divergence angle is halved",
+        "The divergence angle doubles",
+        "The divergence angle quadruples",
+        "The divergence angle remains unchanged"
+      ],
+      "answer": "The divergence angle is halved",
+      "correct_option": "The divergence angle is halved",
+      "difficulty": "medium",
+      "global_id": 8,
+      "explanation": "Since theta = lambda / (pi * w0), divergence is inversely proportional to beam waist. Doubling w0 reduces theta by a factor of 2."
+    },
+    {
+      "id": "ld-q9",
+      "question": "At propagation distance z equal to the Rayleigh range (z = zR), what is the beam radius w(zR)?",
+      "options": [
+        "sqrt(2) * w0 ≈ 1.414 * w0",
+        "2 * w0",
+        "w0 / 2",
+        "w0 / sqrt(2)"
+      ],
+      "answer": "sqrt(2) * w0 ≈ 1.414 * w0",
+      "correct_option": "sqrt(2) * w0 ≈ 1.414 * w0",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "Substituting z = zR into w(z) = w0 * sqrt(1 + (z/zR)^2) yields w(zR) = w0 * sqrt(1 + 1) = sqrt(2) * w0."
+    },
+    {
+      "id": "ld-q10",
+      "question": "What is the primary eye safety hazard associated with visible Class 3R lasers used in this experiment?",
+      "options": [
+        "Intra-beam viewing may cause thermal retinal burn if the blink reflex is suppressed",
+        "Ionizing radiation causing skin burns",
+        "Generation of toxic ozone gas along the beam path",
+        "Nuclear activation of metallic optical mounts"
+      ],
+      "answer": "Intra-beam viewing may cause thermal retinal burn if the blink reflex is suppressed",
+      "correct_option": "Intra-beam viewing may cause thermal retinal burn if the blink reflex is suppressed",
+      "difficulty": "easy",
+      "global_id": 10,
+      "explanation": "Class 3R visible lasers (up to 5 mW) are normally protected by human aversion (blink) response (~0.25 s), but direct deliberate staring can cause retinal injury."
+    },
+    {
+      "id": "laser-q11",
+      "question": "How is the Rayleigh range (z_R) mathematically defined for a fundamental Gaussian beam?",
+      "options": [
+        "z_R = (π * w0^2) / λ",
+        "z_R = (2 * π * w0) / λ",
+        "z_R = (λ * w0^2) / π",
+        "z_R = (π * λ) / w0^2"
+      ],
+      "answer": "z_R = (π * w0^2) / λ",
+      "correct_option": "z_R = (π * w0^2) / λ",
+      "difficulty": "medium",
+      "global_id": 11,
+      "explanation": "The Rayleigh range z_R is the distance over which the beam cross-sectional area doubles: z_R = π w0^2 / λ."
+    },
+    {
+      "id": "laser-q12",
+      "question": "At the Rayleigh distance z = z_R from the beam waist, what is the beam radius w(z_R)?",
+      "options": [
+        "w(z_R) = w0 * √2 ≈ 1.414 * w0",
+        "w(z_R) = 2 * w0",
+        "w(z_R) = w0 / √2",
+        "w(z_R) = w0 * π"
+      ],
+      "answer": "w(z_R) = w0 * √2 ≈ 1.414 * w0",
+      "correct_option": "w(z_R) = w0 * √2 ≈ 1.414 * w0",
+      "difficulty": "easy",
+      "global_id": 12,
+      "explanation": "At z = z_R, w(z) = w0 √(1 + (z_R/z_R)^2) = w0 √2."
+    },
+    {
+      "id": "laser-q13",
+      "question": "What is the wavefront curvature radius R(z) at the exact position of the beam waist (z = 0)?",
+      "options": [
+        "Infinite (planar wavefront)",
+        "Zero",
+        "Equal to the Rayleigh range",
+        "Equal to the wavelength λ"
+      ],
+      "answer": "Infinite (planar wavefront)",
+      "correct_option": "Infinite (planar wavefront)",
+      "difficulty": "medium",
+      "global_id": 13,
+      "explanation": "At the waist, the wavefront is perfectly planar, meaning the radius of curvature R(0) approaches infinity."
+    },
+    {
+      "id": "laser-q14",
+      "question": "At what axial propagation distance z is the wavefront curvature radius R(z) at its minimum value?",
+      "options": [
+        "z = z_R (at the Rayleigh distance)",
+        "z = 0 (at the waist)",
+        "z = 2 * z_R",
+        "z approaches infinity"
+      ],
+      "answer": "z = z_R (at the Rayleigh distance)",
+      "correct_option": "z = z_R (at the Rayleigh distance)",
+      "difficulty": "hard",
+      "global_id": 14,
+      "explanation": "R(z) = z * [1 + (z_R/z)^2]. Setting dR/dz = 0 yields z = z_R, where R_min = 2 * z_R."
+    },
+    {
+      "id": "laser-q15",
+      "question": "For a laser with wavelength λ = 632.8 nm and waist radius w0 = 0.5 mm, what is the approximate Rayleigh range?",
+      "options": [
+        "1.24 m",
+        "0.62 m",
+        "2.48 m",
+        "4.96 m"
+      ],
+      "answer": "1.24 m",
+      "correct_option": "1.24 m",
+      "difficulty": "hard",
+      "global_id": 15,
+      "explanation": "z_R = π * (0.5e-3)^2 / (632.8e-9) = π * 2.5e-7 / 6.328e-7 ≈ 1.241 m."
+    },
+    {
+      "id": "laser-q16",
+      "question": "What is the relationship between the beam waist diameter d0 and the far-field full divergence angle θ_full for a diffraction-limited beam?",
+      "options": [
+        "θ_full = (4 * λ) / (π * d0)",
+        "θ_full = (2 * λ) / (π * d0)",
+        "θ_full = (π * d0) / (4 * λ)",
+        "θ_full = (4 * d0) / (π * λ)"
+      ],
+      "answer": "θ_full = (4 * λ) / (π * d0)",
+      "correct_option": "θ_full = (4 * λ) / (π * d0)",
+      "difficulty": "medium",
+      "global_id": 16,
+      "explanation": "Since w0 = d0 / 2 and θ_half = λ / (π w0), θ_full = 2 * θ_half = 4λ / (π d0)."
+    },
+    {
+      "id": "laser-q17",
+      "question": "What optical component can be used to decrease the beam divergence angle of a laser?",
+      "options": [
+        "A beam expander (telescope system)",
+        "A neutral density filter",
+        "A polarising beamsplitter",
+        "A ground glass diffuser"
+      ],
+      "answer": "A beam expander (telescope system)",
+      "correct_option": "A beam expander (telescope system)",
+      "difficulty": "medium",
+      "global_id": 17,
+      "explanation": "A beam expander increases the beam diameter d0, which inversely reduces the far-field divergence angle θ in proportion to 1/d0."
+    },
+    {
+      "id": "laser-q18",
+      "question": "What is the M² (beam quality factor) of a theoretical, perfectly diffraction-limited fundamental TEM00 mode?",
+      "options": [
+        "M² = 1.0",
+        "M² = 0",
+        "M² = π",
+        "M² = 2.0"
+      ],
+      "answer": "M² = 1.0",
+      "correct_option": "M² = 1.0",
+      "difficulty": "easy",
+      "global_id": 18,
+      "explanation": "A pure TEM00 Gaussian beam represents the physical lower bound of space-bandwidth product, corresponding to M² = 1."
+    },
+    {
+      "id": "laser-q19",
+      "question": "If a real laser beam has M² = 1.5, how does its divergence compare to an ideal Gaussian beam with the same waist size?",
+      "options": [
+        "Its divergence angle is 1.5 times larger",
+        "Its divergence angle is 1.5 times smaller",
+        "Its divergence angle is 2.25 times larger",
+        "Its divergence angle is identical"
+      ],
+      "answer": "Its divergence angle is 1.5 times larger",
+      "correct_option": "Its divergence angle is 1.5 times larger",
+      "difficulty": "medium",
+      "global_id": 19,
+      "explanation": "For a real beam, θ = M² * [λ / (π w0)], so divergence scales linearly with M²."
+    },
+    {
+      "id": "laser-q20",
+      "question": "In a knife-edge laser beam profiler, between which two transmitted power thresholds is beam diameter commonly measured for a 1/e² criterion?",
+      "options": [
+        "16% and 84% (or 10% and 90% scaled)",
+        "0% and 100%",
+        "25% and 75%",
+        "50% and 100%"
+      ],
+      "answer": "16% and 84% (or 10% and 90% scaled)",
+      "correct_option": "16% and 84% (or 10% and 90% scaled)",
+      "difficulty": "hard",
+      "global_id": 20,
+      "explanation": "For an integrated Gaussian error function, the 16% to 84% power cut points correspond precisely to a width of 2w (or 10%-90% scaled by 1.56)."
+    },
+    {
+      "id": "laser-q21",
+      "question": "What does the 1/e² beam radius definition represent in terms of optical intensity I(r) relative to peak on-axis intensity I_0?",
+      "options": [
+        "The radial distance r where I(r) drops to I_0 / e² ≈ 0.135 * I_0",
+        "The distance where I(r) drops to 0.5 * I_0 (FWHM)",
+        "The distance where I(r) drops to 1/e ≈ 0.368 * I_0",
+        "The distance where power reaches 50%"
+      ],
+      "answer": "The radial distance r where I(r) drops to I_0 / e² ≈ 0.135 * I_0",
+      "correct_option": "The radial distance r where I(r) drops to I_0 / e² ≈ 0.135 * I_0",
+      "difficulty": "easy",
+      "global_id": 21,
+      "explanation": "By definition, the Gaussian beam radius w is the transverse distance at which intensity drops to 1/e² (13.53%) of its peak on-axis value."
+    },
+    {
+      "id": "laser-q22",
+      "question": "What is the relation between the Full Width at Half Maximum (FWHM) and the 1/e² beam diameter (2w)?",
+      "options": [
+        "2w = FWHM * √(2 / ln 2) ≈ 1.699 * FWHM",
+        "2w = FWHM / 2",
+        "2w = 2 * FWHM",
+        "2w = FWHM * ln 2"
+      ],
+      "answer": "2w = FWHM * √(2 / ln 2) ≈ 1.699 * FWHM",
+      "correct_option": "2w = FWHM * √(2 / ln 2) ≈ 1.699 * FWHM",
+      "difficulty": "hard",
+      "global_id": 22,
+      "explanation": "Since exp(-2r^2/w^2) = 1/2 at r = r_FWHM, solving yields 2w = 1.699 * (2 r_FWHM)."
+    },
+    {
+      "id": "laser-q23",
+      "question": "What total percentage of total laser beam power is enclosed within a circular aperture of radius r = w (the 1/e² radius)?",
+      "options": [
+        "86.5%",
+        "63.2%",
+        "50.0%",
+        "99.0%"
+      ],
+      "answer": "86.5%",
+      "correct_option": "86.5%",
+      "difficulty": "medium",
+      "global_id": 23,
+      "explanation": "Enclosed power P(r) = P_total * [1 - exp(-2r^2/w^2)]. At r = w, P(w) = P_total * (1 - e^-2) ≈ 86.47%."
+    },
+    {
+      "id": "laser-q24",
+      "question": "What total percentage of total laser power is enclosed within a circle of radius r = 1.5 * w?",
+      "options": [
+        "98.9%",
+        "86.5%",
+        "95.0%",
+        "99.9%"
+      ],
+      "answer": "98.9%",
+      "correct_option": "98.9%",
+      "difficulty": "hard",
+      "global_id": 24,
+      "explanation": "P(1.5w) = P_total * [1 - exp(-2 * (1.5)^2)] = 1 - e^-4.5 ≈ 1 - 0.0111 = 98.89%."
+    },
+    {
+      "id": "laser-q25",
+      "question": "Why does a blue laser (λ = 405 nm) have lower diffraction divergence than a red laser (λ = 650 nm) for identical initial beam waists?",
+      "options": [
+        "Divergence is directly proportional to wavelength (θ ∝ λ)",
+        "Divergence is inversely proportional to wavelength (θ ∝ 1/λ)",
+        "Blue photons carry higher mass",
+        "Blue light travels faster in air"
+      ],
+      "answer": "Divergence is directly proportional to wavelength (θ ∝ λ)",
+      "correct_option": "Divergence is directly proportional to wavelength (θ ∝ λ)",
+      "difficulty": "easy",
+      "global_id": 25,
+      "explanation": "Since θ = λ / (π w0), shorter optical wavelengths produce proportionally smaller divergence angles."
+    },
+    {
+      "id": "laser-q26",
+      "question": "What is the optical function of a spatial filter placed at the focus of a Keplerian beam expander?",
+      "options": [
+        "Removes high-frequency spatial noise and non-Gaussian aberrations using a pinhole",
+        "Attenuates total laser power to avoid detector saturation",
+        "Converts linear polarization to circular polarization",
+        "Increases the laser coherence length"
+      ],
+      "answer": "Removes high-frequency spatial noise and non-Gaussian aberrations using a pinhole",
+      "correct_option": "Removes high-frequency spatial noise and non-Gaussian aberrations using a pinhole",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "Spatial filtering focuses the beam through a micro-pinhole; higher spatial frequency noise falls outside the central Airy disc and is stripped away."
+    },
+    {
+      "id": "laser-q27",
+      "question": "How does a Galilean beam expander differ from a Keplerian beam expander?",
+      "options": [
+        "It uses a negative (diverging) lens followed by a positive lens, eliminating an internal focal point",
+        "It uses two identical convex lenses",
+        "It cannot operate with pulsed lasers",
+        "It reverses beam divergence"
+      ],
+      "answer": "It uses a negative (diverging) lens followed by a positive lens, eliminating an internal focal point",
+      "correct_option": "It uses a negative (diverging) lens followed by a positive lens, eliminating an internal focal point",
+      "difficulty": "medium",
+      "global_id": 27,
+      "explanation": "A Galilean expander pairs a concave (diverging) lens with a convex lens, avoiding internal focus that could ionize air in high-power systems."
+    },
+    {
+      "id": "laser-q28",
+      "question": "If a Keplerian beam expander has an objective focal length of 10 mm and a collimating lens focal length of 100 mm, what is the beam magnification factor M?",
+      "options": [
+        "10x",
+        "0.1x",
+        "100x",
+        "5x"
+      ],
+      "answer": "10x",
+      "correct_option": "10x",
+      "difficulty": "easy",
+      "global_id": 28,
+      "explanation": "Magnification M = f2 / f1 = 100 mm / 10 mm = 10x. Beam diameter increases by 10x, and divergence decreases by 10x."
+    },
+    {
+      "id": "laser-q29",
+      "question": "When using a two-point measurement method to determine laser divergence, spot diameters d1 and d2 are measured at distances z1 and z2. What is the divergence angle θ?",
+      "options": [
+        "θ = (d2 - d1) / (z2 - z1)",
+        "θ = (d2 + d1) / (z2 + z1)",
+        "θ = (z2 - z1) / (d2 - d1)",
+        "θ = (d2 - d1) * (z2 - z1)"
+      ],
+      "answer": "θ = (d2 - d1) / (z2 - z1)",
+      "correct_option": "θ = (d2 - d1) / (z2 - z1)",
+      "difficulty": "easy",
+      "global_id": 29,
+      "explanation": "In the far field where propagation is linear, divergence angle θ ≈ tan(θ) = (d2 - d1) / (z2 - z1)."
+    },
+    {
+      "id": "laser-q30",
+      "question": "What happens to the beam waist radius w0 when a collimated Gaussian beam is focused by a lens of focal length f?",
+      "options": [
+        "w0' = (λ * f) / (π * w_lens)",
+        "w0' = (w_lens * f) / λ",
+        "w0' = f * λ",
+        "w0' = w_lens / 2"
+      ],
+      "answer": "w0' = (λ * f) / (π * w_lens)",
+      "correct_option": "w0' = (λ * f) / (π * w_lens)",
+      "difficulty": "hard",
+      "global_id": 30,
+      "explanation": "For a focused Gaussian beam with w_lens >> w0', the focused waist size is w0' = λ f / (π w_lens)."
+    },
+    {
+      "id": "laser-q31",
+      "question": "What is the Gouy phase shift experienced by a TEM00 Gaussian beam propagating from -∞ to +∞ through its focus?",
+      "options": [
+        "π radians (180°)",
+        "π/2 radians (90°)",
+        "2π radians (360°)",
+        "Zero"
+      ],
+      "answer": "π radians (180°)",
+      "correct_option": "π radians (180°)",
+      "difficulty": "hard",
+      "global_id": 31,
+      "explanation": "The Gouy phase shift ζ(z) = arctan(z / z_R) accumulates from -π/2 to +π/2, giving an overall phase shift of π radians."
+    },
+    {
+      "id": "laser-q32",
+      "question": "Why is far-field beam divergence measured at distances z >> z_R rather than close to the laser aperture?",
+      "options": [
+        "In the near-field (z < z_R), beam spreading is non-linear and dominated by Rayleigh depth of focus",
+        "Laser light does not travel in straight lines in the near field",
+        "Detectors cannot sense light within the near field",
+        "Wavefronts are flat in the far field"
+      ],
+      "answer": "In the near-field (z < z_R), beam spreading is non-linear and dominated by Rayleigh depth of focus",
+      "correct_option": "In the near-field (z < z_R), beam spreading is non-linear and dominated by Rayleigh depth of focus",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "For z << z_R, w(z) ≈ w0 (nearly constant). Only when z >> z_R does w(z) ≈ w0 * (z / z_R) expand linearly with distance."
+    },
+    {
+      "id": "laser-q33",
+      "question": "A helium-neon laser (632.8 nm) produces a spot diameter of 3.0 mm at 2 m and 7.0 mm at 10 m. What is the full divergence angle?",
+      "options": [
+        "0.50 mrad",
+        "0.25 mrad",
+        "1.00 mrad",
+        "2.00 mrad"
+      ],
+      "answer": "0.50 mrad",
+      "correct_option": "0.50 mrad",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "θ = (d2 - d1) / (z2 - z1) = (7.0 mm - 3.0 mm) / (10 m - 2 m) = 4.0 mm / 8 m = 0.50 mrad (5.0e-4 rad)."
+    },
+    {
+      "id": "laser-q34",
+      "question": "What is the optical intensity distribution I(r, z) of a TEM00 mode in cylindrical coordinates?",
+      "options": [
+        "I(r, z) = I_0 * [w0/w(z)]^2 * exp(-2r^2 / w(z)^2)",
+        "I(r, z) = I_0 * exp(-r / w(z))",
+        "I(r, z) = I_0 * cos^2(r / w(z))",
+        "I(r, z) = I_0 / [1 + (r/w(z))^2]"
+      ],
+      "answer": "I(r, z) = I_0 * [w0/w(z)]^2 * exp(-2r^2 / w(z)^2)",
+      "correct_option": "I(r, z) = I_0 * [w0/w(z)]^2 * exp(-2r^2 / w(z)^2)",
+      "difficulty": "hard",
+      "global_id": 34,
+      "explanation": "The peak intensity scales as [w0/w(z)]^2 to conserve power, and decays radially as a Gaussian exp(-2r^2/w^2)."
+    },
+    {
+      "id": "laser-q35",
+      "question": "What is the beam parameter product (BPP) for an ideal TEM00 Gaussian beam?",
+      "options": [
+        "BPP = w0 * θ = λ / π",
+        "BPP = w0 * θ = λ * π",
+        "BPP = w0 / θ = λ / 2",
+        "BPP = w0 * θ = 4λ"
+      ],
+      "answer": "BPP = w0 * θ = λ / π",
+      "correct_option": "BPP = w0 * θ = λ / π",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "BPP is defined as the product of waist radius w0 and half-divergence angle θ: BPP = w0 * (λ / π w0) = λ / π."
+    },
+    {
+      "id": "laser-q36",
+      "question": "How does the Beam Parameter Product (BPP) relate to M²?",
+      "options": [
+        "BPP_real = M² * (λ / π)",
+        "BPP_real = BPP_ideal / M²",
+        "BPP_real = M² * π / λ",
+        "BPP is independent of M²"
+      ],
+      "answer": "BPP_real = M² * (λ / π)",
+      "correct_option": "BPP_real = M² * (λ / π)",
+      "difficulty": "medium",
+      "global_id": 36,
+      "explanation": "M² is the ratio of the real beam's BPP to that of a diffraction-limited Gaussian beam: M² = BPP_real / (λ / π)."
+    },
+    {
+      "id": "laser-q37",
+      "question": "What optical element converts an astigmatic elliptical diode laser beam into a circular profile?",
+      "options": [
+        "An anamorphic prism pair or cylindrical lens pair",
+        "A quarter-wave plate",
+        "A spatial pinhole filter",
+        "An optical isolator"
+      ],
+      "answer": "An anamorphic prism pair or cylindrical lens pair",
+      "correct_option": "An anamorphic prism pair or cylindrical lens pair",
+      "difficulty": "medium",
+      "global_id": 37,
+      "explanation": "Edge-emitting laser diodes have different divergence angles along fast and slow axes; anamorphic prisms magnify one axis to circularize the beam."
+    },
+    {
+      "id": "laser-q38",
+      "question": "Why does an edge-emitting semiconductor laser diode have a highly asymmetric divergence angle?",
+      "options": [
+        "The active layer waveguide is much thinner vertically (~0.1 µm) than horizontally (~2 µm)",
+        "The semiconductor has anisotropic speed of light",
+        "Photons are emitted in only one polarization state",
+        "The electrical contacts create asymmetric magnetic deflection"
+      ],
+      "answer": "The active layer waveguide is much thinner vertically (~0.1 µm) than horizontally (~2 µm)",
+      "correct_option": "The active layer waveguide is much thinner vertically (~0.1 µm) than horizontally (~2 µm)",
+      "difficulty": "hard",
+      "global_id": 38,
+      "explanation": "The sub-micron vertical aperture causes extreme diffraction divergence (fast axis ~30°-40°), while the wider lateral aperture gives lower divergence (~10°)."
+    },
+    {
+      "id": "laser-q39",
+      "question": "In high-power laser material processing, why is low beam divergence (high beam quality M² ≈ 1) critical?",
+      "options": [
+        "It allows focusing to a smaller spot size with a longer depth of focus, maximizing power density",
+        "It prevents back-reflections into the laser cavity",
+        "It changes the laser color to ultraviolet",
+        "It increases thermal conductivity of the workpiece"
+      ],
+      "answer": "It allows focusing to a smaller spot size with a longer depth of focus, maximizing power density",
+      "correct_option": "It allows focusing to a smaller spot size with a longer depth of focus, maximizing power density",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "Lower divergence permits tighter focus (higher irradiance W/cm²) and longer depth of field (longer Rayleigh length at the cut kerf)."
+    },
+    {
+      "id": "laser-q40",
+      "question": "What optical instrument is placed between a laser and a reflective experiment to protect the laser from destabilizing back-reflections?",
+      "options": [
+        "An optical isolator (Faraday rotator + polarizers)",
+        "A neutral density wheel",
+        "A beam dump",
+        "A Fabry-Pérot etalon"
+      ],
+      "answer": "An optical isolator (Faraday rotator + polarizers)",
+      "correct_option": "An optical isolator (Faraday rotator + polarizers)",
+      "difficulty": "medium",
+      "global_id": 40,
+      "explanation": "An optical isolator acts as an optical diode using the magneto-optic Faraday effect to block back-reflected light from re-entering the laser resonator."
+    },
+    {
+      "id": "laser-q41",
+      "question": "What is the confocal parameter b of a Gaussian beam in terms of its Rayleigh range z_R?",
+      "options": [
+        "b = 2 * z_R",
+        "b = z_R / 2",
+        "b = π * z_R",
+        "b = z_R^2"
+      ],
+      "answer": "b = 2 * z_R",
+      "correct_option": "b = 2 * z_R",
+      "difficulty": "easy",
+      "global_id": 41,
+      "explanation": "The confocal parameter b is the total length of the focal zone between the two z = ±z_R planes: b = 2 * z_R."
+    },
+    {
+      "id": "laser-q42",
+      "question": "What is the depth of focus (DOF) of a focused laser beam typically defined as?",
+      "options": [
+        "The distance between the ±z_R points (2 * z_R)",
+        "The focal length of the focusing lens",
+        "The entire length of the laser cavity",
+        "The distance where power drops to zero"
+      ],
+      "answer": "The distance between the ±z_R points (2 * z_R)",
+      "correct_option": "The distance between the ±z_R points (2 * z_R)",
+      "difficulty": "easy",
+      "global_id": 42,
+      "explanation": "Depth of focus corresponds to the region where beam area is within a factor of 2 of the waist, which is 2 * z_R."
+    },
+    {
+      "id": "laser-q43",
+      "question": "If a laser beam with initial waist w0 is focused by a lens, how does the focused waist size w0' scale with lens numerical aperture (NA)?",
+      "options": [
+        "w0' ∝ 1 / NA",
+        "w0' ∝ NA",
+        "w0' ∝ NA^2",
+        "w0' is independent of NA"
+      ],
+      "answer": "w0' ∝ 1 / NA",
+      "correct_option": "w0' ∝ 1 / NA",
+      "difficulty": "medium",
+      "global_id": 43,
+      "explanation": "Higher NA lenses focus light more tightly: focused spot size is inversely proportional to NA (w0' ≈ 0.61 λ / NA)."
+    },
+    {
+      "id": "laser-q44",
+      "question": "How does thermal blooming in the atmosphere affect laser beam propagation over long distances?",
+      "options": [
+        "Heating of the air decreases the refractive index on-axis, acting as a negative lens that diverges the beam",
+        "Air heating focuses the beam into an intense filament",
+        "Thermal absorption changes the laser wavelength",
+        "Air ionization stops beam propagation entirely"
+      ],
+      "answer": "Heating of the air decreases the refractive index on-axis, acting as a negative lens that diverges the beam",
+      "correct_option": "Heating of the air decreases the refractive index on-axis, acting as a negative lens that diverges the beam",
+      "difficulty": "hard",
+      "global_id": 44,
+      "explanation": "Laser absorption heats air along the central axis, lowering local density and refractive index (dn/dT < 0), causing the beam to defocus (bloom)."
+    },
+    {
+      "id": "laser-q45",
+      "question": "What is the Strehl ratio of an optical beam?",
+      "options": [
+        "The ratio of peak on-axis aberrated intensity to theoretical diffraction-limited peak intensity",
+        "The ratio of input power to output power",
+        "The ratio of major to minor axis of an elliptical beam",
+        "The transmission percentage of an optical coating"
+      ],
+      "answer": "The ratio of peak on-axis aberrated intensity to theoretical diffraction-limited peak intensity",
+      "correct_option": "The ratio of peak on-axis aberrated intensity to theoretical diffraction-limited peak intensity",
+      "difficulty": "hard",
+      "global_id": 45,
+      "explanation": "Strehl ratio S = I_aberrated / I_ideal measures how close a focused beam wavefront is to a perfect diffraction-limited wavefront (S ≥ 0.8 is Maréchal criterion)."
+    },
+    {
+      "id": "laser-q46",
+      "question": "What laser safety class is assigned to a standard visible laser pointer with output power between 1 mW and 5 mW?",
+      "options": [
+        "Class 3R",
+        "Class 1",
+        "Class 4",
+        "Class 2M"
+      ],
+      "answer": "Class 3R",
+      "correct_option": "Class 3R",
+      "difficulty": "medium",
+      "global_id": 46,
+      "explanation": "Visible CW lasers with power between 1 mW and 5 mW are categorized as Class 3R (formerly Class IIIa)."
+    },
+    {
+      "id": "laser-q47",
+      "question": "What human natural reflex protects the eye from accidental brief exposure to Class 2 visible laser radiation (< 1 mW)?",
+      "options": [
+        "The blink reflex (aversion response, ~0.25 seconds)",
+        "Pupillary constriction only",
+        "Accommodation of the crystalline lens",
+        "Tear duct secretion"
+      ],
+      "answer": "The blink reflex (aversion response, ~0.25 seconds)",
+      "correct_option": "The blink reflex (aversion response, ~0.25 seconds)",
+      "difficulty": "easy",
+      "global_id": 47,
+      "explanation": "Class 2 visible lasers rely on the normal involuntary human blink reflex (~250 ms) to prevent retinal injury."
+    },
+    {
+      "id": "laser-q48",
+      "question": "Why is infrared laser radiation (such as Nd:YAG at 1064 nm) particularly hazardous to the human eye?",
+      "options": [
+        "It penetrates to the retina but is completely invisible, suppressing the natural blink reflex",
+        "It has higher photon energy than UV light",
+        "It causes resonant vibration of nitrogen gas",
+        "It cannot be blocked by any laser safety goggles"
+      ],
+      "answer": "It penetrates to the retina but is completely invisible, suppressing the natural blink reflex",
+      "correct_option": "It penetrates to the retina but is completely invisible, suppressing the natural blink reflex",
+      "difficulty": "medium",
+      "global_id": 48,
+      "explanation": "Near-IR light passes through ocular media to focus onto the retina, but because it is invisible, no aversion or blink reflex is triggered."
+    },
+    {
+      "id": "laser-q49",
+      "question": "In beam profiling, what is the D4σ (second-moment) ISO 11146 standard definition of beam diameter?",
+      "options": [
+        "4 times the standard deviation (σ) of the spatial intensity distribution",
+        "The diameter enclosing exactly 50% power",
+        "The distance between the first diffraction zeroes",
+        "Twice the FWHM width"
+      ],
+      "answer": "4 times the standard deviation (σ) of the spatial intensity distribution",
+      "correct_option": "4 times the standard deviation (σ) of the spatial intensity distribution",
+      "difficulty": "hard",
+      "global_id": 49,
+      "explanation": "ISO 11146 defines the beam width d4σ = 4σ_x, where σ_x is the second spatial moment of the irradiance distribution."
+    },
+    {
+      "id": "laser-q50",
+      "question": "If a laser beam waist is doubled (w0_new = 2 * w0_old) using a beam expander, how does its Rayleigh range change?",
+      "options": [
+        "It increases by a factor of 4 (z_R_new = 4 * z_R_old)",
+        "It doubles (z_R_new = 2 * z_R_old)",
+        "It decreases by half",
+        "It remains unchanged"
+      ],
+      "answer": "It increases by a factor of 4 (z_R_new = 4 * z_R_old)",
+      "correct_option": "It increases by a factor of 4 (z_R_new = 4 * z_R_old)",
+      "difficulty": "medium",
+      "global_id": 50,
+      "explanation": "Since z_R = π w0^2 / λ, doubling the waist radius w0 quadruples the Rayleigh range (2^2 = 4)."
+    }
+  ]
+}

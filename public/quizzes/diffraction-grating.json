@@ -1,0 +1,760 @@
+{
+  "experiment": "Diffraction Grating Spectrometry - Question Bank",
+  "experimentId": "diffraction",
+  "quizId": "diffraction-grating-mastery-quiz",
+  "experimentName": "Diffraction Grating Spectrometry",
+  "description": "Comprehensive 50-Question Physics Question Bank for Diffraction Grating Spectrometry",
+  "total_questions": 50,
+  "questions": [
+    {
+      "id": 1,
+      "question": "What is the standard grating equation for normal incident light?",
+      "options": [
+        "d · sin(θ) = m · λ",
+        "d · cos(θ) = m · λ",
+        "d · tan(θ) = m · λ",
+        "sin(θ) = m · d · λ"
+      ],
+      "answer": "d · sin(θ) = m · λ",
+      "correct_option": "d · sin(θ) = m · λ",
+      "difficulty": "easy",
+      "global_id": 1,
+      "explanation": "For normal incidence, constructive interference from adjacent slits occurs when the path difference d sin(θ) equals an integer multiple of the wavelength mλ."
+    },
+    {
+      "id": 2,
+      "question": "In the grating equation d · sin(θ) = m · λ, what does 'd' represent?",
+      "options": [
+        "The distance between centers of adjacent slits (grating pitch)",
+        "The total width of the grating plate",
+        "The distance from the grating to the screen",
+        "The diameter of the laser beam spot"
+      ],
+      "answer": "The distance between centers of adjacent slits (grating pitch)",
+      "correct_option": "The distance between centers of adjacent slits (grating pitch)",
+      "difficulty": "easy",
+      "global_id": 2,
+      "explanation": "The grating element d represents the slit separation (pitch), calculated as d = 1 / N where N is the line density."
+    },
+    {
+      "id": 3,
+      "question": "If a diffraction grating has 500 lines per mm, what is its slit spacing d?",
+      "options": [
+        "2.0 × 10⁻⁶ m (2.0 μm)",
+        "5.0 × 10⁻⁶ m (5.0 μm)",
+        "2.0 × 10⁻³ m (2.0 mm)",
+        "0.5 × 10⁻⁶ m (0.5 μm)"
+      ],
+      "answer": "2.0 × 10⁻⁶ m (2.0 μm)",
+      "correct_option": "2.0 × 10⁻⁶ m (2.0 μm)",
+      "difficulty": "medium",
+      "global_id": 3,
+      "explanation": "d = 1 / (500 lines/mm) = 0.002 mm = 2.0 × 10⁻⁶ m = 2.0 μm."
+    },
+    {
+      "id": 4,
+      "question": "What diffraction order corresponds to the undeflected central beam (θ = 0)?",
+      "options": [
+        "Zeroth order (m = 0)",
+        "First order (m = 1)",
+        "Negative first order (m = -1)",
+        "Infinite order (m = ∞)"
+      ],
+      "answer": "Zeroth order (m = 0)",
+      "correct_option": "Zeroth order (m = 0)",
+      "difficulty": "easy",
+      "global_id": 4,
+      "explanation": "At θ = 0, path difference between all slits is zero regardless of wavelength, corresponding to the central m = 0 maximum."
+    },
+    {
+      "id": 5,
+      "question": "When white light is incident on a diffraction grating, what color is the central maximum (m = 0)?",
+      "options": [
+        "White",
+        "Red",
+        "Violet",
+        "Green"
+      ],
+      "answer": "White",
+      "correct_option": "White",
+      "difficulty": "easy",
+      "global_id": 5,
+      "explanation": "All visible wavelengths satisfy d sin(0) = 0 · λ at θ = 0, so all spectral colors recombine into an undiffracted white fringe."
+    },
+    {
+      "id": 6,
+      "question": "In the first-order spectrum (m = 1), which color of visible light diffracts at the largest angle θ?",
+      "options": [
+        "Red (~650 nm)",
+        "Blue (~450 nm)",
+        "Green (~532 nm)",
+        "Violet (~400 nm)"
+      ],
+      "answer": "Red (~650 nm)",
+      "correct_option": "Red (~650 nm)",
+      "difficulty": "medium",
+      "global_id": 6,
+      "explanation": "Since sin(θ) = mλ / d, angle θ increases monotonically with wavelength λ. Red light has the longest visible wavelength and diffracts furthest."
+    },
+    {
+      "id": 7,
+      "question": "How does spectral dispersion by a diffraction grating compare to dispersion by a glass prism?",
+      "options": [
+        "Grating bends red more than violet; prism bends violet more than red",
+        "Both bend red light more than violet light",
+        "Both bend violet light more than red light",
+        "Grating only transmits green light"
+      ],
+      "answer": "Grating bends red more than violet; prism bends violet more than red",
+      "correct_option": "Grating bends red more than violet; prism bends violet more than red",
+      "difficulty": "medium",
+      "global_id": 7,
+      "explanation": "In a grating, sin(θ) ∝ λ (red deflects most). In a prism, refractive index n increases for shorter wavelengths, bending violet most."
+    },
+    {
+      "id": 8,
+      "question": "What is the theoretical maximum observable order m_max for light of wavelength λ with grating spacing d?",
+      "options": [
+        "m_max = ⌊d / λ⌋",
+        "m_max = ⌊λ / d⌋",
+        "m_max = 2d · λ",
+        "m_max = 2π / (d · λ)"
+      ],
+      "answer": "m_max = ⌊d / λ⌋",
+      "correct_option": "m_max = ⌊d / λ⌋",
+      "difficulty": "medium",
+      "global_id": 8,
+      "explanation": "Because sin(θ) cannot exceed 1, mλ / d ≤ 1 ⟹ m ≤ d / λ. The highest integer order is ⌊d / λ⌋."
+    },
+    {
+      "id": 9,
+      "question": "What happens to the angular separation between diffracted lines if a 300 lines/mm grating is replaced with a 600 lines/mm grating?",
+      "options": [
+        "Angular separation doubles (spreads further apart)",
+        "Angular separation is halved (narrows together)",
+        "Angular separation remains completely unchanged",
+        "The pattern turns completely dark"
+      ],
+      "answer": "Angular separation doubles (spreads further apart)",
+      "correct_option": "Angular separation doubles (spreads further apart)",
+      "difficulty": "medium",
+      "global_id": 9,
+      "explanation": "Doubling ruling density halves slit spacing d. Because sin(θ) = mλ / d, smaller d results in significantly larger diffraction angles."
+    },
+    {
+      "id": 10,
+      "question": "Angular dispersion D of a diffraction grating is mathematically defined as:",
+      "options": [
+        "D = dθ / dλ = m / (d · cos θ)",
+        "D = dλ / dθ = (d · sin θ) / m",
+        "D = m · d · cos(θ)",
+        "D = λ / (m · d)"
+      ],
+      "answer": "D = dθ / dλ = m / (d · cos θ)",
+      "correct_option": "D = dθ / dλ = m / (d · cos θ)",
+      "difficulty": "hard",
+      "global_id": 10,
+      "explanation": "Differentiating d sin(θ) = mλ with respect to λ yields d cos(θ) dθ = m dλ, giving D = dθ/dλ = m / (d cos θ)."
+    },
+    {
+      "id": 11,
+      "question": "If screen distance L is increased from 1.0 m to 2.0 m, how does the fringe displacement y change on the screen?",
+      "options": [
+        "Displacement y doubles (y = L · tan θ)",
+        "Displacement y is halved",
+        "Displacement y decreases by 4x",
+        "Displacement y remains invariant"
+      ],
+      "answer": "Displacement y doubles (y = L · tan θ)",
+      "correct_option": "Displacement y doubles (y = L · tan θ)",
+      "difficulty": "easy",
+      "global_id": 11,
+      "explanation": "From geometry, tan(θ) = y / L, so y = L tan(θ). Linear fringe separation scales in direct proportion to screen distance L."
+    },
+    {
+      "id": 12,
+      "question": "What class of diffraction occurs when incident wavefronts are plane and observed at infinity (or focused by a lens)?",
+      "options": [
+        "Fraunhofer diffraction",
+        "Fresnel near-field diffraction",
+        "Raman scattering",
+        "Bragg backscattering"
+      ],
+      "answer": "Fraunhofer diffraction",
+      "correct_option": "Fraunhofer diffraction",
+      "difficulty": "medium",
+      "global_id": 12,
+      "explanation": "Fraunhofer diffraction occurs in the far-field regime where both the incoming and outgoing wavefronts are planar."
+    },
+    {
+      "id": 13,
+      "question": "The chromatic resolving power of a diffraction grating is given by:",
+      "options": [
+        "R = λ / Δλ = m · N_total",
+        "R = Δλ / λ = d / (m · N_total)",
+        "R = m / (d · λ)",
+        "R = N_total / (m · λ)"
+      ],
+      "answer": "R = λ / Δλ = m · N_total",
+      "correct_option": "R = λ / Δλ = m · N_total",
+      "difficulty": "hard",
+      "global_id": 13,
+      "explanation": "By Rayleigh's criterion, two spectral lines are resolved when their angular separation matches half-width: R = λ/Δλ = m · N_total."
+    },
+    {
+      "id": 14,
+      "question": "What governs the sharpness and intensity of principal maxima in an N-slit diffraction grating?",
+      "options": [
+        "Peak intensity is proportional to N² and angular width is inversely proportional to N",
+        "Peak intensity is proportional to N and width is independent of N",
+        "Peak intensity decreases as N increases",
+        "Sharpness is determined exclusively by screen distance"
+      ],
+      "answer": "Peak intensity is proportional to N² and angular width is inversely proportional to N",
+      "correct_option": "Peak intensity is proportional to N² and angular width is inversely proportional to N",
+      "difficulty": "hard",
+      "global_id": 14,
+      "explanation": "Coherent constructive addition of N waves yields amplitude N · A₀ and intensity N² · I₀, while the width of the principal maximum narrows as 1/N."
+    },
+    {
+      "id": 15,
+      "question": "How many secondary minima exist between two adjacent principal maxima in an N-slit grating?",
+      "options": [
+        "N - 1 minima",
+        "N minima",
+        "N + 1 minima",
+        "2N minima"
+      ],
+      "answer": "N - 1 minima",
+      "correct_option": "N - 1 minima",
+      "difficulty": "hard",
+      "global_id": 15,
+      "explanation": "Between consecutive principal maxima, the phase difference traverses 2π, encountering N - 1 zero-amplitude nodes (minima) and N - 2 secondary maxima."
+    },
+    {
+      "id": 16,
+      "question": "A laser with wavelength 500 nm strikes a grating with slit spacing d = 2.0 μm. What is sin(θ) for the first-order beam?",
+      "options": [
+        "0.25",
+        "0.50",
+        "0.10",
+        "1.00"
+      ],
+      "answer": "0.25",
+      "correct_option": "0.25",
+      "difficulty": "easy",
+      "global_id": 16,
+      "explanation": "sin(θ) = (1 · 500 × 10⁻⁹ m) / (2.0 × 10⁻⁶ m) = 500 / 2000 = 0.25."
+    },
+    {
+      "id": 17,
+      "question": "What is the optical path difference between rays from adjacent slits for the second-order maximum (m = 2)?",
+      "options": [
+        "2λ",
+        "λ",
+        "λ / 2",
+        "4λ"
+      ],
+      "answer": "2λ",
+      "correct_option": "2λ",
+      "difficulty": "easy",
+      "global_id": 17,
+      "explanation": "For the m-th principal maximum, the path difference Δx = d sin(θ) must equal exactly mλ = 2λ."
+    },
+    {
+      "id": 18,
+      "question": "What causes a missing order (absent spectrum) in a diffraction grating pattern?",
+      "options": [
+        "A principal interference maximum coincides with a single-slit diffraction minimum",
+        "The incident beam is polarized at Brewster's angle",
+        "The wavelength exceeds the physical size of the grating",
+        "Total internal reflection inside the glass substrate"
+      ],
+      "answer": "A principal interference maximum coincides with a single-slit diffraction minimum",
+      "correct_option": "A principal interference maximum coincides with a single-slit diffraction minimum",
+      "difficulty": "hard",
+      "global_id": 18,
+      "explanation": "When the condition for a grating maximum (d sin θ = mλ) coincides with a single-slit diffraction zero (a sin θ = pλ), the intensity envelope is zero, extinguishing the order."
+    },
+    {
+      "id": 19,
+      "question": "Why do higher order spectra (e.g. m = 2 and m = 3) sometimes overlap when using polychromatic light?",
+      "options": [
+        "Because m₁ · λ₁ can equal m₂ · λ₂ at identical diffraction angles θ",
+        "Because the grating heats up under laser irradiance",
+        "Because transverse magnetic modes cancel each other",
+        "Because light slows down inside the air gap"
+      ],
+      "answer": "Because m₁ · λ₁ can equal m₂ · λ₂ at identical diffraction angles θ",
+      "correct_option": "Because m₁ · λ₁ can equal m₂ · λ₂ at identical diffraction angles θ",
+      "difficulty": "medium",
+      "global_id": 19,
+      "explanation": "Overlap occurs when 2 · λ_red (e.g., 2 × 700 = 1400 nm) exceeds 3 · λ_violet (3 × 400 = 1200 nm), placing different orders at overlapping angles."
+    },
+    {
+      "id": 20,
+      "question": "Why is a transmission diffraction grating widely preferred over a prism in quantitative spectrometry?",
+      "options": [
+        "Gratings provide higher resolving power and linear angular dispersion",
+        "Gratings require no light source to operate",
+        "Gratings absorb all infrared radiation",
+        "Prisms cannot refract visible light"
+      ],
+      "answer": "Gratings provide higher resolving power and linear angular dispersion",
+      "correct_option": "Gratings provide higher resolving power and linear angular dispersion",
+      "difficulty": "medium",
+      "global_id": 20,
+      "explanation": "Diffraction gratings yield much higher resolving power R and approximately linear dispersion dθ/dλ, making precise wavelength determination straightforward."
+    },
+    {
+      "id": 21,
+      "question": "What is the condition for missing spectra (absent orders) in a diffraction grating with slit width a and slit separation d?",
+      "options": [
+        "d / a = m / p (where m is grating order and p is single-slit minimum order)",
+        "d · a = m · p",
+        "d + a = m · λ",
+        "d / a = (2m + 1) / p"
+      ],
+      "answer": "d / a = m / p (where m is grating order and p is single-slit minimum order)",
+      "correct_option": "d / a = m / p (where m is grating order and p is single-slit minimum order)",
+      "difficulty": "hard",
+      "global_id": 21,
+      "explanation": "When a principal interference maximum coincides with a single-slit diffraction minimum (d sin θ = mλ and a sin θ = pλ), the overall intensity vanishes, creating an absent order."
+    },
+    {
+      "id": 22,
+      "question": "If a transmission grating has slit width a = 2.0 μm and slit spacing d = 4.0 μm, which interference orders will be absent?",
+      "options": [
+        "Even orders: m = 2, 4, 6, 8...",
+        "Odd orders: m = 1, 3, 5, 7...",
+        "Only m = 1",
+        "No orders will be absent"
+      ],
+      "answer": "Even orders: m = 2, 4, 6, 8...",
+      "correct_option": "Even orders: m = 2, 4, 6, 8...",
+      "difficulty": "medium",
+      "global_id": 22,
+      "explanation": "d / a = 4.0 / 2.0 = 2. Therefore m = 2p, meaning all even orders (2, 4, 6...) coincide with single-slit diffraction zeros and disappear."
+    },
+    {
+      "id": 23,
+      "question": "What is the chromatic resolving power R of a diffraction grating defined as?",
+      "options": [
+        "R = λ / Δλ = m · N_total",
+        "R = Δλ / λ = m / N_total",
+        "R = d · sin θ / λ",
+        "R = N_total / (m · λ)"
+      ],
+      "answer": "R = λ / Δλ = m · N_total",
+      "correct_option": "R = λ / Δλ = m · N_total",
+      "difficulty": "easy",
+      "global_id": 23,
+      "explanation": "By Rayleigh criterion, two spectral lines of wavelength difference Δλ are just resolved when R = λ / Δλ = m · N_total, where N_total is the total illuminated rulings."
+    },
+    {
+      "id": 24,
+      "question": "If a diffraction grating with 600 lines/mm is illuminated over a width of 20 mm, what is the total number of rulings N_total?",
+      "options": [
+        "12,000 lines",
+        "30 lines",
+        "60,000 lines",
+        "1,200 lines"
+      ],
+      "answer": "12,000 lines",
+      "correct_option": "12,000 lines",
+      "difficulty": "easy",
+      "global_id": 24,
+      "explanation": "N_total = (600 lines/mm) × (20 mm) = 12,000 rulings."
+    },
+    {
+      "id": 25,
+      "question": "For N_total = 12,000 rulings, what is the theoretical resolving power in the second order (m = 2)?",
+      "options": [
+        "24,000",
+        "12,000",
+        "6,000",
+        "48,000"
+      ],
+      "answer": "24,000",
+      "correct_option": "24,000",
+      "difficulty": "easy",
+      "global_id": 25,
+      "explanation": "R = m · N_total = 2 × 12,000 = 24,000."
+    },
+    {
+      "id": 26,
+      "question": "With a resolving power of R = 24,000 at λ = 600 nm, what is the smallest resolvable wavelength difference Δλ?",
+      "options": [
+        "0.025 nm (0.25 Å)",
+        "0.25 nm (2.5 Å)",
+        "2.5 nm",
+        "0.001 nm"
+      ],
+      "answer": "0.025 nm (0.25 Å)",
+      "correct_option": "0.025 nm (0.25 Å)",
+      "difficulty": "medium",
+      "global_id": 26,
+      "explanation": "Δλ = λ / R = 600 nm / 24,000 = 0.025 nm."
+    },
+    {
+      "id": 27,
+      "question": "How does the angular dispersion D = dθ / dλ vary with the diffraction order m?",
+      "options": [
+        "D is directly proportional to m (higher orders have wider spectral dispersion)",
+        "D is inversely proportional to m",
+        "D is completely independent of m",
+        "D approaches zero at higher orders"
+      ],
+      "answer": "D is directly proportional to m (higher orders have wider spectral dispersion)",
+      "correct_option": "D is directly proportional to m (higher orders have wider spectral dispersion)",
+      "difficulty": "medium",
+      "global_id": 27,
+      "explanation": "Differentiating the grating equation gives D = dθ / dλ = m / (d cos θ). As m increases, angular dispersion increases proportionally."
+    },
+    {
+      "id": 28,
+      "question": "If light strikes a diffraction grating at an angle of incidence i, what is the modified grating equation?",
+      "options": [
+        "d · (sin i + sin θ) = m · λ",
+        "d · (cos i + cos θ) = m · λ",
+        "d · sin(i · θ) = m · λ",
+        "d · (sin i − sin θ) = 0"
+      ],
+      "answer": "d · (sin i + sin θ) = m · λ",
+      "correct_option": "d · (sin i + sin θ) = m · λ",
+      "difficulty": "medium",
+      "global_id": 28,
+      "explanation": "For oblique incidence, the total path difference across adjacent slits includes both incident and diffracted segments: d(sin i + sin θ) = mλ."
+    },
+    {
+      "id": 29,
+      "question": "Why do principal interference maxima become much sharper and brighter as the number of illuminated slits N increases?",
+      "options": [
+        "Because destructive interference occurs at virtually all non-principal angles and peak intensity scales as N²",
+        "Because light travels faster through more slits",
+        "Because the wavelength of laser light decreases",
+        "Because the grating absorbs less thermal energy"
+      ],
+      "answer": "Because destructive interference occurs at virtually all non-principal angles and peak intensity scales as N²",
+      "correct_option": "Because destructive interference occurs at virtually all non-principal angles and peak intensity scales as N²",
+      "difficulty": "hard",
+      "global_id": 29,
+      "explanation": "For N coherent in-phase wavelets, constructive amplitude is N · A₀ so peak intensity scales as I ∝ N², while angular half-width narrows as Δθ ∝ 1/N."
+    },
+    {
+      "id": 30,
+      "question": "In an N-slit diffraction grating, how many secondary minima exist between any two consecutive principal maxima?",
+      "options": [
+        "(N − 1) minima",
+        "(N + 1) minima",
+        "N minima",
+        "2N minima"
+      ],
+      "answer": "(N − 1) minima",
+      "correct_option": "(N − 1) minima",
+      "difficulty": "medium",
+      "global_id": 30,
+      "explanation": "The interference term sin²(Nβ/2) / sin²(β/2) equals zero when Nβ/2 = pπ (with p not a multiple of N), yielding exactly (N - 1) minima."
+    },
+    {
+      "id": 31,
+      "question": "In an N-slit diffraction grating, how many secondary maxima exist between adjacent principal maxima?",
+      "options": [
+        "(N − 2) secondary maxima",
+        "(N − 1) secondary maxima",
+        "N secondary maxima",
+        "2 secondary maxima"
+      ],
+      "answer": "(N − 2) secondary maxima",
+      "correct_option": "(N − 2) secondary maxima",
+      "difficulty": "medium",
+      "global_id": 31,
+      "explanation": "Between the (N - 1) secondary minima lie exactly (N - 2) weak secondary maxima whose intensities are negligible for large N."
+    },
+    {
+      "id": 32,
+      "question": "A diffraction grating has 1000 lines/mm. What is the maximum theoretical diffraction order for green laser light (λ = 500 nm)?",
+      "options": [
+        "m_max = 2",
+        "m_max = 1",
+        "m_max = 3",
+        "m_max = 4"
+      ],
+      "answer": "m_max = 2",
+      "correct_option": "m_max = 2",
+      "difficulty": "medium",
+      "global_id": 32,
+      "explanation": "d = 1 / 1000 mm = 1000 nm. Since sin θ ≤ 1, m_max = ⌊d / λ⌋ = ⌊1000 / 500⌋ = 2."
+    },
+    {
+      "id": 33,
+      "question": "What is the phase difference δ between wavelets diffracted at angle θ from adjacent slits separated by distance d?",
+      "options": [
+        "δ = (2π / λ) · d · sin(θ)",
+        "δ = (π / λ) · d · cos(θ)",
+        "δ = (2π / λ) · d · tan(θ)",
+        "δ = 2π · m · λ"
+      ],
+      "answer": "δ = (2π / λ) · d · sin(θ)",
+      "correct_option": "δ = (2π / λ) · d · sin(θ)",
+      "difficulty": "medium",
+      "global_id": 33,
+      "explanation": "Phase difference δ = k · Δx = (2π / λ) · (d sin θ)."
+    },
+    {
+      "id": 34,
+      "question": "What are Rowland's ghosts in ruled mechanical diffraction gratings?",
+      "options": [
+        "Spurious spectral lines caused by periodic pitch errors in ruling engine drive screws",
+        "Optical reflections from the glass rear boundary",
+        "Fluorescence emission lines from diamond stylus wear",
+        "Second-order diffraction from ambient room illumination"
+      ],
+      "answer": "Spurious spectral lines caused by periodic pitch errors in ruling engine drive screws",
+      "correct_option": "Spurious spectral lines caused by periodic pitch errors in ruling engine drive screws",
+      "difficulty": "hard",
+      "global_id": 34,
+      "explanation": "Periodic mechanical imperfections in the ruling screw produce systematic phase modulation, creating faint symmetrical ghost lines flanking principal lines."
+    },
+    {
+      "id": 35,
+      "question": "What is a blazed grating?",
+      "options": [
+        "A grating with angled grooves designed to concentrate optical power into a specific diffraction order",
+        "A grating heated to high temperatures during fabrication",
+        "A grating coated with absorbing black paint",
+        "A transmission grating with non-parallel slits"
+      ],
+      "answer": "A grating with angled grooves designed to concentrate optical power into a specific diffraction order",
+      "correct_option": "A grating with angled grooves designed to concentrate optical power into a specific diffraction order",
+      "difficulty": "medium",
+      "global_id": 35,
+      "explanation": "Blazing shifts the single-slit specular reflection envelope to match a chosen diffraction order, dramatically increasing diffraction efficiency at that blaze wavelength."
+    },
+    {
+      "id": 36,
+      "question": "What is the Littrow configuration in a spectrometer?",
+      "options": [
+        "An optical geometry where the diffracted beam reflects back along the incident beam path (θ = i)",
+        "A geometry where light passes through two consecutive gratings",
+        "A setup using a cylindrical lens to collimate laser beams",
+        "A detector configuration without any focusing optics"
+      ],
+      "answer": "An optical geometry where the diffracted beam reflects back along the incident beam path (θ = i)",
+      "correct_option": "An optical geometry where the diffracted beam reflects back along the incident beam path (θ = i)",
+      "difficulty": "hard",
+      "global_id": 36,
+      "explanation": "In the Littrow mount, θ = i so the grating equation simplifies to 2d sin θ = mλ, maximizing blaze efficiency and optical compactness."
+    },
+    {
+      "id": 37,
+      "question": "If a red laser (λ = 650 nm) is swapped for a violet laser (λ = 405 nm), what happens to the fringe pattern on the screen?",
+      "options": [
+        "The diffracted spots move closer to the central zeroth-order spot",
+        "The diffracted spots move farther outward",
+        "The fringe pattern disappears entirely",
+        "Only the zeroth-order spot remains"
+      ],
+      "answer": "The diffracted spots move closer to the central zeroth-order spot",
+      "correct_option": "The diffracted spots move closer to the central zeroth-order spot",
+      "difficulty": "easy",
+      "global_id": 37,
+      "explanation": "Since sin θ = mλ / d, a shorter wavelength produces smaller diffraction angles θ, contracting the fringe pattern toward center."
+    },
+    {
+      "id": 38,
+      "question": "If the grating-to-screen distance L is doubled, what happens to the physical distance y between the m = 0 and m = 1 spots?",
+      "options": [
+        "The separation distance y approximately doubles",
+        "The separation distance y is halved",
+        "The separation distance y increases fourfold",
+        "The separation distance y remains unchanged"
+      ],
+      "answer": "The separation distance y approximately doubles",
+      "correct_option": "The separation distance y approximately doubles",
+      "difficulty": "easy",
+      "global_id": 38,
+      "explanation": "For small angles, y ≈ L · tan(θ) ≈ L · θ. Doubling screen distance L directly doubles spot displacement y."
+    },
+    {
+      "id": 39,
+      "question": "What happens to the diffraction angles if an entire grating experiment is submerged in water (n = 1.33)?",
+      "options": [
+        "Diffraction angles decrease because effective wavelength decreases (λ_med = λ / n)",
+        "Diffraction angles increase by 1.33x",
+        "The diffraction angles remain exactly the same",
+        "Diffraction completely ceases in liquid media"
+      ],
+      "answer": "Diffraction angles decrease because effective wavelength decreases (λ_med = λ / n)",
+      "correct_option": "Diffraction angles decrease because effective wavelength decreases (λ_med = λ / n)",
+      "difficulty": "medium",
+      "global_id": 39,
+      "explanation": "In a dielectric medium of refractive index n, the wavelength shortens to λ / n, causing smaller diffraction angles via d sin θ = m(λ/n)."
+    },
+    {
+      "id": 40,
+      "question": "Why does an atomic gas discharge tube produce discrete sharp spectral lines through a diffraction grating?",
+      "options": [
+        "Because atoms emit photons at quantized discrete transition wavelengths ΔE = hc / λ",
+        "Because the grating filters out continuous frequencies",
+        "Because gas atoms absorb all odd orders",
+        "Because of acoustic Doppler resonance inside the tube"
+      ],
+      "answer": "Because atoms emit photons at quantized discrete transition wavelengths ΔE = hc / λ",
+      "correct_option": "Because atoms emit photons at quantized discrete transition wavelengths ΔE = hc / λ",
+      "difficulty": "easy",
+      "global_id": 40,
+      "explanation": "Electronic transitions between quantized energy levels produce monochromatic photons at discrete wavelengths, each diffracted into distinct lines."
+    },
+    {
+      "id": 41,
+      "question": "What are the characteristic yellow doublet wavelengths of a low-pressure Sodium (Na) laboratory lamp?",
+      "options": [
+        "589.0 nm (D₂) and 589.6 nm (D₁)",
+        "656.3 nm and 486.1 nm",
+        "546.1 nm and 435.8 nm",
+        "632.8 nm and 532.0 nm"
+      ],
+      "answer": "589.0 nm (D₂) and 589.6 nm (D₁)",
+      "correct_option": "589.0 nm (D₂) and 589.6 nm (D₁)",
+      "difficulty": "medium",
+      "global_id": 41,
+      "explanation": "The Sodium doublet originates from 3p → 3s fine-structure transitions with wavelengths 589.0 nm and 589.6 nm separated by Δλ = 0.6 nm."
+    },
+    {
+      "id": 42,
+      "question": "What minimum resolving power R is required to clearly separate the Sodium doublet (589.0 nm and 589.6 nm)?",
+      "options": [
+        "R ≈ 982",
+        "R ≈ 100",
+        "R ≈ 10,000",
+        "R ≈ 50"
+      ],
+      "answer": "R ≈ 982",
+      "correct_option": "R ≈ 982",
+      "difficulty": "medium",
+      "global_id": 42,
+      "explanation": "R = λ_avg / Δλ = 589.3 nm / 0.6 nm ≈ 982. A grating needs at least ~982 total rulings in the first order to resolve them."
+    },
+    {
+      "id": 43,
+      "question": "Can a diffraction grating with N_total = 500 total rulings resolve the Sodium doublet in the first order (m = 1)?",
+      "options": [
+        "No, because R = 1 × 500 = 500, which is less than the required 982",
+        "Yes, because 500 is greater than 0.6",
+        "Yes, any grating can resolve the doublet",
+        "No, Sodium light cannot be diffracted by gratings"
+      ],
+      "answer": "No, because R = 1 × 500 = 500, which is less than the required 982",
+      "correct_option": "No, because R = 1 × 500 = 500, which is less than the required 982",
+      "difficulty": "easy",
+      "global_id": 43,
+      "explanation": "In order m = 1, R = 500 < 982, so Rayleigh criterion is not met and the two lines blur together."
+    },
+    {
+      "id": 44,
+      "question": "What is the key structural difference between a transmission grating and a reflection grating?",
+      "options": [
+        "Transmission gratings transmit diffracted light through transparent slits; reflection gratings reflect light from mirrored facets",
+        "Reflection gratings cannot produce spectra",
+        "Transmission gratings have only two slits",
+        "Reflection gratings require vacuum chambers"
+      ],
+      "answer": "Transmission gratings transmit diffracted light through transparent slits; reflection gratings reflect light from mirrored facets",
+      "correct_option": "Transmission gratings transmit diffracted light through transparent slits; reflection gratings reflect light from mirrored facets",
+      "difficulty": "easy",
+      "global_id": 44,
+      "explanation": "Transmission gratings rely on periodic transmissive apertures; reflection gratings use periodic mirrored facets etched into a substrate."
+    },
+    {
+      "id": 45,
+      "question": "If a transmission grating has 1200 lines/mm, what is its slit spacing d in nanometers?",
+      "options": [
+        "833.3 nm",
+        "1200 nm",
+        "120 nm",
+        "83.3 nm"
+      ],
+      "answer": "833.3 nm",
+      "correct_option": "833.3 nm",
+      "difficulty": "medium",
+      "global_id": 45,
+      "explanation": "d = 1 / 1200 mm = (10⁶ nm) / 1200 ≈ 833.3 nm."
+    },
+    {
+      "id": 46,
+      "question": "What is the diffraction angle θ for m = 1 with λ = 500 nm and d = 2000 nm?",
+      "options": [
+        "θ = arcsin(0.25) ≈ 14.48°",
+        "θ = arcsin(0.50) = 30.00°",
+        "θ = arcsin(0.10) ≈ 5.74°",
+        "θ = 45.00°"
+      ],
+      "answer": "θ = arcsin(0.25) ≈ 14.48°",
+      "correct_option": "θ = arcsin(0.25) ≈ 14.48°",
+      "difficulty": "easy",
+      "global_id": 46,
+      "explanation": "sin θ = (1 × 500) / 2000 = 0.25. θ = arcsin(0.25) ≈ 14.48°."
+    },
+    {
+      "id": 47,
+      "question": "In Fraunhofer multi-slit diffraction, what optical function does a collimating lens serve before the grating?",
+      "options": [
+        "It converts diverging spherical rays into parallel planar wavefronts",
+        "It focuses diffracted light onto the sensor",
+        "It filters out UV wavelengths",
+        "It increases the laser power"
+      ],
+      "answer": "It converts diverging spherical rays into parallel planar wavefronts",
+      "correct_option": "It converts diverging spherical rays into parallel planar wavefronts",
+      "difficulty": "easy",
+      "global_id": 47,
+      "explanation": "Fraunhofer diffraction strictly requires planar wavefront incidence, achieved by placing the point source at the focal point of a collimator lens."
+    },
+    {
+      "id": 48,
+      "question": "What governs the relative intensity envelope of different diffraction orders in a plane grating?",
+      "options": [
+        "The single-slit diffraction factor [sin(α)/α]² where α = (π a sin θ) / λ",
+        "The thickness of the glass substrate only",
+        "The focal length of the telescope",
+        "The temperature of the laser diode"
+      ],
+      "answer": "The single-slit diffraction factor [sin(α)/α]² where α = (π a sin θ) / λ",
+      "correct_option": "The single-slit diffraction factor [sin(α)/α]² where α = (π a sin θ) / λ",
+      "difficulty": "hard",
+      "global_id": 48,
+      "explanation": "The total intensity is the product of multi-slit interference and single-slit diffraction: I(θ) = I₀ · [sin(α)/α]² · [sin(Nβ)/sin(β)]²."
+    },
+    {
+      "id": 49,
+      "question": "Why are holographic gratings often superior to mechanically ruled gratings in high-precision spectroscopy?",
+      "options": [
+        "They are produced via laser interference fringes, eliminating mechanical ruling errors and ghost lines",
+        "They do not require optical alignment",
+        "They operate without physical slits",
+        "They can amplify light like a laser amplifier"
+      ],
+      "answer": "They are produced via laser interference fringes, eliminating mechanical ruling errors and ghost lines",
+      "correct_option": "They are produced via laser interference fringes, eliminating mechanical ruling errors and ghost lines",
+      "difficulty": "medium",
+      "global_id": 49,
+      "explanation": "Holographic fabrication records sinusoidal optical interference fringes onto photoresist, virtually eliminating periodic mechanical errors and stray light ghosts."
+    },
+    {
+      "id": 50,
+      "question": "What is the physical principle underlying the determination of laser wavelength using a transmission grating in this experiment?",
+      "options": [
+        "Measuring the fringe position y and bench distance L gives θ = arctan(y/L), enabling calculation via λ = (d · sin θ) / m",
+        "Measuring the heat absorbed by the grating screen",
+        "Measuring the time of flight of laser photons",
+        "Detecting the Doppler redshift of laser light"
+      ],
+      "answer": "Measuring the fringe position y and bench distance L gives θ = arctan(y/L), enabling calculation via λ = (d · sin θ) / m",
+      "correct_option": "Measuring the fringe position y and bench distance L gives θ = arctan(y/L), enabling calculation via λ = (d · sin θ) / m",
+      "difficulty": "easy",
+      "global_id": 50,
+      "explanation": "By geometry, tan θ = y / L. Substituting θ into the grating equation d sin θ = mλ yields the unknown laser wavelength with high precision."
+    }
+  ]
+}
