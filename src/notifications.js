@@ -282,10 +282,29 @@ export async function enableStreakReminders() {
       }
 
       const { getToken } = await import("firebase/messaging");
-      const token = await getToken(messaging, {
-        vapidKey,
-        serviceWorkerRegistration: swReg
-      });
+      let token = null;
+      try {
+        token = await getToken(messaging, {
+          vapidKey,
+          serviceWorkerRegistration: swReg
+        });
+      } catch (tokenErr) {
+        // If a stale or mismatched PushSubscription exists in the browser profile,
+        // unsubscribe it and retry cleanly once.
+        if (swReg && swReg.pushManager && (tokenErr?.message?.includes("push service error") || tokenErr?.name === "AbortError")) {
+          try {
+            const staleSub = await swReg.pushManager.getSubscription();
+            if (staleSub) {
+              await staleSub.unsubscribe();
+              token = await getToken(messaging, {
+                vapidKey,
+                serviceWorkerRegistration: swReg
+              });
+            }
+          } catch (_) {}
+        }
+        if (!token) throw tokenErr;
+      }
 
       if (!token) {
         return {

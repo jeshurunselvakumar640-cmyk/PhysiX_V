@@ -213,8 +213,7 @@ async function cacheCurrentPageAssets() {
       window.location.origin + "/favicon.svg",
       window.location.origin + "/icons.svg",
       window.location.origin + "/cursor.png",
-      window.location.origin + "/offline.html",
-      window.location.origin + "/quiz.json"
+      window.location.origin + "/offline.html"
     ]);
 
     // All active script tags on current page
@@ -376,21 +375,24 @@ export async function initPwaSystem() {
  * Safely access the current service worker registration for FCM and push notification reuse
  */
 async function getServiceWorkerRegistration() {
-  if (currentRegistration) return currentRegistration;
   if (typeof navigator !== "undefined" && "serviceWorker" in navigator) {
     try {
+      const readyReg = await navigator.serviceWorker.ready;
+      if (readyReg) {
+        currentRegistration = readyReg;
+        return readyReg;
+      }
       const reg = await navigator.serviceWorker.getRegistration("/");
       if (reg) {
         currentRegistration = reg;
         return reg;
       }
-      currentRegistration = await navigator.serviceWorker.ready;
-      return currentRegistration;
     } catch (e) {
+      if (currentRegistration) return currentRegistration;
       return null;
     }
   }
-  return null;
+  return currentRegistration || null;
 }
 
 // Export functions for use in other modules
