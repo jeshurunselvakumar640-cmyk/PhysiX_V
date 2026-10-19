@@ -9,6 +9,7 @@ import quizRouter from "./routes/quiz.js";
 import kinematicsRouter from "./routes/kinematics.js";
 import badgesRouter from "./routes/badges.js";
 import aiRouter from "./routes/ai.js";
+import cronRouter from "./routes/cron.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -47,6 +48,7 @@ app.use("/api/quiz", quizRouter);
 app.use("/api/kinematics", kinematicsRouter);
 app.use("/api/badges", badgesRouter);
 app.use("/api/ai", aiRouter);
+app.use("/api/cron", cronRouter);
 
 // Serve frontend static build files if dist exists (production mode)
 const distPath = path.join(__dirname, "..", "dist");

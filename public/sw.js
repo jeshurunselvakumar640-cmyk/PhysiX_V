@@ -323,8 +323,9 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 3. Firebase Firestore - network only
-  if (url.hostname.includes('firestore.googleapis.com')) {
+  // 3. Firebase Firestore & FCM endpoints - network only
+  if (url.hostname.includes('firestore.googleapis.com') ||
+      url.hostname.includes('fcmregistrations.googleapis.com')) {
     event.respondWith(networkOnly(request));
     return;
   }
@@ -365,3 +366,168 @@ self.addEventListener('message', (event) => {
     );
   }
 });
+
+// ==========================================================================
+// BACKGROUND PUSH NOTIFICATIONS & CLICK HANDLING
+// ==========================================================================
+
+/**
+ * Safely sanitize and validate a notification target URL.
+ * Strictly restricts navigation to same-origin paths and approved PhysiX relative paths.
+ * Blocks any external domain, javascript:, data:, or malformed protocols.
+ */
+function sanitizeNotificationUrl(rawUrl, baseOrigin) {
+  if (!rawUrl || typeof rawUrl !== 'string') {
+    return '/';
+  }
+
+  const trimmed = rawUrl.trim();
+  if (!trimmed) return '/';
+
+  // Prevent dangerous protocol schemes
+  if (/^(javascript|data|vbscript|file):/i.test(trimmed)) {
+    return '/';
+  }
+
+  try {
+    const origin = baseOrigin || self.location.origin;
+    const resolved = new URL(trimmed, origin);
+
+    // Enforce strictly same-origin
+    if (resolved.origin !== origin) {
+      return '/';
+    }
+
+    return resolved.pathname + resolved.search + resolved.hash;
+  } catch (e) {
+    return '/';
+  }
+}
+
+/**
+ * Safely sanitize notification icon/badge asset URLs.
+ * Restricts to same-origin or returns a safe local default.
+ */
+function sanitizeAssetUrl(rawUrl, defaultUrl, baseOrigin) {
+  if (!rawUrl || typeof rawUrl !== 'string') return defaultUrl;
+  const trimmed = rawUrl.trim();
+  if (!trimmed || /^(javascript|data|vbscript):/i.test(trimmed)) return defaultUrl;
+  try {
+    const origin = baseOrigin || self.location.origin;
+    const resolved = new URL(trimmed, origin);
+    if (resolved.origin !== origin) return defaultUrl;
+    return resolved.pathname + resolved.search;
+  } catch (e) {
+    return defaultUrl;
+  }
+}
+
+/**
+ * FCM Push Notification Contract:
+ * To avoid duplicate notifications in Chromium browsers, the scheduled backend
+ * MUST send "data-only" messages where all values are strings:
+ * {
+ *   "data": {
+ *     "title": "Your PhysiX streak is at risk!",
+ *     "body": "Complete a physics activity before midnight to protect your streak.",
+ *     "url": "/",
+ *     "icon": "/favicon.svg",
+ *     "tag": "physix-streak-reminder"
+ *   }
+ * }
+ */
+self.addEventListener('push', (event) => {
+  const DEFAULT_TITLE = 'PhysiX — Daily Streak Reminder';
+  const DEFAULT_BODY = "Don't break your learning momentum! Complete an experiment today.";
+  const DEFAULT_ICON = '/favicon.svg';
+
+  let title = DEFAULT_TITLE;
+  let body = DEFAULT_BODY;
+  let icon = DEFAULT_ICON;
+  let badge = DEFAULT_ICON;
+  let tag = 'physix-streak-reminder';
+  let targetUrl = '/';
+  let payloadData = {};
+
+  if (event.data) {
+    try {
+      const payload = event.data.json();
+      // Support primary data-only contract, with notification fallback
+      const data = (payload && typeof payload.data === 'object' && payload.data !== null) ? payload.data : {};
+      const notification = (payload && typeof payload.notification === 'object' && payload.notification !== null) ? payload.notification : {};
+
+      // Data fields take precedence to align with data-only contract
+      title = (typeof data.title === 'string' && data.title.trim()) || 
+              (typeof notification.title === 'string' && notification.title.trim()) || 
+              (typeof payload.title === 'string' && payload.title.trim()) || 
+              title;
+
+      body = (typeof data.body === 'string' && data.body.trim()) || 
+             (typeof notification.body === 'string' && notification.body.trim()) || 
+             (typeof payload.body === 'string' && payload.body.trim()) || 
+             body;
+
+      const rawIcon = data.icon || notification.icon;
+      icon = sanitizeAssetUrl(rawIcon, DEFAULT_ICON, self.location.origin);
+
+      const rawBadge = data.badge || notification.badge;
+      badge = sanitizeAssetUrl(rawBadge, DEFAULT_ICON, self.location.origin);
+
+      tag = (typeof data.tag === 'string' && data.tag.trim()) || 
+            (typeof notification.tag === 'string' && notification.tag.trim()) || 
+            tag;
+
+      const rawUrl = data.url || notification.click_action || payload.url;
+      targetUrl = sanitizeNotificationUrl(rawUrl, self.location.origin);
+
+      payloadData = {
+        url: targetUrl,
+        ...data
+      };
+    } catch (e) {
+      try {
+        const text = event.data.text();
+        if (text && typeof text === 'string') {
+          body = text.trim();
+        }
+      } catch (_) {}
+    }
+  }
+
+  const options = {
+    body,
+    icon,
+    badge,
+    tag, // re-using tag replaces/updates any prior notification instead of stacking duplicates
+    renotify: true,
+    data: payloadData
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(title, options)
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const rawUrl = event.notification.data?.url || '/';
+  const safePath = sanitizeNotificationUrl(rawUrl, self.location.origin);
+  const targetUrl = new URL(safePath, self.location.origin).href;
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
+      for (const client of windowClients) {
+        if (client.url.includes(self.location.origin) && 'focus' in client) {
+          if ('navigate' in client && safePath !== '/') {
+            client.navigate(targetUrl);
+          }
+          return client.focus();
+        }
+      }
+      if (clients.openWindow) {
+        return clients.openWindow(targetUrl);
+      }
+    })
+  );
+});
+

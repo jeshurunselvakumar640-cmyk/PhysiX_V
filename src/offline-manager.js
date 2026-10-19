@@ -145,6 +145,8 @@ function canPerformCloudOperation() {
   return isOnline && networkQuality !== "offline";
 }
 
+let currentRegistration = null;
+
 /**
  * Service Worker registration with update handling
  */
@@ -158,6 +160,7 @@ async function registerServiceWorker() {
     const registration = await navigator.serviceWorker.register("/sw.js", {
       scope: "/"
     });
+    currentRegistration = registration;
 
     console.log("[PWA] Service Worker registered:", registration.scope);
     registration.update().catch(() => {});
@@ -364,8 +367,30 @@ export async function initPwaSystem() {
     canPerformCloudOperation,
     forceNetworkCheck,
     stopNetworkMonitoring,
-    cacheCurrentPageAssets
+    cacheCurrentPageAssets,
+    getServiceWorkerRegistration
   };
+}
+
+/**
+ * Safely access the current service worker registration for FCM and push notification reuse
+ */
+async function getServiceWorkerRegistration() {
+  if (currentRegistration) return currentRegistration;
+  if (typeof navigator !== "undefined" && "serviceWorker" in navigator) {
+    try {
+      const reg = await navigator.serviceWorker.getRegistration("/");
+      if (reg) {
+        currentRegistration = reg;
+        return reg;
+      }
+      currentRegistration = await navigator.serviceWorker.ready;
+      return currentRegistration;
+    } catch (e) {
+      return null;
+    }
+  }
+  return null;
 }
 
 // Export functions for use in other modules
@@ -377,6 +402,7 @@ export {
   startNetworkMonitoring,
   stopNetworkMonitoring,
   registerServiceWorker,
+  getServiceWorkerRegistration,
   initOfflineIndicator,
   showAiOfflineMessage,
   cacheCurrentPageAssets
@@ -391,6 +417,7 @@ export default {
   startNetworkMonitoring,
   stopNetworkMonitoring,
   registerServiceWorker,
+  getServiceWorkerRegistration,
   initOfflineIndicator,
   showAiOfflineMessage,
   cacheCurrentPageAssets

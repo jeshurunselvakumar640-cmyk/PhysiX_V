@@ -28,6 +28,7 @@ import {
   serverTimestamp,
   increment,
   arrayUnion,
+  arrayRemove,
   onSnapshot,
   runTransaction
 } from "firebase/firestore";
@@ -84,6 +85,7 @@ export {
   serverTimestamp,
   increment,
   arrayUnion,
+  arrayRemove,
   onSnapshot,
   runTransaction,
   signInWithEmailAndPassword,

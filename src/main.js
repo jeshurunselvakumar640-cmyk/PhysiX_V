@@ -83,6 +83,7 @@ import {
   setNetworkStatusOverride
 } from "./offline-manager.js";
 import { updateManager } from "./update-manager.js";
+import "./notifications.js";
 import {
   syncUserToFirestore,
   recordExperimentInFirestore,
