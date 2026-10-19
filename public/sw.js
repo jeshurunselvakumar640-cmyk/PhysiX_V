@@ -8,6 +8,9 @@ const CACHE_VERSION = 'v7';
 const APP_SHELL_CACHE = `physix-app-shell-${CACHE_VERSION}`;
 const RUNTIME_CACHE = `physix-runtime-${CACHE_VERSION}`;
 
+// Precache manifest injection point for VitePWA injectManifest build
+self.__WB_MANIFEST;
+
 // Core assets to precache during install
 const CORE_PRECACHE_URLS = [
   '/',
@@ -17,7 +20,6 @@ const CORE_PRECACHE_URLS = [
   '/icons.svg',
   '/cursor.png',
   '/offline.html',
-  '/quiz.json',
   '/fonts/fonts.css',
   '/src/style.css',
   '/src/light-mode.css',
@@ -275,7 +277,10 @@ async function cacheFirst(request) {
         headers: { 'Content-Type': 'text/css' }
       });
     }
-    return new Response('Font offline', { status: 503 });
+    return new Response(new Uint8Array(0), {
+      status: 200,
+      headers: { 'Content-Type': 'font/woff2' }
+    });
   }
 }
 
@@ -304,6 +309,11 @@ self.addEventListener('fetch', (event) => {
 
   // Skip non-http schemes
   if (!request.url.startsWith('http')) {
+    return;
+  }
+
+  // Prevent browser TypeError when only-if-cached is used with non-same-origin mode
+  if (request.cache === 'only-if-cached' && request.mode !== 'same-origin') {
     return;
   }
 

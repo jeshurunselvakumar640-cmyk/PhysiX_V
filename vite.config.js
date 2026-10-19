@@ -51,56 +51,15 @@ export default defineConfig({
   plugins: [
     versionPlugin(),
     VitePWA({
+      strategies: "injectManifest",
+      srcDir: "public",
+      filename: "sw.js",
       registerType: "prompt",
       includeAssets: ["favicon.svg", "icons.svg", "cursor.png"],
       manifest: false, // Use custom manifest.webmanifest in public/
       injectManifest: {
-        globPatterns: ["**/*.{js,css,html,svg,png,ico,woff2,webmanifest}"],
-        swSrc: "public/sw.js",
-        swDest: "sw.js"
-      },
-      workbox: {
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
-        globPatterns: ["**/*.{js,css,html,svg,png,ico,woff2,webmanifest}"],
-        navigateFallback: "/index.html",
-        navigateFallbackDenylist: [/^\/api\//, /^\/version\.json/],
-        cleanupOutdatedCaches: true,
-        clientsClaim: true,
-        skipWaiting: false,
-        runtimeCaching: [
-          {
-            urlPattern: /\/version\.json$/i,
-            handler: "NetworkOnly"
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "google-fonts-cache",
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: "CacheFirst",
-            options: {
-              cacheName: "google-fonts-webfonts",
-              expiration: {
-                maxEntries: 30,
-                maxAgeSeconds: 60 * 60 * 24 * 365
-              },
-              cacheableResponse: {
-                statuses: [0, 200]
-              }
-            }
-          }
-        ]
+        globPatterns: ["**/*.{js,css,html,svg,png,ico,woff2,webmanifest}"]
       }
     })
   ]

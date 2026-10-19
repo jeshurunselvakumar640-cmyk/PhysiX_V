@@ -24,10 +24,17 @@ import { isCloudOperationAllowed } from "./user-data-service.js";
 const DEFAULT_VAPID_KEY = "BCbkY_EflDlf1K-62yyBcF_2UCN90k9Xb3M1ghdqThNzlQvF3TQcrNFyqZXmWZ8-bGFYHfNcx22eLDzIn_fIrjU";
 
 export function getVapidKey() {
+  let key = "";
   if (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_FIREBASE_VAPID_KEY) {
-    return import.meta.env.VITE_FIREBASE_VAPID_KEY;
+    key = String(import.meta.env.VITE_FIREBASE_VAPID_KEY).trim();
+  } else {
+    key = DEFAULT_VAPID_KEY.trim();
   }
-  return DEFAULT_VAPID_KEY;
+  // Strip surrounding quotes if wrapped in .env or deployment configuration
+  if ((key.startsWith('"') && key.endsWith('"')) || (key.startsWith("'") && key.endsWith("'"))) {
+    key = key.slice(1, -1).trim();
+  }
+  return key;
 }
 
 /**
@@ -107,6 +114,7 @@ export function calculateUpdatedPreferences(existingUserData, tokenToRemove, opt
 // Module singleton state
 let messagingInstance = null;
 let foregroundUnsubscribe = null;
+let enableStreakRemindersInFlight = null;
 
 /**
  * Check if Web Push, Service Worker, and FCM are supported in current browser environment.
@@ -184,138 +192,166 @@ export async function getMessagingInstance() {
 /**
  * Explicit user opt-in: Enables streak reminder notifications.
  * Requests browser permission ONLY when triggered by explicit user action.
+ * Concurrency-safe: shares an in-flight promise across duplicate rapid triggers.
  */
 export async function enableStreakReminders() {
-  // 1. Capability Check
-  const supported = await isPushNotificationSupported();
-  if (!supported) {
-    return {
-      success: false,
-      reason: "unsupported",
-      error: "Web push notifications are not supported by this browser."
-    };
+  if (enableStreakRemindersInFlight) {
+    return enableStreakRemindersInFlight;
   }
 
-  // 2. Offline Guard
-  if (!navigator.onLine || !isCloudOperationAllowed()) {
-    return {
-      success: false,
-      reason: "offline",
-      error: "Cannot configure push notifications while offline."
-    };
-  }
+  enableStreakRemindersInFlight = (async () => {
+    // 1. Capability Check
+    const supported = await isPushNotificationSupported();
+    if (!supported) {
+      return {
+        success: false,
+        reason: "unsupported",
+        error: "Web push notifications are not supported by this browser."
+      };
+    }
 
-  // 3. Authentication Check — strictly reject guests / signed-out clients
-  const currentUser = auth?.currentUser;
-  if (!currentUser || !currentUser.uid || currentUser.uid === "guest") {
-    return {
-      success: false,
-      reason: "unauthenticated",
-      error: "You must be signed in with a PhysiX account to enable daily streak push reminders."
-    };
-  }
+    // 2. Offline Guard
+    if (!navigator.onLine || !isCloudOperationAllowed()) {
+      return {
+        success: false,
+        reason: "offline",
+        error: "Cannot configure push notifications while offline."
+      };
+    }
 
-  // 4. Request Browser Notification Permission
-  let permission = Notification.permission;
-  if (permission !== "granted") {
+    // 3. Authentication Check — strictly reject guests / signed-out clients
+    const currentUser = auth?.currentUser;
+    if (!currentUser || !currentUser.uid || currentUser.uid === "guest") {
+      return {
+        success: false,
+        reason: "unauthenticated",
+        error: "You must be signed in with a PhysiX account to enable daily streak push reminders."
+      };
+    }
+
+    // 4. Request Browser Notification Permission
+    let permission = Notification.permission;
+    if (permission !== "granted") {
+      try {
+        permission = await Notification.requestPermission();
+      } catch (e) {
+        // Safari callback fallback
+        permission = await new Promise((resolve) => {
+          Notification.requestPermission(resolve);
+        });
+      }
+    }
+
+    if (permission !== "granted") {
+      return {
+        success: false,
+        reason: "permission_denied",
+        error: "Notification permission was not granted by the user."
+      };
+    }
+
+    // 5. Validate VAPID Key
+    const vapidKey = getVapidKey();
+    if (!vapidKey || typeof vapidKey !== "string" || vapidKey.trim() === "") {
+      return {
+        success: false,
+        reason: "missing_vapid_key",
+        error: "VAPID public key is missing or not configured."
+      };
+    }
+
+    // 6. Reuse existing Service Worker Registration from offline-manager.js
+    const swReg = await getServiceWorkerRegistration();
+    if (!swReg) {
+      return {
+        success: false,
+        reason: "sw_unavailable",
+        error: "Active service worker registration is not available."
+      };
+    }
+
+    // 7. Obtain FCM Registration Token
     try {
-      permission = await Notification.requestPermission();
-    } catch (e) {
-      // Safari callback fallback
-      permission = await new Promise((resolve) => {
-        Notification.requestPermission(resolve);
+      const messaging = await getMessagingInstance();
+      if (!messaging) {
+        return {
+          success: false,
+          reason: "messaging_init_failed",
+          error: "Firebase Messaging could not be initialized."
+        };
+      }
+
+      const { getToken } = await import("firebase/messaging");
+      const token = await getToken(messaging, {
+        vapidKey,
+        serviceWorkerRegistration: swReg
       });
+
+      if (!token) {
+        return {
+          success: false,
+          reason: "no_token",
+          error: "Failed to generate FCM registration token."
+        };
+      }
+
+      // 8. Store token in Firestore strictly under users/{currentUser.uid}
+      if (db) {
+        const userRef = doc(db, "users", currentUser.uid);
+        const now = new Date().toISOString();
+        await setDoc(
+          userRef,
+          {
+            fcmTokens: arrayUnion(token),
+            lastFcmToken: token,
+            streakRemindersEnabled: true,
+            fcmTokenUpdatedAt: now,
+            updatedAt: now
+          },
+          { merge: true }
+        );
+      }
+
+      // Record locally for fast state checks
+      try {
+        localStorage.setItem(`physix_fcm_token_${currentUser.uid}`, token);
+        localStorage.setItem("physix_streak_reminders_enabled", "true");
+      } catch (_) {}
+
+      return {
+        success: true,
+        token,
+        permission
+      };
+    } catch (err) {
+      console.error("[Notifications] Token generation error:", err);
+      const msg = err?.message || "";
+      let reason = "token_error";
+      let safeError = msg || "Failed to obtain push notification token.";
+
+      if (err?.name === "AbortError" || msg.includes("push service error")) {
+        reason = "push_service_error";
+        safeError = "Registration failed - push service error. The browser push service rejected the subscription request. Ensure Google Push Services are enabled in browser settings (especially in Brave), your service worker has active push handlers, and the VAPID key matches Firebase Cloud Messaging.";
+      } else if (err?.name === "NotAllowedError" || msg.includes("permission denied")) {
+        reason = "permission_denied";
+        safeError = "Notification permission was not granted by the user.";
+      } else if (err?.code === "messaging/invalid-vapid-key" || msg.includes("vapid")) {
+        reason = "invalid_vapid_key";
+        safeError = "The configured VAPID public key format is invalid.";
+      }
+
+      return {
+        success: false,
+        reason,
+        error: safeError
+      };
     }
-  }
+  })();
 
-  if (permission !== "granted") {
-    return {
-      success: false,
-      reason: "permission_denied",
-      error: "Notification permission was not granted by the user."
-    };
-  }
-
-  // 5. Validate VAPID Key
-  const vapidKey = getVapidKey();
-  if (!vapidKey || typeof vapidKey !== "string" || vapidKey.trim() === "") {
-    return {
-      success: false,
-      reason: "missing_vapid_key",
-      error: "VAPID public key is missing or not configured."
-    };
-  }
-
-  // 6. Reuse existing Service Worker Registration from offline-manager.js
-  const swReg = await getServiceWorkerRegistration();
-  if (!swReg) {
-    return {
-      success: false,
-      reason: "sw_unavailable",
-      error: "Active service worker registration is not available."
-    };
-  }
-
-  // 7. Obtain FCM Registration Token
   try {
-    const messaging = await getMessagingInstance();
-    if (!messaging) {
-      return {
-        success: false,
-        reason: "messaging_init_failed",
-        error: "Firebase Messaging could not be initialized."
-      };
-    }
-
-    const { getToken } = await import("firebase/messaging");
-    const token = await getToken(messaging, {
-      vapidKey,
-      serviceWorkerRegistration: swReg
-    });
-
-    if (!token) {
-      return {
-        success: false,
-        reason: "no_token",
-        error: "Failed to generate FCM registration token."
-      };
-    }
-
-    // 8. Store token in Firestore strictly under users/{currentUser.uid}
-    if (db) {
-      const userRef = doc(db, "users", currentUser.uid);
-      const now = new Date().toISOString();
-      await setDoc(
-        userRef,
-        {
-          fcmTokens: arrayUnion(token),
-          lastFcmToken: token,
-          streakRemindersEnabled: true,
-          fcmTokenUpdatedAt: now,
-          updatedAt: now
-        },
-        { merge: true }
-      );
-    }
-
-    // Record locally for fast state checks
-    try {
-      localStorage.setItem(`physix_fcm_token_${currentUser.uid}`, token);
-      localStorage.setItem("physix_streak_reminders_enabled", "true");
-    } catch (_) {}
-
-    return {
-      success: true,
-      token,
-      permission
-    };
-  } catch (err) {
-    console.error("[Notifications] Token generation error:", err);
-    return {
-      success: false,
-      reason: "token_error",
-      error: err.message || "Failed to obtain push notification token."
-    };
+    return await enableStreakRemindersInFlight;
+  } finally {
+    enableStreakRemindersInFlight = null;
   }
 }
 
