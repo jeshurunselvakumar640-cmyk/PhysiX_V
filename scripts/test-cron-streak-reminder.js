@@ -20,10 +20,16 @@ import {
   timingSafeVerifySecret,
   cronAuthMiddleware
 } from "../server/routes/cron.js";
+import crypto from "node:crypto";
+import { deleteApp, getApps } from "firebase-admin/app";
 import {
   formatPrivateKey,
   isFirebaseAdminConfigured,
-  setMockFirebaseAdmin
+  setMockFirebaseAdmin,
+  getAdminApp,
+  getAdminFirestore,
+  getAdminMessaging,
+  _resetAdminStateForTesting
 } from "../server/firebase-admin.js";
 
 describe("Stage 4: Server-Side Streak Reminder Cron Endpoint & Service (Targeted Fixes)", () => {
@@ -31,11 +37,17 @@ describe("Stage 4: Server-Side Streak Reminder Cron Endpoint & Service (Targeted
 
   beforeEach(() => {
     process.env = { ...originalEnv };
+    _resetAdminStateForTesting();
   });
 
-  afterEach(() => {
+  afterEach(async () => {
     process.env = { ...originalEnv };
-    setMockFirebaseAdmin(null);
+    _resetAdminStateForTesting();
+    for (const app of getApps()) {
+      try {
+        await deleteApp(app);
+      } catch (_) {}
+    }
   });
 
   describe("1. Firebase Admin Initialization & Security", () => {
@@ -62,6 +74,82 @@ describe("Stage 4: Server-Side Streak Reminder Cron Endpoint & Service (Targeted
       process.env.FIREBASE_CLIENT_EMAIL = "test@physix-d4860.iam.gserviceaccount.com";
       process.env.FIREBASE_PRIVATE_KEY = "-----BEGIN PRIVATE KEY-----\nMIIE\n-----END PRIVATE KEY-----";
 
+      assert.equal(isFirebaseAdminConfigured(), true);
+    });
+
+    test("getAdminApp throws sanitized error when required environment variables are missing", () => {
+      delete process.env.FIREBASE_CLIENT_EMAIL;
+      delete process.env.FIREBASE_PRIVATE_KEY;
+      delete process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
+
+      assert.throws(
+        () => getAdminApp(),
+        (err) => err.message.includes("Firebase Admin credentials are not configured")
+      );
+    });
+
+    test("getAdminApp throws error when private key formatting is invalid without crashing on undefined properties", () => {
+      process.env.FIREBASE_PROJECT_ID = "physix-d4860";
+      process.env.FIREBASE_CLIENT_EMAIL = "test@physix-d4860.iam.gserviceaccount.com";
+      process.env.FIREBASE_PRIVATE_KEY = "7c12dd8023a3833f513a8cebd2b50b089df8d9d8"; // invalid PEM key
+
+      assert.throws(
+        () => getAdminApp(),
+        (err) => err.message.includes("Firebase Admin initialization failed")
+      );
+    });
+
+    test("getAdminApp initializes singleton app, reuses existing app, and provides modular Firestore/Messaging", () => {
+      const { privateKey } = crypto.generateKeyPairSync("rsa", {
+        modulusLength: 2048,
+        publicKeyEncoding: { type: "spki", format: "pem" },
+        privateKeyEncoding: { type: "pkcs8", format: "pem" }
+      });
+
+      process.env.FIREBASE_PROJECT_ID = "physix-d4860";
+      process.env.FIREBASE_CLIENT_EMAIL = "test@physix-d4860.iam.gserviceaccount.com";
+      process.env.FIREBASE_PRIVATE_KEY = privateKey;
+
+      // 1. First-time initialization
+      const app1 = getAdminApp();
+      assert.ok(app1);
+      assert.equal(app1.name, "[DEFAULT]");
+
+      // 2. Reuse through internal singleton cache
+      const app2 = getAdminApp();
+      assert.strictEqual(app1, app2);
+
+      // 3. Modular Firestore and Messaging instances
+      const db1 = getAdminFirestore();
+      assert.ok(db1);
+      const db2 = getAdminFirestore();
+      assert.strictEqual(db1, db2);
+
+      const msg1 = getAdminMessaging();
+      assert.ok(msg1);
+      const msg2 = getAdminMessaging();
+      assert.strictEqual(msg1, msg2);
+
+      // 4. Reuse when singleton is reset but getApps() already has an app
+      _resetAdminStateForTesting();
+      const app3 = getAdminApp();
+      assert.strictEqual(app1, app3);
+    });
+
+    test("setMockFirebaseAdmin allows tests to inject custom mocks and overrides SDK", () => {
+      const mockApp = { name: "mock-app" };
+      const mockDb = { collection: () => {} };
+      const mockMsg = { send: () => {} };
+
+      setMockFirebaseAdmin({
+        app: mockApp,
+        firestore: mockDb,
+        messaging: mockMsg
+      });
+
+      assert.strictEqual(getAdminApp(), mockApp);
+      assert.strictEqual(getAdminFirestore(), mockDb);
+      assert.strictEqual(getAdminMessaging(), mockMsg);
       assert.equal(isFirebaseAdminConfigured(), true);
     });
   });
@@ -463,10 +551,16 @@ describe("Stage 4: Server-Side Streak Reminder Cron Endpoint & Service (Targeted
                     };
                   },
                   async set(data, opts) {
+                    const resolved = { ...data };
+                    if (resolved.fcmTokens && Array.isArray(resolved.fcmTokens.elements)) {
+                      const toRemove = new Set(resolved.fcmTokens.elements);
+                      const current = Array.isArray(users[id]?.fcmTokens) ? users[id].fcmTokens : [];
+                      resolved.fcmTokens = current.filter((t) => !toRemove.has(t));
+                    }
                     if (opts?.merge && users[id]) {
-                      users[id] = { ...users[id], ...data };
+                      users[id] = { ...users[id], ...resolved };
                     } else {
-                      users[id] = { ...data };
+                      users[id] = { ...resolved };
                     }
                   }
                 };

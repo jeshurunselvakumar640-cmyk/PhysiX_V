@@ -5,8 +5,7 @@
  * guarantees delivery idempotency with stale-lock recovery, constructs
  * data-only FCM payloads, and handles stale token removal with bounded concurrency.
  */
-
-import admin from "firebase-admin";
+import { FieldValue } from "firebase-admin/firestore";
 import { getAdminFirestore, getAdminMessaging } from "../firebase-admin.js";
 
 export const STREAK_TIMEZONE = "Asia/Kolkata";
@@ -220,7 +219,6 @@ export async function removeInvalidToken(db, uid, invalidToken) {
   if (!db || !uid || !invalidToken) return;
 
   const userRef = db.collection("users").doc(uid);
-  const FieldValue = admin.firestore?.FieldValue;
 
   try {
     await db.runTransaction(async (transaction) => {

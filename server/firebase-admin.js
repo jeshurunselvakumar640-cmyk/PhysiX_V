@@ -13,7 +13,9 @@
  * - FIREBASE_SERVICE_ACCOUNT_KEY: (Full JSON string containing project_id, client_email, private_key)
  */
 
-import admin from "firebase-admin";
+import { initializeApp, getApps, cert } from "firebase-admin/app";
+import { getFirestore } from "firebase-admin/firestore";
+import { getMessaging } from "firebase-admin/messaging";
 
 let adminApp = null;
 let firestoreDb = null;
@@ -25,6 +27,16 @@ let mockOverrides = null;
  */
 export function setMockFirebaseAdmin(mocks) {
   mockOverrides = mocks;
+}
+
+/**
+ * For unit testing: Clears internal singleton instances.
+ */
+export function _resetAdminStateForTesting() {
+  adminApp = null;
+  firestoreDb = null;
+  messagingService = null;
+  mockOverrides = null;
 }
 
 /**
@@ -70,16 +82,27 @@ export function getAdminApp() {
 
   if (adminApp) return adminApp;
 
-  if (admin.apps.length > 0) {
-    adminApp = admin.apps[0];
+  const existingApps = getApps();
+  if (existingApps.length > 0) {
+    adminApp = existingApps[0];
     return adminApp;
   }
 
   if (process.env.FIREBASE_SERVICE_ACCOUNT_KEY) {
+    let serviceAccount;
     try {
-      const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
-      adminApp = admin.initializeApp({
-        credential: admin.credential.cert({
+      serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+    } catch (err) {
+      throw new Error(`Failed to initialize Firebase Admin from FIREBASE_SERVICE_ACCOUNT_KEY: ${err.message}`);
+    }
+
+    if (!serviceAccount.project_id || !serviceAccount.client_email || !serviceAccount.private_key) {
+      throw new Error("Failed to initialize Firebase Admin from FIREBASE_SERVICE_ACCOUNT_KEY: Missing required credentials.");
+    }
+
+    try {
+      adminApp = initializeApp({
+        credential: cert({
           projectId: serviceAccount.project_id,
           clientEmail: serviceAccount.client_email,
           privateKey: formatPrivateKey(serviceAccount.private_key)
@@ -102,8 +125,8 @@ export function getAdminApp() {
   }
 
   try {
-    adminApp = admin.initializeApp({
-      credential: admin.credential.cert({
+    adminApp = initializeApp({
+      credential: cert({
         projectId,
         clientEmail,
         privateKey: formatPrivateKey(rawKey)
@@ -123,7 +146,7 @@ export function getAdminFirestore() {
   if (firestoreDb) return firestoreDb;
 
   const app = getAdminApp();
-  firestoreDb = admin.firestore(app);
+  firestoreDb = getFirestore(app);
   return firestoreDb;
 }
 
@@ -135,7 +158,7 @@ export function getAdminMessaging() {
   if (messagingService) return messagingService;
 
   const app = getAdminApp();
-  messagingService = admin.messaging(app);
+  messagingService = getMessaging(app);
   return messagingService;
 }
 
@@ -145,5 +168,6 @@ export default {
   getAdminMessaging,
   isFirebaseAdminConfigured,
   formatPrivateKey,
-  setMockFirebaseAdmin
+  setMockFirebaseAdmin,
+  _resetAdminStateForTesting
 };
